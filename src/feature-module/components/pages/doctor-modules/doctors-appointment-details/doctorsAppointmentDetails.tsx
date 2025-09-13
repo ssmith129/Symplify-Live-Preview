@@ -10,6 +10,8 @@ import {
   Status,
 } from "../../../../../core/common/selectOption";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
+import { Suspense, lazy } from "react";
+const AppointmentInsights = lazy(() => import('../../../../../core/ai/AppointmentInsights'));
 
 const DoctorsAppointmentDetails = () => {
   const getModalContainer = () => {
@@ -291,7 +293,9 @@ const DoctorsAppointmentDetails = () => {
               <div id="calendar">
                 <EventCalendar />
               </div>
-              {require('react').createElement(require('../../../../../core/ai/AppointmentInsights').default)}
+              <Suspense fallback={null}>
+              <AppointmentInsights />
+            </Suspense>
             </div>
           </div>
           {/* end card */}
