@@ -1,8 +1,10 @@
 import { Link } from "react-router";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import ImageWithBasePath from "../../../../../../core/imageWithBasePath";
 import { all_routes } from "../../../../../routes/all_routes";
 
+
+const EmailAIEnhancer = lazy(() => import('../../../../../../core/ai/EmailAIEnhancer'));
 
 const Email = () => {
   const [showMore, setShowMore] = useState(false);
@@ -299,7 +301,9 @@ const Email = () => {
                           <span>56 Unread</span>
                         </div>
                         <div className="mt-2">
-                          {require('react').createElement(require('../../../../../../core/ai/EmailAIEnhancer').default)}
+                          <Suspense fallback={null}>
+                            <EmailAIEnhancer />
+                          </Suspense>
                         </div>
                       </div>
                       <div className="d-flex align-items-center">
