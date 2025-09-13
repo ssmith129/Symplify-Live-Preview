@@ -1,4 +1,4 @@
-import { AIMessage } from './types';
+import type { AIMessage } from './types';
 import { classify, category as detectCategory } from './classifier';
 
 const AVATARS = [
