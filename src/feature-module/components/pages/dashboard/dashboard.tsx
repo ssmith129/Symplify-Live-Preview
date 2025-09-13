@@ -1,13 +1,14 @@
 import { Link } from "react-router";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";
 import { all_routes } from "../../../routes/all_routes";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import Chart from "react-apexcharts";
 import SCol2Chart from "./chats/scol2";
 import SCol3Chart from "./chats/scol3";
 import SCol4Chart from "./chats/scol4";
 import SCol19Chart from "./chats/scol19";
 import CircleChart from "./chats/circleChart";
+const InboxTriageCard = lazy(() => import('../../../../core/ai/InboxTriageCard'));
 import { Calendar, type CalendarProps } from "antd";
 import type { Dayjs } from "dayjs";
 
@@ -96,7 +97,9 @@ const Dashboard = () => {
           {/* AI Inbox Triage */}
           <div className="row mb-4">
             <div className="col-12 col-xl-6">
-              {require('react').createElement(require('../../../../core/ai/InboxTriageCard').default)}
+              <Suspense fallback={null}>
+                <InboxTriageCard />
+              </Suspense>
             </div>
           </div>
           {/* start row */}
