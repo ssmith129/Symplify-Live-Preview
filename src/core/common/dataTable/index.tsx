@@ -45,7 +45,7 @@ const Datatable: React.FC<DatatableProps> = ({
       columns={columns}
       rowHoverable={false}
       dataSource={filteredDataSource}
-      rowKey={(record, index) => record.id || record.key || index}
+      rowKey={(record) => record.id ?? record.key ?? (typeof record === 'object' ? JSON.stringify(record) : String(record))}
       pagination={{
         showSizeChanger: false,
         pageSize,
