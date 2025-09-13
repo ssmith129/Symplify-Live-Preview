@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AIMessage, AIInsightSlot } from '../services/ai/types';
+import type { AIMessage, AIInsightSlot } from '../services/ai/types';
 import { generateMockMessages } from '../services/ai/mockMessages';
 
 export interface AIFeatureFlags {
