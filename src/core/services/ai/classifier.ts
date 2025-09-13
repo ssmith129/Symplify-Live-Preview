@@ -1,4 +1,4 @@
-import { AICategory, AIPriority, AIClassification } from './types';
+import type { AICategory, AIPriority, AIClassification } from './types';
 
 const KEYWORDS: Record<AICategory, string[]> = {
   emergency: ['emergency', 'urgent', 'critical', 'asap', 'immediately', 'severe', 'chest pain', 'shortness of breath'],
