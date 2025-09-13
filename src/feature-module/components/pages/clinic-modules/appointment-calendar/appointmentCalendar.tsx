@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
+import { Suspense, lazy } from "react";
+const AppointmentInsights = lazy(() => import('../../../../../core/ai/AppointmentInsights'));
 import PredefinedDatePicker from "../../../../../core/common/datePicker";
 import { all_routes } from "../../../../routes/all_routes";
 
@@ -716,7 +718,9 @@ const AppointmentCalendar = () => {
               <div id="calendar">
                 <EventCalendar />
               </div>
-              {require('react').createElement(require('../../../../../core/ai/AppointmentInsights').default)}
+              <Suspense fallback={null}>
+              <AppointmentInsights />
+            </Suspense>
             </div>
           </div>
           {/* end card */}
