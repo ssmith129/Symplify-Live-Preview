@@ -8,16 +8,16 @@ const KEYWORDS: Record<AICategory, string[]> = {
   'follow-up': ['follow up', 'follow-up', 'check-in', 'review', 'update required', 'status update'],
 };
 
-const PRIORITY_ORDER: AIPriority[] = ['critical', 'high', 'medium', 'low'];
 
 function detectCategory(text: string): AICategory {
   const lower = text.toLowerCase();
-  let best: {cat: AICategory; score: number} | null = null;
-  (Object.keys(KEYWORDS) as AICategory[]).forEach(cat => {
+  let best: { cat: AICategory; score: number } | undefined;
+  for (const cat of Object.keys(KEYWORDS) as AICategory[]) {
     const score = KEYWORDS[cat].reduce((acc, kw) => acc + (lower.includes(kw) ? 1 : 0), 0);
     if (!best || score > best.score) best = { cat, score };
-  });
-  return (best && best.score > 0 ? best.cat : 'administrative');
+  }
+  if (best && best.score > 0) return best.cat;
+  return 'administrative';
 }
 
 function priorityFromCategory(cat: AICategory, text: string): AIPriority {
