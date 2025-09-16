@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { classify, category as detectCategory } from '../services/ai/classifier';
-import { useEffect, useMemo, useState } from 'react';
 
 function annotateItem(el: HTMLElement) {
   const subjectEl = el.querySelector('h6, .fw-semibold') as HTMLElement | null;
