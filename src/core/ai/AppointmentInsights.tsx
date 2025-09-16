@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import type { AIInsightSlot } from '../services/ai/types';
-import { useMemo } from 'react';
 
 function genSlots(): AIInsightSlot[] {
   const base = new Date();
