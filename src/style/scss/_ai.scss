@@ -1,2 +1,24 @@
 .ai-dim { opacity: .5; }
 .badge.bg-danger-transparent { background-color: rgba(220,53,69,.1); color: #dc3545; }
+
+/* Messages page AI styles */
+.smart-sorting-badge{
+  background: linear-gradient(102deg, #17A2B8 0%, #138496 100%);
+  color:#fff; border-radius:12px; padding:2px 6px; gap:2px; display:inline-flex; align-items:center;
+  font-size:10px; line-height:15px; font-weight:500;
+}
+.figma-critical-badge{ display:inline-flex; align-items:center; gap:4px; height:18px; padding:0 6px; border-radius:10px; background: rgba(220,53,69,.10); color:#DC3545; font-size:10px; font-weight:600; line-height:15px; }
+.figma-high-badge{ display:inline-flex; align-items:center; gap:4px; border-radius:10px; padding:4px 7.2px; background: rgba(255,193,7,.10); color:#E2B93B; font-size:10.5px; font-weight:600; line-height:10.5px; }
+.figma-medium-badge{ display:inline-flex; align-items:center; gap:4px; border-radius:10px; padding:2px 6px; background:#C5C9D0; color:#6C7688; font-size:10px; font-weight:600; line-height:15px; }
+.figma-low-badge{ display:inline-flex; align-items:center; gap:4px; border-radius:10px; padding:2px 6px; background: rgba(25,135,84,.10); color:#198754; font-size:12px; font-weight:600; line-height:12px; }
+.filter-pill{ width:30px; padding:2px 6px; border-radius:10px; background:#fff; color:#0B0D0E; font-size:10px; font-weight:600; line-height:15px; display:inline-flex; align-items:center; justify-content:center; }
+
+.ai-flag{ display:inline-flex; align-items:center; gap:4px; border-radius:10px; padding:2px 6px; font-size:10px; font-weight:600; }
+.ai-flag-critical{ background: rgba(220,53,69,.10); color:#DC3545; }
+.ai-flag-warning{ background: rgba(255,193,7,.10); color:#E2B93B; }
+.ai-flag-recommended{ background: rgba(25,135,84,.10); color:#198754; }
+.ai-confidence{ background:#f8f9fa; color:#212529; padding:0 6px; border-radius:10px; line-height:16px; }
+
+.ai-suggestion-action-row .btn{ white-space:nowrap; }
+.user-list.active{ background:#f8f9fa; }
+.message-count{ width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; }
