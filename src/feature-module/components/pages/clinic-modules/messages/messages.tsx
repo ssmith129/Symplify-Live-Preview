@@ -23,34 +23,17 @@ const Messages = () => {
         {/* Page Header */}
         <div className="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
           <div className="flex-grow-1">
-            <h4 className="fs-18 fw-semibold mb-0">Message</h4>
+            <h4 className="fs-18 fw-semibold mb-0">Messages</h4>
           </div>
           <div className="text-end">
             <ol className="breadcrumb m-0 py-0">
               <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-              <li className="breadcrumb-item active" aria-current="page">Message</li>
+              <li className="breadcrumb-item active" aria-current="page">Messages</li>
             </ol>
           </div>
         </div>
 
-        {/* AI Inbox Triage: Summary and Quick Actions */}
-        <div className="card border-0 mb-3" role="region" aria-label="AI inbox triage summary">
-          <div className="card-body p-3">
-            <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
-              <div className="d-flex align-items-center gap-2">
-                <span className="smart-sorting-badge" aria-label="AI smart sorting enabled"><i className="ti ti-brain"/> Smart Sorting</span>
-                <span className="figma-critical-badge"><i className="ti ti-alert-triangle-filled me-1"/><span>Critical</span></span>
-                <span className="figma-high-badge"><i className="ti ti-exclamation-circle"/><span>High: 3</span></span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <button className="btn btn-outline-primary btn-sm ai-action-btn" data-ai-action="analyze" aria-label="Analyze inbox"><i className="ti ti-robot me-1"/>Analyze</button>
-                <button className="btn btn-outline-success btn-sm ai-action-btn" data-ai-action="triage" aria-label="Mark selected as triaged"><i className="ti ti-checks me-1"/>Mark Triaged</button>
-                <button className="btn btn-outline-danger btn-sm ai-action-btn" data-ai-action="escalate" aria-label="Escalate critical messages"><i className="ti ti-arrow-up-right me-1"/>Escalate</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        
         <div className="card shadow-none mb-0">
           <div className="card-body p-0">
             <div className="d-md-flex">
@@ -150,22 +133,19 @@ const Messages = () => {
                     <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
                       <div className="d-flex align-items-center gap-2">
                         <i className="ti ti-bulb text-primary" aria-hidden="true"/>
-                        <h6 className="mb-0 fw-semibold">AI Suggestions</h6>
+                        <h6 className="mb-0 fw-semibold">AI Assistance</h6>
                       </div>
                       <div className="d-flex align-items-center gap-2">
                         <span className="badge bg-light text-dark">Auto</span>
                         <button className="btn btn-outline-secondary btn-sm" data-ai-action="refresh" aria-label="Refresh suggestions"><i className="ti ti-refresh me-1"/>Refresh</button>
                       </div>
                     </div>
+                    <button className="btn btn-outline-danger btn-sm ai-action-btn ms-auto" data-ai-action="escalate" aria-label="Escalate critical messages"><i className="ti ti-arrow-up-right me-1"/>Escalate</button>
+                    <button className="btn btn-outline-success btn-sm ai-action-btn" data-ai-action="triage" aria-label="Mark selected as triaged"><i className="ti ti-checks me-1"/>Mark Triaged</button>
+                    <button className="btn btn-outline-primary btn-sm ai-action-btn" data-ai-action="analyze" aria-label="Analyze inbox"><i className="ti ti-robot me-1"/>Analyze</button>
                     <div className="ai-suggestion-action-row d-flex align-items-center gap-2 flex-wrap mt-2">
                       <button className="btn btn-primary btn-sm ai-action-btn" data-ai-action="apply-reply" aria-label="Apply suggested reply"><i className="ti ti-send me-1"/>Apply</button>
                       <button className="btn btn-outline-warning btn-sm ai-action-btn" data-ai-action="flag" aria-label="Flag message"><i className="ti ti-flag-3 me-1"/>Flag</button>
-                    </div>
-                    <div className="mt-2">
-                      <ul className="list-unstyled mb-0">
-                        <li className="d-flex align-items-start gap-2 py-1"><i className="ti ti-arrow-badge-right text-success mt-1" aria-hidden="true"/><div className="flex-grow-1"><small className="fw-semibold d-block">Send rescheduling link</small><small className="text-muted">Patient requested to reschedule. Include next available slots.</small></div></li>
-                        <li className="d-flex align-items-start gap-2 py-1"><i className="ti ti-alert-octagon text-warning mt-1" aria-hidden="true"/><div className="flex-grow-1"><small className="fw-semibold d-block">Flag as needs action</small><small className="text-muted">Requires team response within 2 hours.</small></div></li>
-                      </ul>
                     </div>
                     <div className="ai-loading d-none mt-2" aria-live="polite" aria-busy="true">
                       <div className="d-flex align-items-center gap-2">
