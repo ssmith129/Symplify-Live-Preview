@@ -140,15 +140,6 @@ const Header = () => {
                 <i className="ti ti-search fs-16" />
               </button>
             </div>
-            {/* AI Assistance */}
-            <Link
-              to="#"
-              className="btn btn-liner-gradient me-3 d-lg-flex d-none"
-            >
-              AI Assistance
-              <i className="ti ti-chart-bubble-filled ms-1" />
-            </Link>
-            {/* AI Assistance */}
             {/* Appointment */}
             <div className="header-item">
               <div className="dropdown me-2">
