@@ -81,6 +81,7 @@ const Messages = () => {
                       type="button"
                       className={`btn p-0 border-0 ${activeFilter === 'all' ? 'active' : ''}`}
                       onClick={() => setActiveFilter('all')}
+                      aria-label="All"
                       style={{
                         background: activeFilter === 'all' ? '#2D3748' : 'transparent',
                         borderRadius: '5px',
@@ -88,14 +89,7 @@ const Messages = () => {
                         border: activeFilter === 'all' ? 'none' : '1px solid rgba(0,0,0,0.1)',
                         boxShadow: activeFilter === 'all' ? '0 2px 4px 0 rgba(0,0,0,0.1)' : 'none'
                       }}
-                    >
-                      <span style={{
-                        color: activeFilter === 'all' ? '#fff' : '#000',
-                        fontSize: '10px',
-                        fontWeight: '600',
-                        lineHeight: '15px'
-                      }}>All</span>
-                    </button>
+                    />
 
                     <button
                       type="button"
