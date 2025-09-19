@@ -438,3 +438,33 @@
 .ai-triage-row.focus-ring { outline: 2px solid rgba(46,55,164,0.35); outline-offset: -2px; }
 
 .ai-action-btn { min-height: 44px; }
+
+/* Calendar event content helpers (no inline styles) */
+.calendar-event-avatar { width:20px; height:20px; border-radius:50%; display:inline-block; overflow:hidden; }
+
+/* AI Scheduling Insight Popover */
+.ai-schedule-overlay { position: fixed; inset: 0; z-index: 1060; background: transparent; }
+.ai-schedule-popover { position: fixed; left: var(--ai-popover-left, 0); top: var(--ai-popover-top, 0); width: 360px; max-width: 92vw; background: #fff; border: 1px solid var(--pr-border-color, #e7e8eb); border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); animation: ai-pop-enter .18s ease; }
+.ai-schedule-popover__header { padding: 10px 12px; border-bottom: 1px solid var(--pr-border-color, #e7e8eb); }
+.ai-schedule-popover__body { padding: 10px 12px; max-height: 50vh; overflow: auto; }
+.ai-schedule-popover__footer { padding: 10px 12px; border-top: 1px solid var(--pr-border-color, #e7e8eb); background: #fafbfc; }
+
+.ai-section { margin-bottom: 10px; }
+.ai-section__title { font-weight: 600; color: var(--pr-gray-700, #495057); margin-bottom: 6px; font-size: 13px; }
+
+.ai-list { margin: 0; padding: 0; }
+.ai-list__item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--pr-secondary-bg, #f1f2f4); border-radius: 8px; background: #fff; }
+.ai-list__item + .ai-list__item { margin-top: 6px; }
+.ai-list__item--high { border-left: 3px solid #dc3545; }
+.ai-list__item--medium { border-left: 3px solid #e2b93b; }
+.ai-list__item--low { border-left: 3px solid #198754; }
+.ai-list__label { font-size: 13px; color: var(--pr-gray-800, #343a40); }
+.ai-list__time { font-size: 12px; }
+
+.ai-dot { width:8px; height:8px; border-radius:50%; background:#adb5bd; display:inline-block; }
+
+@keyframes ai-pop-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 576px) {
+  .ai-schedule-popover { left: 50% !important; right: auto; top: auto !important; bottom: 12px; transform: translateX(-50%); width: calc(100% - 24px); max-height: 70vh; }
+}
