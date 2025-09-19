@@ -190,14 +190,223 @@
   box-shadow: 0 0 0 0.2rem rgba(46, 55, 164, 0.25);
 }
 
+/* Interactive Button Hover Animations */
+.btn {
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  transition: all 0.1s ease-in-out;
+}
+
+/* AI Action Button Animations */
+[data-ai-action] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-ai-action]:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+[data-ai-action]:hover i {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+[data-ai-action]:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Ripple Effect for AI Buttons */
+[data-ai-action]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.3s ease, height 0.3s ease;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+[data-ai-action]:active::before {
+  width: 120%;
+  height: 120%;
+}
+
+[data-ai-action] > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Filter Pill Interactive States */
+.filter-pill {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+  background: #4A5568 !important;
+  box-shadow: 0 4px 12px rgba(74, 85, 104, 0.3);
+}
+
+.filter-pill.active {
+  background: #2D3748 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.4);
+}
+
+/* Priority Badge Hover Effects */
+.figma-critical-badge, .figma-high-badge, .figma-medium-badge, .figma-low-badge {
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.figma-critical-badge:hover {
+  background: rgba(220,53,69,.20) !important;
+  transform: scale(1.05);
+}
+
+.figma-high-badge:hover {
+  background: rgba(255,193,7,.20) !important;
+  transform: scale(1.05);
+}
+
+.figma-medium-badge:hover {
+  background: #5A6478 !important;
+  transform: scale(1.05);
+}
+
+.figma-low-badge:hover {
+  background: rgba(25,135,84,.20) !important;
+  transform: scale(1.05);
+}
+
+/* User List Interactive States */
+.user-list {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.user-list:hover {
+  background: rgba(252, 253, 253, 0.8) !important;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.user-list:hover .avatar {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.user-list.active {
+  background: #FCFDFD !important;
+  border-left: 3px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Chat Header Action Buttons */
+.chat-messages .btn-icon {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.chat-messages .btn-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chat-messages .btn-icon:hover i {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+/* Dashboard Card Interactive States */
+.card {
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* AI Suggestion Action Row Enhancements */
+.ai-suggestion-action-row .btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-suggestion-action-row .btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ai-suggestion-action-row .btn:hover i {
+  transform: rotate(5deg) scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* Loading State Animation */
+.ai-loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
 /* Button hover states */
 .btn-light:hover {
   background-color: #f8f9fb;
   border-color: #d7d9de;
+  transform: translateY(-1px);
 }
 
 .btn-outline-light:hover {
   background-color: #f8f9fb;
   border-color: #d7d9de;
   color: var(--dark);
+  transform: translateY(-1px);
+}
+
+/* Dropdown Animation */
+.dropdown-menu {
+  animation: slideDown 0.2s ease;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
