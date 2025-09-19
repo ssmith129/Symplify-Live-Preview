@@ -410,3 +410,31 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* AI Inbox Triage compact list + interactions */
+.hover-bg-light { transition: background-color 0.2s ease; }
+.hover-bg-light:hover { background-color: rgba(248,249,250,0.8) !important; }
+.cursor-pointer { cursor: pointer; }
+
+.priority-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.priority-dot-critical { background-color:#dc3545; }
+.priority-dot-high { background-color:#e2b93b; }
+.priority-dot-medium { background-color:#0d6efd; }
+.priority-dot-low { background-color:#198754; }
+
+.priority-icon-critical { color:#dc3545; }
+.priority-icon-high { color:#e2b93b; }
+.priority-icon-medium { color:#0d6efd; }
+.priority-icon-low { color:#198754; }
+
+.ai-triage-compact-list { max-height: 360px; }
+
+.ai-expand { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.ai-expand.show { max-height: 240px; }
+
+.drop-pill { transition: all 0.2s ease; }
+.drop-pill.active, .drop-pill:hover { background:#f8f9fa !important; border-color:#d7d9de !important; transform: translateY(-1px); }
+
+.ai-triage-row.focus-ring { outline: 2px solid rgba(46,55,164,0.35); outline-offset: -2px; }
+
+.ai-action-btn { min-height: 44px; }
