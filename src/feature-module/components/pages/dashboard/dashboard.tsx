@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";
+import { Link } from "react-router-dom";
 import { all_routes } from "../../../routes/all_routes";
 import { useState, Suspense, lazy } from "react";
 import Chart from "react-apexcharts";
@@ -104,7 +105,7 @@ const Dashboard = () => {
             <div className="col-12 col-xl-6">
               <div className="card shadow-sm flex-fill w-100 h-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Quick Overview</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.dashboard} className="text-reset text-decoration-none">Quick Overview</Link></h5>
                   <span className="badge bg-light text-dark">Today</span>
                 </div>
                 <div className="card-body">
@@ -165,7 +166,7 @@ const Dashboard = () => {
               {/* card start */}
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Appointment Statistics</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.appointments} className="text-reset text-decoration-none">Appointment Statistics</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
@@ -241,7 +242,7 @@ const Dashboard = () => {
               {/* card start */}
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Popular Doctors</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.doctorsList} className="text-reset text-decoration-none">Popular Doctors</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
@@ -380,7 +381,7 @@ const Dashboard = () => {
             <div className="col-xl-4">
               <div className="card shadow-sm">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0 text-truncate">Appointments</h5>
+                  <h5 className="fw-bold mb-0 text-truncate"><Link to={all_routes.appointments} className="text-reset text-decoration-none">Appointments</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
@@ -503,7 +504,7 @@ const Dashboard = () => {
             <div className="col-xl-4 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Top 3 Departments</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.specializations} className="text-reset text-decoration-none">Top 3 Departments</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
@@ -560,7 +561,7 @@ const Dashboard = () => {
             <div className="col-xl-4 col-lg-6 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Doctors Schedule</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.doctorschedule} className="text-reset text-decoration-none">Doctors Schedule</Link></h5>
                   <Link
                     to={all_routes.doctorschedule}
                     className="btn fw-normal btn-outline-white"
@@ -718,7 +719,7 @@ const Dashboard = () => {
             <div className="col-xl-4 col-lg-6 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Income By Treatment</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.income} className="text-reset text-decoration-none">Income By Treatment</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
@@ -797,7 +798,7 @@ const Dashboard = () => {
             <div className="col-12 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">All Appointments</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.appointments} className="text-reset text-decoration-none">All Appointments</Link></h5>
                   <Link
                     to={all_routes.appointments}
                     className="btn fw-normal btn-outline-white"
@@ -1129,7 +1130,7 @@ const Dashboard = () => {
             <div className="col-xl-4 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Top 5 Patients</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.patients} className="text-reset text-decoration-none">Top 5 Patients</Link></h5>
                   <Link
                     to={all_routes.patients}
                     className="btn fw-normal btn-outline-white"
@@ -1296,7 +1297,7 @@ const Dashboard = () => {
             <div className="col-xl-4 col-lg-6 d-flex">
               <div className="card shadow-sm flex-fill w-100">
                 <div className="card-header d-flex align-items-center justify-content-between">
-                  <h5 className="fw-bold mb-0">Recent Transactions</h5>
+                  <h5 className="fw-bold mb-0"><Link to={all_routes.transactions} className="text-reset text-decoration-none">Recent Transactions</Link></h5>
                   <div className="dropdown">
                     <Link
                       to="#"
