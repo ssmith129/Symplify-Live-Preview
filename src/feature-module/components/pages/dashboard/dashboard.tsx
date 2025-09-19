@@ -101,6 +101,62 @@ const Dashboard = () => {
                 <InboxTriageCard />
               </Suspense>
             </div>
+            <div className="col-12 col-xl-6">
+              <div className="card shadow-sm flex-fill w-100 h-100">
+                <div className="card-header d-flex align-items-center justify-content-between">
+                  <h5 className="fw-bold mb-0">Quick Overview</h5>
+                  <span className="badge bg-light text-dark">Today</span>
+                </div>
+                <div className="card-body">
+                  <div className="row g-3">
+                    <div className="col-6">
+                      <div className="border rounded-2 p-2 d-flex align-items-center justify-content-between">
+                        <div>
+                          <p className="mb-1">Doctors</p>
+                          <h4 className="fw-bold mb-0">247</h4>
+                        </div>
+                        <div className="chart-set">
+                          <Chart options={sColChart} series={series} type="bar" width={80} height={54} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="border rounded-2 p-2 d-flex align-items-center justify-content-between">
+                        <div>
+                          <p className="mb-1">Patients</p>
+                          <h4 className="fw-bold mb-0">4178</h4>
+                        </div>
+                        <div className="chart-set">
+                          <SCol2Chart />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="border rounded-2 p-2 d-flex align-items-center justify-content-between">
+                        <div>
+                          <p className="mb-1">Appointment</p>
+                          <h4 className="fw-bold mb-0">12178</h4>
+                        </div>
+                        <div className="chart-set">
+                          <SCol3Chart />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="border rounded-2 p-2 d-flex align-items-center justify-content-between">
+                        <div>
+                          <p className="mb-1">Revenue</p>
+                          <h4 className="fw-bold mb-0 text-truncate">$55,1240</h4>
+                        </div>
+                        <div className="chart-set">
+                          <SCol4Chart />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           {/* start row */}
           <div className="row">
