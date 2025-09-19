@@ -1496,4 +1496,34 @@ export const publicRoutes = [
     element: <UiScrollbar />,
     route: Route,
   },
-];
+ ];
+
+export const authRoutes = publicRoutes.filter((r: any) => {
+  const authComponents = new Set([
+    Login,
+    LoginBasic,
+    LoginCover,
+    LoginIllustration,
+    RegisterBasic,
+    RegisterCover,
+    RegisterIllustration,
+    ForgotPasswordBasic,
+    ForgotPasswordCover,
+    ForgotPasswordIllustration,
+    ResetPasswordBasic,
+    ResetPasswordCover,
+    ResetPasswordIllustration,
+    EmailVerificationBasic,
+    EmailVerificationCover,
+    EmailVerificationIllustration,
+    TwoStepVerificationBasic,
+    TwoStepVerificationCover,
+    TwoStepVerificationIllustration,
+    LockScreen,
+    Error404,
+    Error500,
+    ComingSoon,
+    UnderMaintenance,
+  ]);
+  return authComponents.has(r.element?.type);
+});
