@@ -193,27 +193,27 @@ export default function InboxTriageCard() {
                 >
                   <div className="d-flex align-items-start justify-content-between gap-2">
                     <div className="d-flex align-items-start min-width-0 flex-grow-1">
-                      <i className={`${PRIORITY_ICONS[msg.ai.priority]} fs-12 priority-icon-${msg.ai.priority} me-2 mt-1`} />
+                      <i className={`${PRIORITY_ICONS[msg.ai.priority]} fs-14 priority-icon-${msg.ai.priority} me-2 mt-1`} />
                       <div className="min-width-0 flex-grow-1">
                         <div className="d-flex align-items-center justify-content-between">
-                          <h6 className="mb-0 fw-semibold text-dark fs-12 text-truncate" title={msg.subject}>{msg.from}</h6>
+                          <h6 className="mb-0 fw-semibold text-dark fs-14 text-truncate" title={msg.subject}>{msg.from}</h6>
                           <div className="d-flex align-items-center gap-1 flex-shrink-0">
-                            <span className="fs-10 text-muted">
+                            <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="badge bg-light text-dark px-1 py-0 fs-10" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
+                            <span className="badge bg-light text-dark px-1 py-0 fs-13" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
                         <div className="d-flex align-items-center justify-content-between mt-1">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
-                            <span className="fs-10 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
+                            <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="badge bg-danger-transparent text-danger px-1 py-0 fs-9">ACTION</span>
+                              <span className="badge bg-danger-transparent text-danger px-1 py-0 fs-13">ACTION</span>
                             )}
-                            <span className="fs-10 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
+                            <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
-                              <span className="fs-10 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="ti ti-paperclip me-1"/>{msg.metadata.attachments}</span>
+                              <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="ti ti-paperclip me-1"/>{msg.metadata.attachments}</span>
                             )}
                           </div>
                           <div className="dropdown">
@@ -228,7 +228,7 @@ export default function InboxTriageCard() {
                           </div>
                         </div>
                         <div className={`ai-expand ${isExpanded?'show':''}`}>
-                          <div className="mt-2 small text-muted">{msg.preview}</div>
+                          <div className="mt-2 fs-13 text-muted">{msg.preview}</div>
                           <div className="d-flex align-items-center gap-2 mt-2 flex-wrap">
                             <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-archive me-1"/>}
