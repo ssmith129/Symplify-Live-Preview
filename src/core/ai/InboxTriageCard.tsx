@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadInbox, setFilter, updateMessagePriority, updateMessageCategory, removeMessageById, upsertMessage } from '../redux/aiSlice';
 import type { RootState } from './typesInternal';
+import type { AIMessage } from '../services/ai/types';
 
 const PRIORITY_ICONS: Record<string, string> = {
   critical: 'ti ti-alert-triangle-filled',
@@ -24,7 +25,7 @@ export default function InboxTriageCard() {
   const [dropHover, setDropHover] = useState<string | null>(null);
   const [processing, setProcessing] = useState<Record<string, boolean>>({});
   const [focusedIndex, setFocusedIndex] = useState(0);
-  const [undoData, setUndoData] = useState<{ id: string; msg: any; action: 'archive'|'delete' } | null>(null);
+  const [undoData, setUndoData] = useState<{ id: string; msg: AIMessage; action: 'archive'|'delete' } | null>(null);
   const undoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function InboxTriageCard() {
     dispatch(updateMessagePriority({ id, priority: p }));
   };
 
-  const handleArchiveOrDelete = (msg: any, action: 'archive'|'delete') => {
+  const handleArchiveOrDelete = (msg: AIMessage, action: 'archive'|'delete') => {
     setProcessing((s) => ({ ...s, [msg.id]: true }));
     setTimeout(() => {
       setProcessing((s) => ({ ...s, [msg.id]: false }));
