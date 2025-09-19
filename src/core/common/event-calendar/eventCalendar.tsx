@@ -5,11 +5,13 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import ImageWithBasePath from "../../imageWithBasePath";
+import SchedulingInsightPopover from "../../../core/ai/SchedulingInsightPopover";
+import type { SchedulingAnchor } from "../../../core/ai/SchedulingInsightPopover";
 
 const EventCalendar = () => {
   const calendarRef = useRef(null);
   const [selectedEvent, setSelectedEvent] = useState<EventApi | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [anchor, setAnchor] = useState<SchedulingAnchor | null>(null);
 
   const events = [
     {
@@ -37,15 +39,9 @@ const EventCalendar = () => {
   const renderEventContent = (eventInfo: any) => {
     const { image } = eventInfo.event.extendedProps;
     return (
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="calendar-event-content d-flex align-items-center">
         {image && (
-          <span
-            style={{
-              width: "20px",
-              height: "20px",
-              borderRadius: "50%",
-            }}
-          >
+          <span className="calendar-event-avatar">
             <ImageWithBasePath
               src={image}
               alt="icon"
@@ -59,12 +55,13 @@ const EventCalendar = () => {
 
   const handleEventClick = (clickInfo: any) => {
     setSelectedEvent(clickInfo.event);
-    setModalOpen(true);
+    const rect = (clickInfo.el as HTMLElement).getBoundingClientRect();
+    setAnchor({ top: rect.top + window.scrollY, left: rect.left + window.scrollX, width: rect.width, height: rect.height });
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const closePopover = () => {
     setSelectedEvent(null);
+    setAnchor(null);
   };
 
   return (
@@ -83,49 +80,13 @@ const EventCalendar = () => {
         ref={calendarRef}
       />
 
-      {selectedEvent && (
-        <div
-          className={`modal fade ${modalOpen ? "show d-block" : ""}`}
-          tabIndex={-1}
-          role="dialog"
-          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
-           onClick={closeModal} 
-        >
-          <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-              <div className="modal-header bg-dark modal-bg">
-                <h5 className="modal-title text-white">
-                  {selectedEvent.title || "Team B"}
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  aria-label="Close"
-                  onClick={closeModal}
-                ></button>
-              </div>
-              <div className="modal-body">
-                <p className="d-flex align-items-center fw-medium text-black mb-3">
-                  <i className="ti ti-calendar-check text-default me-2" />
-                  26 Jul,2024 to 31 Jul,2024
-                </p>
-                <p className="d-flex align-items-center fw-medium text-black mb-3">
-                  <i className="ti ti-calendar-check text-default me-2" />
-                  11:00 AM to 12:15 PM
-                </p>
-                <p className="d-flex align-items-center fw-medium text-black mb-3">
-                  <i className="ti ti-map-pin-bolt text-default me-2" />
-                  Las Vegas, US
-                </p>
-                <p className="d-flex align-items-center fw-medium text-black mb-0">
-                  <i className="ti ti-calendar-check text-default me-2" />A
-                  recurring or repeating event is simply any event that you will
-                  occur more than once on your calendar.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      {selectedEvent && anchor && (
+        <SchedulingInsightPopover
+          anchor={anchor}
+          dateISO={selectedEvent.start?.toISOString?.() || new Date().toISOString()}
+          title={selectedEvent.title || 'Aug Team B'}
+          onClose={closePopover}
+        />
       )}
     </div>
   );
