@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { all_routes } from '../../feature-module/routes/all_routes';
 import { loadInbox, setFilter, updateMessagePriority, updateMessageCategory, removeMessageById, upsertMessage } from '../redux/aiSlice';
 import type { RootState } from './typesInternal';
 import type { AIMessage } from '../services/ai/types';
@@ -103,7 +105,8 @@ export default function InboxTriageCard() {
     <div className="card shadow-sm flex-fill w-100" aria-live="polite">
       <div className="card-header d-flex align-items-center justify-content-between">
         <h5 className="fw-bold mb-0 d-flex align-items-center">
-          <i className="ti ti-brain me-2 text-primary" /> AI Inbox Triage
+          <i className="ti ti-brain me-2 text-primary" />
+          <Link to={all_routes.email} className="text-reset text-decoration-none">AI Inbox Triage</Link>
         </h5>
         <div className="d-flex align-items-center gap-2">
           <div className="form-check form-switch m-0" title="High confidence only">
