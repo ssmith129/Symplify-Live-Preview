@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Outlet, useLocation } from "react-router";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../../core/common/header/header";
 import Sidebar from "../../core/common/sidebar/sidebar";
 import SidebarTwo from "../../core/common/sidebar-two/sidebarTwo";
