@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AIMessage, AIInsightSlot } from '../services/ai/types';
+import type { AIMessage, AIInsightSlot, AICategory } from '../services/ai/types';
 import { generateMockMessages } from '../services/ai/mockMessages';
 
 export interface AIFeatureFlags {
@@ -56,6 +56,26 @@ const aiSlice = createSlice({
     setFeatureFlags(state, action: PayloadAction<Partial<AIFeatureFlags>>) {
       state.flags = { ...state.flags, ...action.payload };
     },
+    updateMessagePriority(state, action: PayloadAction<{ id: string; priority: 'critical'|'high'|'medium'|'low' }>) {
+      const m = state.inbox.items.find(i => i.id === action.payload.id);
+      if (m) m.ai.priority = action.payload.priority;
+    },
+    updateMessageCategory(state, action: PayloadAction<{ id: string; category: AICategory }>) {
+      const m = state.inbox.items.find(i => i.id === action.payload.id);
+      if (m) m.metadata.category = action.payload.category;
+    },
+    upsertMessage(state, action: PayloadAction<AIMessage>) {
+      const idx = state.inbox.items.findIndex(i => i.id === action.payload.id);
+      if (idx >= 0) state.inbox.items[idx] = action.payload;
+      else state.inbox.items.unshift(action.payload);
+    },
+    removeMessageById(state, action: PayloadAction<string>) {
+      state.inbox.items = state.inbox.items.filter(i => i.id !== action.payload);
+    },
+    markRead(state, action: PayloadAction<{ id: string; isRead: boolean }>) {
+      const m = state.inbox.items.find(i => i.id === action.payload.id);
+      if (m) m.isRead = action.payload.isRead;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -74,5 +94,5 @@ const aiSlice = createSlice({
   },
 });
 
-export const { setFilter, setFeatureFlags } = aiSlice.actions;
+export const { setFilter, setFeatureFlags, updateMessagePriority, updateMessageCategory, upsertMessage, removeMessageById, markRead } = aiSlice.actions;
 export default aiSlice.reducer;
