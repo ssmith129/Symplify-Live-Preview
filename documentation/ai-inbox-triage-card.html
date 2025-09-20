@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Inbox Triage Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.20.0/tabler-icons.min.css" rel="stylesheet">
+  <style>
+    .fs-10{font-size:10px}.fs-11{font-size:11px}.fs-12{font-size:12px}.fs-13{font-size:13px}.fs-14{font-size:14px}
+    .hover-bg-light:hover{background:#f8f9fa}.cursor-pointer{cursor:pointer}
+    .ai-triage-compact-list{max-height:420px;overflow:auto}
+    .priority-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .priority-dot-critical{background:#dc3545}.priority-dot-high{background:#fd7e14}
+    .priority-dot-medium{background:#ffc107}.priority-dot-low{background:#28a745}
+    .priority-icon-critical{color:#dc3545}.priority-icon-high{color:#fd7e14}
+    .priority-icon-medium{color:#ffc107}.priority-icon-low{color:#28a745}
+    .ai-expand{display:none}.ai-expand.show{display:block}
+    .ai-action-btn{line-height:1.1}
+    .drop-pill{padding:.25rem .5rem}.drop-pill.active{background:#e7f1ff;border-color:#91c2ff}
+    .focus-ring{outline:2px solid rgba(46,55,164,.25)}
+    .bg-danger-transparent{background:rgba(220,53,69,.08)}
+  </style>
+</head>
+<body class="p-3">
+  <div class="card shadow-sm flex-fill w-100" aria-live="polite">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <h5 class="fw-bold mb-0 d-flex align-items-center">
+        <i class="ti ti-brain me-2 text-primary"></i>
+        <a href="#" class="text-reset text-decoration-none">AI Inbox Triage</a>
+      </h5>
+      <div class="d-flex align-items-center gap-2">
+        <div class="form-check form-switch m-0" title="High confidence only">
+          <input id="ai-conf-only" class="form-check-input" type="checkbox" role="switch" aria-label="High confidence only" />
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-sm px-2 border shadow-sm btn-outline-white d-inline-flex align-items-center" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All
+            <i class="ti ti-chevron-down ms-1 fs-12"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item" type="button">all</button></li>
+            <li><button class="dropdown-item" type="button">emergency</button></li>
+            <li><button class="dropdown-item" type="button">medical</button></li>
+            <li><button class="dropdown-item" type="button">appointment</button></li>
+            <li><button class="dropdown-item" type="button">administrative</button></li>
+            <li><button class="dropdown-item" type="button">follow-up</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
+      <span class="badge rounded-pill bg-light text-dark border drop-pill"><i class="ti ti-inbox me-1"></i>emergency</span>
+      <span class="badge rounded-pill bg-light text-dark border drop-pill"><i class="ti ti-inbox me-1"></i>medical</span>
+      <span class="badge rounded-pill bg-light text-dark border drop-pill"><i class="ti ti-inbox me-1"></i>appointment</span>
+      <span class="badge rounded-pill bg-light text-dark border drop-pill"><i class="ti ti-inbox me-1"></i>administrative</span>
+      <span class="badge rounded-pill bg-light text-dark border drop-pill"><i class="ti ti-inbox me-1"></i>follow-up</span>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span class="fs-11 text-muted">2 total</span>
+        <div class="d-flex align-items-center gap-1 d-none" id="confBadge">
+          <i class="ti ti-robot fs-12 text-primary"></i>
+          <span class="badge bg-light text-dark px-1 py-0 fs-10">≥ 70%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-3 py-2 bg-white border-top border-bottom">
+      <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center"><span class="priority-dot priority-dot-critical me-1"></span><span class="fs-11 fw-medium">1</span></div>
+        <div class="d-flex align-items-center"><span class="priority-dot priority-dot-high me-1"></span><span class="fs-11 fw-medium">1</span></div>
+        <div class="d-flex align-items-center"><span class="priority-dot priority-dot-medium me-1"></span><span class="fs-11 fw-medium">0</span></div>
+        <div class="d-flex align-items-center"><span class="priority-dot priority-dot-low me-1"></span><span class="fs-11 fw-medium">0</span></div>
+      </div>
+    </div>
+
+    <div class="card-body p-0">
+      <div class="ai-triage-compact-list">
+        <div class="px-3 py-2 border-bottom hover-bg-light cursor-pointer ai-triage-row">
+          <div class="d-flex align-items-start justify-content-between gap-2">
+            <div class="d-flex align-items-start min-width-0 flex-grow-1">
+              <i class="ti ti-alert-triangle-filled fs-14 priority-icon-critical me-2 mt-1"></i>
+              <div class="min-width-0 flex-grow-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <h6 class="mb-0 fw-semibold text-dark fs-14 text-truncate" title="Urgent: Post-op fever and chills">Dr. Sarah Martinez</h6>
+                  <div class="d-flex align-items-center gap-1 flex-shrink-0">
+                    <span class="fs-13 text-muted">09:42</span>
+                    <span class="badge bg-light text-dark px-1 py-0 fs-13" title="AI Confidence">92%</span>
+                  </div>
+                </div>
+                <p class="mb-0 fs-11 text-muted text-truncate">Urgent: Post-op fever and chills</p>
+                <div class="d-flex align-items-center justify-content-between mt-1">
+                  <div class="d-flex align-items-center gap-2 ai-meta-inline">
+                    <span class="fs-13 text-muted"><i class="ti ti-bolt me-1 fs-9"></i>U4</span>
+                    <span class="badge bg-danger-transparent text-danger px-1 py-0 fs-13">ACTION</span>
+                    <span class="fs-13 text-muted d-none d-sm-inline">emergency, post-op</span>
+                    <span class="fs-13 text-muted"><i class="ti ti-paperclip me-1"></i>1</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-light btn-sm px-2" data-bs-toggle="dropdown" aria-label="Change priority">critical</button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><button class="dropdown-item" type="button">critical</button></li>
+                      <li><button class="dropdown-item" type="button">high</button></li>
+                      <li><button class="dropdown-item" type="button">medium</button></li>
+                      <li><button class="dropdown-item" type="button">low</button></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="ai-expand">
+                  <div class="mt-2 fs-13 text-muted">Patient reports 39.4°C fever and chills 12h after procedure. Recommend immediate evaluation for infection.</div>
+                  <div class="d-flex align-items-center gap-2 mt-2 flex-wrap">
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Archive"><i class="ti ti-archive me-1"></i>Archive</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn text-danger" aria-label="Delete"><i class="ti ti-trash me-1"></i>Delete</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Reply"><i class="ti ti-reply me-1"></i>Reply</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Forward"><i class="ti ti-arrow-right me-1"></i>Forward</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Snooze"><i class="ti ti-alarm me-1"></i>Snooze</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-3 py-2 border-bottom hover-bg-light cursor-pointer ai-triage-row">
+          <div class="d-flex align-items-start justify-content-between gap-2">
+            <div class="d-flex align-items-start min-width-0 flex-grow-1">
+              <i class="ti ti-exclamation-circle fs-14 priority-icon-high me-2 mt-1"></i>
+              <div class="min-width-0 flex-grow-1">
+                <div class="d-flex align-items-center justify-content-between">
+                  <h6 class="mb-0 fw-semibold text-dark fs-14 text-truncate" title="Request: Reschedule annual check-up">James Cooper</h6>
+                  <div class="d-flex align-items-center gap-1 flex-shrink-0">
+                    <span class="fs-13 text-muted">08:17</span>
+                    <span class="badge bg-light text-dark px-1 py-0 fs-13" title="AI Confidence">78%</span>
+                  </div>
+                </div>
+                <p class="mb-0 fs-11 text-muted text-truncate">Request: Reschedule annual check-up</p>
+                <div class="d-flex align-items-center justify-content-between mt-1">
+                  <div class="d-flex align-items-center gap-2 ai-meta-inline">
+                    <span class="fs-13 text-muted"><i class="ti ti-bolt me-1 fs-9"></i>U3</span>
+                    <span class="fs-13 text-muted d-none d-sm-inline">appointment, scheduling</span>
+                    <span class="fs-13 text-muted"><i class="ti ti-paperclip me-1"></i>0</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-light btn-sm px-2" data-bs-toggle="dropdown" aria-label="Change priority">high</button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><button class="dropdown-item" type="button">critical</button></li>
+                      <li><button class="dropdown-item" type="button">high</button></li>
+                      <li><button class="dropdown-item" type="button">medium</button></li>
+                      <li><button class="dropdown-item" type="button">low</button></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="ai-expand">
+                  <div class="mt-2 fs-13 text-muted">Patient would like to move the annual physical from next Monday to any afternoon this week.</div>
+                  <div class="d-flex align-items-center gap-2 mt-2 flex-wrap">
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Archive"><i class="ti ti-archive me-1"></i>Archive</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn text-danger" aria-label="Delete"><i class="ti ti-trash me-1"></i>Delete</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Reply"><i class="ti ti-reply me-1"></i>Reply</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Forward"><i class="ti ti-arrow-right me-1"></i>Forward</button>
+                    <button class="btn btn-outline-white border btn-sm ai-action-btn" aria-label="Snooze"><i class="ti ti-alarm me-1"></i>Snooze</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.ai-triage-row').forEach(function(row){
+      row.addEventListener('click', function(){
+        var exp = row.querySelector('.ai-expand');
+        if(exp){ exp.classList.toggle('show'); }
+      });
+    });
+    var conf = document.getElementById('ai-conf-only');
+    var confBadge = document.getElementById('confBadge');
+    if(conf){ conf.addEventListener('change', function(){
+      if(confBadge){ confBadge.classList.toggle('d-none', !conf.checked); }
+    });}
+  </script>
+</body>
+</html>
