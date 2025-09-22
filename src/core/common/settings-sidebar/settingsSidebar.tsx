@@ -57,7 +57,7 @@ const SettingsSidebar = () => {
                     <span>{menu.label}</span>
                     <span className="menu-arrow" />
                   </Link>
-                  <ul style={{ display: isOpen ? "block" : "none" }}>
+                  <ul className={`${isOpen ? 'd-block' : 'd-none'}`}>
                     {menu.submenus.map((sub) => (
                       <li key={sub.label}>
                         <Link
