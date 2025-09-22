@@ -34,7 +34,7 @@ const NewAppointment = () => {
     return modalElement ? modalElement : document.body; // Fallback to document.body if modalElement is null
   };
 
-  const onChangeTime: TimePickerProps["onChange"] = (time, timeString) => {
+  const onChangeTime: TimePickerProps["onChange"] = (_time, timeString) => {
     const t = Array.isArray(timeString) ? (timeString[0] || '') : (timeString || '');
     setFormData(prev => ({ ...prev, time: t }));
   };
