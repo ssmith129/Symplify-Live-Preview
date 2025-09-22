@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { Select } from "antd";
 import CommonSelect from "../../../../../../../core/common/common-select/commonSelect";
@@ -80,9 +81,8 @@ const FormSelect2 = () => {
                         Select2 can take a regular select box like this...
                       </p>
                       <Select
-                        className="select"
+                        className="select ai-w-200"
                         defaultValue="Select"
-                        className="ai-w-200"
                         onChange={handleChange}
                         options={[
                           {
@@ -140,10 +140,9 @@ const FormSelect2 = () => {
                         Select2 can take a regular select box like this...
                       </p>
                       <Select
-                        className="select"
+                        className="select w-100"
                         mode="multiple"
                         value={value}
-                        className="w-100"
                         onChange={setValue}
                         placeholder="Please select"
                         options={[
@@ -217,9 +216,8 @@ const FormSelect2 = () => {
                             attribute to set option group
                           </p>
                           <Select
-                            className="select"
+                            className="select ai-w-200"
                             defaultValue="Choose a city"
-                            className="ai-w-200"
                             onChange={handleChange}
                             options={[
                               {
