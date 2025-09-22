@@ -179,7 +179,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   <div className="fs-12 text-muted">
                     {suggestion.reasons.slice(0,2).map((reason, idx) => (
                       <div key={idx} className="d-flex align-items-center">
-                        <i className="ti ti-check text-success me-1"></i>
+                        <i className="fa-solid fa-check text-success me-1"></i>
                         {reason}
                       </div>
                     ))}
@@ -270,12 +270,12 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
 
                   <div className="fs-12 text-muted">
                     <div className="d-flex align-items-center">
-                      <i className="ti ti-check text-success me-1"></i>
+                      <i className="fa-solid fa-check text-success me-1"></i>
                       {suggestion.reasons[0]}
                     </div>
                     {suggestion.reasons[1] && (
                       <div className="d-flex align-items-center">
-                        <i className="ti ti-check text-success me-1"></i>
+                        <i className="fa-solid fa-check text-success me-1"></i>
                         {suggestion.reasons[1]}
                       </div>
                     )}
