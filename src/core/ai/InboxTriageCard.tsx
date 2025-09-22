@@ -21,7 +21,7 @@ export default function InboxTriageCard() {
 
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [confidenceOnly, setConfidenceOnly] = useState(false);
-  const [confidenceThreshold, setConfidenceThreshold] = useState(0.7);
+  const [confidenceThreshold] = useState(0.7);
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dropHover, setDropHover] = useState<string | null>(null);
   const [processing, setProcessing] = useState<Record<string, boolean>>({});
