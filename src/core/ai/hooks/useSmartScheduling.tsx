@@ -41,9 +41,9 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
   const retryCountRef = useRef(0);
   const lastRequestRef = useRef<{ fn: () => Promise<void>; args: any[] } | null>(null);
 
-  // Debounced function refs
-  const analyzeTimesDebounced = useRef<NodeJS.Timeout>();
-  const checkConflictsDebounced = useRef<NodeJS.Timeout>();
+  // Debounced function refs (store numeric timeout IDs for browser environment)
+  const analyzeTimesDebounced = useRef<number | null>(null);
+  const checkConflictsDebounced = useRef<number | null>(null);
 
   const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
