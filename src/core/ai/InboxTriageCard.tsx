@@ -230,21 +230,21 @@ export default function InboxTriageCard() {
                         <div className={`ai-expand ${isExpanded?'show':''}`}>
                           <div className="mt-2 fs-13 text-muted">{msg.preview}</div>
                           <div className="d-flex align-items-center gap-2 mt-2 flex-wrap">
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-archive me-1"/>}
                               Archive
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn text-danger" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary text-danger" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-trash me-1"/>}
                               Delete
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Reply">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Reply">
                               <i className="ti ti-reply me-1"/>Reply
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Forward">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Forward">
                               <i className="ti ti-arrow-right me-1"/>Forward
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Snooze">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Snooze">
                               <i className="ti ti-alarm me-1"/>Snooze
                             </button>
                           </div>
