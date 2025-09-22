@@ -123,9 +123,8 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
     <div className={`smart-dashboard ${className}`}>
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div className="d-flex align-items-center">
-          <h6 className="mb-0 fw-semibold text-dark">
-            <i className="ti ti-brain me-2 text-primary"></i>
-            Smart Scheduling Dashboard
+          <h6 className="mb-0 fw-semibold" style={{color: 'var(--ai-text-primary)'}}>
+            🧠 Smart Scheduling Dashboard
           </h6>
         </div>
         {showToggle && (
