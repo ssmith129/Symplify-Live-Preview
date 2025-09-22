@@ -187,7 +187,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                             className={`ai-card h-100 suggestion-card ${selectedSuggestion === suggestion.id ? 'is-selected' : ''}`}
                             onClick={() => handleSelectSlot(suggestion)}
                           >
-                            <div className="ai-card__body" style={{padding: 'var(--ai-space-3)'}}>
+                            <div className="ai-card__body ai-p-3">
                               <div className="d-flex align-items-start justify-content-between mb-3">
                                 <div className="d-flex align-items-center gap-2">
                                   <div className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
