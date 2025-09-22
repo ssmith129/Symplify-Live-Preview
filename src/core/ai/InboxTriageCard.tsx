@@ -1,13 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { all_routes } from '../../feature-module/routes/all_routes';
 import { loadInbox, setFilter, updateMessagePriority, updateMessageCategory, removeMessageById, upsertMessage } from '../redux/aiSlice';
 import type { RootState } from './typesInternal';
 import type { AIMessage } from '../services/ai/types';
-
-
-import React, { useEffect, useMemo, useRef, useState } from 'react';
 const CATEGORIES = ['emergency','medical','appointment','administrative','follow-up'] as const;
 
 export default function InboxTriageCard() {
