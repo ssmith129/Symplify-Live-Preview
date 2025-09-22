@@ -176,6 +176,8 @@ const NewAppointment = () => {
                               getPopupContainer={getModalContainer}
                               placeholder="DD-MM-YYYY"
                               suffixIcon={null}
+                              value={formData.date ? dayjs(formData.date, "YYYY-MM-DD") : null}
+                              onChange={(date) => handleFieldChange('date', date ? date.format("YYYY-MM-DD") : '')}
                             />
                             <span className="input-icon-addon">
                               <i className="ti ti-calendar" />
@@ -193,6 +195,7 @@ const NewAppointment = () => {
                               className="form-control"
                               onChange={onChangeTime}
                               defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
+                              value={formData.time ? dayjs(formData.time, "HH:mm A") : null}
                             />
                             <span className="input-icon-addon">
                               <i className="ti ti-clock text-gray-7" />
