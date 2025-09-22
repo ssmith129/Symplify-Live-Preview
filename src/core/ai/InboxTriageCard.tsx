@@ -209,7 +209,7 @@ export default function InboxTriageCard() {
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="badge bg-danger-transparent text-danger px-1 py-0 fs-13">ACTION</span>
+                              <span className="ai-badge ai-badge--critical">ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
