@@ -297,7 +297,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               
               <button
                 type="button"
-                className="ai-btn ai-btn--sm ai-btn--secondary w-100"
+                className="ai-btn ai-btn--sm ai-btn--primary w-100"
                 onClick={() => {
                   clearCache();
                   if (patientId && doctorId) {
@@ -306,8 +306,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 }}
                 disabled={loading}
               >
-                <i className="ti ti-refresh me-1"></i>
-                Refresh Suggestions
+                🔄 Refresh Suggestions
               </button>
             </div>
           )}
