@@ -146,11 +146,21 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
       <div className="row g-3">
         {metrics.map((metric) => (
           <div key={metric.id} className="col-xl-3 col-md-6">
-            <div className="card border-0 h-100 dashboard-metric-card">
-              <div className="card-body p-3">
+            <div className="ai-card h-100 dashboard-metric-card">
+              <div className="ai-card__body" style={{padding: 'var(--ai-space-3)'}}>
                 <div className="d-flex align-items-center">
-                  <div className={`avatar avatar-md rounded-circle bg-${metric.color}-transparent me-3 flex-shrink-0 smart-dashboard-icon`}>
-                    <i className={`${metric.icon} text-${metric.color}`}></i>
+                  <div className={`smart-dashboard-icon me-3 flex-shrink-0`} style={{
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '50%',
+                    background: `var(--ai-${metric.color === 'success' ? 'low' : metric.color === 'warning' ? 'high' : metric.color === 'danger' ? 'critical' : 'medium'}-bg)`,
+                    color: `var(--ai-${metric.color === 'success' ? 'low' : metric.color === 'warning' ? 'high' : metric.color === 'danger' ? 'critical' : 'medium'})`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '16px'
+                  }}>
+                    {metric.color === 'success' ? '✅' : metric.color === 'warning' ? '⚠️' : metric.color === 'info' ? '���' : '📊'}
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">
