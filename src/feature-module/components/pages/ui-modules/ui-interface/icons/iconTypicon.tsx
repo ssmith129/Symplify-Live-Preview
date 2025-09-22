@@ -1,4 +1,3 @@
-
 import { Link } from "react-router";
 import '../../../../../../style/icon/typicons/typicons.css'
 
@@ -1456,7 +1455,7 @@ const IconTypicon = () => {
           <p className="text-dark mb-0">
             © 2025
             <Link to="#" className="link-primary">
-              Kanakku
+              Symplify
             </Link>
             , All Rights Reserved
           </p>
