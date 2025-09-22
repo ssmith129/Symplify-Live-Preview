@@ -747,6 +747,7 @@
 .ai-progress__bar--primary { background: var(--ai-primary); }
 
 /* AI Scheduling Insight Popover */
+.ai-popover-center{ transform: translate(-50%, -50%); }
 .ai-schedule-overlay { position: fixed; inset: 0; z-index: 1060; background: transparent; }
 .ai-schedule-popover { position: fixed; left: var(--ai-popover-left, 0); top: var(--ai-popover-top, 0); width: 360px; max-width: 92vw; background: var(--ai-bg-primary); border: 1px solid var(--ai-border-light); border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); animation: ai-pop-enter .18s ease; }
 .ai-schedule-popover__header { padding: var(--ai-space-3) var(--ai-space-4); border-bottom: 1px solid var(--ai-border-light); }
