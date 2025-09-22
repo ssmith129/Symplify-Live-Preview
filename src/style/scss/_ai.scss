@@ -350,22 +350,109 @@
   z-index: 1;
 }
 
-/* Filter Pill Interactive States */
+/* AI Button System - Unified */
+.ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ai-space-2);
+  padding: var(--ai-space-2) var(--ai-space-4);
+  border-radius: 6px;
+  font-size: var(--ai-font-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--ai-transition-normal);
+  min-height: 36px;
+  text-decoration: none;
+}
+
+.ai-btn:focus {
+  outline: 2px solid var(--ai-accent);
+  outline-offset: 2px;
+}
+
+.ai-btn--primary {
+  background: var(--ai-primary);
+  color: var(--ai-text-inverse);
+  border-color: var(--ai-primary);
+}
+
+.ai-btn--primary:hover {
+  background: var(--ai-primary-dark);
+  border-color: var(--ai-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
+  color: var(--ai-text-inverse);
+}
+
+.ai-btn--secondary {
+  background: transparent;
+  color: var(--ai-primary);
+  border-color: var(--ai-border-medium);
+}
+
+.ai-btn--secondary:hover {
+  background: var(--ai-bg-secondary);
+  border-color: var(--ai-primary);
+  transform: translateY(-1px);
+  color: var(--ai-primary);
+}
+
+.ai-btn--accent {
+  background: var(--ai-accent);
+  color: var(--ai-text-inverse);
+  border-color: var(--ai-accent);
+}
+
+.ai-btn--accent:hover {
+  background: var(--ai-accent-dark);
+  border-color: var(--ai-accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 211, 199, 0.25);
+  color: var(--ai-text-inverse);
+}
+
+.ai-btn--sm {
+  min-height: 32px;
+  padding: var(--ai-space-1) var(--ai-space-3);
+  font-size: var(--ai-font-xs);
+}
+
+.ai-btn--lg {
+  min-height: 44px;
+  padding: var(--ai-space-3) var(--ai-space-6);
+  font-size: var(--ai-font-base);
+}
+
+.ai-btn--icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Filter Pill Interactive States - Updated */
 .filter-pill {
   transition: all 0.2s ease;
   cursor: pointer;
+  background: var(--ai-primary);
+  color: var(--ai-text-inverse);
+  border: 1px solid var(--ai-border-light);
 }
 
 .filter-pill:hover {
   transform: translateY(-1px);
-  background: #4A5568 !important;
-  box-shadow: 0 4px 12px rgba(74, 85, 104, 0.3);
+  background: var(--ai-primary-light) !important;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.2);
 }
 
 .filter-pill.active {
-  background: #2D3748 !important;
+  background: var(--ai-accent) !important;
+  color: var(--ai-text-inverse);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 211, 199, 0.3);
 }
 
 /* Priority Badge Hover Effects */
