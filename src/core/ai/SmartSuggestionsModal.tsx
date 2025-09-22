@@ -194,9 +194,9 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                           >
                             <div className="card-body p-3">
                               <div className="d-flex align-items-start justify-content-between mb-3">
-                                <div className="d-flex align-items-center">
-                                  <div className={`badge bg-${index === 0 ? 'success' : index === 1 ? 'primary' : 'warning'} rounded-pill me-2`}>
-                                    #{index + 1}
+                                <div className="d-flex align-items-center gap-2">
+                                  <div className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
+                                    🏆 #{index + 1}
                                   </div>
                                   <div>
                                     <h6 className="mb-1 fw-semibold">{suggestion.time}</h6>
