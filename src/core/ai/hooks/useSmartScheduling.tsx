@@ -270,7 +270,7 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
       window.clearTimeout(checkConflictsDebounced.current);
     }
 
-    checkConflictsDebounced.current = setTimeout(async () => {
+    checkConflictsDebounced.current = window.setTimeout(async () => {
       const cacheKey = createCacheKey('conflicts', date, time, doctorId);
 
       try {
