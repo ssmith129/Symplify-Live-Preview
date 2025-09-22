@@ -592,17 +592,17 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.twoStepVerificationCover,
+    path: routes.twostepverificationcover,
     element: <TwoStepVerificationCover />,
     route: Route,
   },
   {
-    path: routes.twoStepVerificationIllustration,
+    path: routes.twostepverificationillustration,
     element: <TwoStepVerificationIllustration />,
     route: Route,
   },
   {
-    path: routes.lockScreen,
+    path: routes.lockscreen,
     element: <LockScreen />,
     route: Route,
   },
@@ -637,27 +637,27 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.appointmentreport,
+    path: routes.appointmentReport,
     element: <AppointmentReport />,
     route: Route,
   },
   {
-    path: routes.expensereport,
+    path: routes.expenseReport,
     element: <ExpenseReport />,
     route: Route,
   },
   {
-    path: routes.incomereport,
+    path: routes.incomeReport,
     element: <IncomeReport />,
     route: Route,
   },
   {
-    path: routes.patientreport,
+    path: routes.patientReport,
     element: <PatientReport />,
     route: Route,
   },
   {
-    path: routes.profitandloss,
+    path: routes.profitloss,
     element: <ProfitAndLoss />,
     route: Route,
   },
@@ -672,7 +672,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.rolesandpermissions,
+    path: routes.rolesPermissions,
     element: <RolesAndPermissions />,
     route: Route,
   },
@@ -712,7 +712,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.createpatients,
+    path: routes.createPatient,
     element: <CreatePatient />,
     route: Route,
   },
