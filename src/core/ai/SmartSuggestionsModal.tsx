@@ -143,7 +143,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
           <div className="modal-content">
             <div className="modal-header border-bottom">
               <h5 className="modal-title fw-semibold" id="smartSuggestionsModalTitle">
-                <i className="ti ti-brain me-2 text-primary"></i>
+                <i className="fa-solid fa-brain me-2 text-primary"></i>
                 Smart Time Suggestions
               </h5>
               <button
@@ -166,7 +166,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                 <>
                   <div className="p-3 border-bottom bg-light">
                     <div className="d-flex align-items-center">
-                      <i className="ti ti-calendar-event text-primary me-2"></i>
+                      <i className="fa-regular fa-calendar-days text-primary me-2"></i>
                       <span className="fw-medium">
                         {selectedDate ? selectedDate.toLocaleDateString('en-US', { 
                           weekday: 'long', 
@@ -241,13 +241,13 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               {/* Reasons */}
                               <div className="mb-3">
                                 <div className="fw-medium text-success mb-2 fs-13">
-                                  <i className="ti ti-check me-1"></i>
+                                  <i className="fa-solid fa-check me-1"></i>
                                   Why this time works:
                                 </div>
                                 <ul className="list-unstyled mb-0">
                                   {suggestion.reasons.map((reason, idx) => (
                                     <li key={idx} className="fs-13 text-muted mb-1">
-                                      <i className="ti ti-point text-primary me-1"></i>
+                                      <i className="fa-regular fa-circle text-primary me-1"></i>
                                       {reason}
                                     </li>
                                   ))}
@@ -258,13 +258,13 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               {suggestion.conflicts && suggestion.conflicts.length > 0 && (
                                 <div className="mb-3">
                                   <div className="fw-medium text-warning mb-2 fs-13">
-                                    <i className="ti ti-alert-triangle me-1"></i>
+                                    <i className="fa-solid fa-triangle-exclamation me-1"></i>
                                     Potential considerations:
                                   </div>
                                   <ul className="list-unstyled mb-0">
                                     {suggestion.conflicts.map((conflict, idx) => (
                                       <li key={idx} className="fs-13 text-muted mb-1">
-                                        <i className="ti ti-point text-warning me-1"></i>
+                                        <i className="fa-regular fa-circle text-warning me-1"></i>
                                         {conflict}
                                       </li>
                                     ))}
@@ -287,10 +287,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                                 >
                                   {selectedSuggestion === suggestion.id ? (
                                     <>
-                                      ✅ Book This Time
+                                      <i className="fa-solid fa-check me-1"></i>Book This Time
                                     </>
                                   ) : (
-                                    '📅 Select Time'
+                                    '<i className="fa-regular fa-calendar-days me-1"></i>Select Time'
                                   )}
                                 </button>
                               </div>
@@ -307,7 +307,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
             <div className="modal-footer border-top">
               <div className="d-flex justify-content-between align-items-center w-100">
                 <div className="text-muted fs-13">
-                  <i className="ti ti-info-circle me-1"></i>
+                  <i className="fa-solid fa-circle-info me-1"></i>
                   Suggestions update every 5 minutes
                 </div>
                 <div>
@@ -323,7 +323,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                     className="ai-btn ai-btn--primary"
                     onClick={onClose}
                   >
-                    ➕ Manual Booking
+                    <i className="fa-solid fa-plus me-1"></i>Manual Booking
                   </Link>
                 </div>
               </div>
