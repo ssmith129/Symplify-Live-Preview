@@ -1033,6 +1033,11 @@
 .ai-border-high{ border-color: var(--ai-high-border) !important; }
 .ai-bg-high{ background: var(--ai-high-bg) !important; }
 .ai-color-high{ color: var(--ai-high) !important; }
+.ai-border-accent{ border-color: var(--ai-accent) !important; }
+.ai-bg-accent{ background: var(--ai-accent) !important; }
+.ai-color-inverse{ color: var(--ai-text-inverse) !important; }
+.ai-bg-secondary-token{ background: var(--ai-bg-secondary) !important; }
+.ai-code-token{ font-size: var(--ai-font-xs) !important; background: var(--ai-bg-secondary) !important; padding: 2px 4px !important; border-radius: 3px !important; }
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .suggestion-item,
