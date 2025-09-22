@@ -222,7 +222,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 className="ai-btn ai-btn--sm ai-btn--accent"
                 onClick={retry}
               >
-                🔄 Try Again
+                <i className="fa-solid fa-rotate-right me-1"></i>Try Again
               </button>
             </div>
           ) : loading ? (
