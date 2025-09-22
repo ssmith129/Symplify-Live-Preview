@@ -82,7 +82,7 @@ const PredefinedDatePicker: React.FC = () => {
           format={dateFormat}
           value={dates}
           allowClear={false}
-          style={{ position: 'absolute', top: 0, left: 0, opacity: 0, pointerEvents: 'none' }}
+          className="ai-abs-sr"
           onOpenChange={(open) => {
             if (!open) setCustomVisible(false);
           }}
