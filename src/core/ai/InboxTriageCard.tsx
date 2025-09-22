@@ -177,7 +177,7 @@ export default function InboxTriageCard() {
           <div className="alert alert-danger m-2 py-2 fs-12" role="alert">{error}</div>
         )}
         {!loading && !error && (
-          <div className="ai-triage-compact-list overflow-auto">
+          <div className="ai-card" style={{padding: 0}}>
             {visible.map((msg, idx) => {
               const isExpanded = !!expanded[msg.id];
               const proc = !!processing[msg.id];
