@@ -244,14 +244,14 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center gap-2">
                       <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                        #{index + 1}
+                        🏆 #{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
                     </div>
-                    <span className={`badge bg-${getScoreColor(suggestion.score)}`}>
-                      {formatScore(suggestion.score)}
+                    <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'}`}>
+                      {formatScore(suggestion.score)}% Match
                     </span>
                   </div>
                   
