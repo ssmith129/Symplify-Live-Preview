@@ -27,7 +27,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
   isOpen,
   onClose,
   selectedDate,
-  clickPosition
+  clickPosition: _clickPosition
 }) => {
   const [suggestions, setSuggestions] = useState<TimeSlotSuggestion[]>([]);
   const [loading, setLoading] = useState(true);
