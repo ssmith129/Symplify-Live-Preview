@@ -197,8 +197,7 @@ const Header = () => {
                   <span className="notification-badge" />
                 </button>
                 <div
-                  className="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg"
-                  style={{ minHeight: 300 }}
+                  className="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg min-h-300"
                 >
                   <div className="p-2 border-bottom">
                     <div className="row align-items-center">
