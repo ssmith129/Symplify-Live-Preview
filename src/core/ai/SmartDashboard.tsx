@@ -123,7 +123,7 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
     <div className={`smart-dashboard ${className}`}>
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div className="d-flex align-items-center">
-          <h6 className="mb-0 fw-semibold" style={{color: 'var(--ai-text-primary)'}}>
+          <h6 className="mb-0 fw-semibold ai-text-primary">
             <i className="fa-solid fa-brain me-2"></i>
             Smart Scheduling Dashboard
           </h6>
@@ -148,43 +148,33 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
         {metrics.map((metric) => (
           <div key={metric.id} className="col-xl-3 col-md-6">
             <div className="ai-card h-100 dashboard-metric-card">
-              <div className="ai-card__body" style={{padding: 'var(--ai-space-3)'}}>
+              <div className="ai-card__body ai-p-3">
                 <div className="d-flex align-items-center">
-                  <div className={`smart-dashboard-icon me-3 flex-shrink-0`} style={{
-                    width: '32px',
-                    height: '32px',
-                    borderRadius: '50%',
-                    background: `var(--ai-${metric.color === 'success' ? 'low' : metric.color === 'warning' ? 'high' : metric.color === 'danger' ? 'critical' : 'medium'}-bg)`,
-                    color: `var(--ai-${metric.color === 'success' ? 'low' : metric.color === 'warning' ? 'high' : metric.color === 'danger' ? 'critical' : 'medium'})`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '16px'
-                  }}>
+                  <div className={`smart-dashboard-icon me-3 flex-shrink-0 ${metric.color === 'success' ? 'ai-metric-success' : metric.color === 'warning' ? 'ai-metric-warning' : metric.color === 'danger' ? 'ai-metric-danger' : metric.color === 'info' ? 'ai-metric-info' : 'ai-metric-primary'}`}>
                     <i className={`${metric.color === 'success' ? 'fa-solid fa-circle-check' : metric.color === 'warning' ? 'fa-solid fa-triangle-exclamation' : metric.color === 'info' ? 'fa-regular fa-clock' : 'fa-solid fa-chart-line'}`}></i>
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">
-                      <p className="mb-0" style={{fontSize: 'var(--ai-font-xs)', color: 'var(--ai-text-muted)'}}>{metric.title}</p>
+                      <p className="mb-0 ai-caption">{metric.title}</p>
                       {metric.trend && (
-                        <span className={`ai-badge ai-badge--${metric.trend === 'up' ? 'low' : 'critical'}`} style={{fontSize: 'var(--ai-font-xs)'}}>
+                        <span className={`ai-badge ai-badge--${metric.trend === 'up' ? 'low' : 'critical'} ai-fs-xs`}>
                           {metric.trend === 'up' ? '↗' : '↘'} {metric.trendValue}
                         </span>
                       )}
                     </div>
-                    <h4 className="mb-1 fw-bold" style={{color: 'var(--ai-text-primary)'}}>{metric.value}</h4>
+                    <h4 className="mb-1 fw-bold ai-text-primary">{metric.value}</h4>
                     <div className="ai-progress">
                       <div
-                        className={`ai-progress__bar ai-progress__bar--${metric.color === 'success' ? 'success' : metric.color === 'warning' ? 'warning' : metric.color === 'danger' ? 'danger' : 'primary'}`}
+                        className={`ai-progress__bar ai-progress__bar--${metric.color === 'success' ? 'success' : metric.color === 'warning' ? 'warning' : metric.color === 'danger' ? 'danger' : 'primary'} ai-progress-bar`}
                         role="progressbar"
-                        style={{ width: `${metric.percentage}%` }}
+                        style={{ ['--ai-progress' as any]: `${metric.percentage}%` }}
                         aria-valuenow={metric.percentage}
                         aria-valuemin={0}
                         aria-valuemax={100}
                       ></div>
                     </div>
                     {metric.description && (
-                      <p className="mb-0 mt-1" style={{fontSize: 'var(--ai-font-xs)', color: 'var(--ai-text-muted)'}} title={metric.description}>
+                      <p className="mb-0 mt-1 ai-caption" title={metric.description}>
                         {metric.description.length > 40
                           ? `${metric.description.substring(0, 40)}...`
                           : metric.description
