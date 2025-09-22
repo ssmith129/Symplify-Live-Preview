@@ -185,14 +185,14 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                     <div className="row g-3">
                       {suggestions.map((suggestion, index) => (
                         <div key={suggestion.id} className="col-12">
-                          <div 
-                            className={`card h-100 suggestion-card ${
+                          <div
+                            className={`ai-card h-100 suggestion-card ${
                               selectedSuggestion === suggestion.id ? 'border-primary shadow-sm' : ''
                             }`}
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: 'pointer', borderColor: selectedSuggestion === suggestion.id ? 'var(--ai-accent)' : undefined }}
                             onClick={() => handleSelectSlot(suggestion)}
                           >
-                            <div className="card-body p-3">
+                            <div className="ai-card__body" style={{padding: 'var(--ai-space-3)'}}>
                               <div className="d-flex align-items-start justify-content-between mb-3">
                                 <div className="d-flex align-items-center gap-2">
                                   <div className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
