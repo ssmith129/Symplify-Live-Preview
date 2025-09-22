@@ -201,7 +201,7 @@ export default function InboxTriageCard() {
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="badge bg-light text-dark px-1 py-0 fs-13" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
+                            <span className="ai-badge ai-badge--sm" style={{background: 'var(--ai-bg-secondary)', color: 'var(--ai-text-secondary)'}} title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
