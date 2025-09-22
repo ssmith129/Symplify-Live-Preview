@@ -717,7 +717,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.editpatients,
+    path: routes.editPatient,
     element: <EditPatient />,
     route: Route,
   },
@@ -767,7 +767,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.doctorDetails,
+    path: routes.doctordetails,
     element: <DoctorDetails />,
     route: Route,
   },
@@ -782,42 +782,42 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.attendancelist,
+    path: routes.attendance,
     element: <AttendanceList />,
     route: Route,
   },
   {
-    path: routes.designationlist,
+    path: routes.designation,
     element: <DesignationList />,
     route: Route,
   },
   {
-    path: routes.holidayslist,
+    path: routes.holidays,
     element: <HolidaysList />,
     route: Route,
   },
   {
-    path: routes.hrmdepartments,
+    path: routes.hrmDepartments,
     element: <HrmDepartments />,
     route: Route,
   },
   {
-    path: routes.leaveslist,
+    path: routes.leaves,
     element: <LeavesList />,
     route: Route,
   },
   {
-    path: routes.leavetype,
+    path: routes.leaveType,
     element: <LeaveType />,
     route: Route,
   },
   {
-    path: routes.payrolllist,
+    path: routes.payroll,
     element: <PayrollList />,
     route: Route,
   },
   {
-    path: routes.payrolltwo,
+    path: routes.payroll2,
     element: <PayrollTwo />,
     route: Route,
   },
