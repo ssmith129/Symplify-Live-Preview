@@ -268,10 +268,10 @@ const NewAppointment = () => {
                   {/* card end */}
                   
                   <div className="d-flex align-items-center justify-content-end">
-                    <Link to="#" className="btn btn-light me-2">
+                    <Link to={all_routes.appointments} className="btn btn-light me-2">
                       Cancel
                     </Link>
-                    <Link to="#" className="btn btn-primary">
+                    <Link to={all_routes.appointments} className="btn btn-primary">
                       Create Appointment
                     </Link>
                   </div>
