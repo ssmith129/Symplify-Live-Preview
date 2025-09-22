@@ -64,7 +64,8 @@ const AIDesignSystemShowcase: React.FC<AIDesignSystemShowcaseProps> = ({
       <div className="ai-card mb-4">
         <div className="ai-card__header">
           <h3 className="mb-0 fw-bold" style={{color: 'var(--ai-text-primary)'}}>
-            🎨 AI Design System Showcase
+            <i className="fa-solid fa-swatchbook me-2"></i>
+            AI Design System Showcase
           </h3>
           <p className="mb-0 mt-2" style={{fontSize: 'var(--ai-font-sm)', color: 'var(--ai-text-secondary)'}}>
             Unified components following the AI design system standards

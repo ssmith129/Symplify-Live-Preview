@@ -124,7 +124,8 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div className="d-flex align-items-center">
           <h6 className="mb-0 fw-semibold" style={{color: 'var(--ai-text-primary)'}}>
-            🧠 Smart Scheduling Dashboard
+            <i className="fa-solid fa-brain me-2"></i>
+            Smart Scheduling Dashboard
           </h6>
         </div>
         {showToggle && (
@@ -160,7 +161,7 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
                     justifyContent: 'center',
                     fontSize: '16px'
                   }}>
-                    {metric.color === 'success' ? '✅' : metric.color === 'warning' ? '⚠️' : metric.color === 'info' ? '⏰' : '📊'}
+                    <i className={`$${'{'}metric.color === 'success' ? 'fa-solid fa-circle-check' : metric.color === 'warning' ? 'fa-solid fa-triangle-exclamation' : metric.color === 'info' ? 'fa-regular fa-clock' : 'fa-solid fa-chart-line'${'}'}`}></i>
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">

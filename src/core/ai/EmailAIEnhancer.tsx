@@ -70,7 +70,7 @@ export default function EmailAIEnhancer() {
 
   return (
     <div className="d-flex align-items-center gap-2 flex-wrap">
-      <span className="ai-badge ai-badge--low d-flex align-items-center">🤖 AI Active</span>
+      <span className="ai-badge ai-badge--low d-flex align-items-center"><i className="fa-solid fa-robot me-1"/>AI Active</span>
       {filters.map(f => (
         <button key={f} className={`ai-btn ai-btn--sm ${filter===f? 'ai-btn--primary' : 'ai-btn--secondary'}`} onClick={() => setFilter(f as any)}>
           {f === 'all' ? 'All' : f.charAt(0).toUpperCase()+f.slice(1)}
