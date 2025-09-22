@@ -52,12 +52,12 @@ const Datatable: React.FC<DatatableProps> = ({
         onShowSizeChange: (size) => setPageSize(size),
         total: filteredDataSource.length,
         showTotal: (total) => (
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div className="d-flex align-items-center gap-2">
             Rows per page:
             <Select
               value={pageSize}
               onChange={(value) => setPageSize(value)}
-              style={{ width: 80 }}
+              className="ai-w-80"
               popupMatchSelectWidth={false}
             >
               <Option value={10}>10</Option>
