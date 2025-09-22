@@ -201,7 +201,7 @@ export default function InboxTriageCard() {
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="ai-badge ai-badge--sm" style={{background: 'var(--ai-bg-secondary)', color: 'var(--ai-text-secondary)'}} title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
+                            <span className="ai-badge ai-badge--sm ai-badge--low" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
@@ -209,7 +209,7 @@ export default function InboxTriageCard() {
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="ai-badge ai-badge--critical">ACTION</span>
+                              <span className="ai-badge ai-badge--critical">⚠️ ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
