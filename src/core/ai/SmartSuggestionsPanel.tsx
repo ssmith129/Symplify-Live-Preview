@@ -285,7 +285,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                     <div className="mt-1">
                       {suggestion.warnings.map((warning, idx) => (
                         <div key={idx} className="fs-12 text-warning">
-                          <i className="ti ti-alert-triangle me-1"></i>
+                          <i className="fa-solid fa-triangle-exclamation me-1"></i>
                           {warning}
                         </div>
                       ))}
