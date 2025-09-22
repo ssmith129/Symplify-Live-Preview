@@ -160,7 +160,7 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
 
     // Clear existing debounce
     if (analyzeTimesDebounced.current) {
-      clearTimeout(analyzeTimesDebounced.current);
+      window.clearTimeout(analyzeTimesDebounced.current);
     }
 
     // Store request for retry
