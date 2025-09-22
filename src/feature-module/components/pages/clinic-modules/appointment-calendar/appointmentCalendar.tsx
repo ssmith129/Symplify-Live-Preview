@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
 import { Suspense, lazy, useState } from "react";
