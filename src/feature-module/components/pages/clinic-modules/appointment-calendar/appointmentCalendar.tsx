@@ -10,8 +10,8 @@ import { all_routes } from "../../../../routes/all_routes";
 const AppointmentCalendar = () => {
   const [isAiMode, setIsAiMode] = useState(true);
   const [showSuggestionsModal, setShowSuggestionsModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [modalClickPosition, setModalClickPosition] = useState({ x: 0, y: 0 });
+  const [selectedDate, _setSelectedDate] = useState<Date | null>(null);
+  const [modalClickPosition, _setModalClickPosition] = useState({ x: 0, y: 0 });
 
   // reserved for future calendar integration; modal opens via button triggers
   // const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
