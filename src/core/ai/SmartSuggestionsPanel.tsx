@@ -74,6 +74,45 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
     onConflictDetected(conflicts);
   }, [conflicts, onConflictDetected]);
 
+  // Default suggestions shown when patient/doctor not yet selected
+  const defaultSuggestions: SmartSuggestion[] = [
+    {
+      id: 'def-1',
+      date: new Date().toISOString().split('T')[0],
+      time: '10:30 AM',
+      score: 94,
+      confidence: 90,
+      doctorMatch: 90,
+      patientPreference: 85,
+      departmentLoad: 28,
+      waitTimeMinutes: 6,
+      reasons: ['Morning peak performance', 'Low no-show risk'],
+    },
+    {
+      id: 'def-2',
+      date: new Date().toISOString().split('T')[0],
+      time: '2:00 PM',
+      score: 86,
+      confidence: 88,
+      doctorMatch: 88,
+      patientPreference: 92,
+      departmentLoad: 42,
+      waitTimeMinutes: 12,
+      reasons: ['High patient preference', 'Balanced department load'],
+    },
+    {
+      id: 'def-3',
+      date: new Date().toISOString().split('T')[0],
+      time: '11:15 AM',
+      score: 81,
+      confidence: 79,
+      doctorMatch: 84,
+      patientPreference: 74,
+      departmentLoad: 58,
+      waitTimeMinutes: 18,
+      reasons: ['Acceptable wait time', 'Available slot'],
+    },
+  ];
 
   const getScoreColor = (score: number) => {
     if (score >= 90) return 'success';
@@ -93,12 +132,63 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   if (!patientId || !doctorId) {
     return (
       <div className={`smart-suggestions-panel ${className}`}>
-        <div className="card">
-          <div className="card-body text-center py-5">
-            <i className="ti ti-brain fs-48 text-muted mb-3"></i>
-            <h6 className="text-muted">AI Recommendations</h6>
-            <p className="text-muted fs-13 mb-0">
-              Select a patient and doctor to see intelligent time suggestions
+        <div className="card mb-3">
+          <div className="card-header d-flex align-items-center justify-content-between">
+            <h6 className="mb-0 fw-semibold">
+              <i className="ti ti-brain me-2 text-primary"></i>
+              AI Recommendations
+            </h6>
+            <span className="badge badge-soft-info fs-11">Default view</span>
+          </div>
+          <div className="card-body p-2">
+            <div className="suggestions-list">
+              {defaultSuggestions.map((suggestion, index) => (
+                <div
+                  key={suggestion.id}
+                  className="suggestion-item border rounded p-2 mb-2 hover-bg-light"
+                  style={{ cursor: 'default' }}
+                >
+                  <div className="d-flex align-items-center justify-content-between mb-2">
+                    <div className="d-flex align-items-center">
+                      <span className={`badge bg-${index === 0 ? 'success' : index === 1 ? 'primary' : 'warning'} rounded-pill me-2 fs-10`}>
+                        #{index + 1}
+                      </span>
+                      <span className="fw-medium">{suggestion.time}</span>
+                    </div>
+                    <div className="text-end">
+                      <span className={`badge bg-${getScoreColor(suggestion.score)} me-1`}>
+                        {formatScore(suggestion.score)}
+                      </span>
+                      <span className="ai-confidence">{suggestion.confidence}%</span>
+                    </div>
+                  </div>
+                  <div className="row g-1 mb-2">
+                    <div className="col-4 text-center">
+                      <div className="fs-11 text-muted">Doctor</div>
+                      <div className="fs-12 fw-medium">{suggestion.doctorMatch}%</div>
+                    </div>
+                    <div className="col-4 text-center">
+                      <div className="fs-11 text-muted">Patient</div>
+                      <div className="fs-12 fw-medium">{suggestion.patientPreference}%</div>
+                    </div>
+                    <div className="col-4 text-center">
+                      <div className="fs-11 text-muted">Wait</div>
+                      <div className="fs-12 fw-medium">{suggestion.waitTimeMinutes}m</div>
+                    </div>
+                  </div>
+                  <div className="fs-12 text-muted">
+                    {suggestion.reasons.slice(0,2).map((reason, idx) => (
+                      <div key={idx} className="d-flex align-items-center">
+                        <i className="ti ti-check text-success me-1"></i>
+                        {reason}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted fs-12 mb-0 mt-2">
+              Select a patient and doctor to personalize these suggestions
             </p>
           </div>
         </div>
