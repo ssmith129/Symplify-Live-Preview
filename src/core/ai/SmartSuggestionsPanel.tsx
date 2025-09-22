@@ -132,15 +132,14 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   if (!patientId || !doctorId) {
     return (
       <div className={`smart-suggestions-panel ${className}`}>
-        <div className="card mb-3">
-          <div className="card-header d-flex align-items-center justify-content-between">
+        <div className="ai-card mb-3">
+          <div className="ai-card__header d-flex align-items-center justify-content-between">
             <h6 className="mb-0 fw-semibold">
-              <i className="ti ti-brain me-2 text-primary"></i>
-              AI Recommendations
+              🧠 AI Recommendations
             </h6>
-            <span className="badge badge-soft-info fs-11">Default view</span>
+            <span className="ai-badge ai-badge--low fs-11">Default view</span>
           </div>
-          <div className="card-body p-2">
+          <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
             <div className="suggestions-list">
               {defaultSuggestions.map((suggestion, index) => (
                 <div
