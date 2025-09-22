@@ -372,12 +372,7 @@ const Sidebar = () => {
                                         </Link>
                                         {item?.submenuItems ? (
                                           <ul
-                                            style={{
-                                              display:
-                                                subsidebar === item?.label
-                                                  ? "block"
-                                                  : "none",
-                                            }}
+                                            className={`${subsidebar === item?.label ? 'd-block' : 'd-none'}`}
                                           >
                                             {item?.submenuItems?.map(
                                               (items: any, k: any) => {
