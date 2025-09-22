@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Application - Component Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* AI Brand Identity */
+            --ai-primary: #2D3748;
+            --ai-primary-light: #4A5568;
+            --ai-primary-dark: #1A202C;
+            --ai-accent: #00D3C7;
+            --ai-accent-light: #4FD1C7;
+            --ai-accent-dark: #00B5AA;
+            
+            /* AI Background Colors */
+            --ai-bg-primary: #FFFFFF;
+            --ai-bg-secondary: #F7F8FA;
+            --ai-bg-tertiary: #E2E8F0;
+            
+            /* AI Border Colors */
+            --ai-border-light: #E2E8F0;
+            --ai-border-medium: #CBD5E0;
+            --ai-border-dark: #A0AEC0;
+            
+            /* Priority Levels */
+            --ai-critical: #DC3545;
+            --ai-critical-bg: rgba(220, 53, 69, 0.1);
+            --ai-critical-border: rgba(220, 53, 69, 0.2);
+            
+            --ai-high: #E2B93B;
+            --ai-high-bg: rgba(226, 185, 59, 0.1);
+            --ai-high-border: rgba(226, 185, 59, 0.2);
+            
+            --ai-medium: #0D6EFD;
+            --ai-medium-bg: rgba(13, 110, 253, 0.1);
+            --ai-medium-border: rgba(13, 110, 253, 0.2);
+            
+            --ai-low: #198754;
+            --ai-low-bg: rgba(25, 135, 84, 0.1);
+            --ai-low-border: rgba(25, 135, 84, 0.2);
+            
+            /* Text Colors */
+            --ai-text-primary: #1A202C;
+            --ai-text-secondary: #4A5568;
+            --ai-text-muted: #718096;
+            --ai-text-light: #A0AEC0;
+            --ai-text-inverse: #FFFFFF;
+            
+            /* Spacing */
+            --ai-space-1: 4px;
+            --ai-space-2: 8px;
+            --ai-space-3: 12px;
+            --ai-space-4: 16px;
+            --ai-space-5: 20px;
+            --ai-space-6: 24px;
+            --ai-space-8: 32px;
+            
+            /* Typography */
+            --ai-font-xs: 10px;
+            --ai-font-sm: 12px;
+            --ai-font-base: 14px;
+            --ai-font-lg: 16px;
+            --ai-font-xl: 18px;
+            
+            /* Transitions */
+            --ai-transition-normal: 0.15s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--ai-bg-secondary);
+            color: var(--ai-text-primary);
+        }
+
+        .component-library-header {
+            background: linear-gradient(135deg, var(--ai-primary) 0%, var(--ai-accent) 100%);
+            color: var(--ai-text-inverse);
+            padding: 2rem 0;
+        }
+
+        .component-section {
+            background: var(--ai-bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--ai-border-light);
+        }
+
+        .component-preview {
+            background: var(--ai-bg-secondary);
+            border: 1px solid var(--ai-border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .component-preview::before {
+            content: 'Preview';
+            position: absolute;
+            top: -1px;
+            left: 16px;
+            background: var(--ai-accent);
+            color: var(--ai-text-inverse);
+            padding: 2px 8px;
+            font-size: var(--ai-font-xs);
+            font-weight: 600;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .code-snippet {
+            background: #1a1a1a;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: var(--ai-font-sm);
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-snippet::before {
+            content: 'HTML';
+            position: absolute;
+            top: -1px;
+            right: 16px;
+            background: var(--ai-primary);
+            color: var(--ai-text-inverse);
+            padding: 2px 8px;
+            font-size: var(--ai-font-xs);
+            font-weight: 600;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--ai-accent);
+            color: var(--ai-text-inverse);
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: var(--ai-font-xs);
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--ai-transition-normal);
+        }
+
+        .code-snippet:hover .copy-btn {
+            opacity: 1;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .variant-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .size-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+            margin: 1rem 0;
+        }
+
+        /* Navigation */
+        .component-nav {
+            position: sticky;
+            top: 20px;
+            background: var(--ai-bg-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--ai-border-light);
+        }
+
+        .component-nav .nav-link {
+            color: var(--ai-text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: var(--ai-font-sm);
+            font-weight: 500;
+            transition: var(--ai-transition-normal);
+            border: none;
+            text-decoration: none;
+        }
+
+        .component-nav .nav-link:hover,
+        .component-nav .nav-link.active {
+            background: var(--ai-accent-light);
+            color: var(--ai-accent-dark);
+        }
+
+        /* AI Component Styles */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--ai-space-1);
+            padding: var(--ai-space-1) var(--ai-space-2);
+            border-radius: 6px;
+            font-size: var(--ai-font-xs);
+            font-weight: 600;
+            line-height: 1.2;
+            border: 1px solid transparent;
+            transition: var(--ai-transition-normal);
+        }
+
+        .ai-badge--critical {
+            background: var(--ai-critical-bg);
+            color: var(--ai-critical);
+            border-color: var(--ai-critical-border);
+        }
+
+        .ai-badge--high {
+            background: var(--ai-high-bg);
+            color: var(--ai-high);
+            border-color: var(--ai-high-border);
+        }
+
+        .ai-badge--medium {
+            background: var(--ai-medium-bg);
+            color: var(--ai-medium);
+            border-color: var(--ai-medium-border);
+        }
+
+        .ai-badge--low {
+            background: var(--ai-low-bg);
+            color: var(--ai-low);
+            border-color: var(--ai-low-border);
+        }
+
+        .ai-badge--sm {
+            padding: 1px var(--ai-space-1);
+            font-size: 9px;
+        }
+
+        .ai-badge--lg {
+            padding: var(--ai-space-2) var(--ai-space-3);
+            font-size: var(--ai-font-sm);
+        }
+
+        .ai-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--ai-space-2);
+            padding: var(--ai-space-2) var(--ai-space-4);
+            border-radius: 6px;
+            font-size: var(--ai-font-sm);
+            font-weight: 500;
+            line-height: 1.2;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: var(--ai-transition-normal);
+            min-height: 36px;
+            text-decoration: none;
+        }
+
+        .ai-btn:focus {
+            outline: 2px solid var(--ai-accent);
+            outline-offset: 2px;
+        }
+
+        .ai-btn--primary {
+            background: var(--ai-primary);
+            color: var(--ai-text-inverse);
+            border-color: var(--ai-primary);
+        }
+
+        .ai-btn--primary:hover {
+            background: var(--ai-primary-dark);
+            border-color: var(--ai-primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
+            color: var(--ai-text-inverse);
+        }
+
+        .ai-btn--secondary {
+            background: transparent;
+            color: var(--ai-primary);
+            border-color: var(--ai-border-medium);
+        }
+
+        .ai-btn--secondary:hover {
+            background: var(--ai-bg-secondary);
+            border-color: var(--ai-primary);
+            transform: translateY(-1px);
+            color: var(--ai-primary);
+        }
+
+        .ai-btn--accent {
+            background: var(--ai-accent);
+            color: var(--ai-text-inverse);
+            border-color: var(--ai-accent);
+        }
+
+        .ai-btn--accent:hover {
+            background: var(--ai-accent-dark);
+            border-color: var(--ai-accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 211, 199, 0.25);
+            color: var(--ai-text-inverse);
+        }
+
+        .ai-btn--sm {
+            min-height: 32px;
+            padding: var(--ai-space-1) var(--ai-space-3);
+            font-size: var(--ai-font-xs);
+        }
+
+        .ai-btn--lg {
+            min-height: 44px;
+            padding: var(--ai-space-3) var(--ai-space-6);
+            font-size: var(--ai-font-base);
+        }
+
+        .ai-btn--icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .ai-card {
+            background: var(--ai-bg-primary);
+            border: 1px solid var(--ai-border-light);
+            border-radius: 8px;
+            transition: var(--ai-transition-normal);
+            overflow: hidden;
+        }
+
+        .ai-card:hover {
+            border-color: var(--ai-border-medium);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .ai-card__header {
+            padding: var(--ai-space-4);
+            border-bottom: 1px solid var(--ai-border-light);
+            background: var(--ai-bg-secondary);
+            font-weight: 600;
+        }
+
+        .ai-card__body {
+            padding: var(--ai-space-4);
+        }
+
+        .ai-card__footer {
+            padding: var(--ai-space-4);
+            border-top: 1px solid var(--ai-border-light);
+            background: var(--ai-bg-secondary);
+        }
+
+        .ai-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--ai-bg-tertiary);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: var(--ai-space-2) 0;
+        }
+
+        .ai-progress__bar {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .ai-progress__bar--success { background: var(--ai-low); }
+        .ai-progress__bar--warning { background: var(--ai-high); }
+        .ai-progress__bar--danger { background: var(--ai-critical); }
+        .ai-progress__bar--primary { background: var(--ai-primary); }
+
+        .ai-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--ai-space-3);
+            padding: var(--ai-space-3);
+            border-bottom: 1px solid var(--ai-border-light);
+            transition: var(--ai-transition-normal);
+            cursor: pointer;
+        }
+
+        .ai-list-item:hover {
+            background: var(--ai-bg-secondary);
+        }
+
+        .ai-list-item__priority {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: var(--ai-space-2);
+        }
+
+        .ai-list-item__priority--critical { background: var(--ai-critical); }
+        .ai-list-item__priority--high { background: var(--ai-high); }
+        .ai-list-item__priority--medium { background: var(--ai-medium); }
+        .ai-list-item__priority--low { background: var(--ai-low); }
+
+        .ai-list-item__content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: var(--ai-space-2) var(--ai-space-3);
+            border: 1px solid var(--ai-border-medium);
+            border-radius: 6px;
+            font-size: var(--ai-font-sm);
+            background: var(--ai-bg-primary);
+            color: var(--ai-text-primary);
+            transition: var(--ai-transition-normal);
+        }
+
+        .ai-input:focus {
+            outline: none;
+            border-color: var(--ai-accent);
+            box-shadow: 0 0 0 3px rgba(0, 211, 199, 0.1);
+        }
+
+        .ai-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ai-tooltip__content {
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ai-primary);
+            color: var(--ai-text-inverse);
+            padding: var(--ai-space-2) var(--ai-space-3);
+            border-radius: 4px;
+            font-size: var(--ai-font-xs);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--ai-transition-normal);
+            z-index: 1000;
+        }
+
+        .ai-tooltip__content::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: var(--ai-primary);
+        }
+
+        .ai-tooltip:hover .ai-tooltip__content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ai-alert {
+            padding: var(--ai-space-3) var(--ai-space-4);
+            border-radius: 6px;
+            border: 1px solid;
+            margin: var(--ai-space-3) 0;
+        }
+
+        .ai-alert--info {
+            background: var(--ai-medium-bg);
+            border-color: var(--ai-medium-border);
+            color: var(--ai-medium);
+        }
+
+        .ai-alert--warning {
+            background: var(--ai-high-bg);
+            border-color: var(--ai-high-border);
+            color: var(--ai-high);
+        }
+
+        .ai-alert--danger {
+            background: var(--ai-critical-bg);
+            border-color: var(--ai-critical-border);
+            color: var(--ai-critical);
+        }
+
+        .ai-alert--success {
+            background: var(--ai-low-bg);
+            border-color: var(--ai-low-border);
+            color: var(--ai-low);
+        }
+
+        /* State Indicator */
+        .ai-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--ai-space-1);
+            font-size: var(--ai-font-xs);
+            font-weight: 500;
+        }
+
+        .ai-indicator__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .ai-indicator--online { color: var(--ai-low); }
+        .ai-indicator--offline { color: var(--ai-text-muted); }
+        .ai-indicator--processing { color: var(--ai-high); }
+        .ai-indicator--error { color: var(--ai-critical); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="component-library-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 mb-2">AI Component Library</h1>
+                    <p class="lead opacity-90">Reusable components for the AI Email Application design system</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <div class="d-flex align-items-center justify-content-end gap-3">
+                        <div style="font-size: 40px;">🧩</div>
+                        <div>
+                            <div class="h6 mb-0">50+ Components</div>
+                            <small class="opacity-75">Ready to use</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Navigation Sidebar -->
+            <div class="col-lg-3">
+                <div class="component-nav">
+                    <h6 class="text-uppercase mb-3 text-muted">Components</h6>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#badges">Badges</a>
+                        <a class="nav-link" href="#buttons">Buttons</a>
+                        <a class="nav-link" href="#cards">Cards</a>
+                        <a class="nav-link" href="#lists">Lists</a>
+                        <a class="nav-link" href="#forms">Form Elements</a>
+                        <a class="nav-link" href="#progress">Progress Indicators</a>
+                        <a class="nav-link" href="#alerts">Alerts</a>
+                        <a class="nav-link" href="#tooltips">Tooltips</a>
+                        <a class="nav-link" href="#states">State Indicators</a>
+                        <a class="nav-link" href="#layouts">Layout Examples</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Badges Section -->
+                <section id="badges" class="component-section">
+                    <h2 class="h3 mb-4">AI Badges</h2>
+                    <p class="text-muted mb-4">Priority and status indicators for AI features</p>
+
+                    <h5>Priority Badges</h5>
+                    <div class="component-preview">
+                        <div class="variant-showcase">
+                            <span class="ai-badge ai-badge--critical">Critical</span>
+                            <span class="ai-badge ai-badge--high">High</span>
+                            <span class="ai-badge ai-badge--medium">Medium</span>
+                            <span class="ai-badge ai-badge--low">Low</span>
+                        </div>
+                    </div>
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;span class="ai-badge ai-badge--critical"&gt;Critical&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--high"&gt;High&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--medium"&gt;Medium&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--low"&gt;Low&lt;/span&gt;</code></pre>
+                    </div>
+
+                    <h5>Badge Sizes</h5>
+                    <div class="component-preview">
+                        <div class="size-showcase">
+                            <span class="ai-badge ai-badge--sm ai-badge--critical">Small</span>
+                            <span class="ai-badge ai-badge--critical">Default</span>
+                            <span class="ai-badge ai-badge--lg ai-badge--critical">Large</span>
+                        </div>
+                    </div>
+
+                    <h5>With Icons</h5>
+                    <div class="component-preview">
+                        <div class="variant-showcase">
+                            <span class="ai-badge ai-badge--critical">⚠️ Critical</span>
+                            <span class="ai-badge ai-badge--high">🔥 High Priority</span>
+                            <span class="ai-badge ai-badge--medium">💡 Medium</span>
+                            <span class="ai-badge ai-badge--low">✅ Complete</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Buttons Section -->
+                <section id="buttons" class="component-section">
+                    <h2 class="h3 mb-4">AI Buttons</h2>
+                    <p class="text-muted mb-4">Action buttons for AI operations and user interactions</p>
+
+                    <h5>Button Variants</h5>
+                    <div class="component-preview">
+                        <div class="variant-showcase">
+                            <button class="ai-btn ai-btn--primary">🧠 AI Analyze</button>
+                            <button class="ai-btn ai-btn--secondary">📊 View Details</button>
+                            <button class="ai-btn ai-btn--accent">✨ Apply Suggestion</button>
+                        </div>
+                    </div>
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;button class="ai-btn ai-btn--primary"&gt;🧠 AI Analyze&lt;/button&gt;
+&lt;button class="ai-btn ai-btn--secondary"&gt;📊 View Details&lt;/button&gt;
+&lt;button class="ai-btn ai-btn--accent"&gt;✨ Apply Suggestion&lt;/button&gt;</code></pre>
+                    </div>
+
+                    <h5>Button Sizes</h5>
+                    <div class="component-preview">
+                        <div class="size-showcase">
+                            <button class="ai-btn ai-btn--sm ai-btn--primary">Small</button>
+                            <button class="ai-btn ai-btn--primary">Default</button>
+                            <button class="ai-btn ai-btn--lg ai-btn--primary">Large</button>
+                        </div>
+                    </div>
+
+                    <h5>Icon Buttons</h5>
+                    <div class="component-preview">
+                        <div class="variant-showcase">
+                            <button class="ai-btn ai-btn--icon ai-btn--primary">🧠</button>
+                            <button class="ai-btn ai-btn--icon ai-btn--secondary">⚙️</button>
+                            <button class="ai-btn ai-btn--icon ai-btn--accent">✨</button>
+                        </div>
+                    </div>
+
+                    <h5>Action Button Group</h5>
+                    <div class="component-preview">
+                        <div class="variant-showcase">
+                            <button class="ai-btn ai-btn--secondary">🗂️ Archive</button>
+                            <button class="ai-btn ai-btn--secondary">🔄 Refresh</button>
+                            <button class="ai-btn ai-btn--secondary">⏰ Snooze</button>
+                            <button class="ai-btn ai-btn--secondary">🗑️ Delete</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cards Section -->
+                <section id="cards" class="component-section">
+                    <h2 class="h3 mb-4">AI Cards</h2>
+                    <p class="text-muted mb-4">Container components for AI insights and recommendations</p>
+
+                    <h5>Basic Card</h5>
+                    <div class="component-preview">
+                        <div class="component-grid">
+                            <div class="ai-card">
+                                <div class="ai-card__header">
+                                    🎯 AI Recommendation
+                                </div>
+                                <div class="ai-card__body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>Schedule for 10:30 AM</span>
+                                        <span class="ai-badge ai-badge--low">94% Match</span>
+                                    </div>
+                                    <p class="text-muted mb-2" style="font-size: var(--ai-font-sm);">Based on doctor availability and patient preferences</p>
+                                    <div class="ai-progress">
+                                        <div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ai-card">
+                                <div class="ai-card__header">
+                                    🔍 AI Analysis
+                                </div>
+                                <div class="ai-card__body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>Email Priority</span>
+                                        <span class="ai-badge ai-badge--high">High</span>
+                                    </div>
+                                    <p class="text-muted mb-2" style="font-size: var(--ai-font-sm);">Urgent patient inquiry detected</p>
+                                    <div class="ai-progress">
+                                        <div class="ai-progress__bar ai-progress__bar--warning" style="width: 76%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5>Card with Footer</h5>
+                    <div class="component-preview">
+                        <div class="ai-card" style="max-width: 400px;">
+                            <div class="ai-card__header">
+                                💡 AI Insights
+                            </div>
+                            <div class="ai-card__body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>System Performance</span>
+                                    <span class="ai-badge ai-badge--low">Optimal</span>
+                                </div>
+                                <p class="text-muted mb-0" style="font-size: var(--ai-font-sm);">AI models running at peak efficiency</p>
+                            </div>
+                            <div class="ai-card__footer">
+                                <div class="d-flex gap-2">
+                                    <button class="ai-btn ai-btn--sm ai-btn--accent">📊 View Report</button>
+                                    <button class="ai-btn ai-btn--sm ai-btn--secondary">⚙️ Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="ai-card"&gt;
+  &lt;div class="ai-card__header"&gt;
+    🎯 AI Recommendation
+  &lt;/div&gt;
+  &lt;div class="ai-card__body"&gt;
+    &lt;div class="d-flex justify-content-between align-items-center mb-2"&gt;
+      &lt;span&gt;Schedule for 10:30 AM&lt;/span&gt;
+      &lt;span class="ai-badge ai-badge--low"&gt;94% Match&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class="text-muted mb-2"&gt;Based on doctor availability and patient preferences&lt;/p&gt;
+    &lt;div class="ai-progress"&gt;
+      &lt;div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Lists Section -->
+                <section id="lists" class="component-section">
+                    <h2 class="h3 mb-4">AI Lists</h2>
+                    <p class="text-muted mb-4">List components for email triage and AI recommendations</p>
+
+                    <h5>Triage List</h5>
+                    <div class="component-preview">
+                        <div class="ai-card">
+                            <div class="ai-card__header">📋 AI Inbox Triage</div>
+                            <div style="padding: 0;">
+                                <div class="ai-list-item">
+                                    <div class="ai-list-item__priority ai-list-item__priority--critical"></div>
+                                    <div class="ai-list-item__content">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Dr. Sarah Johnson</h6>
+                                                <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Emergency patient consultation needed</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="ai-badge ai-badge--critical">Critical</span>
+                                                <div class="text-muted" style="font-size: var(--ai-font-xs);">89% confidence</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-list-item">
+                                    <div class="ai-list-item__priority ai-list-item__priority--high"></div>
+                                    <div class="ai-list-item__content">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Patient Records System</h6>
+                                                <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Appointment rescheduling request</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="ai-badge ai-badge--high">High</span>
+                                                <div class="text-muted" style="font-size: var(--ai-font-xs);">76% confidence</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-list-item">
+                                    <div class="ai-list-item__priority ai-list-item__priority--medium"></div>
+                                    <div class="ai-list-item__content">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Medical Supplies Co.</h6>
+                                                <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Monthly inventory report</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="ai-badge ai-badge--medium">Medium</span>
+                                                <div class="text-muted" style="font-size: var(--ai-font-xs);">92% confidence</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="ai-list-item"&gt;
+  &lt;div class="ai-list-item__priority ai-list-item__priority--critical"&gt;&lt;/div&gt;
+  &lt;div class="ai-list-item__content"&gt;
+    &lt;div class="d-flex justify-content-between align-items-start"&gt;
+      &lt;div&gt;
+        &lt;h6 class="mb-1"&gt;Dr. Sarah Johnson&lt;/h6&gt;
+        &lt;p class="mb-0 text-muted"&gt;Emergency patient consultation needed&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="text-end"&gt;
+        &lt;span class="ai-badge ai-badge--critical"&gt;Critical&lt;/span&gt;
+        &lt;div class="text-muted"&gt;89% confidence&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Forms Section -->
+                <section id="forms" class="component-section">
+                    <h2 class="h3 mb-4">Form Elements</h2>
+                    <p class="text-muted mb-4">Input components with AI design system styling</p>
+
+                    <h5>Text Input</h5>
+                    <div class="component-preview">
+                        <div style="max-width: 400px;">
+                            <label class="form-label">Search AI Insights</label>
+                            <input type="text" class="ai-input" placeholder="Type to search...">
+                        </div>
+                    </div>
+
+                    <h5>Search with Button</h5>
+                    <div class="component-preview">
+                        <div style="max-width: 400px;">
+                            <div class="d-flex gap-2">
+                                <input type="text" class="ai-input" placeholder="Enter email content...">
+                                <button class="ai-btn ai-btn--accent">🔍 Analyze</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;input type="text" class="ai-input" placeholder="Type to search..."&gt;
+
+&lt;div class="d-flex gap-2"&gt;
+  &lt;input type="text" class="ai-input" placeholder="Enter email content..."&gt;
+  &lt;button class="ai-btn ai-btn--accent"&gt;🔍 Analyze&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Progress Indicators Section -->
+                <section id="progress" class="component-section">
+                    <h2 class="h3 mb-4">Progress Indicators</h2>
+                    <p class="text-muted mb-4">Visual indicators for AI processing and confidence levels</p>
+
+                    <h5>Confidence Levels</h5>
+                    <div class="component-preview">
+                        <div class="component-grid">
+                            <div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span style="font-size: var(--ai-font-sm);">High Confidence</span>
+                                    <span style="font-size: var(--ai-font-sm);">94%</span>
+                                </div>
+                                <div class="ai-progress">
+                                    <div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span style="font-size: var(--ai-font-sm);">Medium Confidence</span>
+                                    <span style="font-size: var(--ai-font-sm);">76%</span>
+                                </div>
+                                <div class="ai-progress">
+                                    <div class="ai-progress__bar ai-progress__bar--warning" style="width: 76%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span style="font-size: var(--ai-font-sm);">Low Confidence</span>
+                                    <span style="font-size: var(--ai-font-sm);">34%</span>
+                                </div>
+                                <div class="ai-progress">
+                                    <div class="ai-progress__bar ai-progress__bar--danger" style="width: 34%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="d-flex justify-content-between mb-1"&gt;
+  &lt;span&gt;High Confidence&lt;/span&gt;
+  &lt;span&gt;94%&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="ai-progress"&gt;
+  &lt;div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Alerts Section -->
+                <section id="alerts" class="component-section">
+                    <h2 class="h3 mb-4">Alerts</h2>
+                    <p class="text-muted mb-4">Alert components for AI notifications and system messages</p>
+
+                    <div class="component-preview">
+                        <div class="ai-alert ai-alert--success">
+                            ✅ <strong>AI Analysis Complete</strong> - Email has been successfully categorized with 94% confidence.
+                        </div>
+                        <div class="ai-alert ai-alert--warning">
+                            ⚠️ <strong>Low Confidence Warning</strong> - AI analysis returned 34% confidence. Manual review recommended.
+                        </div>
+                        <div class="ai-alert ai-alert--danger">
+                            🚨 <strong>Critical Priority Detected</strong> - Urgent patient inquiry requires immediate attention.
+                        </div>
+                        <div class="ai-alert ai-alert--info">
+                            💡 <strong>AI Suggestion</strong> - Consider scheduling this appointment for 10:30 AM for optimal efficiency.
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="ai-alert ai-alert--success"&gt;
+  ✅ &lt;strong&gt;AI Analysis Complete&lt;/strong&gt; - Email has been successfully categorized.
+&lt;/div&gt;
+&lt;div class="ai-alert ai-alert--warning"&gt;
+  ⚠️ &lt;strong&gt;Low Confidence Warning&lt;/strong&gt; - Manual review recommended.
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Tooltips Section -->
+                <section id="tooltips" class="component-section">
+                    <h2 class="h3 mb-4">Tooltips</h2>
+                    <p class="text-muted mb-4">Informational tooltips for AI features and explanations</p>
+
+                    <div class="component-preview">
+                        <div class="d-flex gap-4 align-items-center">
+                            <div class="ai-tooltip">
+                                <span class="ai-badge ai-badge--low">94% Match</span>
+                                <div class="ai-tooltip__content">
+                                    AI confidence score based on historical data
+                                </div>
+                            </div>
+                            <div class="ai-tooltip">
+                                <button class="ai-btn ai-btn--secondary">🧠 AI Analysis</button>
+                                <div class="ai-tooltip__content">
+                                    Run AI analysis on this email
+                                </div>
+                            </div>
+                            <div class="ai-tooltip">
+                                <span style="cursor: help;">🎯 Priority Score</span>
+                                <div class="ai-tooltip__content">
+                                    Calculated based on urgency and importance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="ai-tooltip"&gt;
+  &lt;span class="ai-badge ai-badge--low"&gt;94% Match&lt;/span&gt;
+  &lt;div class="ai-tooltip__content"&gt;
+    AI confidence score based on historical data
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- State Indicators Section -->
+                <section id="states" class="component-section">
+                    <h2 class="h3 mb-4">State Indicators</h2>
+                    <p class="text-muted mb-4">Real-time status indicators for AI system states</p>
+
+                    <div class="component-preview">
+                        <div class="d-flex gap-4 align-items-center flex-wrap">
+                            <div class="ai-indicator ai-indicator--online">
+                                <div class="ai-indicator__dot"></div>
+                                AI Online
+                            </div>
+                            <div class="ai-indicator ai-indicator--processing">
+                                <div class="ai-indicator__dot"></div>
+                                Processing
+                            </div>
+                            <div class="ai-indicator ai-indicator--error">
+                                <div class="ai-indicator__dot"></div>
+                                Error
+                            </div>
+                            <div class="ai-indicator ai-indicator--offline">
+                                <div class="ai-indicator__dot"></div>
+                                Offline
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;div class="ai-indicator ai-indicator--online"&gt;
+  &lt;div class="ai-indicator__dot"&gt;&lt;/div&gt;
+  AI Online
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Layout Examples Section -->
+                <section id="layouts" class="component-section">
+                    <h2 class="h3 mb-4">Layout Examples</h2>
+                    <p class="text-muted mb-4">Complete layout examples combining multiple AI components</p>
+
+                    <h5>AI Dashboard Card</h5>
+                    <div class="component-preview">
+                        <div class="ai-card" style="max-width: 500px;">
+                            <div class="ai-card__header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        🧠 <span>AI System Status</span>
+                                    </div>
+                                    <div class="ai-indicator ai-indicator--online">
+                                        <div class="ai-indicator__dot"></div>
+                                        Online
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ai-card__body">
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="text-center">
+                                            <div style="font-size: var(--ai-font-sm); color: var(--ai-text-muted);">Emails Processed</div>
+                                            <div class="h4 mb-1">1,247</div>
+                                            <span class="ai-badge ai-badge--low">↗ +12%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-center">
+                                            <div style="font-size: var(--ai-font-sm); color: var(--ai-text-muted);">Avg Accuracy</div>
+                                            <div class="h4 mb-1">94.6%</div>
+                                            <span class="ai-badge ai-badge--low">↗ +2.1%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span style="font-size: var(--ai-font-sm);">System Performance</span>
+                                        <span style="font-size: var(--ai-font-sm);">87%</span>
+                                    </div>
+                                    <div class="ai-progress">
+                                        <div class="ai-progress__bar ai-progress__bar--success" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ai-card__footer">
+                                <div class="d-flex gap-2">
+                                    <button class="ai-btn ai-btn--sm ai-btn--accent">📊 View Details</button>
+                                    <button class="ai-btn ai-btn--sm ai-btn--secondary">⚙️ Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5>AI Suggestion Panel</h5>
+                    <div class="component-preview">
+                        <div class="ai-card" style="max-width: 600px;">
+                            <div class="ai-card__header">
+                                💡 AI Scheduling Suggestions
+                            </div>
+                            <div style="padding: 0;">
+                                <div class="ai-list-item" style="background: rgba(0, 211, 199, 0.05);">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="ai-badge ai-badge--low">#1</span>
+                                        <div>🕙</div>
+                                    </div>
+                                    <div class="ai-list-item__content">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">10:30 AM - Tuesday</h6>
+                                                <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Optimal time based on doctor availability and patient preferences</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="ai-badge ai-badge--low">94% Match</span>
+                                                <div class="mt-1">
+                                                    <button class="ai-btn ai-btn--sm ai-btn--accent">✨ Apply</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-list-item">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="ai-badge ai-badge--medium">#2</span>
+                                        <div>🕐</div>
+                                    </div>
+                                    <div class="ai-list-item__content">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">2:00 PM - Tuesday</h6>
+                                                <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Good alternative with slightly longer wait time</p>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="ai-badge ai-badge--medium">86% Match</span>
+                                                <div class="mt-1">
+                                                    <button class="ai-btn ai-btn--sm ai-btn--secondary">Consider</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ai-card__footer">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Based on historical data and current availability</small>
+                                    <button class="ai-btn ai-btn--sm ai-btn--secondary">🔄 Refresh</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!-- AI Dashboard Card Example --&gt;
+&lt;div class="ai-card"&gt;
+  &lt;div class="ai-card__header"&gt;
+    &lt;div class="d-flex justify-content-between align-items-center"&gt;
+      &lt;div class="d-flex align-items-center gap-2"&gt;
+        🧠 &lt;span&gt;AI System Status&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="ai-indicator ai-indicator--online"&gt;
+        &lt;div class="ai-indicator__dot"&gt;&lt;/div&gt;
+        Online
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="ai-card__body"&gt;
+    &lt;!-- Dashboard content --&gt;
+  &lt;/div&gt;
+  &lt;div class="ai-card__footer"&gt;
+    &lt;button class="ai-btn ai-btn--sm ai-btn--accent"&gt;📊 View Details&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // Smooth scrolling navigation
+        document.querySelectorAll('.component-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.component-nav .nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection observer for automatic navigation updates
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.component-nav .nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
