@@ -330,7 +330,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
           </div>
           
           <div className="insight-item d-flex align-items-center mb-2">
-            <i className="ti ti-user-heart fs-18 text-primary me-2"></i>
+            <i className="fa-solid fa-heart fs-18 text-primary me-2"></i>
             <div>
               <div className="fw-medium fs-13">Patient Preference</div>
               <div className="fs-12 text-muted">Prefers afternoon appointments</div>
