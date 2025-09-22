@@ -186,10 +186,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                       {suggestions.map((suggestion, index) => (
                         <div key={suggestion.id} className="col-12">
                           <div
-                            className={`ai-card h-100 suggestion-card ${
-                              selectedSuggestion === suggestion.id ? 'border-primary shadow-sm' : ''
-                            }`}
-                            style={{ cursor: 'pointer', borderColor: selectedSuggestion === suggestion.id ? 'var(--ai-accent)' : undefined }}
+                            className={`ai-card h-100 suggestion-card ${selectedSuggestion === suggestion.id ? 'is-selected' : ''}`}
                             onClick={() => handleSelectSlot(suggestion)}
                           >
                             <div className="ai-card__body" style={{padding: 'var(--ai-space-3)'}}>
