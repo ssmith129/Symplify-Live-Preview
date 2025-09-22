@@ -32,11 +32,10 @@ const CommonSelect: React.FC<SelectProps> = ({ options, defaultValue, className,
 
   const handleChange = (option: Option | null) => {
     setSelectedOption(option || undefined);
-    if (option && typeof (props as any)?.onChange === 'function') {
-      // forward only the selected value string for simplicity
-      (props as any).onChange(option.value);
-    } else if (!option && typeof (props as any)?.onChange === 'function') {
-      (props as any).onChange('');
+    if (onChange && option) {
+      onChange(option.value);
+    } else if (onChange && !option) {
+      onChange('');
     }
   };
   useEffect(() => {
