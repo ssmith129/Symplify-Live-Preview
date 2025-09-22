@@ -9,6 +9,23 @@ import PredefinedDatePicker from "../../../../../core/common/datePicker";
 import { all_routes } from "../../../../routes/all_routes";
 
 const AppointmentCalendar = () => {
+  const [isAiMode, setIsAiMode] = useState(true);
+  const [showSuggestionsModal, setShowSuggestionsModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [modalClickPosition, setModalClickPosition] = useState({ x: 0, y: 0 });
+
+  const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
+    if (isAiMode) {
+      setSelectedDate(date);
+      setModalClickPosition({ x: event.clientX, y: event.clientY });
+      setShowSuggestionsModal(true);
+    }
+  };
+
+  const handleAiModeChange = (enabled: boolean) => {
+    setIsAiMode(enabled);
+  };
+
   return (
     <>
       {/* ========================
@@ -17,6 +34,15 @@ const AppointmentCalendar = () => {
       <div className="page-wrapper">
         {/* Start Content */}
         <div className="content">
+          {/* Smart Dashboard */}
+          <Suspense fallback={null}>
+            <SmartDashboard
+              className="mb-4"
+              isAiMode={isAiMode}
+              onAiModeChange={handleAiModeChange}
+            />
+          </Suspense>
+
           {/* Start Page Header */}
           <div className="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3 mb-3 border-1 border-bottom">
             <div className="flex-grow-1">
@@ -721,8 +747,8 @@ const AppointmentCalendar = () => {
                 <EventCalendar />
               </div>
               <Suspense fallback={null}>
-              <AppointmentInsights />
-            </Suspense>
+                <AppointmentInsights />
+              </Suspense>
             </div>
           </div>
           {/* end card */}
@@ -743,6 +769,16 @@ const AppointmentCalendar = () => {
       {/* ========================
 			End Page Content
 		========================= */}
+
+      {/* Smart Suggestions Modal */}
+      <Suspense fallback={null}>
+        <SmartSuggestionsModal
+          isOpen={showSuggestionsModal}
+          onClose={() => setShowSuggestionsModal(false)}
+          selectedDate={selectedDate}
+          clickPosition={modalClickPosition}
+        />
+      </Suspense>
     </>
   );
 };
