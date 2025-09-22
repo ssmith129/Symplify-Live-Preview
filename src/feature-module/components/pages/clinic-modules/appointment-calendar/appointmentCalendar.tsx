@@ -775,7 +775,7 @@ const AppointmentCalendar = () => {
         <SmartSuggestionsModal
           isOpen={showSuggestionsModal}
           onClose={() => setShowSuggestionsModal(false)}
-          selectedDate={selectedDate}
+          selectedDate={selectedDate || undefined}
           clickPosition={modalClickPosition}
         />
       </Suspense>
