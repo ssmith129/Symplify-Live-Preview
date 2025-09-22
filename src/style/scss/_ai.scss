@@ -1029,6 +1029,10 @@
 .ai-metric-primary{ background: var(--ai-primary); color: var(--ai-text-inverse); }
 .suggestion-card.is-selected{ border-color: var(--ai-accent) !important; box-shadow: 0 4px 12px rgba(0,211,199,0.25); }
 .progress-bar.ai-progress-bar{ width: var(--ai-progress, 0%); }
+.cursor-default{ cursor: default !important; }
+.ai-border-high{ border-color: var(--ai-high-border) !important; }
+.ai-bg-high{ background: var(--ai-high-bg) !important; }
+.ai-color-high{ color: var(--ai-high) !important; }
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .suggestion-item,
