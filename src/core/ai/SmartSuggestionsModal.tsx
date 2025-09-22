@@ -275,10 +275,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               <div className="text-end">
                                 <button
                                   type="button"
-                                  className={`btn btn-sm ${
-                                    selectedSuggestion === suggestion.id 
-                                      ? 'btn-primary' 
-                                      : 'btn-outline-primary'
+                                  className={`ai-btn ${
+                                    selectedSuggestion === suggestion.id
+                                      ? 'ai-btn--accent'
+                                      : 'ai-btn--secondary'
                                   }`}
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -287,11 +287,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                                 >
                                   {selectedSuggestion === suggestion.id ? (
                                     <>
-                                      <i className="ti ti-check me-1"></i>
-                                      Book This Time
+                                      ✅ Book This Time
                                     </>
                                   ) : (
-                                    'Select Time'
+                                    '📅 Select Time'
                                   )}
                                 </button>
                               </div>
