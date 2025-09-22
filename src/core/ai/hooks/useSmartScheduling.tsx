@@ -169,7 +169,7 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
       args: [patientId, doctorId, departmentId]
     };
 
-    analyzeTimesDebounced.current = setTimeout(async () => {
+    analyzeTimesDebounced.current = window.setTimeout(async () => {
       const cacheKey = createCacheKey('suggestions', patientId, doctorId, departmentId);
       
       setLoading(true);
