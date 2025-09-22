@@ -422,7 +422,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.notification,
+    path: routes.notifications,
     element: <Notifications />,
     route: Route,
   },
