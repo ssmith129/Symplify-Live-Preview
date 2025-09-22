@@ -338,7 +338,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
           </div>
           
           <div className="insight-item d-flex align-items-center">
-            <i className="ti ti-clock fs-18 text-success me-2"></i>
+            <i className="fa-regular fa-clock fs-18 text-success me-2"></i>
             <div>
               <div className="fw-medium fs-13">Wait Time Reduction</div>
               <div className="fs-12 text-muted">Morning slots have 40% less wait</div>
