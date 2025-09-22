@@ -305,7 +305,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 }}
                 disabled={loading}
               >
-                🔄 Refresh Suggestions
+                <i className="fa-solid fa-rotate-right me-1"></i>Refresh Suggestions
               </button>
             </div>
           )}
