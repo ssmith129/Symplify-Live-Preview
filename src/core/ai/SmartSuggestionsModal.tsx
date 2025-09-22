@@ -132,8 +132,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
       ></div>
       
       <div 
-        className="modal fade show d-block" 
-        style={{ zIndex: 1050 }}
+        className="modal fade show d-block ai-z-1050"
         role="dialog"
         aria-labelledby="smartSuggestionsModalTitle"
         aria-hidden="false"
