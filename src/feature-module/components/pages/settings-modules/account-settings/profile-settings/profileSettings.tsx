@@ -60,7 +60,7 @@ const ProfileSettings = () => {
                                 <input
                                   type="file"
                                   id="profileUpload"
-                                  style={{ display: "none" }}
+                                  className="d-none"
                                 />
                               </div>
                             </div>
