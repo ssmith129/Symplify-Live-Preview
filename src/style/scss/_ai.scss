@@ -449,6 +449,90 @@
 .ai-schedule-popover__body { padding: 10px 12px; max-height: 50vh; overflow: auto; }
 .ai-schedule-popover__footer { padding: 10px 12px; border-top: 1px solid var(--pr-border-color, #e7e8eb); background: #fafbfc; }
 
+/* Smart Dashboard Responsive Styles */
+.smart-dashboard .card {
+  transition: all 0.2s ease;
+}
+
+.smart-dashboard .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-metric-card {
+  border-left: 4px solid transparent;
+}
+
+.dashboard-metric-card:hover {
+  border-left-color: var(--primary);
+}
+
+/* Smart Suggestions Panel Styles */
+.smart-suggestions-panel .suggestion-item {
+  transition: all 0.15s ease;
+  border: 1px solid #e7e8eb;
+}
+
+.smart-suggestions-panel .suggestion-item:hover {
+  background-color: #f8f9fa;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.smart-suggestions-panel .insight-item {
+  transition: all 0.15s ease;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.smart-suggestions-panel .insight-item:hover {
+  background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.conflict-item {
+  padding: 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 193, 7, 0.1);
+  border-left: 3px solid #ffc107;
+}
+
+/* Smart Suggestions Modal Styles */
+.suggestion-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-card.border-primary {
+  box-shadow: 0 4px 12px rgba(46, 55, 164, 0.2);
+}
+
+/* Accessibility Enhancements */
+.smart-dashboard .form-check-input:focus,
+.smart-suggestions-panel .btn:focus,
+.suggestion-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .ai-section { margin-bottom: 10px; }
 .ai-section__title { font-weight: 600; color: var(--pr-gray-700, #495057); margin-bottom: 6px; font-size: 13px; }
 
@@ -465,6 +549,222 @@
 
 @keyframes ai-pop-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
-@media (max-width: 576px) {
-  .ai-schedule-popover { left: 50% !important; right: auto; top: auto !important; bottom: 12px; transform: translateX(-50%); width: calc(100% - 24px); max-height: 70vh; }
+/* Responsive Design for Smart Scheduling Features */
+
+/* Large screens (>= 1200px) */
+@media (min-width: 1200px) {
+  .smart-suggestions-panel .card {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+/* Medium screens (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .smart-dashboard .row .col-xl-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .smart-suggestions-panel {
+    margin-top: 20px;
+  }
+}
+
+/* Small screens (576px - 767px) */
+@media (max-width: 767px) {
+  .smart-dashboard .row .col-xl-3,
+  .smart-dashboard .row .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .smart-dashboard .card-body {
+    padding: 1rem;
+  }
+
+  .smart-suggestions-panel {
+    margin-top: 20px;
+  }
+
+  .smart-suggestions-panel .card-body {
+    padding: 1rem;
+  }
+
+  .suggestion-item {
+    padding: 12px;
+  }
+
+  .suggestion-item .row .col-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    font-size: 12px;
+  }
+
+  /* New Appointment Form Mobile Adjustments */
+  .page-wrapper .content .row .col-lg-8,
+  .page-wrapper .content .row .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .form-check-label {
+    font-size: 14px;
+  }
+}
+
+/* Extra small screens (< 576px) */
+@media (max-width: 575px) {
+  .ai-schedule-popover {
+    left: 50% !important;
+    right: auto;
+    top: auto !important;
+    bottom: 12px;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
+    max-height: 70vh;
+  }
+
+  .smart-dashboard h6 {
+    font-size: 14px;
+  }
+
+  .smart-dashboard .card-body .d-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .smart-dashboard .avatar {
+    margin: 0 auto 10px;
+  }
+
+  .smart-suggestions-panel .suggestions-list .suggestion-item {
+    padding: 10px;
+  }
+
+  .smart-suggestions-panel .badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .suggestion-item .row .col-4 {
+    margin-bottom: 8px;
+  }
+
+  .insight-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .insight-item i {
+    margin-bottom: 5px;
+  }
+
+  /* Smart Suggestions Modal Mobile */
+  .modal-dialog {
+    margin: 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .modal-body .row .col-12 {
+    margin-bottom: 15px;
+  }
+
+  .suggestion-card .card-body {
+    padding: 15px;
+  }
+
+  .suggestion-card .row .col-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    font-size: 11px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .suggestion-item,
+  .dashboard-metric-card,
+  .smart-dashboard .card {
+    min-height: 44px;
+  }
+
+  .suggestion-item:hover {
+    transform: none;
+  }
+
+  .smart-dashboard .card:hover {
+    transform: none;
+  }
+
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .form-check-input {
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .suggestion-item {
+    border-width: 2px;
+  }
+
+  .dashboard-metric-card {
+    border-left-width: 6px;
+  }
+
+  .conflict-item {
+    border-left-width: 4px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .smart-dashboard .card,
+  .suggestion-item,
+  .suggestion-card,
+  .btn,
+  .dashboard-metric-card {
+    transition: none !important;
+  }
+
+  .smart-dashboard .card:hover,
+  .suggestion-item:hover,
+  .suggestion-card:hover {
+    transform: none !important;
+  }
+
+  .ai-schedule-popover {
+    animation: none !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .ai-schedule-popover {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+
+  .smart-suggestions-panel .suggestion-item {
+    background: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+
+  .smart-suggestions-panel .suggestion-item:hover {
+    background: #4b5563;
+  }
+
+  .conflict-item {
+    background: rgba(251, 191, 36, 0.2);
+    border-color: #f59e0b;
+  }
 }
