@@ -199,7 +199,7 @@ const DoctorsLeaves = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Doctor}
@@ -215,7 +215,7 @@ const DoctorsLeaves = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Designation}
@@ -231,7 +231,7 @@ const DoctorsLeaves = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Department}
@@ -267,7 +267,7 @@ const DoctorsLeaves = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Amount}
@@ -283,7 +283,7 @@ const DoctorsLeaves = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Status}
