@@ -140,13 +140,12 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
             </h6>
             <span className="ai-badge ai-badge--low fs-11">Default view</span>
           </div>
-          <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
+          <div className="ai-card__body ai-p-2">
             <div className="suggestions-list">
               {defaultSuggestions.map((suggestion, index) => (
                 <div
                   key={suggestion.id}
-                  className="suggestion-item border rounded p-2 mb-2 hover-bg-light"
-                  style={{ cursor: 'default' }}
+                  className="suggestion-item border rounded p-2 mb-2 hover-bg-light cursor-default"
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center gap-2">
@@ -210,7 +209,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
             </small>
           )}
         </div>
-        <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
+        <div className="ai-card__body ai-p-2">
           {error ? (
             <div className="text-center py-3">
               <div className="text-danger mb-2">
@@ -239,7 +238,6 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   key={suggestion.id}
                   className="suggestion-item border rounded p-2 mb-2 cursor-pointer hover-bg-light"
                   onClick={() => handleSuggestionClick(suggestion)}
-                  style={{ cursor: 'pointer' }}
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center gap-2">
@@ -320,7 +318,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
             AI Insights
           </h6>
         </div>
-        <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
+        <div className="ai-card__body ai-p-2">
           <div className="insight-item d-flex align-items-center mb-2">
             <i className="fa-solid fa-fire fs-18 text-danger me-2"></i>
             <div>
@@ -349,14 +347,14 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
 
       {/* Conflicts Warning */}
       {conflicts.length > 0 && (
-        <div className="ai-card mt-3" style={{borderColor: 'var(--ai-high-border)'}}>
-          <div className="ai-card__header" style={{background: 'var(--ai-high-bg)', color: 'var(--ai-high)'}}>
+        <div className="ai-card mt-3 ai-border-high">
+          <div className="ai-card__header ai-bg-high ai-color-high">
             <h6 className="mb-0 fw-semibold">
               <i className="fa-solid fa-triangle-exclamation me-2"></i>
               Potential Conflicts
             </h6>
           </div>
-          <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
+          <div className="ai-card__body ai-p-2">
             {conflicts.map((conflict, index) => (
               <div key={index} className="conflict-item mb-2">
                 <div className={`text-${conflict.type === 'error' ? 'danger' : conflict.type === 'warning' ? 'warning' : 'info'} fw-medium fs-13`}>
