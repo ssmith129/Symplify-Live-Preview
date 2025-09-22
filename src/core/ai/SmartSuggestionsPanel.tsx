@@ -316,7 +316,8 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
       <div className="ai-card">
         <div className="ai-card__header">
           <h6 className="mb-0 fw-semibold">
-            💡 AI Insights
+            <i className="fa-regular fa-lightbulb me-2"></i>
+            AI Insights
           </h6>
         </div>
         <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
