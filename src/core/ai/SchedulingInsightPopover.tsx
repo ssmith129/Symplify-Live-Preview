@@ -110,12 +110,12 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
 
   const placementVars = {
     ['--ai-popover-left' as any]: `${Math.round(anchor.left + anchor.width / 2)}px`,
-    ['--ai-popover-top' as any]: `${Math.round(anchor.top + anchor.height + 8)}px`,
+    ['--ai-popover-top' as any]: `${Math.round(anchor.top + anchor.height / 2)}px`,
   } as React.CSSProperties;
 
   return (
     <div className="ai-schedule-overlay" aria-hidden="false">
-      <div ref={popRef} className="ai-schedule-popover shadow" role="dialog" aria-modal="true" aria-label="AI Scheduling Insights" style={placementVars}>
+      <div ref={popRef} className="ai-schedule-popover shadow ai-popover-center" role="dialog" aria-modal="true" aria-label="AI Scheduling Insights" style={placementVars}>
         <div className="ai-schedule-popover__header d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-2 min-width-0">
             <i className="ti ti-brain text-primary" aria-hidden="true" />
