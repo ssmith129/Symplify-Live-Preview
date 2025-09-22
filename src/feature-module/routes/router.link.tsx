@@ -442,12 +442,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.addinvoice,
+    path: routes.addInvoice,
     element: <AddInoivce />,
     route: Route,
   },
   {
-    path: routes.invoicedetails,
+    path: routes.invoiceDetails,
     element: <InvoiceDetails />,
     route: Route,
   },
@@ -482,7 +482,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.patientnotificationsettings,
+    path: routes.patientnotificationssettings,
     element: <PatientNotificationsSettings />,
     route: Route,
   },
@@ -492,7 +492,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.patientprescriptions,
+    path: routes.patientPrescriptions,
     element: <PatientPrescriptions />,
     route: Route,
   },
@@ -512,7 +512,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.loginBasic,
+    path: routes.loginbasic,
     element: <LoginBasic />,
     route: Route,
   },
@@ -522,22 +522,22 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.loginIllustration,
+    path: routes.loginillustration,
     element: <LoginIllustration />,
     route: Route,
   },
   {
-    path: routes.registerBasic,
+    path: routes.registerbasic,
     element: <RegisterBasic />,
     route: Route,
   },
   {
-    path: routes.registerCover,
+    path: routes.registercover,
     element: <RegisterCover />,
     route: Route,
   },
   {
-    path: routes.registerIllustration,
+    path: routes.registerillustration,
     element: <RegisterIllustration />,
     route: Route,
   },
