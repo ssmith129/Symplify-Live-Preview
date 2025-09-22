@@ -1038,6 +1038,7 @@
 .ai-color-inverse{ color: var(--ai-text-inverse) !important; }
 .ai-bg-secondary-token{ background: var(--ai-bg-secondary) !important; }
 .ai-code-token{ font-size: var(--ai-font-xs) !important; background: var(--ai-bg-secondary) !important; padding: 2px 4px !important; border-radius: 3px !important; }
+.ai-h-40{ height: 40px !important; }
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .suggestion-item,

@@ -207,7 +207,7 @@ const AIDesignSystemShowcase: React.FC<AIDesignSystemShowcaseProps> = ({
                         <h6 className="mb-0 fw-semibold">⚠️ Conflict Warning</h6>
                       </div>
                       <div className="ai-card__body">
-                        <p className="mb-2" style={{color: 'var(--ai-high)'}}>
+                        <p className="mb-2 ai-color-high">
                           Doctor has another appointment nearby
                         </p>
                         <p className="mb-0 ai-fs-sm text-muted">

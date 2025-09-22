@@ -97,7 +97,7 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
                 <div className="card-body p-3">
                   <div className="d-flex align-items-center">
                     <div className="placeholder-glow">
-                      <div className="placeholder col-3 rounded me-3" style={{ height: '40px' }}></div>
+                      <div className="placeholder col-3 rounded me-3 ai-h-40"></div>
                     </div>
                     <div className="flex-grow-1">
                       <div className="placeholder-glow">
