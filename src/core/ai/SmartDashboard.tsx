@@ -160,22 +160,21 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
                     justifyContent: 'center',
                     fontSize: '16px'
                   }}>
-                    {metric.color === 'success' ? '✅' : metric.color === 'warning' ? '⚠️' : metric.color === 'info' ? '���' : '📊'}
+                    {metric.color === 'success' ? '✅' : metric.color === 'warning' ? '⚠️' : metric.color === 'info' ? '⏰' : '📊'}
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">
-                      <p className="text-muted mb-0 fs-13">{metric.title}</p>
+                      <p className="mb-0" style={{fontSize: 'var(--ai-font-xs)', color: 'var(--ai-text-muted)'}}>{metric.title}</p>
                       {metric.trend && (
-                        <span className={`badge badge-soft-${metric.trend === 'up' ? 'success' : 'danger'} fs-11`}>
-                          <i className={`ti ti-arrow-${metric.trend} me-1`}></i>
-                          {metric.trendValue}
+                        <span className={`ai-badge ai-badge--${metric.trend === 'up' ? 'low' : 'critical'}`} style={{fontSize: 'var(--ai-font-xs)'}}>
+                          {metric.trend === 'up' ? '↗' : '↘'} {metric.trendValue}
                         </span>
                       )}
                     </div>
-                    <h4 className="mb-1 fw-bold text-dark">{metric.value}</h4>
-                    <div className="progress progress-sm">
+                    <h4 className="mb-1 fw-bold" style={{color: 'var(--ai-text-primary)'}}>{metric.value}</h4>
+                    <div className="ai-progress">
                       <div
-                        className={`progress-bar bg-${metric.color}`}
+                        className={`ai-progress__bar ai-progress__bar--${metric.color === 'success' ? 'success' : metric.color === 'warning' ? 'warning' : metric.color === 'danger' ? 'danger' : 'primary'}`}
                         role="progressbar"
                         style={{ width: `${metric.percentage}%` }}
                         aria-valuenow={metric.percentage}
