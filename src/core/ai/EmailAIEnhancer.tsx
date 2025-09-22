@@ -24,14 +24,10 @@ function annotateItem(el: HTMLElement) {
   pri.className = `ai-badge ai-badge--${ai.priority}`;
   pri.textContent = ai.priority.toUpperCase();
   const catEl = document.createElement('span');
-  catEl.className = 'ai-badge';
-  catEl.style.background = 'var(--ai-bg-secondary)';
-  catEl.style.color = 'var(--ai-text-secondary)';
+  catEl.className = 'ai-badge ai-badge--low';
   catEl.textContent = cat;
   const conf = document.createElement('span');
-  conf.className = 'ai-badge ai-badge--sm';
-  conf.style.background = 'var(--ai-bg-secondary)';
-  conf.style.color = 'var(--ai-text-secondary)';
+  conf.className = 'ai-badge ai-badge--sm ai-badge--low';
   conf.textContent = `${Math.round(ai.confidence*100)}%`;
   badgeRow.appendChild(pri);
   badgeRow.appendChild(catEl);
@@ -74,7 +70,7 @@ export default function EmailAIEnhancer() {
 
   return (
     <div className="d-flex align-items-center gap-2 flex-wrap">
-      <span className="ai-badge ai-badge--low d-flex align-items-center"><i className="ti ti-robot me-1"/>AI Active</span>
+      <span className="ai-badge ai-badge--low d-flex align-items-center">🤖 AI Active</span>
       {filters.map(f => (
         <button key={f} className={`ai-btn ai-btn--sm ${filter===f? 'ai-btn--primary' : 'ai-btn--secondary'}`} onClick={() => setFilter(f as any)}>
           {f === 'all' ? 'All' : f.charAt(0).toUpperCase()+f.slice(1)}
