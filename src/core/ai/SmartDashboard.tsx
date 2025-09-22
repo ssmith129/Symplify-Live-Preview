@@ -161,7 +161,7 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
                     justifyContent: 'center',
                     fontSize: '16px'
                   }}>
-                    <i className={`$${'{'}metric.color === 'success' ? 'fa-solid fa-circle-check' : metric.color === 'warning' ? 'fa-solid fa-triangle-exclamation' : metric.color === 'info' ? 'fa-regular fa-clock' : 'fa-solid fa-chart-line'${'}'}`}></i>
+                    <i className={`${metric.color === 'success' ? 'fa-solid fa-circle-check' : metric.color === 'warning' ? 'fa-solid fa-triangle-exclamation' : metric.color === 'info' ? 'fa-regular fa-clock' : 'fa-solid fa-chart-line'}`}></i>
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">
