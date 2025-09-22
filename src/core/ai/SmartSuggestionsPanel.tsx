@@ -352,7 +352,8 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
         <div className="ai-card mt-3" style={{borderColor: 'var(--ai-high-border)'}}>
           <div className="ai-card__header" style={{background: 'var(--ai-high-bg)', color: 'var(--ai-high)'}}>
             <h6 className="mb-0 fw-semibold">
-              ⚠️ Potential Conflicts
+              <i className="fa-solid fa-triangle-exclamation me-2"></i>
+              Potential Conflicts
             </h6>
           </div>
           <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
