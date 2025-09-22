@@ -324,10 +324,10 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
         abortControllerRef.current.abort();
       }
       if (analyzeTimesDebounced.current) {
-        clearTimeout(analyzeTimesDebounced.current);
+        window.clearTimeout(analyzeTimesDebounced.current);
       }
       if (checkConflictsDebounced.current) {
-        clearTimeout(checkConflictsDebounced.current);
+        window.clearTimeout(checkConflictsDebounced.current);
       }
     };
   }, []);
