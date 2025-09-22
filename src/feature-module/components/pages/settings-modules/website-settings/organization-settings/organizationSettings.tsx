@@ -131,7 +131,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
@@ -167,7 +167,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload1"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
@@ -203,7 +203,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload2"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
@@ -239,7 +239,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload3"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
@@ -277,7 +277,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload4"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
@@ -313,7 +313,7 @@ const OrganizationSettings = () => {
                             <input
                               type="file"
                               id="profileUpload5"
-                              style={{ display: "none" }}
+                              className="d-none"
                             />
                           </div>
                         </div>
