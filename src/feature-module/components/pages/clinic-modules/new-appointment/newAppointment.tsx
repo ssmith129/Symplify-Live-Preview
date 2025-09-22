@@ -16,13 +16,43 @@ const SmartSuggestionsPanel = lazy(() => import('../../../../../core/ai/SmartSug
 import type { SmartSuggestion, ConflictWarning } from '../../../../../core/ai/SmartSuggestionsPanel';
 
 const NewAppointment = () => {
+  const [formData, setFormData] = useState({
+    patientId: '',
+    doctorId: '',
+    departmentId: '',
+    appointmentType: '',
+    date: '',
+    time: '',
+    reason: '',
+    status: ''
+  });
+  const [conflicts, setConflicts] = useState<ConflictWarning[]>([]);
+  const [showSmartMode, setShowSmartMode] = useState(true);
+
   const getModalContainer = () => {
     const modalElement = document.getElementById("modal-datepicker");
     return modalElement ? modalElement : document.body; // Fallback to document.body if modalElement is null
   };
 
   const onChangeTime: TimePickerProps["onChange"] = (time, timeString) => {
+    setFormData(prev => ({ ...prev, time: timeString || '' }));
     console.log(time, timeString);
+  };
+
+  const handleFieldChange = (field: string, value: any) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSuggestionSelect = (suggestion: SmartSuggestion) => {
+    setFormData(prev => ({
+      ...prev,
+      date: suggestion.date,
+      time: suggestion.time
+    }));
+  };
+
+  const handleConflictDetected = (conflicts: ConflictWarning[]) => {
+    setConflicts(conflicts);
   };
   return (
     <>
@@ -82,6 +112,7 @@ const NewAppointment = () => {
                             options={Patient}
                             className="select"
                             defaultValue={Patient[0]}
+                            onChange={(value) => handleFieldChange('patientId', value)}
                           />
                         </div>
                       </div>
@@ -95,6 +126,7 @@ const NewAppointment = () => {
                             options={Department}
                             className="select"
                             defaultValue={Department[0]}
+                            onChange={(value) => handleFieldChange('departmentId', value)}
                           />
                         </div>
                       </div>
@@ -109,6 +141,7 @@ const NewAppointment = () => {
                             options={Doctor}
                             className="select"
                             defaultValue={Doctor[0]}
+                            onChange={(value) => handleFieldChange('doctorId', value)}
                           />
                         </div>
                       </div>
