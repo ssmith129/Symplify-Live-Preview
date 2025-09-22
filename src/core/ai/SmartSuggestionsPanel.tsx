@@ -312,14 +312,13 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
       </div>
 
       {/* AI Insights Card */}
-      <div className="card">
-        <div className="card-header">
+      <div className="ai-card">
+        <div className="ai-card__header">
           <h6 className="mb-0 fw-semibold">
-            <i className="ti ti-lightbulb me-2 text-warning"></i>
-            AI Insights
+            💡 AI Insights
           </h6>
         </div>
-        <div className="card-body p-2">
+        <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
           <div className="insight-item d-flex align-items-center mb-2">
             <i className="ti ti-flame fs-18 text-danger me-2"></i>
             <div>
