@@ -198,19 +198,18 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   return (
     <div className={`smart-suggestions-panel ${className}`}>
       {/* AI Recommendations Card */}
-      <div className="card mb-3">
-        <div className="card-header d-flex align-items-center justify-content-between">
+      <div className="ai-card mb-3">
+        <div className="ai-card__header d-flex align-items-center justify-content-between">
           <h6 className="mb-0 fw-semibold">
-            <i className="ti ti-brain me-2 text-primary"></i>
-            AI Recommendations
+            🎯 AI Recommendations
           </h6>
           {lastUpdated && (
-            <small className="text-muted">
+            <small className="ai-badge ai-badge--sm ai-badge--low">
               Updated {lastUpdated.toLocaleTimeString()}
             </small>
           )}
         </div>
-        <div className="card-body p-2">
+        <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
           {error ? (
             <div className="text-center py-3">
               <div className="text-danger mb-2">
