@@ -36,7 +36,7 @@
   --ai-low-bg: rgba(25, 135, 84, 0.1);
   --ai-low-border: rgba(25, 135, 84, 0.2);
 
-  /* Text Colors */
+  /* Text Colors (overridden below to map to main variables) */
   --ai-text-primary: #1A202C;
   --ai-text-secondary: #4A5568;
   --ai-text-muted: #718096;
@@ -52,12 +52,23 @@
   --ai-space-6: 24px;
   --ai-space-8: 32px;
 
-  /* Typography */
-  --ai-font-xs: 10px;
-  --ai-font-sm: 12px;
-  --ai-font-base: 14px;
-  --ai-font-lg: 16px;
-  --ai-font-xl: 18px;
+  /* Typography (aligned to main system) */
+  --ai-font-xs: 0.75rem;   /* 12px -> matches .fs-12 */
+  --ai-font-sm: 0.8125rem; /* 13px -> matches .fs-13 */
+  --ai-font-base: 0.875rem;/* 14px -> $font-size-base */
+  --ai-font-lg: 1rem;      /* 16px */
+  --ai-font-xl: 1.125rem;  /* 18px */
+  --ai-line-tight: 1.25;
+  --ai-line-normal: 1.5;
+  --ai-letter-tight: -0.01em;
+  --ai-letter-normal: 0;
+
+  /* Text colors mapped to main system */
+  --ai-text-primary: var(--heading-color);
+  --ai-text-secondary: var(--body-color);
+  --ai-text-muted: var(--gray-500);
+  --ai-text-light: var(--gray-400);
+  --ai-text-inverse: #FFFFFF;
 
   /* Transitions */
   --ai-transition-normal: 0.15s ease;
@@ -74,10 +85,12 @@
   padding: var(--ai-space-1) var(--ai-space-2);
   border-radius: 6px;
   font-size: var(--ai-font-xs);
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: 600; /* $font-weight-semibold */
+  line-height: var(--ai-line-tight);
+  letter-spacing: var(--ai-letter-normal);
   border: 1px solid transparent;
   transition: var(--ai-transition-normal);
+  font-family: $font-family-base;
 }
 
 .ai-badge--critical {
@@ -359,13 +372,15 @@
   padding: var(--ai-space-2) var(--ai-space-4);
   border-radius: 6px;
   font-size: var(--ai-font-sm);
-  font-weight: 500;
-  line-height: 1.2;
+  font-weight: $font-weight-medium; /* 500 */
+  line-height: var(--ai-line-normal);
+  letter-spacing: var(--ai-letter-normal);
   border: 1px solid transparent;
   cursor: pointer;
   transition: var(--ai-transition-normal);
   min-height: 36px;
   text-decoration: none;
+  font-family: $font-family-base;
 }
 
 .ai-btn:focus {
@@ -643,11 +658,20 @@
   padding: var(--ai-space-4);
   border-bottom: 1px solid var(--ai-border-light);
   background: var(--ai-bg-secondary);
-  font-weight: 600;
+  font-weight: $font-weight-semibold; /* 600 */
+  font-size: var(--ai-font-base);
+  line-height: var(--ai-line-normal);
+  letter-spacing: var(--ai-letter-normal);
+  color: var(--ai-text-primary);
+  font-family: $font-family-base;
 }
 
 .ai-card__body {
   padding: var(--ai-space-4);
+  font-size: var(--ai-font-base);
+  line-height: var(--ai-line-normal);
+  color: var(--ai-text-secondary);
+  font-family: $font-family-base;
 }
 
 .ai-card__footer {
@@ -665,6 +689,10 @@
   border-bottom: 1px solid var(--ai-border-light);
   transition: var(--ai-transition-normal);
   cursor: pointer;
+  font-size: var(--ai-font-base);
+  line-height: var(--ai-line-normal);
+  color: var(--ai-text-secondary);
+  font-family: $font-family-base;
 }
 
 .ai-list-item:hover {
@@ -722,6 +750,17 @@
 .ai-schedule-popover__header { padding: var(--ai-space-3) var(--ai-space-4); border-bottom: 1px solid var(--ai-border-light); }
 .ai-schedule-popover__body { padding: var(--ai-space-3) var(--ai-space-4); max-height: 50vh; overflow: auto; }
 .ai-schedule-popover__footer { padding: var(--ai-space-3) var(--ai-space-4); border-top: 1px solid var(--ai-border-light); background: var(--ai-bg-secondary); }
+
+/* AI Typography Utilities (for explicit usage in components) */
+.ai-heading-1 { font-size: 32px; line-height: var(--ai-line-tight); letter-spacing: var(--ai-letter-tight); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-heading-2 { font-size: 28px; line-height: var(--ai-line-tight); letter-spacing: var(--ai-letter-tight); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-heading-3 { font-size: 24px; line-height: var(--ai-line-tight); letter-spacing: var(--ai-letter-tight); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-heading-4 { font-size: 20px; line-height: var(--ai-line-tight); letter-spacing: var(--ai-letter-normal); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-heading-5 { font-size: 18px; line-height: var(--ai-line-normal); letter-spacing: var(--ai-letter-normal); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-heading-6 { font-size: 16px; line-height: var(--ai-line-normal); letter-spacing: var(--ai-letter-normal); font-weight: $font-weight-medium; color: var(--ai-text-primary); font-family: $font-family-base; }
+.ai-text-body { font-size: var(--ai-font-base); line-height: var(--ai-line-normal); color: var(--ai-text-secondary); font-family: $font-family-base; }
+.ai-text-secondary { font-size: var(--ai-font-sm); line-height: var(--ai-line-normal); color: var(--ai-text-muted); font-family: $font-family-base; }
+.ai-caption { font-size: var(--ai-font-xs); line-height: var(--ai-line-tight); color: var(--ai-text-muted); letter-spacing: 0.005em; font-family: $font-family-base; }
 
 /* Smart Dashboard Responsive Styles */
 .smart-dashboard .card {
