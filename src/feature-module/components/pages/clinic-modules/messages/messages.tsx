@@ -243,7 +243,7 @@ const Messages = () => {
                     <div className="text-end">
                       <small className="text-dark">08:26 AM</small>
                       <div className="mt-1">
-                        <span className="badge bg-danger rounded-circle" style={{width: '16px', height: '16px', fontSize: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>5</span>
+                        <span className="message-count badge bg-danger rounded-circle">5</span>
                       </div>
                     </div>
                   </div>
@@ -281,7 +281,7 @@ const Messages = () => {
                     <div className="text-end">
                       <small className="text-dark">yesterday</small>
                       <div className="mt-1">
-                        <span className="badge bg-danger rounded-circle" style={{width: '16px', height: '16px', fontSize: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>5</span>
+                        <span className="message-count badge bg-danger rounded-circle">5</span>
                       </div>
                     </div>
                   </div>
