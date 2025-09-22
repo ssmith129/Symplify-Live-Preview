@@ -156,7 +156,7 @@ const DoctorsReviews = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Doctor}
@@ -172,7 +172,7 @@ const DoctorsReviews = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Designation}
@@ -188,7 +188,7 @@ const DoctorsReviews = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Department}
@@ -224,7 +224,7 @@ const DoctorsReviews = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Amount}
@@ -240,7 +240,7 @@ const DoctorsReviews = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Status}
