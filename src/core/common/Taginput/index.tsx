@@ -59,7 +59,7 @@ const TagInput: React.FC<TagInputProps> = ({ initialTags = [], onTagsChange }) =
         ref={inputRef}
         type="text"
         size="small"
-        style={{ flex: 1, minWidth: 100, maxWidth: '300px' }}
+        className="ai-input-flex"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
