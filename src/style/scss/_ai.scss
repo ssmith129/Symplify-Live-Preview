@@ -1040,6 +1040,8 @@
 .ai-code-token{ font-size: var(--ai-font-xs) !important; background: var(--ai-bg-secondary) !important; padding: 2px 4px !important; border-radius: 3px !important; }
 .ai-h-40{ height: 40px !important; }
 .ai-w-80{ width: 80px !important; }
+.ai-abs-sr{ position:absolute !important; top:0 !important; left:0 !important; opacity:0 !important; pointer-events:none !important; }
+.ai-input-flex{ flex:1 1 auto !important; min-width:100px !important; max-width:300px !important; }
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
   .suggestion-item,
