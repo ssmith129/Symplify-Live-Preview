@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import useSmartScheduling from './hooks/useSmartScheduling';
 
 export interface SmartSuggestion {
