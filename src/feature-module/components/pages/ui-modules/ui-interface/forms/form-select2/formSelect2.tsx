@@ -82,7 +82,7 @@ const FormSelect2 = () => {
                       <Select
                         className="select"
                         defaultValue="Select"
-                        style={{ width: 200 }}
+                        className="ai-w-200"
                         onChange={handleChange}
                         options={[
                           {
@@ -143,7 +143,7 @@ const FormSelect2 = () => {
                         className="select"
                         mode="multiple"
                         value={value}
-                        style={{ width: "100%" }}
+                        className="w-100"
                         onChange={setValue}
                         placeholder="Please select"
                         options={[
@@ -219,7 +219,7 @@ const FormSelect2 = () => {
                           <Select
                             className="select"
                             defaultValue="Choose a city"
-                            style={{ width: 200 }}
+                            className="ai-w-200"
                             onChange={handleChange}
                             options={[
                               {
