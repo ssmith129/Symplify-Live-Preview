@@ -191,9 +191,9 @@ export default function InboxTriageCard() {
                 onDragStart={(e)=>onDragStart(e, msg.id)}
                 onClick={()=>setExpanded(s=>({ ...s, [msg.id]: !s[msg.id] }))}
               >
-                  <div className="d-flex align-items-start justify-content-between gap-2">
-                    <div className="d-flex align-items-start min-width-0 flex-grow-1">
-                      <i className={`${PRIORITY_ICONS[msg.ai.priority]} fs-14 priority-icon-${msg.ai.priority} me-2 mt-1`} />
+                  <div className="d-flex align-items-start gap-3">
+                    <div className={`ai-list-item__priority ai-list-item__priority--${msg.ai.priority}`}></div>
+                    <div className="ai-list-item__content">
                       <div className="min-width-0 flex-grow-1">
                         <div className="d-flex align-items-center justify-content-between">
                           <h6 className="mb-0 fw-semibold text-dark fs-14 text-truncate" title={msg.subject}>{msg.from}</h6>
