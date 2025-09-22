@@ -137,7 +137,7 @@ const DoctorsAppointmentDetails = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Doctor}
@@ -153,7 +153,7 @@ const DoctorsAppointmentDetails = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Designation}
@@ -169,7 +169,7 @@ const DoctorsAppointmentDetails = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Department}
@@ -205,7 +205,7 @@ const DoctorsAppointmentDetails = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Amount}
@@ -221,7 +221,7 @@ const DoctorsAppointmentDetails = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Status}
