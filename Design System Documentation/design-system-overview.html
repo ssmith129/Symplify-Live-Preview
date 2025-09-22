@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Application - Design System Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tabler-icons@1.119.0/icons-sprite.svg">
+    <style>
+        :root {
+            /* AI Brand Identity */
+            --ai-primary: #2D3748;
+            --ai-primary-light: #4A5568;
+            --ai-primary-dark: #1A202C;
+            --ai-accent: #00D3C7;
+            --ai-accent-light: #4FD1C7;
+            --ai-accent-dark: #00B5AA;
+            
+            /* AI Background Colors */
+            --ai-bg-primary: #FFFFFF;
+            --ai-bg-secondary: #F7F8FA;
+            --ai-bg-tertiary: #E2E8F0;
+            
+            /* AI Border Colors */
+            --ai-border-light: #E2E8F0;
+            --ai-border-medium: #CBD5E0;
+            --ai-border-dark: #A0AEC0;
+            
+            /* Priority Levels */
+            --ai-critical: #DC3545;
+            --ai-critical-bg: rgba(220, 53, 69, 0.1);
+            --ai-critical-border: rgba(220, 53, 69, 0.2);
+            
+            --ai-high: #E2B93B;
+            --ai-high-bg: rgba(226, 185, 59, 0.1);
+            --ai-high-border: rgba(226, 185, 59, 0.2);
+            
+            --ai-medium: #0D6EFD;
+            --ai-medium-bg: rgba(13, 110, 253, 0.1);
+            --ai-medium-border: rgba(13, 110, 253, 0.2);
+            
+            --ai-low: #198754;
+            --ai-low-bg: rgba(25, 135, 84, 0.1);
+            --ai-low-border: rgba(25, 135, 84, 0.2);
+            
+            /* Text Colors */
+            --ai-text-primary: #1A202C;
+            --ai-text-secondary: #4A5568;
+            --ai-text-muted: #718096;
+            --ai-text-light: #A0AEC0;
+            --ai-text-inverse: #FFFFFF;
+            
+            /* Spacing */
+            --ai-space-1: 4px;
+            --ai-space-2: 8px;
+            --ai-space-3: 12px;
+            --ai-space-4: 16px;
+            --ai-space-5: 20px;
+            --ai-space-6: 24px;
+            --ai-space-8: 32px;
+            
+            /* Typography */
+            --ai-font-xs: 10px;
+            --ai-font-sm: 12px;
+            --ai-font-base: 14px;
+            --ai-font-lg: 16px;
+            --ai-font-xl: 18px;
+            
+            /* Transitions */
+            --ai-transition-normal: 0.15s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--ai-bg-secondary);
+            color: var(--ai-text-primary);
+            line-height: 1.6;
+        }
+
+        .docs-header {
+            background: linear-gradient(135deg, var(--ai-primary) 0%, var(--ai-primary-light) 100%);
+            color: var(--ai-text-inverse);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .docs-nav {
+            background: var(--ai-bg-primary);
+            border-right: 1px solid var(--ai-border-light);
+            min-height: calc(100vh - 200px);
+            position: sticky;
+            top: 20px;
+        }
+
+        .docs-nav .nav-link {
+            color: var(--ai-text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+            transition: var(--ai-transition-normal);
+        }
+
+        .docs-nav .nav-link:hover,
+        .docs-nav .nav-link.active {
+            background: var(--ai-accent-bg);
+            color: var(--ai-accent);
+        }
+
+        .component-section {
+            background: var(--ai-bg-primary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .component-showcase {
+            background: var(--ai-bg-secondary);
+            border: 1px solid var(--ai-border-light);
+            border-radius: 6px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0.5rem;
+            color: white;
+            font-size: var(--ai-font-xs);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .typography-example {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--ai-bg-primary);
+            border-left: 4px solid var(--ai-accent);
+        }
+
+        /* AI Component Styles */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--ai-space-1);
+            padding: var(--ai-space-1) var(--ai-space-2);
+            border-radius: 6px;
+            font-size: var(--ai-font-xs);
+            font-weight: 600;
+            line-height: 1.2;
+            border: 1px solid transparent;
+            transition: var(--ai-transition-normal);
+        }
+
+        .ai-badge--critical {
+            background: var(--ai-critical-bg);
+            color: var(--ai-critical);
+            border-color: var(--ai-critical-border);
+        }
+
+        .ai-badge--high {
+            background: var(--ai-high-bg);
+            color: var(--ai-high);
+            border-color: var(--ai-high-border);
+        }
+
+        .ai-badge--medium {
+            background: var(--ai-medium-bg);
+            color: var(--ai-medium);
+            border-color: var(--ai-medium-border);
+        }
+
+        .ai-badge--low {
+            background: var(--ai-low-bg);
+            color: var(--ai-low);
+            border-color: var(--ai-low-border);
+        }
+
+        .ai-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--ai-space-2);
+            padding: var(--ai-space-2) var(--ai-space-4);
+            border-radius: 6px;
+            font-size: var(--ai-font-sm);
+            font-weight: 500;
+            line-height: 1.2;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: var(--ai-transition-normal);
+            min-height: 36px;
+            text-decoration: none;
+        }
+
+        .ai-btn:focus {
+            outline: 2px solid var(--ai-accent);
+            outline-offset: 2px;
+        }
+
+        .ai-btn--primary {
+            background: var(--ai-primary);
+            color: var(--ai-text-inverse);
+            border-color: var(--ai-primary);
+        }
+
+        .ai-btn--primary:hover {
+            background: var(--ai-primary-dark);
+            border-color: var(--ai-primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
+            color: var(--ai-text-inverse);
+        }
+
+        .ai-btn--secondary {
+            background: transparent;
+            color: var(--ai-primary);
+            border-color: var(--ai-border-medium);
+        }
+
+        .ai-btn--secondary:hover {
+            background: var(--ai-bg-secondary);
+            border-color: var(--ai-primary);
+            transform: translateY(-1px);
+            color: var(--ai-primary);
+        }
+
+        .ai-btn--accent {
+            background: var(--ai-accent);
+            color: var(--ai-text-inverse);
+            border-color: var(--ai-accent);
+        }
+
+        .ai-btn--accent:hover {
+            background: var(--ai-accent-dark);
+            border-color: var(--ai-accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 211, 199, 0.25);
+            color: var(--ai-text-inverse);
+        }
+
+        .ai-card {
+            background: var(--ai-bg-primary);
+            border: 1px solid var(--ai-border-light);
+            border-radius: 8px;
+            transition: var(--ai-transition-normal);
+            overflow: hidden;
+        }
+
+        .ai-card:hover {
+            border-color: var(--ai-border-medium);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .ai-card__header {
+            padding: var(--ai-space-4);
+            border-bottom: 1px solid var(--ai-border-light);
+            background: var(--ai-bg-secondary);
+            font-weight: 600;
+        }
+
+        .ai-card__body {
+            padding: var(--ai-space-4);
+        }
+
+        .ai-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--ai-bg-tertiary);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: var(--ai-space-2) 0;
+        }
+
+        .ai-progress__bar {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .ai-progress__bar--success { background: var(--ai-low); }
+        .ai-progress__bar--warning { background: var(--ai-high); }
+        .ai-progress__bar--danger { background: var(--ai-critical); }
+        .ai-progress__bar--primary { background: var(--ai-primary); }
+
+        .ai-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--ai-space-3);
+            padding: var(--ai-space-3);
+            border-bottom: 1px solid var(--ai-border-light);
+            transition: var(--ai-transition-normal);
+            cursor: pointer;
+        }
+
+        .ai-list-item:hover {
+            background: var(--ai-bg-secondary);
+        }
+
+        .ai-list-item__priority {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: var(--ai-space-2);
+        }
+
+        .ai-list-item__priority--critical { background: var(--ai-critical); }
+        .ai-list-item__priority--high { background: var(--ai-high); }
+        .ai-list-item__priority--medium { background: var(--ai-medium); }
+        .ai-list-item__priority--low { background: var(--ai-low); }
+
+        .ai-list-item__content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 1rem;
+            overflow-x: auto;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--ai-bg-primary);
+            border: 1px solid var(--ai-border-light);
+            border-radius: 6px;
+            transition: var(--ai-transition-normal);
+        }
+
+        .icon-item:hover {
+            border-color: var(--ai-accent);
+            transform: translateY(-2px);
+        }
+
+        .icon-item i {
+            font-size: 24px;
+            color: var(--ai-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-item code {
+            font-size: 10px;
+            color: var(--ai-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="docs-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4 mb-3">AI Email Application Design System</h1>
+                    <p class="lead">A comprehensive design system for AI-powered email features ensuring visual consistency and optimal user experience.</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <div class="d-flex align-items-center justify-content-end gap-3">
+                        <i style="font-size: 48px; color: var(--ai-accent);">🤖</i>
+                        <div>
+                            <div class="h5 mb-0">Version 1.0</div>
+                            <small class="opacity-75">Updated Today</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="docs-nav p-3">
+                    <h6 class="text-uppercase mb-3 text-muted">Navigation</h6>
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#overview">Overview</a>
+                        <a class="nav-link" href="#colors">Color Palette</a>
+                        <a class="nav-link" href="#typography">Typography</a>
+                        <a class="nav-link" href="#spacing">Spacing System</a>
+                        <a class="nav-link" href="#badges">AI Badges</a>
+                        <a class="nav-link" href="#buttons">AI Buttons</a>
+                        <a class="nav-link" href="#cards">AI Cards</a>
+                        <a class="nav-link" href="#lists">AI Lists</a>
+                        <a class="nav-link" href="#progress">Progress Indicators</a>
+                        <a class="nav-link" href="#icons">Icon System</a>
+                        <a class="nav-link" href="#accessibility">Accessibility</a>
+                        <a class="nav-link" href="#implementation">Implementation</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="p-4">
+                    <!-- Overview Section -->
+                    <section id="overview" class="component-section">
+                        <h2 class="h3 mb-4">Design System Overview</h2>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>This design system establishes unified standards for all AI-powered features within the email application. It addresses inconsistencies identified across various AI components and provides a cohesive visual language.</p>
+                                
+                                <h5>Key Principles</h5>
+                                <ul>
+                                    <li><strong>Consistency:</strong> Unified visual language across all AI features</li>
+                                    <li><strong>Accessibility:</strong> WCAG 2.1 AA compliance throughout</li>
+                                    <li><strong>Scalability:</strong> Modular components that work across contexts</li>
+                                    <li><strong>Performance:</strong> Optimized for fast loading and smooth interactions</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="ai-card">
+                                    <div class="ai-card__header">
+                                        <div class="d-flex align-items-center">
+                                            <i style="color: var(--ai-accent); margin-right: 8px;">🧠</i>
+                                            <span>AI Feature Status</span>
+                                        </div>
+                                    </div>
+                                    <div class="ai-card__body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span>System Health</span>
+                                            <span class="ai-badge ai-badge--low">Optimal</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"></div>
+                                        </div>
+                                        <small class="text-muted">94% efficiency</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Color Palette Section -->
+                    <section id="colors" class="component-section">
+                        <h2 class="h3 mb-4">Color Palette</h2>
+                        <p>The AI design system uses a carefully crafted color palette that ensures accessibility and visual hierarchy.</p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Brand Colors</h5>
+                                <div class="d-flex gap-3 mb-3">
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-primary);">#2D3748</div>
+                                        <small>Primary</small>
+                                    </div>
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-accent);">#00D3C7</div>
+                                        <small>Accent</small>
+                                    </div>
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-primary-light);">#4A5568</div>
+                                        <small>Primary Light</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Priority Colors</h5>
+                                <div class="d-flex gap-3 mb-3">
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-critical);">#DC3545</div>
+                                        <small>Critical</small>
+                                    </div>
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-high);">#E2B93B</div>
+                                        <small>High</small>
+                                    </div>
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-medium);">#0D6EFD</div>
+                                        <small>Medium</small>
+                                    </div>
+                                    <div>
+                                        <div class="color-swatch" style="background: var(--ai-low);">#198754</div>
+                                        <small>Low</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>:root {
+  --ai-primary: #2D3748;
+  --ai-accent: #00D3C7;
+  --ai-critical: #DC3545;
+  --ai-high: #E2B93B;
+  --ai-medium: #0D6EFD;
+  --ai-low: #198754;
+}</pre>
+                        </div>
+                    </section>
+
+                    <!-- Typography Section -->
+                    <section id="typography" class="component-section">
+                        <h2 class="h3 mb-4">Typography</h2>
+                        <p>Consistent typography scale ensures clear information hierarchy across all AI components.</p>
+                        
+                        <div class="typography-example">
+                            <h1>Heading 1 - Primary Headers</h1>
+                            <p class="text-muted">Used for main page titles and primary sections</p>
+                        </div>
+                        
+                        <div class="typography-example">
+                            <h3>Heading 3 - Component Titles</h3>
+                            <p class="text-muted">Used for AI component headers and card titles</p>
+                        </div>
+                        
+                        <div class="typography-example">
+                            <p class="mb-1"><strong>Body Text - Medium Weight</strong></p>
+                            <p class="text-muted">Used for important labels and primary content</p>
+                        </div>
+                        
+                        <div class="typography-example">
+                            <p class="mb-1" style="font-size: var(--ai-font-sm);">Small Text - Secondary Information</p>
+                            <p class="text-muted">Used for metadata, timestamps, and supporting details</p>
+                        </div>
+
+                        <div class="code-example">
+<pre>:root {
+  --ai-font-xs: 10px;
+  --ai-font-sm: 12px;
+  --ai-font-base: 14px;
+  --ai-font-lg: 16px;
+  --ai-font-xl: 18px;
+}</pre>
+                        </div>
+                    </section>
+
+                    <!-- AI Badges Section -->
+                    <section id="badges" class="component-section">
+                        <h2 class="h3 mb-4">AI Badges</h2>
+                        <p>Standardized badge system for priority levels, status indicators, and AI confidence scores.</p>
+                        
+                        <div class="component-showcase">
+                            <h6>Priority Badges</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="ai-badge ai-badge--critical">Critical</span>
+                                <span class="ai-badge ai-badge--high">High</span>
+                                <span class="ai-badge ai-badge--medium">Medium</span>
+                                <span class="ai-badge ai-badge--low">Low</span>
+                            </div>
+                            
+                            <h6>With Icons</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="ai-badge ai-badge--critical">⚠️ Critical</span>
+                                <span class="ai-badge ai-badge--high">🔥 High</span>
+                                <span class="ai-badge ai-badge--medium">💡 Medium</span>
+                                <span class="ai-badge ai-badge--low">✅ Low</span>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>&lt;span class="ai-badge ai-badge--critical"&gt;Critical&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--high"&gt;High&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--medium"&gt;Medium&lt;/span&gt;
+&lt;span class="ai-badge ai-badge--low"&gt;Low&lt;/span&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- AI Buttons Section -->
+                    <section id="buttons" class="component-section">
+                        <h2 class="h3 mb-4">AI Buttons</h2>
+                        <p>Consistent button system for AI actions with proper hover states and accessibility features.</p>
+                        
+                        <div class="component-showcase">
+                            <h6>Button Variants</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <button class="ai-btn ai-btn--primary">🧠 AI Analyze</button>
+                                <button class="ai-btn ai-btn--secondary">📊 View Details</button>
+                                <button class="ai-btn ai-btn--accent">✨ Apply Suggestion</button>
+                            </div>
+                            
+                            <h6>Action Buttons</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <button class="ai-btn ai-btn--secondary">🗂️ Archive</button>
+                                <button class="ai-btn ai-btn--secondary">🔄 Refresh</button>
+                                <button class="ai-btn ai-btn--secondary">⏰ Snooze</button>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>&lt;button class="ai-btn ai-btn--primary"&gt;AI Analyze&lt;/button&gt;
+&lt;button class="ai-btn ai-btn--secondary"&gt;View Details&lt;/button&gt;
+&lt;button class="ai-btn ai-btn--accent"&gt;Apply Suggestion&lt;/button&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- AI Cards Section -->
+                    <section id="cards" class="component-section">
+                        <h2 class="h3 mb-4">AI Cards</h2>
+                        <p>Flexible card components for displaying AI insights, suggestions, and metrics.</p>
+                        
+                        <div class="component-showcase">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ai-card">
+                                        <div class="ai-card__header">
+                                            🎯 AI Recommendation
+                                        </div>
+                                        <div class="ai-card__body">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <span>Schedule for 10:30 AM</span>
+                                                <span class="ai-badge ai-badge--low">94% Match</span>
+                                            </div>
+                                            <p class="text-muted mb-2" style="font-size: var(--ai-font-sm);">Based on doctor availability and patient preferences</p>
+                                            <div class="ai-progress">
+                                                <div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="ai-card">
+                                        <div class="ai-card__header">
+                                            🔍 AI Analysis
+                                        </div>
+                                        <div class="ai-card__body">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <span>Email Priority</span>
+                                                <span class="ai-badge ai-badge--high">High</span>
+                                            </div>
+                                            <p class="text-muted mb-2" style="font-size: var(--ai-font-sm);">Urgent patient inquiry detected</p>
+                                            <div class="ai-progress">
+                                                <div class="ai-progress__bar ai-progress__bar--warning" style="width: 76%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>&lt;div class="ai-card"&gt;
+  &lt;div class="ai-card__header"&gt;AI Recommendation&lt;/div&gt;
+  &lt;div class="ai-card__body"&gt;
+    &lt;div class="d-flex justify-content-between"&gt;
+      &lt;span&gt;Schedule for 10:30 AM&lt;/span&gt;
+      &lt;span class="ai-badge ai-badge--low"&gt;94% Match&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- AI Lists Section -->
+                    <section id="lists" class="component-section">
+                        <h2 class="h3 mb-4">AI Lists</h2>
+                        <p>Structured list components for displaying email items, suggestions, and triage information.</p>
+                        
+                        <div class="component-showcase">
+                            <div class="ai-card">
+                                <div class="ai-card__header">📋 AI Inbox Triage</div>
+                                <div style="padding: 0;">
+                                    <div class="ai-list-item">
+                                        <div class="ai-list-item__priority ai-list-item__priority--critical"></div>
+                                        <div class="ai-list-item__content">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="mb-1">Dr. Sarah Johnson</h6>
+                                                    <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Emergency patient consultation needed</p>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="ai-badge ai-badge--critical">Critical</span>
+                                                    <div class="text-muted" style="font-size: var(--ai-font-xs);">89% confidence</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ai-list-item">
+                                        <div class="ai-list-item__priority ai-list-item__priority--high"></div>
+                                        <div class="ai-list-item__content">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="mb-1">Patient Records System</h6>
+                                                    <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Appointment rescheduling request</p>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="ai-badge ai-badge--high">High</span>
+                                                    <div class="text-muted" style="font-size: var(--ai-font-xs);">76% confidence</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ai-list-item">
+                                        <div class="ai-list-item__priority ai-list-item__priority--medium"></div>
+                                        <div class="ai-list-item__content">
+                                            <div class="d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <h6 class="mb-1">Medical Supplies Co.</h6>
+                                                    <p class="mb-0 text-muted" style="font-size: var(--ai-font-sm);">Monthly inventory report</p>
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="ai-badge ai-badge--medium">Medium</span>
+                                                    <div class="text-muted" style="font-size: var(--ai-font-xs);">92% confidence</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>&lt;div class="ai-list-item"&gt;
+  &lt;div class="ai-list-item__priority ai-list-item__priority--critical"&gt;&lt;/div&gt;
+  &lt;div class="ai-list-item__content"&gt;
+    &lt;h6&gt;Dr. Sarah Johnson&lt;/h6&gt;
+    &lt;p&gt;Emergency patient consultation needed&lt;/p&gt;
+    &lt;span class="ai-badge ai-badge--critical"&gt;Critical&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- Progress Indicators Section -->
+                    <section id="progress" class="component-section">
+                        <h2 class="h3 mb-4">Progress Indicators</h2>
+                        <p>Visual indicators for AI confidence scores, completion rates, and system metrics.</p>
+                        
+                        <div class="component-showcase">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>AI Confidence Levels</h6>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span style="font-size: var(--ai-font-sm);">High Confidence</span>
+                                            <span style="font-size: var(--ai-font-sm);">94%</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span style="font-size: var(--ai-font-sm);">Medium Confidence</span>
+                                            <span style="font-size: var(--ai-font-sm);">76%</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--warning" style="width: 76%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span style="font-size: var(--ai-font-sm);">Low Confidence</span>
+                                            <span style="font-size: var(--ai-font-sm);">34%</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--danger" style="width: 34%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>System Metrics</h6>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span style="font-size: var(--ai-font-sm);">Processing Power</span>
+                                            <span style="font-size: var(--ai-font-sm);">87%</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--primary" style="width: 87%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span style="font-size: var(--ai-font-sm);">Accuracy Rate</span>
+                                            <span style="font-size: var(--ai-font-sm);">96%</span>
+                                        </div>
+                                        <div class="ai-progress">
+                                            <div class="ai-progress__bar ai-progress__bar--success" style="width: 96%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-example">
+<pre>&lt;div class="ai-progress"&gt;
+  &lt;div class="ai-progress__bar ai-progress__bar--success" style="width: 94%"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+                        </div>
+                    </section>
+
+                    <!-- Icon System Section -->
+                    <section id="icons" class="component-section">
+                        <h2 class="h3 mb-4">Icon System</h2>
+                        <p>Standardized iconography for AI features ensuring consistent visual communication.</p>
+                        
+                        <div class="component-showcase">
+                            <h6>Primary AI Icons</h6>
+                            <div class="icon-grid">
+                                <div class="icon-item">
+                                    <div>🧠</div>
+                                    <div><code>Brain</code></div>
+                                    <small>AI Intelligence</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>🤖</div>
+                                    <div><code>Robot</code></div>
+                                    <small>AI Status</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>💡</div>
+                                    <div><code>Lightbulb</code></div>
+                                    <small>AI Insights</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>🎯</div>
+                                    <div><code>Target</code></div>
+                                    <small>AI Accuracy</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>⚠️</div>
+                                    <div><code>Warning</code></div>
+                                    <small>Alert/Critical</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>✅</div>
+                                    <div><code>Check</code></div>
+                                    <small>Success/Complete</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>📊</div>
+                                    <div><code>Chart</code></div>
+                                    <small>Analytics</small>
+                                </div>
+                                <div class="icon-item">
+                                    <div>⏰</div>
+                                    <div><code>Clock</code></div>
+                                    <small>Time/Schedule</small>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Accessibility Section -->
+                    <section id="accessibility" class="component-section">
+                        <h2 class="h3 mb-4">Accessibility Guidelines</h2>
+                        <p>All AI components meet WCAG 2.1 AA standards for accessibility and inclusive design.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Color Contrast</h5>
+                                <ul>
+                                    <li>All text meets 4.5:1 contrast ratio minimum</li>
+                                    <li>Priority colors maintain accessibility standards</li>
+                                    <li>Focus states provide clear visual feedback</li>
+                                </ul>
+                                
+                                <h5>Keyboard Navigation</h5>
+                                <ul>
+                                    <li>All interactive elements are keyboard accessible</li>
+                                    <li>Tab order follows logical flow</li>
+                                    <li>Focus indicators are clearly visible</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Screen Reader Support</h5>
+                                <ul>
+                                    <li>Proper ARIA labels for AI components</li>
+                                    <li>Live regions for dynamic content updates</li>
+                                    <li>Semantic markup throughout</li>
+                                </ul>
+                                
+                                <h5>Responsive Design</h5>
+                                <ul>
+                                    <li>Touch targets minimum 44px on mobile</li>
+                                    <li>Responsive typography scaling</li>
+                                    <li>Adaptive layouts for all screen sizes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Implementation Section -->
+                    <section id="implementation" class="component-section">
+                        <h2 class="h3 mb-4">Implementation Guidelines</h2>
+                        <p>Step-by-step guide for implementing the AI design system in your development workflow.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Phase 1: Foundation</h5>
+                                <ol>
+                                    <li>Implement CSS custom properties</li>
+                                    <li>Update color palette variables</li>
+                                    <li>Establish typography scale</li>
+                                    <li>Define spacing system</li>
+                                </ol>
+                                
+                                <h5>Phase 2: Components</h5>
+                                <ol>
+                                    <li>Update badge system</li>
+                                    <li>Standardize button styles</li>
+                                    <li>Implement card components</li>
+                                    <li>Create list item templates</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Phase 3: Integration</h5>
+                                <ol>
+                                    <li>Update existing AI components</li>
+                                    <li>Test accessibility compliance</li>
+                                    <li>Verify responsive behavior</li>
+                                    <li>Performance optimization</li>
+                                </ol>
+                                
+                                <h5>Quality Assurance</h5>
+                                <ul>
+                                    <li>Cross-browser testing</li>
+                                    <li>Accessibility audit</li>
+                                    <li>Performance benchmarking</li>
+                                    <li>User testing validation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <h6>🚀 Quick Start</h6>
+                            <p class="mb-0">Begin by implementing the CSS custom properties and color system. This will provide immediate visual consistency improvements across all AI components.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.docs-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.docs-nav .nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Add intersection observer for automatic active state updates
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.docs-nav .nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
