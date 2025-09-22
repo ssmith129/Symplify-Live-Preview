@@ -183,9 +183,9 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
                       ></div>
                     </div>
                     {metric.description && (
-                      <p className="text-muted mb-0 fs-12 mt-1" title={metric.description}>
-                        {metric.description.length > 40 
-                          ? `${metric.description.substring(0, 40)}...` 
+                      <p className="mb-0 mt-1" style={{fontSize: 'var(--ai-font-xs)', color: 'var(--ai-text-muted)'}} title={metric.description}>
+                        {metric.description.length > 40
+                          ? `${metric.description.substring(0, 40)}...`
                           : metric.description
                         }
                       </p>
