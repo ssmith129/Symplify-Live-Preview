@@ -214,7 +214,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
           {error ? (
             <div className="text-center py-3">
               <div className="text-danger mb-2">
-                <i className="ti ti-alert-circle fs-24"></i>
+                <i className="fa-solid fa-circle-exclamation fs-24"></i>
               </div>
               <p className="text-muted fs-13 mb-2">{error}</p>
               <button
