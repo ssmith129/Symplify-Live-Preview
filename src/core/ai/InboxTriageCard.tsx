@@ -6,12 +6,6 @@ import { loadInbox, setFilter, updateMessagePriority, updateMessageCategory, rem
 import type { RootState } from './typesInternal';
 import type { AIMessage } from '../services/ai/types';
 
-const PRIORITY_ICONS: Record<string, string> = {
-  critical: 'ti ti-alert-triangle-filled',
-  high: 'ti ti-exclamation-circle',
-  medium: 'ti ti-info-circle',
-  low: 'ti ti-check-circle',
-};
 
 const CATEGORIES = ['emergency','medical','appointment','administrative','follow-up'] as const;
 
