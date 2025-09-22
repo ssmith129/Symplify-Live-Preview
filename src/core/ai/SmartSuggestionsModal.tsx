@@ -207,10 +207,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                                 </div>
                                 
                                 <div className="text-end">
-                                  <span className={`badge bg-${getScoreColor(suggestion.score)} mb-1`}>
-                                    Score: {suggestion.score}
+                                  <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'} mb-1`}>
+                                    {suggestion.score}% Match
                                   </span>
-                                  <div className={`ai-confidence`}>
+                                  <div className="ai-badge ai-badge--sm ai-badge--low">
                                     {suggestion.confidence}% confidence
                                   </div>
                                 </div>
