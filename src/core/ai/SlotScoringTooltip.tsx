@@ -72,16 +72,32 @@ const SlotScoringTooltip: React.FC<SlotScoringTooltipProps> = ({
       if (!tooltipRef.current) return;
       const tooltip = tooltipRef.current;
       const rect = tooltip.getBoundingClientRect();
-      const container = document.getElementById('calendar');
-      if (container) {
-        const cRect = container.getBoundingClientRect();
-        let newX = cRect.left + (cRect.width - rect.width) / 2;
-        let newY = cRect.top + (cRect.height - rect.height) / 2;
-        const pad = 8;
-        newX = Math.max(cRect.left + pad, Math.min(newX, cRect.right - rect.width - pad));
-        newY = Math.max(cRect.top + pad, Math.min(newY, cRect.bottom - rect.height - pad));
-        setAdjustedPosition({ x: newX, y: newY });
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      // Recalculate position relative to triggering element
+      const offset = 10;
+      let newX = position.x + offset;
+      let newY = position.y;
+
+      // Check viewport boundaries and adjust accordingly
+      if (newX + rect.width > viewportWidth - 20) {
+        newX = position.x - rect.width - offset;
       }
+
+      if (newY + rect.height > viewportHeight - 20) {
+        newY = position.y - rect.height - offset;
+      }
+
+      if (newX < 20) {
+        newX = 20;
+      }
+
+      if (newY < 20) {
+        newY = 20;
+      }
+
+      setAdjustedPosition({ x: newX, y: newY });
     };
     window.addEventListener('resize', onResizeOrScroll);
     window.addEventListener('scroll', onResizeOrScroll, true);
@@ -89,7 +105,7 @@ const SlotScoringTooltip: React.FC<SlotScoringTooltipProps> = ({
       window.removeEventListener('resize', onResizeOrScroll);
       window.removeEventListener('scroll', onResizeOrScroll, true);
     };
-  }, [isVisible]);
+  }, [isVisible, position]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
