@@ -10,7 +10,6 @@ import {
   Status,
 } from "../../../../../core/common/selectOption";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
-import { Suspense } from "react";
 
 const DoctorsAppointmentDetails = () => {
   const getModalContainer = () => {
