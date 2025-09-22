@@ -135,7 +135,8 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
         <div className="ai-card mb-3">
           <div className="ai-card__header d-flex align-items-center justify-content-between">
             <h6 className="mb-0 fw-semibold">
-              🧠 AI Recommendations
+              <i className="fa-solid fa-brain me-2"></i>
+              AI Recommendations
             </h6>
             <span className="ai-badge ai-badge--low fs-11">Default view</span>
           </div>
