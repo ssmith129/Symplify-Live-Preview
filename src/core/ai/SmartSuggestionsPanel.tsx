@@ -150,7 +150,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center">
-                      <span className={`badge bg-${index === 0 ? 'success' : index === 1 ? 'primary' : 'warning'} rounded-pill me-2 fs-10`}>
+                      <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
                         #{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
@@ -220,7 +220,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               <p className="text-muted fs-13 mb-2">{error}</p>
               <button
                 type="button"
-                className="btn btn-outline-primary btn-sm"
+                className="ai-btn ai-btn--sm ai-btn--secondary"
                 onClick={retry}
               >
                 <i className="ti ti-refresh me-1"></i>
@@ -245,7 +245,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center">
-                      <span className={`badge bg-${index === 0 ? 'success' : index === 1 ? 'primary' : 'warning'} rounded-pill me-2 fs-10`}>
+                      <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
                         #{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
@@ -298,7 +298,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               
               <button
                 type="button"
-                className="btn btn-outline-primary btn-sm w-100"
+                className="ai-btn ai-btn--sm ai-btn--secondary w-100"
                 onClick={() => {
                   clearCache();
                   if (patientId && doctorId) {
