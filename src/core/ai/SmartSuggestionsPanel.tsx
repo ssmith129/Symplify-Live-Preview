@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useSmartScheduling from './hooks/useSmartScheduling';
 
 export interface SmartSuggestion {
   id: string;
@@ -41,25 +42,37 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   onConflictDetected,
   className = ''
 }) => {
-  const [suggestions, setSuggestions] = useState<SmartSuggestion[]>([]);
-  const [conflicts, setConflicts] = useState<ConflictWarning[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [lastAnalysis, setLastAnalysis] = useState<Date | null>(null);
+  const {
+    suggestions,
+    conflicts,
+    loading,
+    error,
+    lastUpdated,
+    analyzeTimes,
+    checkConflicts,
+    clearCache,
+    retry
+  } = useSmartScheduling({
+    enableCaching: true,
+    debounceMs: 300,
+    maxRetries: 3
+  });
 
   useEffect(() => {
     if (patientId && doctorId) {
-      analyzeOptimalTimes();
+      analyzeTimes(patientId, doctorId, departmentId);
     }
-  }, [patientId, doctorId, departmentId, selectedDate]);
+  }, [patientId, doctorId, departmentId, selectedDate, analyzeTimes]);
 
   useEffect(() => {
     if (selectedDate && selectedTime && doctorId) {
-      checkForConflicts();
-    } else {
-      setConflicts([]);
-      onConflictDetected([]);
+      checkConflicts(selectedDate, selectedTime, doctorId);
     }
-  }, [selectedDate, selectedTime, doctorId]);
+  }, [selectedDate, selectedTime, doctorId, checkConflicts]);
+
+  useEffect(() => {
+    onConflictDetected(conflicts);
+  }, [conflicts, onConflictDetected]);
 
   const analyzeOptimalTimes = async () => {
     setLoading(true);
