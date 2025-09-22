@@ -267,7 +267,7 @@ const useSmartScheduling = (options: UseSmartSchedulingOptions = {}): UseSmartSc
 
     // Clear existing debounce
     if (checkConflictsDebounced.current) {
-      clearTimeout(checkConflictsDebounced.current);
+      window.clearTimeout(checkConflictsDebounced.current);
     }
 
     checkConflictsDebounced.current = setTimeout(async () => {
