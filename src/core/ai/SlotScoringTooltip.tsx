@@ -34,25 +34,61 @@ const SlotScoringTooltip: React.FC<SlotScoringTooltipProps> = ({
     if (isVisible && tooltipRef.current) {
       const tooltip = tooltipRef.current;
       const rect = tooltip.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      
-      let newX = position.x;
-      let newY = position.y;
 
-      // Adjust horizontal position if tooltip goes off-screen
-      if (position.x + rect.width > viewportWidth - 20) {
-        newX = position.x - rect.width - 10;
+      // Try to center within the calendar container
+      const container = document.getElementById('calendar');
+      if (container) {
+        const cRect = container.getBoundingClientRect();
+        let newX = cRect.left + (cRect.width - rect.width) / 2;
+        let newY = cRect.top + (cRect.height - rect.height) / 2;
+
+        // Clamp to container bounds with padding
+        const pad = 8;
+        newX = Math.max(cRect.left + pad, Math.min(newX, cRect.right - rect.width - pad));
+        newY = Math.max(cRect.top + pad, Math.min(newY, cRect.bottom - rect.height - pad));
+
+        setAdjustedPosition({ x: newX, y: newY });
+      } else {
+        // Fallback to viewport-based positioning around the provided position
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        let newX = position.x;
+        let newY = position.y;
+        if (position.x + rect.width > viewportWidth - 20) {
+          newX = position.x - rect.width - 10;
+        }
+        if (position.y + rect.height > viewportHeight - 20) {
+          newY = position.y - rect.height - 10;
+        }
+        setAdjustedPosition({ x: newX, y: newY });
       }
-
-      // Adjust vertical position if tooltip goes off-screen
-      if (position.y + rect.height > viewportHeight - 20) {
-        newY = position.y - rect.height - 10;
-      }
-
-      setAdjustedPosition({ x: newX, y: newY });
     }
   }, [isVisible, position]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    const onResizeOrScroll = () => {
+      if (!tooltipRef.current) return;
+      const tooltip = tooltipRef.current;
+      const rect = tooltip.getBoundingClientRect();
+      const container = document.getElementById('calendar');
+      if (container) {
+        const cRect = container.getBoundingClientRect();
+        let newX = cRect.left + (cRect.width - rect.width) / 2;
+        let newY = cRect.top + (cRect.height - rect.height) / 2;
+        const pad = 8;
+        newX = Math.max(cRect.left + pad, Math.min(newX, cRect.right - rect.width - pad));
+        newY = Math.max(cRect.top + pad, Math.min(newY, cRect.bottom - rect.height - pad));
+        setAdjustedPosition({ x: newX, y: newY });
+      }
+    };
+    window.addEventListener('resize', onResizeOrScroll);
+    window.addEventListener('scroll', onResizeOrScroll, true);
+    return () => {
+      window.removeEventListener('resize', onResizeOrScroll);
+      window.removeEventListener('scroll', onResizeOrScroll, true);
+    };
+  }, [isVisible]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
