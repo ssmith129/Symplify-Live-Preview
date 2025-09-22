@@ -14,7 +14,7 @@ export interface SelectProps {
   onChange?: (value: string) => void;
 }
 
-const CommonSelect: React.FC<SelectProps> = ({ options, defaultValue, className }) => {
+const CommonSelect: React.FC<SelectProps> = ({ options, defaultValue, className, onChange }) => {
   const [selectedOption, setSelectedOption] = useState<Option | undefined>(defaultValue);
 
   const customStyles = {
