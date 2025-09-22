@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { all_routes } from '../../../feature-module/routes/all_routes';
 
 interface TimeSlotSuggestion {
