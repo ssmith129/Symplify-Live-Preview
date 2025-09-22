@@ -21,13 +21,17 @@ function annotateItem(el: HTMLElement) {
   }
   badgeRow.innerHTML = '';
   const pri = document.createElement('span');
-  pri.className = `badge ${ai.priority === 'critical' ? 'bg-danger' : ai.priority === 'high' ? 'bg-warning' : ai.priority === 'medium' ? 'bg-info' : 'bg-success'}`;
+  pri.className = `ai-badge ai-badge--${ai.priority}`;
   pri.textContent = ai.priority.toUpperCase();
   const catEl = document.createElement('span');
-  catEl.className = 'badge bg-light text-dark text-capitalize';
+  catEl.className = 'ai-badge';
+  catEl.style.background = 'var(--ai-bg-secondary)';
+  catEl.style.color = 'var(--ai-text-secondary)';
   catEl.textContent = cat;
   const conf = document.createElement('span');
-  conf.className = 'badge bg-light text-dark';
+  conf.className = 'ai-badge ai-badge--sm';
+  conf.style.background = 'var(--ai-bg-secondary)';
+  conf.style.color = 'var(--ai-text-secondary)';
   conf.textContent = `${Math.round(ai.confidence*100)}%`;
   badgeRow.appendChild(pri);
   badgeRow.appendChild(catEl);
