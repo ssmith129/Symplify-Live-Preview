@@ -121,7 +121,7 @@ const Messages = () => {
 
                     <button
                       type="button"
-                      className="btn p-0 border-0"
+                      className="btn p-0 border-0 d-none"
                       onClick={() => setActiveFilter('medium')}
                       style={{background: 'transparent'}}
                     >
