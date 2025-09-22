@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { all_routes } from "../../../../routes/all_routes";
 import PredefinedDatePicker from "../../../../../core/common/datePicker";
 import { DatePicker, Select } from "antd";
@@ -10,8 +10,7 @@ import {
   Status,
 } from "../../../../../core/common/selectOption";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
-import { Suspense, lazy } from "react";
-const AppointmentInsights = lazy(() => import('../../../../../core/ai/AppointmentInsights'));
+import { Suspense } from "react";
 
 const DoctorsAppointmentDetails = () => {
   const getModalContainer = () => {
@@ -293,9 +292,6 @@ const DoctorsAppointmentDetails = () => {
               <div id="calendar">
                 <EventCalendar />
               </div>
-              <Suspense fallback={null}>
-              <AppointmentInsights />
-            </Suspense>
             </div>
           </div>
           {/* end card */}
