@@ -347,14 +347,13 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
 
       {/* Conflicts Warning */}
       {conflicts.length > 0 && (
-        <div className="card mt-3 border-warning">
-          <div className="card-header bg-warning-transparent">
-            <h6 className="mb-0 fw-semibold text-warning">
-              <i className="ti ti-alert-triangle me-2"></i>
-              Potential Conflicts
+        <div className="ai-card mt-3" style={{borderColor: 'var(--ai-high-border)'}}>
+          <div className="ai-card__header" style={{background: 'var(--ai-high-bg)', color: 'var(--ai-high)'}}>
+            <h6 className="mb-0 fw-semibold">
+              ⚠️ Potential Conflicts
             </h6>
           </div>
-          <div className="card-body p-2">
+          <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
             {conflicts.map((conflict, index) => (
               <div key={index} className="conflict-item mb-2">
                 <div className={`text-${conflict.type === 'error' ? 'danger' : conflict.type === 'warning' ? 'warning' : 'info'} fw-medium fs-13`}>
