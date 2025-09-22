@@ -312,7 +312,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.doctorsleaves,
+    path: routes.doctorleaves,
     element: <DoctorsLeaves />,
     route: Route,
   },
@@ -342,7 +342,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.doctorsreviews,
+    path: routes.doctorreviews,
     element: <DoctorsReviews />,
     route: Route,
   },
@@ -362,12 +362,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.filemanager,
+    path: routes.fileManager,
     element: <FileManager />,
     route: Route,
   },
   {
-    path: routes.kanbanview,
+    path: routes.kanbanView,
     element: <KanbanView />,
     route: Route,
   },
@@ -377,12 +377,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.todolist,
+    path: routes.todoList,
     element: <TodoList />,
     route: Route,
   },
   {
-    path: routes.voice_calls,
+    path: routes.voiceCall,
     element: <VoiceCalls />,
     route: Route,
   },
@@ -392,12 +392,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.callhistory,
+    path: routes.callHistory,
     element: <CallHistory />,
     route: Route,
   },
   {
-    path: routes.videocall,
+    path: routes.videoCall,
     element: <VideoCall />,
     route: Route,
   },
@@ -412,12 +412,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.socialfeed,
+    path: routes.socialFeed,
     element: <SocialFeed />,
     route: Route,
   },
   {
-    path: routes.searchlist,
+    path: routes.searchList,
     element: <SearchList />,
     route: Route,
   },
