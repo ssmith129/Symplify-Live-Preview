@@ -1482,17 +1482,17 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.uirangeslides,
+    path: routes.uiRangeslider,
     element: <UiRangeSlides />,
     route: Route,
   },
   {
-    path: routes.uirating,
+    path: routes.uiRating,
     element: <UiRating />,
     route: Route,
   },
   {
-    path: routes.uiscrollbar,
+    path: routes.uiScrollbar,
     element: <UiScrollbar />,
     route: Route,
   },
