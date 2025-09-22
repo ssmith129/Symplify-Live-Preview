@@ -35,8 +35,8 @@ const NewAppointment = () => {
   };
 
   const onChangeTime: TimePickerProps["onChange"] = (time, timeString) => {
-    setFormData(prev => ({ ...prev, time: timeString || '' }));
-    console.log(time, timeString);
+    const t = Array.isArray(timeString) ? (timeString[0] || '') : (timeString || '');
+    setFormData(prev => ({ ...prev, time: t }));
   };
 
   const handleFieldChange = (field: string, value: any) => {
