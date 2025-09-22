@@ -7,6 +7,7 @@ import type { RootState } from './typesInternal';
 import type { AIMessage } from '../services/ai/types';
 
 
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 const CATEGORIES = ['emergency','medical','appointment','administrative','follow-up'] as const;
 
 export default function InboxTriageCard() {

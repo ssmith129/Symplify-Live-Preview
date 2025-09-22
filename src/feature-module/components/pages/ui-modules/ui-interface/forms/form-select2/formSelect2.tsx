@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import { Link } from "react-router";
 import { Select } from "antd";
 import CommonSelect from "../../../../../../../core/common/common-select/commonSelect";
