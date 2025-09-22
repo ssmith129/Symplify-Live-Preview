@@ -226,7 +226,7 @@ const Header = () => {
                       <div className="d-flex">
                         <div className="me-2 position-relative flex-shrink-0">
                           <ImageWithBasePath
-                            src="assets/img/doctors/doctor-01.jpg"
+                            src="assets/img/profiles/avatar_1.jpg"
                             className="avatar-md rounded-circle"
                             alt=""
                           />
@@ -270,10 +270,10 @@ const Header = () => {
                       <div className="d-flex">
                         <div className="me-2 position-relative flex-shrink-0">
                           <ImageWithBasePath
-                            src="assets/img/doctors/doctor-06.jpg"
-                            className="avatar-md rounded-circle"
-                            alt=""
-                          />
+                          src="assets/img/profiles/avatar_2.jpg"
+                          className="avatar-md rounded-circle"
+                          alt=""
+                        />
                         </div>
                         <div className="flex-grow-1">
                           <p className="mb-0 fw-medium text-dark">Dr. Patel</p>
@@ -317,7 +317,7 @@ const Header = () => {
                       <div className="d-flex">
                         <div className="me-2 position-relative flex-shrink-0">
                           <ImageWithBasePath
-                            src="assets/img/doctors/doctor-02.jpg"
+                            src="assets/img/profiles/avatar_3.jpg"
                             className="avatar-md rounded-circle"
                             alt=""
                           />
@@ -367,7 +367,7 @@ const Header = () => {
                       <div className="d-flex">
                         <div className="me-2 position-relative flex-shrink-0">
                           <ImageWithBasePath
-                            src="assets/img/doctors/doctor-07.jpg"
+                            src="assets/img/profiles/avatar_4.jpg"
                             className="avatar-md rounded-circle"
                             alt=""
                           />
@@ -430,7 +430,7 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <ImageWithBasePath
-                  src="assets/img/users/user-01.jpg"
+                  src="assets/img/profiles/avatar_1.jpg"
                   width={32}
                   className="rounded-circle d-flex"
                   alt="user-image"
@@ -442,7 +442,7 @@ const Header = () => {
               <div className="dropdown-menu dropdown-menu-end dropdown-menu-md p-2">
                 <div className="d-flex align-items-center bg-light rounded-3 p-2 mb-2">
                   <ImageWithBasePath
-                    src="assets/img/users/user-01.jpg"
+                    src="assets/img/profiles/avatar_1.jpg"
                     className="rounded-circle"
                     width={42}
                     height={42}
