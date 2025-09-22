@@ -14,13 +14,14 @@ const AppointmentCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [modalClickPosition, setModalClickPosition] = useState({ x: 0, y: 0 });
 
-  const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
-    if (isAiMode) {
-      setSelectedDate(date);
-      setModalClickPosition({ x: event.clientX, y: event.clientY });
-      setShowSuggestionsModal(true);
-    }
-  };
+  // reserved for future calendar integration; modal opens via button triggers
+  // const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
+  //   if (isAiMode) {
+  //     setSelectedDate(date);
+  //     setModalClickPosition({ x: event.clientX, y: event.clientY });
+  //     setShowSuggestionsModal(true);
+  //   }
+  // };
 
   const handleAiModeChange = (enabled: boolean) => {
     setIsAiMode(enabled);
