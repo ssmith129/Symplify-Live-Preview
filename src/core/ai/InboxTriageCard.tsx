@@ -217,7 +217,7 @@ export default function InboxTriageCard() {
                             )}
                           </div>
                           <div className="dropdown">
-                            <button className="btn btn-light btn-sm px-2" data-bs-toggle="dropdown" aria-label="Change priority">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-bs-toggle="dropdown" aria-label="Change priority">
                               {msg.ai.priority}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end">
