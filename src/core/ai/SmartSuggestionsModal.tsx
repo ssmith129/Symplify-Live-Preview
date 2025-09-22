@@ -196,7 +196,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               <div className="d-flex align-items-start justify-content-between mb-3">
                                 <div className="d-flex align-items-center gap-2">
                                   <div className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                                    🏆 #{index + 1}
+                                    <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                                   </div>
                                   <div>
                                     <h6 className="mb-1 fw-semibold">{suggestion.time}</h6>
