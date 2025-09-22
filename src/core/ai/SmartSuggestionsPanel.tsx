@@ -322,7 +322,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
         </div>
         <div className="ai-card__body" style={{padding: 'var(--ai-space-2)'}}>
           <div className="insight-item d-flex align-items-center mb-2">
-            <i className="ti ti-flame fs-18 text-danger me-2"></i>
+            <i className="fa-solid fa-fire fs-18 text-danger me-2"></i>
             <div>
               <div className="fw-medium fs-13">Peak Performance</div>
               <div className="fs-12 text-muted">Doctor performs best 10-11 AM</div>
