@@ -16,8 +16,8 @@ const AppointmentCalendar = () => {
   // reserved for future calendar integration; modal opens via button triggers
   // const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
   //   if (isAiMode) {
-  //     setSelectedDate(date);
-  //     setModalClickPosition({ x: event.clientX, y: event.clientY });
+  //     _setSelectedDate(date);
+  //     _setModalClickPosition({ x: event.clientX, y: event.clientY });
   //     setShowSuggestionsModal(true);
   //   }
   // };
