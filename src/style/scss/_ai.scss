@@ -459,6 +459,19 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Consistent icon sizing/alignment for dashboard cards */
+.smart-dashboard .avatar.smart-dashboard-icon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.smart-dashboard .avatar.smart-dashboard-icon i {
+  font-size: 20px;
+  line-height: 1;
+}
+
 .dashboard-metric-card {
   border-left: 4px solid transparent;
 }
