@@ -1,4 +1,3 @@
-
 import { Link } from "react-router";
 import ImageWithBasePath from "../../../../../../core/imageWithBasePath";
 
@@ -43,7 +42,7 @@ const UiUtilities = () => {
                     <strong>
                       do not set <code>color</code>
                     </strong>
-                    , so in some cases you’ll want to use <code>.text-*</code>
+                    , so in some cases you���ll want to use <code>.text-*</code>
                     color utilities.
                   </p>
                   <div className="bg-primary text-white p-2 mb-2">
@@ -1312,7 +1311,7 @@ const UiUtilities = () => {
           <p className="text-title mb-0">
             ©
             <Link to="#" className="link-primary">
-              Kanakku
+              Symplify
             </Link>
             , All Rights Reserved
           </p>
