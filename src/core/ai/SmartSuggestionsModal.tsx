@@ -313,18 +313,17 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                 <div>
                   <button
                     type="button"
-                    className="btn btn-light me-2"
+                    className="ai-btn ai-btn--secondary me-2"
                     onClick={onClose}
                   >
                     Cancel
                   </button>
                   <Link
                     to={all_routes.newAppointment}
-                    className="btn btn-outline-primary"
+                    className="ai-btn ai-btn--primary"
                     onClick={onClose}
                   >
-                    <i className="ti ti-plus me-1"></i>
-                    Manual Booking
+                    ➕ Manual Booking
                   </Link>
                 </div>
               </div>
