@@ -99,6 +99,7 @@ const Header = () => {
               className="mobile-btn"
               to="#"
               onClick={toggleMobileSidebar}
+              aria-label="Toggle sidebar"
             >
               <i className="ti ti-menu-deep fs-24" />
             </Link>
@@ -106,6 +107,7 @@ const Header = () => {
               className="sidenav-toggle-btn btn border-0 p-0 active"
               id="toggle_btn2"
               onClick={handleToggleHiddenLayout}
+              aria-label="Toggle hidden layout"
             >
               <i className="ti ti-arrow-right" />
             </button>
@@ -120,6 +122,7 @@ const Header = () => {
                   type="text"
                   className="form-control shadow-sm"
                   placeholder="Search"
+                  aria-label="Global search"
                 />
                 <span className="input-icon-addon text-dark shadow fs-18 d-inline-flex p-0 header-search-icon">
                   <i className="ti ti-command" />
@@ -136,6 +139,7 @@ const Header = () => {
                 data-bs-toggle="modal"
                 data-bs-target="#searchModal"
                 type="button"
+                aria-label="Open search"
               >
                 <i className="ti ti-search fs-16" />
               </button>
@@ -143,7 +147,7 @@ const Header = () => {
             {/* Appointment */}
             <div className="header-item">
               <div className="dropdown me-2">
-                <Link to={all_routes.newAppointment} className="btn topbar-link">
+                <Link to={all_routes.newAppointment} className="btn topbar-link" aria-label="New appointment">
                   <i className="ti ti-calendar-due" />
                 </Link>
               </div>
@@ -152,7 +156,7 @@ const Header = () => {
             {/* Settings */}
             <div className="header-item">
               <div className="dropdown me-2">
-                <Link to={all_routes.profilesettings} className="btn topbar-link">
+                <Link to={all_routes.profilesettings} className="btn topbar-link" aria-label="Open settings">
                   <i className="ti ti-settings-2" />
                 </Link>
               </div>
@@ -192,6 +196,7 @@ const Header = () => {
                   type="button"
                   aria-haspopup="false"
                   aria-expanded="false"
+                  aria-label="Open notifications"
                 >
                   <i className="ti ti-bell-check fs-16 animate-ring" />
                   <span className="notification-badge" />
@@ -253,6 +258,7 @@ const Header = () => {
                               <button
                                 className="btn rounded-circle p-0"
                                 data-dismissible="#notification-1"
+                                aria-label="Dismiss notification"
                               >
                                 <i className="ti ti-x" />
                               </button>
@@ -300,6 +306,7 @@ const Header = () => {
                               <button
                                 className="btn rounded-circle p-0"
                                 data-dismissible="#notification-2"
+                                aria-label="Dismiss notification"
                               >
                                 <i className="ti ti-x" />
                               </button>
@@ -350,6 +357,7 @@ const Header = () => {
                               <button
                                 className="btn rounded-circle p-0"
                                 data-dismissible="#notification-3"
+                                aria-label="Dismiss notification"
                               >
                                 <i className="ti ti-x" />
                               </button>
@@ -397,6 +405,7 @@ const Header = () => {
                               <button
                                 className="btn rounded-circle p-0"
                                 data-dismissible="#notification-4"
+                                aria-label="Dismiss notification"
                               >
                                 <i className="ti ti-x" />
                               </button>
@@ -427,6 +436,7 @@ const Header = () => {
                 data-bs-offset="0,22"
                 aria-haspopup="false"
                 aria-expanded="false"
+                aria-label="Open user menu"
               >
                 <ImageWithBasePath
                   src="assets/img/profiles/avatar_1.jpg"
@@ -507,6 +517,7 @@ const Header = () => {
                   type="search"
                   className="form-control border-0"
                   placeholder="Search"
+                  aria-label="Search"
                 />
                 <button
                   type="button"
