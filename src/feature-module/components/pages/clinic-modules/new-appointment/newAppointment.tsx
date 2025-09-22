@@ -11,6 +11,9 @@ import CommonSelect from "../../../../../core/common/common-select/commonSelect"
 import { DatePicker, TimePicker, type TimePickerProps } from "antd";
 import dayjs from "dayjs";
 import Modals from "./modals/modals";
+import { Suspense, lazy, useState } from "react";
+const SmartSuggestionsPanel = lazy(() => import('../../../../../core/ai/SmartSuggestionsPanel'));
+import type { SmartSuggestion, ConflictWarning } from '../../../../../core/ai/SmartSuggestionsPanel';
 
 const NewAppointment = () => {
   const getModalContainer = () => {
