@@ -562,7 +562,7 @@ const FormSelect2 = () => {
           <p className="text-title mb-0">
             ©
             <Link to="#" className="link-primary">
-              Kanakku
+              Symplify
             </Link>
             , All Rights Reserved
           </p>
