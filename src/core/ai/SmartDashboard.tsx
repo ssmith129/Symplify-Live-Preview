@@ -150,8 +150,8 @@ const SmartDashboard: React.FC<SmartDashboardProps> = ({
             <div className="card border-0 h-100 dashboard-metric-card">
               <div className="card-body p-3">
                 <div className="d-flex align-items-center">
-                  <div className={`avatar avatar-md rounded-circle bg-${metric.color}-transparent me-3 flex-shrink-0`}>
-                    <i className={`${metric.icon} fs-18 text-${metric.color}`}></i>
+                  <div className={`avatar avatar-md rounded-circle bg-${metric.color}-transparent me-3 flex-shrink-0 smart-dashboard-icon`}>
+                    <i className={`${metric.icon} text-${metric.color}`}></i>
                   </div>
                   <div className="flex-grow-1">
                     <div className="d-flex align-items-center justify-content-between mb-1">
