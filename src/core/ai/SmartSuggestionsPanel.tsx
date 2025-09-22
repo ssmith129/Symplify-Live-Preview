@@ -74,124 +74,6 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
     onConflictDetected(conflicts);
   }, [conflicts, onConflictDetected]);
 
-  const analyzeOptimalTimes = async () => {
-    setLoading(true);
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      const mockSuggestions: SmartSuggestion[] = [
-        {
-          id: 'sugg-1',
-          date: selectedDate || new Date().toISOString().split('T')[0],
-          time: '10:30 AM',
-          score: 95,
-          confidence: 92,
-          doctorMatch: 98,
-          patientPreference: 85,
-          departmentLoad: 30,
-          waitTimeMinutes: 5,
-          reasons: [
-            'Doctor peak performance time',
-            'Low no-show risk for this patient',
-            'Optimal department capacity'
-          ]
-        },
-        {
-          id: 'sugg-2',
-          date: selectedDate || new Date().toISOString().split('T')[0],
-          time: '2:00 PM',
-          score: 87,
-          confidence: 88,
-          doctorMatch: 90,
-          patientPreference: 92,
-          departmentLoad: 45,
-          waitTimeMinutes: 12,
-          reasons: [
-            'Patient historical preference',
-            'Good doctor availability',
-            'Moderate waiting time'
-          ]
-        },
-        {
-          id: 'sugg-3',
-          date: selectedDate || new Date().toISOString().split('T')[0],
-          time: '11:15 AM',
-          score: 82,
-          confidence: 78,
-          doctorMatch: 85,
-          patientPreference: 75,
-          departmentLoad: 60,
-          waitTimeMinutes: 18,
-          reasons: [
-            'Available slot',
-            'Acceptable wait time'
-          ],
-          warnings: ['Higher than usual department load']
-        },
-        {
-          id: 'sugg-4',
-          date: selectedDate || new Date().toISOString().split('T')[0],
-          time: '3:45 PM',
-          score: 76,
-          confidence: 70,
-          doctorMatch: 80,
-          patientPreference: 68,
-          departmentLoad: 75,
-          waitTimeMinutes: 25,
-          reasons: [
-            'Late afternoon availability'
-          ],
-          warnings: ['Near end of doctor shift', 'Higher wait times expected']
-        },
-        {
-          id: 'sugg-5',
-          date: selectedDate || new Date().toISOString().split('T')[0],
-          time: '9:00 AM',
-          score: 74,
-          confidence: 72,
-          doctorMatch: 88,
-          patientPreference: 60,
-          departmentLoad: 40,
-          waitTimeMinutes: 8,
-          reasons: [
-            'Early morning availability',
-            'Lower department load'
-          ],
-          warnings: ['Some patients prefer later times']
-        }
-      ];
-
-      setSuggestions(mockSuggestions);
-      setLastAnalysis(new Date());
-      setLoading(false);
-    }, 600);
-  };
-
-  const checkForConflicts = async () => {
-    // Simulate conflict detection
-    setTimeout(() => {
-      const mockConflicts: ConflictWarning[] = [];
-      
-      if (selectedTime === '12:00 PM' || selectedTime === '1:00 PM') {
-        mockConflicts.push({
-          type: 'warning',
-          message: 'Doctor lunch break (12:00 PM - 1:00 PM)',
-          suggestions: ['Try 11:30 AM', 'Try 1:30 PM']
-        });
-      }
-      
-      if (selectedDate === new Date().toISOString().split('T')[0] && selectedTime && selectedTime.includes('AM')) {
-        mockConflicts.push({
-          type: 'info',
-          message: 'Same-day morning appointments have higher no-show rates',
-          suggestions: ['Consider afternoon slot', 'Send reminder SMS']
-        });
-      }
-
-      setConflicts(mockConflicts);
-      onConflictDetected(mockConflicts);
-    }, 300);
-  };
 
   const getScoreColor = (score: number) => {
     if (score >= 90) return 'success';
@@ -233,14 +115,29 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
             <i className="ti ti-brain me-2 text-primary"></i>
             AI Recommendations
           </h6>
-          {lastAnalysis && (
+          {lastUpdated && (
             <small className="text-muted">
-              Updated {lastAnalysis.toLocaleTimeString()}
+              Updated {lastUpdated.toLocaleTimeString()}
             </small>
           )}
         </div>
         <div className="card-body p-2">
-          {loading ? (
+          {error ? (
+            <div className="text-center py-3">
+              <div className="text-danger mb-2">
+                <i className="ti ti-alert-circle fs-24"></i>
+              </div>
+              <p className="text-muted fs-13 mb-2">{error}</p>
+              <button
+                type="button"
+                className="btn btn-outline-primary btn-sm"
+                onClick={retry}
+              >
+                <i className="ti ti-refresh me-1"></i>
+                Try Again
+              </button>
+            </div>
+          ) : loading ? (
             <div className="text-center py-3">
               <div className="spinner-border spinner-border-sm text-primary" role="status">
                 <span className="visually-hidden">Analyzing...</span>
@@ -312,7 +209,12 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               <button
                 type="button"
                 className="btn btn-outline-primary btn-sm w-100"
-                onClick={analyzeOptimalTimes}
+                onClick={() => {
+                  clearCache();
+                  if (patientId && doctorId) {
+                    analyzeTimes(patientId, doctorId, departmentId);
+                  }
+                }}
                 disabled={loading}
               >
                 <i className="ti ti-refresh me-1"></i>
