@@ -822,17 +822,17 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.staffslist,
+    path: routes.staffs,
     element: <StaffsList />,
     route: Route,
   },
   {
-    path: routes.expensescategory,
+    path: routes.expenseCategory,
     element: <ExpenseCategory />,
     route: Route,
   },
   {
-    path: routes.expenseslist,
+    path: routes.expenses,
     element: <ExpensesList />,
     route: Route,
   },
@@ -842,32 +842,32 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.addinvoices,
+    path: routes.addInvoices,
     element: <AddInvoices />,
     route: Route,
   },
   {
-    path: routes.editinvoices,
+    path: routes.editInvoices,
     element: <EditInvoices />,
     route: Route,
   },
   {
-    path: routes.invoiceslist,
+    path: routes.invoices,
     element: <InvoicesList />,
     route: Route,
   },
   {
-    path: routes.invoicesdetails,
+    path: routes.invoicesDetails,
     element: <InvoicesDetails />,
     route: Route,
   },
   {
-    path: routes.paymentslist,
+    path: routes.payments,
     element: <PaymentsList />,
     route: Route,
   },
   {
-    path: routes.transactionslist,
+    path: routes.transactions,
     element: <TransactionsList />,
     route: Route,
   },
@@ -1002,7 +1002,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.smsgatewaysettings,
+    path: routes.smsgatewayssettings,
     element: <SmsGatewaysSettings />,
     route: Route,
   },
