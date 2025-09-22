@@ -150,7 +150,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center gap-2">
                       <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                        🏆 #{index + 1}
+                        <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
                     </div>
@@ -243,7 +243,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   <div className="d-flex align-items-center justify-content-between mb-2">
                     <div className="d-flex align-items-center gap-2">
                       <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                        🏆 #{index + 1}
+                        <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
                     </div>
