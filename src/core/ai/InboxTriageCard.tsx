@@ -183,14 +183,14 @@ export default function InboxTriageCard() {
               const proc = !!processing[msg.id];
               return (
                 <div
-                  key={msg.id}
-                  className={`px-3 py-2 border-bottom hover-bg-light cursor-pointer ai-triage-row ${idx===focusedIndex?'focus-ring':''}`}
-                  role="button"
-                  aria-expanded={isExpanded}
-                  draggable
-                  onDragStart={(e)=>onDragStart(e, msg.id)}
-                  onClick={()=>setExpanded(s=>({ ...s, [msg.id]: !s[msg.id] }))}
-                >
+                key={msg.id}
+                className={`ai-list-item cursor-pointer ai-triage-row ${idx===focusedIndex?'focus-ring':''}`}
+                role="button"
+                aria-expanded={isExpanded}
+                draggable
+                onDragStart={(e)=>onDragStart(e, msg.id)}
+                onClick={()=>setExpanded(s=>({ ...s, [msg.id]: !s[msg.id] }))}
+              >
                   <div className="d-flex align-items-start justify-content-between gap-2">
                     <div className="d-flex align-items-start min-width-0 flex-grow-1">
                       <i className={`${PRIORITY_ICONS[msg.ai.priority]} fs-14 priority-icon-${msg.ai.priority} me-2 mt-1`} />
