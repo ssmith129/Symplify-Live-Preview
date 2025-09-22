@@ -1057,7 +1057,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.seoSetupsettings,
+    path: routes.seosetupsettings,
     element: <SeoSetupSettings />,
     route: Route,
   },
@@ -1067,7 +1067,7 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.contactmessages,
+    path: routes.contactMessages,
     element: <ContactMessages />,
     route: Route,
   },
@@ -1112,22 +1112,22 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.addblogs,
+    path: routes.addBlogs,
     element: <AddBlog />,
     route: Route,
   },
   {
-    path: routes.editblogs,
+    path: routes.editBlogs,
     element: <EditBlog />,
     route: Route,
   },
   {
-    path: routes.blogcategories,
+    path: routes.blogCategories,
     element: <BlogCategories />,
     route: Route,
   },
   {
-    path: routes.blogcomments,
+    path: routes.blogComments,
     element: <BlogComments />,
     route: Route,
   },
@@ -1152,12 +1152,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.addPages,
+    path: routes.addPage,
     element: <AddPages />,
     route: Route,
   },
   {
-    path: routes.editpages,
+    path: routes.editPage,
     element: <EditPage />,
     route: Route,
   },
@@ -1172,12 +1172,12 @@ export const publicRoutes = [
     route: Route,
   },
   {
-    path: routes.uiaccordion,
+    path: routes.uiAccordion,
     element: <UiAccordion />,
     route: Route,
   },
   {
-    path: routes.uialerts,
+    path: routes.uiAlerts,
     element: <UiAlerts />,
     route: Route,
   },
