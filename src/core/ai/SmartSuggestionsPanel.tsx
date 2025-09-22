@@ -158,7 +158,6 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                       <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'} me-1`}>
                         {formatScore(suggestion.score)}% Match
                       </span>
-                      <span className="ai-badge ai-badge--sm ai-badge--low">{suggestion.confidence}%</span>
                     </div>
                   </div>
                   <div className="row g-1 mb-2">
