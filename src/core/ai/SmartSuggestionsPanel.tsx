@@ -220,11 +220,10 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               <p className="text-muted fs-13 mb-2">{error}</p>
               <button
                 type="button"
-                className="ai-btn ai-btn--sm ai-btn--secondary"
+                className="ai-btn ai-btn--sm ai-btn--accent"
                 onClick={retry}
               >
-                <i className="ti ti-refresh me-1"></i>
-                Try Again
+                🔄 Try Again
               </button>
             </div>
           ) : loading ? (
