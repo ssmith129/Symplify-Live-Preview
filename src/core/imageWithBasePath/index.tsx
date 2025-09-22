@@ -22,6 +22,7 @@ const ImageWithBasePath = (props: Image) => {
       alt={props.alt}
       width={props.width}
       id={props.id}
+      style={props.style}
     />
   );
 };
