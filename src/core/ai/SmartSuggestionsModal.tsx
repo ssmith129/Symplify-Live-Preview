@@ -127,9 +127,8 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
   return (
     <>
       <div 
-        className="modal-backdrop fade show" 
+        className="modal-backdrop fade show ai-z-1040"
         onClick={onClose}
-        style={{ zIndex: 1040 }}
       ></div>
       
       <div 
