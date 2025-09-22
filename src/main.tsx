@@ -2,7 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import store from './core/redux/store'
+<<<<<<< HEAD
 import { BrowserRouter } from 'react-router-dom'
+=======
+import { BrowserRouter } from 'react-router'
+>>>>>>> parent of 2b06b8d (replace)
 import { base_path } from './environment'
 import ALLRoutes from './feature-module/routes/router'
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
