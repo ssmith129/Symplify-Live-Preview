@@ -75,6 +75,14 @@ const NewAppointment = () => {
                       Appointments
                     </Link>
                   </h6>
+                  <button
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => setShowSmartMode(!showSmartMode)}
+                    title={showSmartMode ? "Hide AI Suggestions" : "Show AI Suggestions"}
+                  >
+                    <i className={`ti ti-${showSmartMode ? 'eye-off' : 'eye'} me-1`} />
+                    {showSmartMode ? 'Hide' : 'Show'} AI Suggestions
+                  </button>
                 </div>
               </div>
               {/* page header end */}
