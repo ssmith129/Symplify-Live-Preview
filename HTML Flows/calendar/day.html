@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – Calendar Day</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <a class="brand" href="../index.html"><span aria-hidden="true">🩺</span><span>Simplify</span></a>
+    <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a href="../index.html">Dashboard</a>
+      <a href="../appointments/list.html">Appointments</a>
+      <a href="../messages/inbox.html">Messages</a>
+      <a href="../ai-triage/index.html">AI Triage</a>
+      <a href="inbox.html">Email</a>
+      <a href="day.html" aria-current="page">Calendar</a>
+      <a href="../new-appointment/index.html">New Appointment</a>
+      <a href="../notifications/index.html">Notifications</a>
+    </nav>
+  </div>
+</header>
+<main class="main container" role="main">
+  <h1>Calendar – Today</h1>
+  <section class="card" aria-label="Day schedule">
+    <div class="card-body">
+      <table class="table" aria-label="Today's appointments">
+        <thead><tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td>09:00</td><td>John Carter</td><td>Dr. Patel</td><td>Follow-up</td></tr>
+          <tr><td>09:30</td><td>Mary Green</td><td>Dr. Lee</td><td>Consult</td></tr>
+          <tr><td>10:00</td><td>Ahmed Khan</td><td>Dr. Kim</td><td>New Patient</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <a class="button secondary" href="week.html">Week</a>
+      <a class="button secondary" href="month.html">Month</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">© 2025 Simplify Healthcare</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

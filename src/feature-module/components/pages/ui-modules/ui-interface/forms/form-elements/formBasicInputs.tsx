@@ -1,4 +1,3 @@
-
 import { Link } from "react-router";
 
 const FormBasicInputs = () => {
@@ -635,7 +634,7 @@ const FormBasicInputs = () => {
           <p className="text-dark mb-0">
             ©
             <Link to="#" className="link-primary">
-              Kanakku
+              Symplify
             </Link>
             , All Rights Reserved
           </p>

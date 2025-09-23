@@ -327,13 +327,7 @@ const Sidebar = () => {
 
                             {title?.submenu !== false && (
                               <ul
-                                style={{
-                                  display:
-                                    subOpen === title?.label ||
-                                    title?.links?.includes(Location.pathname)
-                                      ? "block"
-                                      : "none",
-                                }}
+                                className={`${(subOpen === title?.label || title?.links?.includes(Location.pathname)) ? 'd-block' : 'd-none'}`}
                               >
                                 {title?.submenuItems?.map(
                                   (item: any, j: any) => {
@@ -378,12 +372,7 @@ const Sidebar = () => {
                                         </Link>
                                         {item?.submenuItems ? (
                                           <ul
-                                            style={{
-                                              display:
-                                                subsidebar === item?.label
-                                                  ? "block"
-                                                  : "none",
-                                            }}
+                                            className={`${subsidebar === item?.label ? 'd-block' : 'd-none'}`}
                                           >
                                             {item?.submenuItems?.map(
                                               (items: any, k: any) => {

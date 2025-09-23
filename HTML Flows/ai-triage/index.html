@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – AI Inbox Triage</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <a class="brand" href="../index.html"><span aria-hidden="true">🩺</span><span>Simplify</span></a>
+    <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a href="../index.html">Dashboard</a>
+      <a href="../appointments/list.html">Appointments</a>
+      <a href="../messages/inbox.html">Messages</a>
+      <a href="index.html" aria-current="page">AI Triage</a>
+      <a href="../email/inbox.html">Email</a>
+      <a href="../calendar/month.html">Calendar</a>
+      <a href="../new-appointment/index.html">New Appointment</a>
+      <a href="../notifications/index.html">Notifications</a>
+    </nav>
+  </div>
+</header>
+<main class="main container" role="main">
+  <h1>AI Inbox Triage</h1>
+  <section class="grid cols-3" aria-label="Triage buckets">
+    <article class="card">
+      <div class="card-header">Urgent</div>
+      <div class="card-body">
+        <ul>
+          <li>Chest pain reported – route to on-call nurse</li>
+          <li>High fever in toddler – prioritize pediatrics</li>
+        </ul>
+      </div>
+      <div class="card-footer"><a class="button secondary" href="../messages/inbox.html">Open Inbox</a></div>
+    </article>
+    <article class="card">
+      <div class="card-header">Follow-up</div>
+      <div class="card-body">
+        <ul>
+          <li>Lab results discussion – schedule call</li>
+          <li>Medication side effects inquiry</li>
+        </ul>
+      </div>
+      <div class="card-footer"><a class="button secondary" href="../appointments/list.html">Create Follow-up</a></div>
+    </article>
+    <article class="card">
+      <div class="card-header">General</div>
+      <div class="card-body">
+        <p class="helper">No action required. Messages can be answered later.</p>
+      </div>
+      <div class="card-footer"><a class="button" href="../messages/inbox.html">Review All</a></div>
+    </article>
+  </section>
+</main>
+<footer class="footer">© 2025 Simplify Healthcare</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

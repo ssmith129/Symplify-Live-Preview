@@ -189,7 +189,7 @@ const DoctorsPrescriptions = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Doctor}
@@ -205,7 +205,7 @@ const DoctorsPrescriptions = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Designation}
@@ -221,7 +221,7 @@ const DoctorsPrescriptions = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Department}
@@ -257,7 +257,7 @@ const DoctorsPrescriptions = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Amount}
@@ -273,7 +273,7 @@ const DoctorsPrescriptions = () => {
                         <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Status}

@@ -127,14 +127,12 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
   return (
     <>
       <div 
-        className="modal-backdrop fade show" 
+        className="modal-backdrop fade show ai-z-1040"
         onClick={onClose}
-        style={{ zIndex: 1040 }}
       ></div>
       
       <div 
-        className="modal fade show d-block" 
-        style={{ zIndex: 1050 }}
+        className="modal fade show d-block ai-z-1050"
         role="dialog"
         aria-labelledby="smartSuggestionsModalTitle"
         aria-hidden="false"
@@ -143,7 +141,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
           <div className="modal-content">
             <div className="modal-header border-bottom">
               <h5 className="modal-title fw-semibold" id="smartSuggestionsModalTitle">
-                <i className="ti ti-brain me-2 text-primary"></i>
+                <i className="fa-solid fa-brain me-2 text-primary"></i>
                 Smart Time Suggestions
               </h5>
               <button
@@ -166,7 +164,7 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                 <>
                   <div className="p-3 border-bottom bg-light">
                     <div className="d-flex align-items-center">
-                      <i className="ti ti-calendar-event text-primary me-2"></i>
+                      <i className="fa-regular fa-calendar-days text-primary me-2"></i>
                       <span className="fw-medium">
                         {selectedDate ? selectedDate.toLocaleDateString('en-US', { 
                           weekday: 'long', 
@@ -185,18 +183,15 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                     <div className="row g-3">
                       {suggestions.map((suggestion, index) => (
                         <div key={suggestion.id} className="col-12">
-                          <div 
-                            className={`card h-100 suggestion-card ${
-                              selectedSuggestion === suggestion.id ? 'border-primary shadow-sm' : ''
-                            }`}
-                            style={{ cursor: 'pointer' }}
+                          <div
+                            className={`ai-card h-100 suggestion-card ${selectedSuggestion === suggestion.id ? 'is-selected' : ''}`}
                             onClick={() => handleSelectSlot(suggestion)}
                           >
-                            <div className="card-body p-3">
+                            <div className="ai-card__body ai-p-3">
                               <div className="d-flex align-items-start justify-content-between mb-3">
-                                <div className="d-flex align-items-center">
-                                  <div className={`badge bg-${index === 0 ? 'success' : index === 1 ? 'primary' : 'warning'} rounded-pill me-2`}>
-                                    #{index + 1}
+                                <div className="d-flex align-items-center gap-2">
+                                  <div className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
+                                    <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                                   </div>
                                   <div>
                                     <h6 className="mb-1 fw-semibold">{suggestion.time}</h6>
@@ -207,10 +202,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                                 </div>
                                 
                                 <div className="text-end">
-                                  <span className={`badge bg-${getScoreColor(suggestion.score)} mb-1`}>
-                                    Score: {suggestion.score}
+                                  <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'} mb-1`}>
+                                    {suggestion.score}% Match
                                   </span>
-                                  <div className={`ai-confidence`}>
+                                  <div className="ai-badge ai-badge--sm ai-badge--low">
                                     {suggestion.confidence}% confidence
                                   </div>
                                 </div>
@@ -241,13 +236,13 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               {/* Reasons */}
                               <div className="mb-3">
                                 <div className="fw-medium text-success mb-2 fs-13">
-                                  <i className="ti ti-check me-1"></i>
+                                  <i className="fa-solid fa-check me-1"></i>
                                   Why this time works:
                                 </div>
                                 <ul className="list-unstyled mb-0">
                                   {suggestion.reasons.map((reason, idx) => (
                                     <li key={idx} className="fs-13 text-muted mb-1">
-                                      <i className="ti ti-point text-primary me-1"></i>
+                                      <i className="fa-regular fa-circle text-primary me-1"></i>
                                       {reason}
                                     </li>
                                   ))}
@@ -258,13 +253,13 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               {suggestion.conflicts && suggestion.conflicts.length > 0 && (
                                 <div className="mb-3">
                                   <div className="fw-medium text-warning mb-2 fs-13">
-                                    <i className="ti ti-alert-triangle me-1"></i>
+                                    <i className="fa-solid fa-triangle-exclamation me-1"></i>
                                     Potential considerations:
                                   </div>
                                   <ul className="list-unstyled mb-0">
                                     {suggestion.conflicts.map((conflict, idx) => (
                                       <li key={idx} className="fs-13 text-muted mb-1">
-                                        <i className="ti ti-point text-warning me-1"></i>
+                                        <i className="fa-regular fa-circle text-warning me-1"></i>
                                         {conflict}
                                       </li>
                                     ))}
@@ -275,10 +270,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                               <div className="text-end">
                                 <button
                                   type="button"
-                                  className={`btn btn-sm ${
-                                    selectedSuggestion === suggestion.id 
-                                      ? 'btn-primary' 
-                                      : 'btn-outline-primary'
+                                  className={`ai-btn ${
+                                    selectedSuggestion === suggestion.id
+                                      ? 'ai-btn--accent'
+                                      : 'ai-btn--secondary'
                                   }`}
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -287,11 +282,10 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
                                 >
                                   {selectedSuggestion === suggestion.id ? (
                                     <>
-                                      <i className="ti ti-check me-1"></i>
-                                      Book This Time
+                                      <i className="fa-solid fa-check me-1"></i>Book This Time
                                     </>
                                   ) : (
-                                    'Select Time'
+                                    '<i className="fa-regular fa-calendar-days me-1"></i>Select Time'
                                   )}
                                 </button>
                               </div>
@@ -308,24 +302,23 @@ const SmartSuggestionsModal: React.FC<SmartSuggestionsModalProps> = ({
             <div className="modal-footer border-top">
               <div className="d-flex justify-content-between align-items-center w-100">
                 <div className="text-muted fs-13">
-                  <i className="ti ti-info-circle me-1"></i>
+                  <i className="fa-solid fa-circle-info me-1"></i>
                   Suggestions update every 5 minutes
                 </div>
                 <div>
                   <button
                     type="button"
-                    className="btn btn-light me-2"
+                    className="ai-btn ai-btn--secondary me-2"
                     onClick={onClose}
                   >
                     Cancel
                   </button>
                   <Link
                     to={all_routes.newAppointment}
-                    className="btn btn-outline-primary"
+                    className="ai-btn ai-btn--primary"
                     onClick={onClose}
                   >
-                    <i className="ti ti-plus me-1"></i>
-                    Manual Booking
+                    <i className="fa-solid fa-plus me-1"></i>Manual Booking
                   </Link>
                 </div>
               </div>

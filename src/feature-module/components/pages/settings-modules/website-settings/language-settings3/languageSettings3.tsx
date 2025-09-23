@@ -105,13 +105,12 @@ const LanguageSettings3 = () => {
                       <span className="text-gray-9 fs-10">Progress</span>
                       <div className="d-flex align-items-center">
                         <div
-                          className="progress progress-xs"
-                          style={{ width: 120 }}
+                          className="progress progress-xs ai-w-120"
                         >
                           <div
-                            className="progress-bar bg-danger rounded"
+                            className="progress-bar bg-danger rounded ai-progress-bar"
                             role="progressbar"
-                            style={{ width: "70%" }}
+                            style={{ ['--ai-progress' as any]: '70%' }}
                             aria-valuenow={100}
                             aria-valuemin={0}
                             aria-valuemax={100}

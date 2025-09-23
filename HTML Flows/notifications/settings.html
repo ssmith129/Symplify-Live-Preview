@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – Notification Settings</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <a class="brand" href="../index.html"><span aria-hidden="true">🩺</span><span>Simplify</span></a>
+    <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a href="../index.html">Dashboard</a>
+      <a href="../appointments/list.html">Appointments</a>
+      <a href="../messages/inbox.html">Messages</a>
+      <a href="../ai-triage/index.html">AI Triage</a>
+      <a href="../email/inbox.html">Email</a>
+      <a href="../calendar/month.html">Calendar</a>
+      <a href="../new-appointment/index.html">New Appointment</a>
+      <a href="index.html">Notifications</a>
+    </nav>
+  </div>
+</header>
+<main class="main container" role="main">
+  <h1>Notification Settings</h1>
+  <form class="card" aria-labelledby="pref-h">
+    <div class="card-header" id="pref-h">Preferences</div>
+    <div class="card-body">
+      <p class="helper">Choose how you want to receive alerts.</p>
+      <label><input type="checkbox" checked> Email alerts</label><br />
+      <label><input type="checkbox" checked> In-app notifications</label><br />
+      <label><input type="checkbox"> SMS alerts</label>
+    </div>
+    <div class="card-footer form-actions">
+      <a class="button secondary" href="index.html">Back</a>
+      <button class="button" type="submit">Save</button>
+    </div>
+  </form>
+</main>
+<footer class="footer">© 2025 Simplify Healthcare</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

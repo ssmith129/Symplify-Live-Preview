@@ -76,8 +76,7 @@ const RewardsForms = () => {
               <Link
                 to="#"
                 onClick={() => handleAddRow(row)}
-                className="add-schedule-btn p-2 bg-light btn-icon text-dark rounded d-flex align-items-center justify-content-center"
-                style={{ marginRight: 8 }}
+                className="add-schedule-btn p-2 bg-light btn-icon text-dark rounded d-flex align-items-center justify-content-center me-2"
               >
                 <i className="ti ti-plus fs-16" />
               </Link>

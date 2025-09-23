@@ -193,7 +193,7 @@ const Services = () => {
                            <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Service_Name}
@@ -212,7 +212,7 @@ const Services = () => {
                            <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={Department}
@@ -262,7 +262,7 @@ const Services = () => {
                            <Select
                           mode="multiple"
                           allowClear
-                          style={{ width: "100%" }}
+                          className="w-100"
                           placeholder="Please select"
                           defaultValue={[]}
                           options={StatusActive}

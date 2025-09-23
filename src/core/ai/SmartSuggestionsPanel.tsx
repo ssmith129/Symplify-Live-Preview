@@ -132,34 +132,32 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   if (!patientId || !doctorId) {
     return (
       <div className={`smart-suggestions-panel ${className}`}>
-        <div className="card mb-3">
-          <div className="card-header d-flex align-items-center justify-content-between">
+        <div className="ai-card mb-3">
+          <div className="ai-card__header d-flex align-items-center justify-content-between">
             <h6 className="mb-0 fw-semibold">
-              <i className="ti ti-brain me-2 text-primary"></i>
+              <i className="fa-solid fa-brain me-2"></i>
               AI Recommendations
             </h6>
-            <span className="badge badge-soft-info fs-11">Default view</span>
+            <span className="ai-badge ai-badge--low fs-11">Default view</span>
           </div>
-          <div className="card-body p-2">
+          <div className="ai-card__body ai-p-2">
             <div className="suggestions-list">
               {defaultSuggestions.map((suggestion, index) => (
                 <div
                   key={suggestion.id}
-                  className="suggestion-item border rounded p-2 mb-2 hover-bg-light"
-                  style={{ cursor: 'default' }}
+                  className="suggestion-item border rounded p-2 mb-2 hover-bg-light cursor-default"
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center gap-2">
                       <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                        #{index + 1}
+                        <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
                     </div>
                     <div className="text-end">
-                      <span className={`badge bg-${getScoreColor(suggestion.score)} me-1`}>
-                        {formatScore(suggestion.score)}
+                      <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'} me-1`}>
+                        {formatScore(suggestion.score)}% Match
                       </span>
-                      <span className="ai-confidence">{suggestion.confidence}%</span>
                     </div>
                   </div>
                   <div className="row g-1 mb-2">
@@ -179,7 +177,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   <div className="fs-12 text-muted">
                     {suggestion.reasons.slice(0,2).map((reason, idx) => (
                       <div key={idx} className="d-flex align-items-center">
-                        <i className="ti ti-check text-success me-1"></i>
+                        <i className="fa-solid fa-check text-success me-1"></i>
                         {reason}
                       </div>
                     ))}
@@ -199,32 +197,30 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
   return (
     <div className={`smart-suggestions-panel ${className}`}>
       {/* AI Recommendations Card */}
-      <div className="card mb-3">
-        <div className="card-header d-flex align-items-center justify-content-between">
+      <div className="ai-card mb-3">
+        <div className="ai-card__header d-flex align-items-center justify-content-between">
           <h6 className="mb-0 fw-semibold">
-            <i className="ti ti-brain me-2 text-primary"></i>
-            AI Recommendations
+            🎯 AI Recommendations
           </h6>
           {lastUpdated && (
-            <small className="text-muted">
+            <small className="ai-badge ai-badge--sm ai-badge--low">
               Updated {lastUpdated.toLocaleTimeString()}
             </small>
           )}
         </div>
-        <div className="card-body p-2">
+        <div className="ai-card__body ai-p-2">
           {error ? (
             <div className="text-center py-3">
               <div className="text-danger mb-2">
-                <i className="ti ti-alert-circle fs-24"></i>
+                <i className="fa-solid fa-circle-exclamation fs-24"></i>
               </div>
               <p className="text-muted fs-13 mb-2">{error}</p>
               <button
                 type="button"
-                className="ai-btn ai-btn--sm ai-btn--secondary"
+                className="ai-btn ai-btn--sm ai-btn--accent"
                 onClick={retry}
               >
-                <i className="ti ti-refresh me-1"></i>
-                Try Again
+                <i className="fa-solid fa-rotate-right me-1"></i>Try Again
               </button>
             </div>
           ) : loading ? (
@@ -241,17 +237,16 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                   key={suggestion.id}
                   className="suggestion-item border rounded p-2 mb-2 cursor-pointer hover-bg-light"
                   onClick={() => handleSuggestionClick(suggestion)}
-                  style={{ cursor: 'pointer' }}
                 >
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center gap-2">
                       <span className={`ai-badge ai-badge--${index === 0 ? 'low' : index === 1 ? 'medium' : 'high'}`}>
-                        #{index + 1}
+                        <i className="fa-solid fa-trophy me-1"></i>#{index + 1}
                       </span>
                       <span className="fw-medium">{suggestion.time}</span>
                     </div>
-                    <span className={`badge bg-${getScoreColor(suggestion.score)}`}>
-                      {formatScore(suggestion.score)}
+                    <span className={`ai-badge ai-badge--${getScoreColor(suggestion.score) === 'success' ? 'low' : getScoreColor(suggestion.score) === 'warning' ? 'high' : 'critical'}`}>
+                      {formatScore(suggestion.score)}% Match
                     </span>
                   </div>
                   
@@ -272,12 +267,12 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
 
                   <div className="fs-12 text-muted">
                     <div className="d-flex align-items-center">
-                      <i className="ti ti-check text-success me-1"></i>
+                      <i className="fa-solid fa-check text-success me-1"></i>
                       {suggestion.reasons[0]}
                     </div>
                     {suggestion.reasons[1] && (
                       <div className="d-flex align-items-center">
-                        <i className="ti ti-check text-success me-1"></i>
+                        <i className="fa-solid fa-check text-success me-1"></i>
                         {suggestion.reasons[1]}
                       </div>
                     )}
@@ -287,7 +282,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                     <div className="mt-1">
                       {suggestion.warnings.map((warning, idx) => (
                         <div key={idx} className="fs-12 text-warning">
-                          <i className="ti ti-alert-triangle me-1"></i>
+                          <i className="fa-solid fa-triangle-exclamation me-1"></i>
                           {warning}
                         </div>
                       ))}
@@ -298,7 +293,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
               
               <button
                 type="button"
-                className="ai-btn ai-btn--sm ai-btn--secondary w-100"
+                className="ai-btn ai-btn--sm ai-btn--primary w-100"
                 onClick={() => {
                   clearCache();
                   if (patientId && doctorId) {
@@ -307,8 +302,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
                 }}
                 disabled={loading}
               >
-                <i className="ti ti-refresh me-1"></i>
-                Refresh Suggestions
+                <i className="fa-solid fa-rotate-right me-1"></i>Refresh Suggestions
               </button>
             </div>
           )}
@@ -316,16 +310,16 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
       </div>
 
       {/* AI Insights Card */}
-      <div className="card">
-        <div className="card-header">
+      <div className="ai-card">
+        <div className="ai-card__header">
           <h6 className="mb-0 fw-semibold">
-            <i className="ti ti-lightbulb me-2 text-warning"></i>
+            <i className="fa-regular fa-lightbulb me-2"></i>
             AI Insights
           </h6>
         </div>
-        <div className="card-body p-2">
+        <div className="ai-card__body ai-p-2">
           <div className="insight-item d-flex align-items-center mb-2">
-            <i className="ti ti-flame fs-18 text-danger me-2"></i>
+            <i className="fa-solid fa-fire fs-18 text-danger me-2"></i>
             <div>
               <div className="fw-medium fs-13">Peak Performance</div>
               <div className="fs-12 text-muted">Doctor performs best 10-11 AM</div>
@@ -333,7 +327,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
           </div>
           
           <div className="insight-item d-flex align-items-center mb-2">
-            <i className="ti ti-user-heart fs-18 text-primary me-2"></i>
+            <i className="fa-solid fa-heart fs-18 text-primary me-2"></i>
             <div>
               <div className="fw-medium fs-13">Patient Preference</div>
               <div className="fs-12 text-muted">Prefers afternoon appointments</div>
@@ -341,7 +335,7 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
           </div>
           
           <div className="insight-item d-flex align-items-center">
-            <i className="ti ti-clock fs-18 text-success me-2"></i>
+            <i className="fa-regular fa-clock fs-18 text-success me-2"></i>
             <div>
               <div className="fw-medium fs-13">Wait Time Reduction</div>
               <div className="fs-12 text-muted">Morning slots have 40% less wait</div>
@@ -352,14 +346,14 @@ const SmartSuggestionsPanel: React.FC<SmartSuggestionsPanelProps> = ({
 
       {/* Conflicts Warning */}
       {conflicts.length > 0 && (
-        <div className="card mt-3 border-warning">
-          <div className="card-header bg-warning-transparent">
-            <h6 className="mb-0 fw-semibold text-warning">
-              <i className="ti ti-alert-triangle me-2"></i>
+        <div className="ai-card mt-3 ai-border-high">
+          <div className="ai-card__header ai-bg-high ai-color-high">
+            <h6 className="mb-0 fw-semibold">
+              <i className="fa-solid fa-triangle-exclamation me-2"></i>
               Potential Conflicts
             </h6>
           </div>
-          <div className="card-body p-2">
+          <div className="ai-card__body ai-p-2">
             {conflicts.map((conflict, index) => (
               <div key={index} className="conflict-item mb-2">
                 <div className={`text-${conflict.type === 'error' ? 'danger' : conflict.type === 'warning' ? 'warning' : 'info'} fw-medium fs-13`}>

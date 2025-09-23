@@ -27,7 +27,7 @@ const FilterIndex = () => {
             <Select
               mode="multiple"
               allowClear
-              style={{ width: "100%" }}
+              className="w-100"
               placeholder="Please select"
               defaultValue={[]}
               options={Doctor}
@@ -43,7 +43,7 @@ const FilterIndex = () => {
             <Select
               mode="multiple"
               allowClear
-              style={{ width: "100%" }}
+              className="w-100"
               placeholder="Please select"
               defaultValue={[]}
               options={Designation}
@@ -59,7 +59,7 @@ const FilterIndex = () => {
             <Select
               mode="multiple"
               allowClear
-              style={{ width: "100%" }}
+              className="w-100"
               placeholder="Please select"
               defaultValue={[]}
               options={Department}
@@ -95,7 +95,7 @@ const FilterIndex = () => {
             <Select
               mode="multiple"
               allowClear
-              style={{ width: "100%" }}
+              className="w-100"
               placeholder="Please select"
               defaultValue={[]}
               options={Amount}
@@ -111,7 +111,7 @@ const FilterIndex = () => {
             <Select
               mode="multiple"
               allowClear
-              style={{ width: "100%" }}
+              className="w-100"
               placeholder="Please select"
               defaultValue={[]}
               options={Status}

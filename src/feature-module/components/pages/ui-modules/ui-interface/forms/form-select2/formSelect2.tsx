@@ -80,9 +80,8 @@ const FormSelect2 = () => {
                         Select2 can take a regular select box like this...
                       </p>
                       <Select
-                        className="select"
+                        className="select ai-w-200"
                         defaultValue="Select"
-                        style={{ width: 200 }}
                         onChange={handleChange}
                         options={[
                           {
@@ -140,10 +139,9 @@ const FormSelect2 = () => {
                         Select2 can take a regular select box like this...
                       </p>
                       <Select
-                        className="select"
+                        className="select w-100"
                         mode="multiple"
                         value={value}
-                        style={{ width: "100%" }}
                         onChange={setValue}
                         placeholder="Please select"
                         options={[
@@ -217,9 +215,8 @@ const FormSelect2 = () => {
                             attribute to set option group
                           </p>
                           <Select
-                            className="select"
+                            className="select ai-w-200"
                             defaultValue="Choose a city"
-                            style={{ width: 200 }}
                             onChange={handleChange}
                             options={[
                               {
@@ -562,7 +559,7 @@ const FormSelect2 = () => {
           <p className="text-title mb-0">
             ©
             <Link to="#" className="link-primary">
-              Kanakku
+              Symplify
             </Link>
             , All Rights Reserved
           </p>

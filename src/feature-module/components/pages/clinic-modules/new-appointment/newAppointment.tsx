@@ -75,18 +75,14 @@ const NewAppointment = () => {
                       Appointments
                     </Link>
                   </h6>
-                  <div className="form-check form-switch">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="smartModeToggle"
-                      checked={showSmartMode}
-                      onChange={(e) => setShowSmartMode(e.target.checked)}
-                    />
-                    <label className="form-check-label fw-medium" htmlFor="smartModeToggle">
-                      Smart Mode {showSmartMode ? 'On' : 'Off'}
-                    </label>
-                  </div>
+                  <button
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => setShowSmartMode(!showSmartMode)}
+                    title={showSmartMode ? "Hide AI Suggestions" : "Show AI Suggestions"}
+                  >
+                    <i className={`ti ti-${showSmartMode ? 'eye-off' : 'eye'} me-1`} />
+                    {showSmartMode ? 'Hide' : 'Show'} AI Suggestions
+                  </button>
                 </div>
               </div>
               {/* page header end */}

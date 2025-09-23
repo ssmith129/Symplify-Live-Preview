@@ -1,18 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { all_routes } from '../../feature-module/routes/all_routes';
 import { loadInbox, setFilter, updateMessagePriority, updateMessageCategory, removeMessageById, upsertMessage } from '../redux/aiSlice';
 import type { RootState } from './typesInternal';
 import type { AIMessage } from '../services/ai/types';
-
-const PRIORITY_ICONS: Record<string, string> = {
-  critical: 'ti ti-alert-triangle-filled',
-  high: 'ti ti-exclamation-circle',
-  medium: 'ti ti-info-circle',
-  low: 'ti ti-check-circle',
-};
-
 const CATEGORIES = ['emergency','medical','appointment','administrative','follow-up'] as const;
 
 export default function InboxTriageCard() {
@@ -105,7 +97,7 @@ export default function InboxTriageCard() {
     <div className="card shadow-sm flex-fill w-100" aria-live="polite">
       <div className="card-header d-flex align-items-center justify-content-between">
         <h5 className="fw-bold mb-0 d-flex align-items-center">
-          <i className="ti ti-brain me-2 text-primary" />
+          <i className="fa-solid fa-brain me-2 text-primary" />
           <Link to={all_routes.email} className="text-reset text-decoration-none">AI Inbox Triage</Link>
         </h5>
         <div className="d-flex align-items-center gap-2">
@@ -115,7 +107,7 @@ export default function InboxTriageCard() {
           <div className="dropdown">
             <button className="btn btn-sm px-2 border shadow-sm btn-outline-white d-inline-flex align-items-center" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {filter === 'all' ? 'All' : filter}
-              <i className="ti ti-chevron-down ms-1 fs-12"/>
+              <i className="fa-solid fa-chevron-down ms-1 fs-12"/>
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
               {(['all',...CATEGORIES] as const).map(opt => (
@@ -138,14 +130,14 @@ export default function InboxTriageCard() {
             role="option"
             aria-selected={dropHover===cat}
           >
-            <i className="ti ti-inbox me-1"/>{cat}
+            <i className="fa-solid fa-inbox me-1"/>{cat}
           </span>
         ))}
         <div className="ms-auto d-flex align-items-center gap-2">
           <span className="fs-11 text-muted">{visible.length} total</span>
           {confidenceOnly && (
             <div className="d-flex align-items-center gap-1">
-              <i className="ti ti-robot fs-12 text-primary"/>
+              <i className="fa-solid fa-robot fs-12 text-primary"/>
               <span className="badge bg-light text-dark px-1 py-0 fs-10">≥ {Math.round(confidenceThreshold*100)}%</span>
             </div>
           )}
@@ -177,23 +169,23 @@ export default function InboxTriageCard() {
           <div className="alert alert-danger m-2 py-2 fs-12" role="alert">{error}</div>
         )}
         {!loading && !error && (
-          <div className="ai-triage-compact-list overflow-auto">
+          <div className="ai-card p-0">
             {visible.map((msg, idx) => {
               const isExpanded = !!expanded[msg.id];
               const proc = !!processing[msg.id];
               return (
                 <div
-                  key={msg.id}
-                  className={`px-3 py-2 border-bottom hover-bg-light cursor-pointer ai-triage-row ${idx===focusedIndex?'focus-ring':''}`}
-                  role="button"
-                  aria-expanded={isExpanded}
-                  draggable
-                  onDragStart={(e)=>onDragStart(e, msg.id)}
-                  onClick={()=>setExpanded(s=>({ ...s, [msg.id]: !s[msg.id] }))}
-                >
-                  <div className="d-flex align-items-start justify-content-between gap-2">
-                    <div className="d-flex align-items-start min-width-0 flex-grow-1">
-                      <i className={`${PRIORITY_ICONS[msg.ai.priority]} fs-14 priority-icon-${msg.ai.priority} me-2 mt-1`} />
+                key={msg.id}
+                className={`ai-list-item cursor-pointer ai-triage-row ${idx===focusedIndex?'focus-ring':''}`}
+                role="button"
+                aria-expanded={isExpanded}
+                draggable
+                onDragStart={(e)=>onDragStart(e, msg.id)}
+                onClick={()=>setExpanded(s=>({ ...s, [msg.id]: !s[msg.id] }))}
+              >
+                  <div className="d-flex align-items-start gap-3">
+                    <div className={`ai-list-item__priority ai-list-item__priority--${msg.ai.priority}`}></div>
+                    <div className="ai-list-item__content">
                       <div className="min-width-0 flex-grow-1">
                         <div className="d-flex align-items-center justify-content-between">
                           <h6 className="mb-0 fw-semibold text-dark fs-14 text-truncate" title={msg.subject}>{msg.from}</h6>
@@ -201,19 +193,19 @@ export default function InboxTriageCard() {
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="ai-badge ai-badge--sm" style={{background: 'var(--ai-bg-secondary)', color: 'var(--ai-text-secondary)'}} title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
+                            <span className="ai-badge ai-badge--sm ai-badge--low" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
                         <div className="d-flex align-items-center justify-content-between mt-1">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
-                            <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
+                            <span className="fs-13 text-muted"><i className="fa-solid fa-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="ai-badge ai-badge--critical">ACTION</span>
+                              <span className="ai-badge ai-badge--critical"><i className="fa-solid fa-triangle-exclamation me-1"></i>ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
-                              <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="ti ti-paperclip me-1"/>{msg.metadata.attachments}</span>
+                              <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="fa-solid fa-paperclip me-1"/>{msg.metadata.attachments}</span>
                             )}
                           </div>
                           <div className="dropdown">
@@ -231,21 +223,21 @@ export default function InboxTriageCard() {
                           <div className="mt-2 fs-13 text-muted">{msg.preview}</div>
                           <div className="d-flex align-items-center gap-2 mt-2 flex-wrap">
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
-                              {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-archive me-1"/>}
+                              {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="fa-solid fa-box-archive me-1"></i>}
                               Archive
                             </button>
                             <button className="ai-btn ai-btn--sm ai-btn--secondary text-danger" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
-                              {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-trash me-1"/>}
+                              {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="fa-solid fa-trash me-1"></i>}
                               Delete
                             </button>
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Reply">
-                              <i className="ti ti-reply me-1"/>Reply
+                              <i className="fa-regular fa-comment me-1"></i>Reply
                             </button>
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Forward">
-                              <i className="ti ti-arrow-right me-1"/>Forward
+                              <i className="fa-solid fa-arrow-right me-1"></i>Forward
                             </button>
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Snooze">
-                              <i className="ti ti-alarm me-1"/>Snooze
+                              <i className="fa-regular fa-bell-slash me-1"></i>Snooze
                             </button>
                           </div>
                         </div>

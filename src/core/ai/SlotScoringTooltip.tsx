@@ -165,11 +165,10 @@ const SlotScoringTooltip: React.FC<SlotScoringTooltipProps> = ({
       <div className="ai-schedule-overlay" onClick={onClose}></div>
       <div
         ref={tooltipRef}
-        className="ai-schedule-popover"
+        className="ai-schedule-popover ai-z-1070"
         style={{
-          left: `${adjustedPosition.x}px`,
-          top: `${adjustedPosition.y}px`,
-          zIndex: 1070
+          ['--ai-popover-left' as any]: `${adjustedPosition.x}px`,
+          ['--ai-popover-top' as any]: `${adjustedPosition.y}px`
         }}
         role="tooltip"
         aria-live="polite"
@@ -202,8 +201,8 @@ const SlotScoringTooltip: React.FC<SlotScoringTooltipProps> = ({
               <div className="flex-grow-1">
                 <div className="progress progress-sm">
                   <div
-                    className={`progress-bar bg-${getScoreColor(slotData.confidence)}`}
-                    style={{ width: `${slotData.confidence}%` }}
+                    className={`progress-bar bg-${getScoreColor(slotData.confidence)} ai-progress-bar`}
+                    style={{ ['--ai-progress' as any]: `${slotData.confidence}%` }}
                   ></div>
                 </div>
               </div>

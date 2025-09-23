@@ -155,11 +155,7 @@ const SidebarTwo = () => {
                         />
                       </span>
                     </Link>
-                    <ul
-                      style={{
-                        display: openSubmenus.appointments ? "block" : "none",
-                      }}
-                    >
+                    <ul className={`${openSubmenus.appointments ? 'd-block' : 'd-none'}`}>
                       <li>
                         <Link
                           to={all_routes.doctorsappointments}
@@ -256,11 +252,7 @@ const SidebarTwo = () => {
                         />
                       </span>
                     </Link>
-                    <ul
-                      style={{
-                        display: openSubmenus.settings ? "block" : "none",
-                      }}
-                    >
+                    <ul className={`${openSubmenus.settings ? 'd-block' : 'd-none'}`}>
                       <li>
                         <Link
                           to={all_routes.doctorsprofilesettings}
