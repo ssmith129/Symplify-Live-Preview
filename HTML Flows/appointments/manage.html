@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – Manage Appointment</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <a class="brand" href="../index.html"><span aria-hidden="true">🩺</span><span>Simplify</span></a>
+    <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a href="../index.html">Dashboard</a>
+      <a href="list.html">Appointments</a>
+      <a href="../messages/inbox.html">Messages</a>
+      <a href="../ai-triage/index.html">AI Triage</a>
+      <a href="../email/inbox.html">Email</a>
+      <a href="../calendar/month.html">Calendar</a>
+      <a href="../new-appointment/index.html">New Appointment</a>
+      <a href="../notifications/index.html">Notifications</a>
+    </nav>
+  </div>
+</header>
+<main class="main container" role="main">
+  <h1>Manage Appointment</h1>
+  <form class="card" aria-labelledby="manage-h">
+    <div class="card-header" id="manage-h">Reschedule or update status</div>
+    <div class="card-body form-row">
+      <div>
+        <label for="date">Date</label>
+        <input class="input" id="date" type="date" value="2025-03-21" />
+      </div>
+      <div>
+        <label for="time">Time</label>
+        <input class="input" id="time" type="time" value="09:30" />
+      </div>
+      <div>
+        <label for="status">Status</label>
+        <select id="status">
+          <option>Scheduled</option>
+          <option selected>Confirmed</option>
+          <option>No-Show</option>
+        </select>
+      </div>
+      <div>
+        <label for="note">Note</label>
+        <textarea id="note" rows="3" placeholder="Add a note for the patient"></textarea>
+      </div>
+    </div>
+    <div class="card-footer form-actions">
+      <a class="button secondary" href="details.html">Back</a>
+      <button class="button" type="submit">Save Changes</button>
+    </div>
+  </form>
+</main>
+<footer class="footer">© 2025 Simplify Healthcare</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

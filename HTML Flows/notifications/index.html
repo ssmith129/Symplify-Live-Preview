@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – Notifications</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="header-inner container">
+    <a class="brand" href="../index.html"><span aria-hidden="true">🩺</span><span>Simplify</span></a>
+    <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a href="../index.html">Dashboard</a>
+      <a href="../appointments/list.html">Appointments</a>
+      <a href="../messages/inbox.html">Messages</a>
+      <a href="../ai-triage/index.html">AI Triage</a>
+      <a href="../email/inbox.html">Email</a>
+      <a href="../calendar/month.html">Calendar</a>
+      <a href="../new-appointment/index.html">New Appointment</a>
+      <a href="index.html" aria-current="page">Notifications</a>
+    </nav>
+  </div>
+</header>
+<main class="main container" role="main">
+  <section class="card" aria-labelledby="noti-h">
+    <div class="card-header" id="noti-h">Notifications</div>
+    <div class="card-body">
+      <div class="alert info">New message from John Carter</div>
+      <div class="alert success">Backup completed successfully</div>
+      <div class="alert warning">Upcoming system update tonight at 10 PM</div>
+    </div>
+    <div class="card-footer">
+      <a class="button secondary" href="settings.html">Settings</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">© 2025 Simplify Healthcare</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplify – Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header with global navigation -->
+  <header class="header" role="banner">
+    <div class="header-inner container">
+      <a class="brand" href="index.html" aria-label="Simplify Dashboard Home">
+        <span aria-hidden="true">🩺</span>
+        <span>Simplify</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+        <a href="index.html" aria-current="page">Dashboard</a>
+        <a href="appointments/list.html">Appointments</a>
+        <a href="messages/inbox.html">Messages</a>
+        <a href="ai-triage/index.html">AI Triage</a>
+        <a href="email/inbox.html">Email</a>
+        <a href="calendar/month.html">Calendar</a>
+        <a href="new-appointment/index.html">New Appointment</a>
+        <a href="notifications/index.html">Notifications</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main container" role="main">
+    <!-- KPI cards -->
+    <section aria-labelledby="kpi-title">
+      <h1 id="kpi-title" class="visually-hidden">Dashboard Overview</h1>
+      <div class="kpis" data-loading>
+        <div class="kpi">
+          <div class="stat-title">Appointments Today</div>
+          <div class="stat-value">32</div>
+          <div class="helper">+5 since yesterday</div>
+        </div>
+        <div class="kpi">
+          <div class="stat-title">Pending Messages</div>
+          <div class="stat-value">14</div>
+          <div class="helper">2 urgent</div>
+        </div>
+        <div class="kpi">
+          <div class="stat-title">No-Show Rate</div>
+          <div class="stat-value">3.1%</div>
+          <div class="helper">Last 30 days</div>
+        </div>
+        <div class="kpi">
+          <div class="stat-title">Avg. Wait Time</div>
+          <div class="stat-value">11m</div>
+          <div class="helper">Clinic-wide</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rows: Appointments + Messages + Calendar peek -->
+    <section class="grid cols-3" aria-label="Highlights">
+      <article class="card" aria-labelledby="appt-h">
+        <div class="card-header" id="appt-h">Upcoming Appointments</div>
+        <div class="card-body">
+          <table class="table" role="table" aria-label="Upcoming appointments">
+            <thead>
+              <tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>John Carter</td><td>Dr. Patel</td><td>09:30</td><td><span class="badge success">Confirmed</span></td></tr>
+              <tr><td>Mary Green</td><td>Dr. Lee</td><td>10:15</td><td><span class="badge warning">Check-in</span></td></tr>
+              <tr><td>Ahmed Khan</td><td>Dr. Kim</td><td>11:00</td><td><span class="badge">Scheduled</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <a class="button secondary" href="appointments/list.html">View all</a>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="msg-h">
+        <div class="card-header" id="msg-h">Recent Messages</div>
+        <div class="card-body">
+          <div class="empty">No new messages. <a href="messages/inbox.html">Open inbox</a></div>
+        </div>
+      </article>
+
+      <article class="card" aria-labelledby="cal-h">
+        <div class="card-header" id="cal-h">Calendar</div>
+        <div class="card-body">
+          <p class="helper">Quick links</p>
+          <div class="grid cols-2">
+            <a class="button secondary" href="calendar/day.html">Today</a>
+            <a class="button secondary" href="calendar/week.html">This Week</a>
+            <a class="button secondary" href="calendar/month.html">Month</a>
+            <a class="button" href="new-appointment/index.html">Book</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="footer">© 2025 Simplify Healthcare</footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
