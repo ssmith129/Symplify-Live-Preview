@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { LocationsData } from "../../../../../core/json/locationData";
 import Datatable from "../../../../../core/common/dataTable";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
