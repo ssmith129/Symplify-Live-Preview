@@ -1,9 +1,9 @@
-Symplifyimport { useState } from "react";
+import { useState } from "react";
 import Modals from "./modals/modals";
 import SearchInput from "../../../../../core/common/dataTable/dataTableSearch";
 import Datatable from "../../../../../core/common/dataTable";
 import { SpecializationsListData } from "../../../../../core/json/specializationListData";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import { DatePicker, Select } from "antd";
 import { Specialization, StatusActive } from "../../../../../core/common/selectOption";
