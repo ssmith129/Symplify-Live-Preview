@@ -513,7 +513,7 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
@@ -544,7 +544,7 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
@@ -604,7 +604,7 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
@@ -652,7 +652,7 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
@@ -712,7 +712,7 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
@@ -743,7 +743,7 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
