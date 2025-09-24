@@ -626,7 +626,7 @@
 .priority-icon-medium { color:#0d6efd; }
 .priority-icon-low { color:#198754; }
 
-.ai-triage-compact-list { max-height: 360px; }
+.ai-triage-compact-list { max-height: calc(var(--ai-triage-row-h, 72px) * 4); overflow-y: auto; overflow-x: hidden; }
 
 .ai-expand { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
 .ai-expand.show { max-height: 240px; }
