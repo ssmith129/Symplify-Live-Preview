@@ -169,7 +169,7 @@ export default function InboxTriageCard() {
           <div className="alert alert-danger m-2 py-2 fs-12" role="alert">{error}</div>
         )}
         {!loading && !error && (
-          <div className="ai-card p-0">
+          <div className="ai-card p-0 ai-triage-compact-list">
             {visible.map((msg, idx) => {
               const isExpanded = !!expanded[msg.id];
               const proc = !!processing[msg.id];
