@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { Category } from "../../../../../core/common/selectOption";
 import CommonSelect from "../../../../../core/common/common-select/commonSelect";
 import { useState } from "react";
