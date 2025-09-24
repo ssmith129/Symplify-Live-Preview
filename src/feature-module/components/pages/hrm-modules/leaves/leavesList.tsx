@@ -1,5 +1,5 @@
-Symplifyimport { useState } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import PredefinedDatePicker from "../../../../../core/common/datePicker";
 import FilterIndex from "../../../../../core/common/filter/filterIndex";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
