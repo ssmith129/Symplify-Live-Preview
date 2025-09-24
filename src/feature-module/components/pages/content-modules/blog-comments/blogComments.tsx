@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { BlogCommentsData } from "../../../../../core/json/blogCommentsData";
 import Datatable from "../../../../../core/common/dataTable";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
