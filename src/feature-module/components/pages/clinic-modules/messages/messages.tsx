@@ -518,7 +518,7 @@ const Messages = () => {
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Hey mark! Did you check out the new logo design?</p>
@@ -549,7 +549,7 @@ const Messages = () => {
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Not yet. Can you send it here?</p>
@@ -609,7 +609,7 @@ const Messages = () => {
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Sure! Please check the below logo Attached!!!</p>
@@ -657,7 +657,7 @@ const Messages = () => {
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Looks clean! I like the font. Maybe try a slightly darker blue?</p>
@@ -717,7 +717,7 @@ const Messages = () => {
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect! That layout will work great on the landing page. 👍</p>
@@ -748,7 +748,7 @@ const Messages = () => {
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect It looks Great!!!</p>
