@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StaffChat Network - Symplify Healthcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f5f7fa; font-family: 'Inter', sans-serif; }
+        .header { background: #2c5aa0; color: white; padding: 1rem 0; border-bottom: 3px solid #1e3a6f; }
+        .portal-badge { background: #16a085; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .chat-container { max-width: 1400px; margin: 0 auto; padding: 20px; height: calc(100vh - 150px); }
+        .chat-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .chat-sidebar { background: #ffffff; border-right: 1px solid #e1e8ed; padding: 0; max-height: 600px; overflow-y: auto; }
+        .chat-main { background: white; padding: 0; display: flex; flex-direction: column; min-height: 600px; }
+        .contact-item { padding: 12px 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; position: relative; }
+        .contact-item:hover { background: #f8f9fa; }
+        .contact-item.active { background: #e3f2fd; border-left: 3px solid #2196f3; }
+        .contact-item.offline { opacity: 0.6; }
+        .contact-name { font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+        .contact-status { font-size: 12px; color: #666; }
+        .contact-message { font-size: 13px; color: #888; margin-top: 3px; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; position: absolute; top: 15px; right: 15px; }
+        .status-online { background: #4caf50; }
+        .status-away { background: #ff9800; }
+        .status-offline { background: #9e9e9e; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; background: #fafafa; }
+        .message { margin-bottom: 15px; }
+        .message.sent { text-align: right; }
+        .message-bubble { display: inline-block; max-width: 70%; padding: 10px 15px; border-radius: 18px; word-wrap: break-word; }
+        .message.sent .message-bubble { background: #2196f3; color: white; }
+        .message.received .message-bubble { background: white; border: 1px solid #e0e0e0; color: #333; }
+        .message-time { font-size: 11px; color: #999; margin-top: 5px; }
+        .chat-input { border-top: 1px solid #e0e0e0; padding: 15px; background: white; }
+        .disconnect-banner { background: #fff3cd; padding: 10px 15px; border-radius: 4px; font-size: 13px; text-align: center; margin-bottom: 15px; border-left: 4px solid #ffc107; }
+        .system-disconnect { background: #ffebee; border: 1px solid #f44336; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .external-contact { background: #e8f5e8; border-left: 3px solid #4caf50; }
+        .missing-contact { background: #ffecb3; border-left: 3px solid #ff9800; }
+        .chat-gap-notice { background: #f3e5f5; padding: 8px 12px; border-radius: 4px; text-align: center; margin: 10px 0; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <!-- Symplify Header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="../public/assets/img/logo-white.svg" alt="Symplify" height="32" class="me-3">
+                    <h4 class="mb-0">Symplify Healthcare Platform</h4>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="portal-badge">MESSAGING PORTAL</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            Dr. Sarah Chen
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Chat Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Status Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disconnect Notice -->
+    <div class="container-fluid mt-3">
+        <div class="disconnect-banner">
+            💬 <strong>StaffChat Network v2.8</strong> - Internal messaging only. Patient communications handled separately in PatientConnect portal.
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="chat-container">
+        <div class="system-disconnect">
+            <h6><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>Communication Fragmentation Detected</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Missing from this chat:</strong></p>
+                    <ul class="mb-0">
+                        <li>Patient messages (see PatientConnect)</li>
+                        <li>Email notifications (check InboxPro)</li>
+                        <li>External provider communications</li>
+                        <li>System alerts and notifications</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Disconnected systems:</strong></p>
+                    <ul class="mb-0">
+                        <li>Calendar-related messages</li>
+                        <li>Appointment confirmations</li>
+                        <li>Lab result notifications</li>
+                        <li>Emergency alert system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="chat-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-1">StaffChat Network</h3>
+                        <p class="mb-0 opacity-75">Internal Staff Communication System v2.8.3</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light btn-sm">
+                            <i class="bi bi-people-fill"></i> Add Contact
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <i class="bi bi-box-arrow-up-right"></i> External Messaging
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <!-- Contact Sidebar -->
+                <div class="col-md-3 chat-sidebar">
+                    <div class="p-3 border-bottom">
+                        <input type="text" class="form-control form-control-sm" placeholder="Search contacts...">
+                    </div>
+
+                    <div class="contact-list">
+                        <div class="contact-item active">
+                            <div class="status-dot status-online"></div>
+                            <div class="contact-name">Dr. Michael Rodriguez</div>
+                            <div class="contact-status">Cardiology • Online</div>
+                            <div class="contact-message">Need your input on patient Johnson...</div>
+                        </div>
+
+                        <div class="contact-item external-contact">
+                            <div class="status-dot status-away"></div>
+                            <div class="contact-name">Nurse Jennifer Kim</div>
+                            <div class="contact-status">ICU • Away (In PatientConnect)</div>
+                            <div class="contact-message">
+                                <em>Handling patient messages in separate system</em>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="status-dot status-online"></div>
+                            <div class="contact-name">Dr. Emily Watson</div>
+                            <div class="contact-status">Pediatrics • Online</div>
+                            <div class="contact-message">Ready for rounds discussion</div>
+                        </div>
+
+                        <div class="contact-item missing-contact">
+                            <div class="status-dot status-offline"></div>
+                            <div class="contact-name">Pharmacy Team</div>
+                            <div class="contact-status">External System • Disconnected</div>
+                            <div class="contact-message">
+                                <em>Use PharmLink portal for prescription queries</em>
+                            </div>
+                        </div>
+
+                        <div class="contact-item offline">
+                            <div class="status-dot status-offline"></div>
+                            <div class="contact-name">Lab Technician Sarah</div>
+                            <div class="contact-status">Lab • Offline</div>
+                            <div class="contact-message">Last active 2 hours ago</div>
+                        </div>
+
+                        <div class="contact-item external-contact">
+                            <div class="status-dot status-away"></div>
+                            <div class="contact-name">Admin Team</div>
+                            <div class="contact-status">External Portal • Limited Access</div>
+                            <div class="contact-message">
+                                <em>Check AdminHub for policy updates</em>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="status-dot status-online"></div>
+                            <div class="contact-name">Dr. James Park</div>
+                            <div class="contact-status">Orthopedics • Online</div>
+                            <div class="contact-message">Schedule conflict resolved</div>
+                        </div>
+
+                        <div class="contact-item missing-contact">
+                            <div class="status-dot status-offline"></div>
+                            <div class="contact-name">Patient Support Team</div>
+                            <div class="contact-status">PatientConnect Only</div>
+                            <div class="contact-message">
+                                <em>No direct messaging - separate portal required</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 border-top">
+                        <div class="alert alert-warning alert-sm mb-0">
+                            <small><strong>Missing contacts?</strong> Some team members may be using different messaging systems.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Main Area -->
+                <div class="col-md-9 chat-main">
+                    <!-- Chat Header -->
+                    <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+                        <div class="d-flex align-items-center">
+                            <div class="status-dot status-online me-2"></div>
+                            <div>
+                                <h6 class="mb-0">Dr. Michael Rodriguez</h6>
+                                <small class="text-muted">Cardiology Department • Online</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-calendar"></i> Schedule
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Messages Area -->
+                    <div class="chat-messages">
+                        <div class="chat-gap-notice">
+                            ⚠️ Message history from other systems not visible. Check InboxPro and PatientConnect for complete communication thread.
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-bubble">
+                                Hey Sarah, I need your input on Patient Johnson's cardiac monitoring results from this morning.
+                            </div>
+                            <div class="message-time">Dr. Rodriguez • 2:15 PM</div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-bubble">
+                                The EKG shows some irregularities that weren't present last week. Can you review when you have a moment?
+                            </div>
+                            <div class="message-time">Dr. Rodriguez • 2:16 PM</div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-bubble">
+                                Of course! I'm reviewing the data now. Has the patient reported any new symptoms?
+                            </div>
+                            <div class="message-time">You • 2:18 PM</div>
+                        </div>
+
+                        <div class="chat-gap-notice">
+                            📧 Note: Patient communication regarding symptoms was handled via PatientConnect portal (not visible here)
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-bubble">
+                                The patient mentioned chest discomfort in their portal message this morning, but I can't access that from here.
+                            </div>
+                            <div class="message-time">Dr. Rodriguez • 2:22 PM</div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-bubble">
+                                We should schedule an immediate consultation. Can you check the calendar system?
+                            </div>
+                            <div class="message-time">Dr. Rodriguez • 2:23 PM</div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-bubble">
+                                I'll need to log into CalendarPro separately to check availability. This system doesn't show scheduling info.
+                            </div>
+                            <div class="message-time">You • 2:25 PM</div>
+                        </div>
+
+                        <div class="chat-gap-notice">
+                            📅 Calendar integration unavailable. Schedule coordination requires switching to CalendarPro portal.
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-bubble">
+                                I've arranged an urgent appointment for 4 PM today. Alert sent via the notification system.
+                            </div>
+                            <div class="message-time">You • 2:35 PM</div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-bubble">
+                                Perfect! I'll prepare the consultation notes. Thanks for the quick coordination.
+                            </div>
+                            <div class="message-time">Dr. Rodriguez • 2:36 PM</div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input">
+                        <div class="alert alert-warning alert-sm mb-2">
+                            <small><strong>Reminder:</strong> Patient communications must be handled through PatientConnect portal for HIPAA compliance.</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <input type="text" class="form-control" placeholder="Type your message... (Staff communications only)">
+                            <button class="btn btn-primary">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="alert alert-info">
+                    <h6>📱 Active Messaging Systems</h6>
+                    <ul class="mb-0 small">
+                        <li><strong>StaffChat:</strong> Internal team only</li>
+                        <li><strong>PatientConnect:</strong> Patient communications</li>
+                        <li><strong>InboxPro:</strong> Email & external</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="alert alert-warning">
+                    <h6>⚠️ Integration Gaps</h6>
+                    <ul class="mb-0 small">
+                        <li>No calendar integration</li>
+                        <li>Separate patient messaging</li>
+                        <li>No notification sync</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="alert alert-secondary">
+                    <h6>🔗 Quick Access</h6>
+                    <div class="d-grid gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Open PatientConnect</button>
+                        <button class="btn btn-sm btn-outline-success">Open InboxPro</button>
+                        <button class="btn btn-sm btn-outline-warning">Open CalendarPro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

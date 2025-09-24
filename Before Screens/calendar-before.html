@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalendarPro - Symplify Healthcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f0f2f5; font-family: 'Arial', sans-serif; }
+        .header { background: #2c5aa0; color: white; padding: 1rem 0; border-bottom: 3px solid #1e3a6f; }
+        .portal-badge { background: #e74c3c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .calendar-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .calendar-header { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .calendar-nav { background: #fff; padding: 15px; border-bottom: 2px solid #e0e0e0; }
+        .calendar-grid { background: white; }
+        .day-header { background: #34495e; color: white; padding: 10px; text-align: center; font-weight: bold; }
+        .day-cell { border: 1px solid #ddd; min-height: 120px; padding: 5px; position: relative; }
+        .day-number { font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .appointment { background: #3498db; color: white; padding: 2px 6px; margin: 1px 0; border-radius: 3px; font-size: 11px; cursor: pointer; }
+        .appointment.blocked { background: #e74c3c; }
+        .appointment.tentative { background: #f39c12; }
+        .disconnect-banner { background: #ffeaa7; padding: 8px 12px; border-radius: 4px; font-size: 13px; text-align: center; margin-bottom: 15px; }
+        .integration-alert { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .external-calendar { background: #e8f5e8; border: 1px solid #4caf50; padding: 10px; border-radius: 4px; margin: 10px 0; }
+        .calendar-conflict { background: #ffebee; border-left: 4px solid #f44336; padding: 8px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <!-- Symplify Header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="../public/assets/img/logo-white.svg" alt="Symplify" height="32" class="me-3">
+                    <h4 class="mb-0">Symplify Healthcare Platform</h4>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="portal-badge">SEPARATE PORTAL</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            Dr. Sarah Chen
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Calendar Sync</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disconnect Notice -->
+    <div class="container-fluid mt-3">
+        <div class="disconnect-banner">
+            📅 <strong>CalendarPro v3.2</strong> - Independent scheduling system. Does not sync with InboxPro or messaging platforms.
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="calendar-container">
+        <div class="integration-alert">
+            <h6><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>Integration Issues Detected</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Missing Integrations:</strong></p>
+                    <ul class="mb-0">
+                        <li>Patient messages (check InboxPro separately)</li>
+                        <li>Staff notifications (use StaffAlert app)</li>
+                        <li>Equipment booking (see FacilityManager)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Manual Actions Required:</strong></p>
+                    <ul class="mb-0">
+                        <li>Copy appointments to personal calendar</li>
+                        <li>Check conflict with department calendar</li>
+                        <li>Verify room availability in separate system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="calendar-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-1">CalendarPro Portal</h3>
+                        <p class="mb-0 opacity-75">Advanced Scheduling System v3.2.1</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light btn-sm">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <i class="bi bi-box-arrow-up-right"></i> Export to Outlook
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-nav">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-outline-primary">&lt; Previous</button>
+                            <button class="btn btn-primary">March 2025</button>
+                            <button class="btn btn-outline-primary">Next &gt;</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h5 class="mb-0">Department Schedule</h5>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-outline-secondary btn-sm">Day</button>
+                            <button class="btn btn-outline-secondary btn-sm">Week</button>
+                            <button class="btn btn-secondary btn-sm">Month</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Conflicts Notice -->
+            <div class="p-3 border-bottom">
+                <div class="calendar-conflict">
+                    <strong>⚠️ Scheduling Conflicts Detected:</strong> 3 appointments may overlap with equipment maintenance (check FacilityManager portal)
+                </div>
+                <div class="external-calendar">
+                    <strong>External Calendar Notice:</strong> Personal calendars and other department schedules not visible here. 
+                    <a href="#" class="text-primary">Manually check GoogleCal integration</a>
+                </div>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div class="calendar-grid">
+                <div class="row g-0">
+                    <div class="col day-header">Sunday</div>
+                    <div class="col day-header">Monday</div>
+                    <div class="col day-header">Tuesday</div>
+                    <div class="col day-header">Wednesday</div>
+                    <div class="col day-header">Thursday</div>
+                    <div class="col day-header">Friday</div>
+                    <div class="col day-header">Saturday</div>
+                </div>
+
+                <!-- Week 1 -->
+                <div class="row g-0">
+                    <div class="col day-cell">
+                        <div class="day-number">1</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">2</div>
+                        <div class="appointment">9:00 AM - Patient A</div>
+                        <div class="appointment">11:30 AM - Patient B</div>
+                        <div class="appointment tentative">2:00 PM - TBD</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">3</div>
+                        <div class="appointment">8:30 AM - Patient C</div>
+                        <div class="appointment blocked">10:00 AM - CONFLICT</div>
+                        <div class="appointment">1:00 PM - Patient D</div>
+                        <div class="appointment">3:30 PM - Patient E</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">4</div>
+                        <div class="appointment">9:15 AM - Patient F</div>
+                        <div class="appointment">11:00 AM - Patient G</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">5</div>
+                        <div class="appointment">8:00 AM - Patient H</div>
+                        <div class="appointment">10:30 AM - Patient I</div>
+                        <div class="appointment">2:15 PM - Patient J</div>
+                        <div class="appointment blocked">4:00 PM - EQUIPMENT</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">6</div>
+                        <div class="appointment">9:30 AM - Patient K</div>
+                        <div class="appointment">1:45 PM - Patient L</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">7</div>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="row g-0">
+                    <div class="col day-cell">
+                        <div class="day-number">8</div>
+                        <div class="appointment">10:00 AM - Patient M</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">9</div>
+                        <div class="appointment">8:45 AM - Patient N</div>
+                        <div class="appointment">11:15 AM - Patient O</div>
+                        <div class="appointment tentative">2:30 PM - PENDING</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">10</div>
+                        <div class="appointment">9:00 AM - Patient P</div>
+                        <div class="appointment blocked">12:00 PM - ROOM UNAVAIL</div>
+                        <div class="appointment">3:00 PM - Patient Q</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">11</div>
+                        <div class="appointment">8:30 AM - Patient R</div>
+                        <div class="appointment">10:45 AM - Patient S</div>
+                        <div class="appointment">1:30 PM - Patient T</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">12</div>
+                        <div class="appointment">9:30 AM - Patient U</div>
+                        <div class="appointment">2:00 PM - Patient V</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">13</div>
+                        <div class="appointment">11:00 AM - Patient W</div>
+                    </div>
+                    <div class="col day-cell">
+                        <div class="day-number">14</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Limitations -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="alert alert-warning">
+                    <h6>Data Sync Issues</h6>
+                    <p class="mb-1"><strong>Last Sync:</strong> 2 hours ago</p>
+                    <p class="mb-0">Some appointments may not reflect recent changes from other systems. Manual verification required.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-info">
+                    <h6>Access Other Systems</h6>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-primary">InboxPro Portal</button>
+                        <button class="btn btn-sm btn-outline-success">StaffChat</button>
+                        <button class="btn btn-sm btn-outline-warning">FacilityManager</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

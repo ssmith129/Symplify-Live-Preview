@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlertCenter Pro - Symplify Healthcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f6f9; font-family: 'Roboto', sans-serif; }
+        .header { background: #2c5aa0; color: white; padding: 1rem 0; border-bottom: 3px solid #1e3a6f; }
+        .portal-badge { background: #9b59b6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .alert-container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        .alert-header { background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .alert-sidebar { background: #ecf0f1; border-right: 1px solid #bdc3c7; padding: 20px; min-height: 700px; }
+        .alert-main { background: white; padding: 0; }
+        .notification-item { border-bottom: 1px solid #e8e8e8; padding: 15px; position: relative; transition: all 0.2s; }
+        .notification-item:hover { background: #f8f9fa; }
+        .notification-item.critical { border-left: 5px solid #e74c3c; background: #fdf2f2; }
+        .notification-item.high { border-left: 5px solid #f39c12; background: #fefbf3; }
+        .notification-item.medium { border-left: 5px solid #3498db; background: #f4f8fb; }
+        .notification-item.low { border-left: 5px solid #2ecc71; background: #f2fbf5; }
+        .notification-item.unread { background: #fff8e1; }
+        .notification-title { font-weight: 600; color: #2c3e50; margin-bottom: 6px; }
+        .notification-body { color: #5a6c7d; font-size: 14px; margin-bottom: 8px; }
+        .notification-meta { font-size: 12px; color: #95a5a6; }
+        .notification-time { position: absolute; top: 15px; right: 15px; font-size: 11px; color: #bdc3c7; }
+        .filter-section { margin-bottom: 20px; }
+        .filter-item { display: block; padding: 8px 12px; color: #34495e; text-decoration: none; border-radius: 6px; margin: 2px 0; }
+        .filter-item:hover { background: #d5dbdb; color: #2c3e50; }
+        .filter-item.active { background: #3498db; color: white; }
+        .disconnect-banner { background: #ffecb3; padding: 10px 15px; border-radius: 4px; font-size: 13px; text-align: center; margin-bottom: 15px; border-left: 4px solid #ffc107; }
+        .source-badge { font-size: 10px; padding: 2px 6px; border-radius: 10px; margin-left: 8px; }
+        .source-inbox { background: #e3f2fd; color: #1976d2; }
+        .source-calendar { background: #e8f5e8; color: #388e3c; }
+        .source-system { background: #fce4ec; color: #c2185b; }
+        .source-manual { background: #f3e5f5; color: #7b1fa2; }
+        .missed-alert { background: #ffcdd2; border: 1px solid #f44336; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <!-- Symplify Header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="../public/assets/img/logo-white.svg" alt="Symplify" height="32" class="me-3">
+                    <h4 class="mb-0">Symplify Healthcare Platform</h4>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="portal-badge">ALERT SYSTEM</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            Dr. Sarah Chen
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Alert Preferences</a></li>
+                            <li><a class="dropdown-item" href="#">Notification Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disconnect Notice -->
+    <div class="container-fluid mt-3">
+        <div class="disconnect-banner">
+            🚨 <strong>AlertCenter Pro v4.1</strong> - Centralized notification hub. May miss alerts from systems not integrated (InboxPro, CalendarPro, StaffChat).
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="alert-container">
+        <div class="missed-alert">
+            <strong>⚠️ Missed Notifications Warning:</strong> 
+            This system only shows alerts it can detect. Critical notifications may exist in:
+            <strong>InboxPro</strong> (patient emails), 
+            <strong>CalendarPro</strong> (schedule changes), 
+            <strong>PatientConnect</strong> (portal messages), and 
+            <strong>StaffChat</strong> (team communications).
+        </div>
+
+        <div class="card shadow">
+            <div class="alert-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-1">AlertCenter Pro</h3>
+                        <p class="mb-0 opacity-75">Healthcare Notification Management v4.1.2</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light btn-sm">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <i class="bi bi-gear"></i> Alert Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <!-- Sidebar -->
+                <div class="col-md-3 alert-sidebar">
+                    <div class="filter-section">
+                        <h6 class="text-muted mb-3">FILTER BY PRIORITY</h6>
+                        <a href="#" class="filter-item active">
+                            <i class="bi bi-circle-fill text-danger me-2"></i> Critical (3)
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-circle-fill text-warning me-2"></i> High (7)
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-circle-fill text-primary me-2"></i> Medium (12)
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-circle-fill text-success me-2"></i> Low (18)
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-envelope me-2"></i> Unread (8)
+                        </a>
+                    </div>
+
+                    <div class="filter-section">
+                        <h6 class="text-muted mb-3">FILTER BY SOURCE</h6>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-cpu me-2"></i> System Alerts
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-person-heart me-2"></i> Patient Alerts
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-people me-2"></i> Staff Alerts
+                        </a>
+                        <a href="#" class="filter-item">
+                            <i class="bi bi-tools me-2"></i> Equipment Alerts
+                        </a>
+                    </div>
+
+                    <div class="alert alert-warning alert-sm mt-3">
+                        <small><strong>Integration Gap:</strong> This system cannot monitor all healthcare platforms. Check individual portals for complete coverage.</small>
+                    </div>
+                </div>
+
+                <!-- Main Alert List -->
+                <div class="col-md-9 alert-main">
+                    <!-- Toolbar -->
+                    <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-outline-primary btn-sm">Mark All Read</button>
+                            <button class="btn btn-outline-secondary btn-sm">Archive Selected</button>
+                            <button class="btn btn-outline-danger btn-sm">Clear All</button>
+                        </div>
+                        <div class="text-muted small">
+                            40 total alerts • 8 unread
+                        </div>
+                    </div>
+
+                    <!-- Alert List -->
+                    <div class="alert-list">
+                        <div class="notification-item critical unread">
+                            <div class="notification-time">2 min ago</div>
+                            <div class="notification-title">
+                                CRITICAL: Patient Cardiac Monitor Alarm
+                                <span class="source-badge source-system">SYSTEM</span>
+                            </div>
+                            <div class="notification-body">
+                                Room 204 - Patient Johnson showing irregular heart rhythm. Immediate attention required.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-geo-alt me-1"></i> ICU Department • <i class="bi bi-person me-1"></i> Assigned to Dr. Martinez
+                            </div>
+                        </div>
+
+                        <div class="notification-item high unread">
+                            <div class="notification-time">8 min ago</div>
+                            <div class="notification-title">
+                                Prescription Authorization Expiring
+                                <span class="source-badge source-manual">MANUAL</span>
+                            </div>
+                            <div class="notification-body">
+                                Patient Williams - Insulin prescription expires in 24 hours. No refill request detected.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-clock me-1"></i> Expires tomorrow • <i class="bi bi-capsule me-1"></i> Endocrinology
+                            </div>
+                        </div>
+
+                        <div class="notification-item high unread">
+                            <div class="notification-time">15 min ago</div>
+                            <div class="notification-title">
+                                Equipment Malfunction Detected
+                                <span class="source-badge source-system">SYSTEM</span>
+                            </div>
+                            <div class="notification-body">
+                                X-Ray Machine #3 offline. Technician notified but may affect scheduled appointments.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-tools me-1"></i> Radiology • <i class="bi bi-exclamation-triangle me-1"></i> Affects 6 appointments
+                            </div>
+                        </div>
+
+                        <div class="notification-item medium">
+                            <div class="notification-time">23 min ago</div>
+                            <div class="notification-title">
+                                Multiple Patient Check-ins Pending
+                                <span class="source-badge source-calendar">CALENDAR</span>
+                            </div>
+                            <div class="notification-body">
+                                5 patients checked in but not yet seen. Average wait time: 18 minutes.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-people me-1"></i> Front Desk • <i class="bi bi-clock me-1"></i> Wait time increasing
+                            </div>
+                        </div>
+
+                        <div class="notification-item high">
+                            <div class="notification-time">35 min ago</div>
+                            <div class="notification-title">
+                                Lab Results Critical Values
+                                <span class="source-badge source-inbox">INBOX</span>
+                            </div>
+                            <div class="notification-body">
+                                Patient Chen - Blood glucose levels critically high (450 mg/dL). Contact immediately.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-graph-up me-1"></i> Lab Department • <i class="bi bi-telephone me-1"></i> Contact attempted
+                            </div>
+                        </div>
+
+                        <div class="notification-item medium">
+                            <div class="notification-time">42 min ago</div>
+                            <div class="notification-title">
+                                Staff Schedule Conflict Detected
+                                <span class="source-badge source-calendar">CALENDAR</span>
+                            </div>
+                            <div class="notification-body">
+                                Dr. Kim double-booked for 2:30 PM slot. Manual resolution required.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-calendar me-1"></i> Scheduling • <i class="bi bi-person me-1"></i> Dr. Kim
+                            </div>
+                        </div>
+
+                        <div class="notification-item low">
+                            <div class="notification-time">1 hr ago</div>
+                            <div class="notification-title">
+                                Insurance Pre-Authorization Approved
+                                <span class="source-badge source-inbox">INBOX</span>
+                            </div>
+                            <div class="notification-body">
+                                Patient Rodriguez - MRI scan approved by insurance. Scheduling can proceed.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-check-circle me-1"></i> Insurance • <i class="bi bi-calendar-check me-1"></i> Ready to schedule
+                            </div>
+                        </div>
+
+                        <div class="notification-item critical">
+                            <div class="notification-time">1 hr ago</div>
+                            <div class="notification-title">
+                                Emergency Room Patient Admitted
+                                <span class="source-badge source-system">SYSTEM</span>
+                            </div>
+                            <div class="notification-body">
+                                Trauma patient transferred to OR. Primary care physician notification sent.
+                            </div>
+                            <div class="notification-meta">
+                                <i class="bi bi-hospital me-1"></i> Emergency • <i class="bi bi-arrow-up-right me-1"></i> Escalated
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="alert alert-danger">
+                    <h6>❌ Connection Issues</h6>
+                    <p class="mb-1"><strong>InboxPro:</strong> Offline for 45 minutes</p>
+                    <p class="mb-0"><strong>StaffChat:</strong> Limited connectivity</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="alert alert-warning">
+                    <h6>⚠️ Partial Integration</h6>
+                    <p class="mb-1"><strong>CalendarPro:</strong> Sync delay (2 hours)</p>
+                    <p class="mb-0"><strong>PatientConnect:</strong> No API access</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="alert alert-info">
+                    <h6>🔗 Manual Checks Required</h6>
+                    <div class="d-grid gap-1">
+                        <button class="btn btn-sm btn-outline-primary">Check InboxPro</button>
+                        <button class="btn btn-sm btn-outline-success">Check StaffChat</button>
+                        <button class="btn btn-sm btn-outline-warning">Check PatientConnect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
