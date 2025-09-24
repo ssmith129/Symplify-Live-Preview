@@ -42,6 +42,15 @@
 
 .message-box {
   border: 1px solid var(--border-color);
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+  }
 }
 
 .receive-message {
