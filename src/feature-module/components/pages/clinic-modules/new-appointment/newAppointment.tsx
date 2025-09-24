@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { all_routes } from "../../../../routes/all_routes";
 import {
   Appointment_Type,
