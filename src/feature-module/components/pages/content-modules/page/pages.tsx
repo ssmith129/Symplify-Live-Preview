@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+Symplifyimport { Link } from "react-router";
 import { PagesData } from "../../../../../core/json/pagesData";
 import Datatable from "../../../../../core/common/dataTable";
 import Modals from "./modals/modals";

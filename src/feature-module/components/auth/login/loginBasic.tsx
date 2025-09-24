@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+Symplifyimport { Link } from "react-router";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";
 import { all_routes } from "../../../routes/all_routes";
 import { useState } from "react";

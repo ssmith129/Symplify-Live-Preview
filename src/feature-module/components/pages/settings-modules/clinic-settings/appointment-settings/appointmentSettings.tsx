@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+Symplifyimport { Link } from "react-router";
 import SettingsSidebar from "../../../../../../core/common/settings-sidebar/settingsSidebar";
 import {
   days,
