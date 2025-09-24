@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+Symplifyimport { Link } from "react-router";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";
 import { City, Country, State } from "../../../../core/common/selectOption";
 import CommonSelect from "../../../../core/common/common-select/commonSelect";

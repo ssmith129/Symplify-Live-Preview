@@ -1,4 +1,4 @@
-import { useState } from "react";
+Symplifyimport { useState } from "react";
 import { Link } from "react-router";
 import { StaffsListData } from "../../../../core/json/staffsListData";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";

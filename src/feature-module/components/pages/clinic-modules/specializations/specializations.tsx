@@ -1,4 +1,4 @@
-import { useState } from "react";
+Symplifyimport { useState } from "react";
 import Modals from "./modals/modals";
 import SearchInput from "../../../../../core/common/dataTable/dataTableSearch";
 import Datatable from "../../../../../core/common/dataTable";

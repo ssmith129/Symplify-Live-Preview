@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import {  Route, Routes } from "react-router-dom";
+=======
+
+import {  Route, Routes } from "react-router";
+>>>>>>> parent of 2b06b8d (replace)
 import { authRoutes, publicRoutes} from "./router.link";
 import AuthFeature from "../feathure-components/authFeature";
 import Feature from "../feathure-components/feature";

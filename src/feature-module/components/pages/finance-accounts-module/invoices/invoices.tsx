@@ -1,4 +1,4 @@
-import  { useState } from "react";
+Symplifyimport  { useState } from "react";
 import { Link } from "react-router";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import FilterIndex from "../../../../../core/common/filter/filterIndex";

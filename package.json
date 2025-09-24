@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+<<<<<<< HEAD
   "engines": {"node": ">=18.0.0"},
+=======
+>>>>>>> parent of 2b06b8d (replace)
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
