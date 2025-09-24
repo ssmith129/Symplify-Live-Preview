@@ -1,7 +1,7 @@
-Symplifyimport { useState } from "react";
+import { useState } from "react";
 import SettingsSidebar from "../../../../../../core/common/settings-sidebar/settingsSidebar";
 import TagInput from "../../../../../../core/common/Taginput";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const CronjobSettings = () => {
   const [tags, setTags] = useState<string[]>(["1 Day", "1 Hour"]);
