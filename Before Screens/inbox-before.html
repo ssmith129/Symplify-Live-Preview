@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InboxPro Portal - Symplify Healthcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tabler-icons@latest/tabler-sprites.svg">
+    <style>
+        body { background: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .header { background: #2c5aa0; color: white; padding: 1rem 0; border-bottom: 3px solid #1e3a6f; }
+        .portal-badge { background: #ff6b35; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .inbox-container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .inbox-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+        .inbox-sidebar { background: #e3f2fd; border-right: 1px solid #90caf9; padding: 15px; min-height: 600px; }
+        .inbox-main { background: white; padding: 0; border-left: 1px solid #ddd; }
+        .email-item { border-bottom: 1px solid #e0e0e0; padding: 12px 15px; cursor: pointer; transition: background 0.2s; }
+        .email-item:hover { background: #f5f5f5; }
+        .email-item.unread { background: #fff3e0; border-left: 4px solid #ff9800; }
+        .priority-high { border-left: 4px solid #f44336 !important; }
+        .priority-medium { border-left: 4px solid #ff9800 !important; }
+        .email-subject { font-weight: 600; color: #1565c0; margin-bottom: 4px; }
+        .email-preview { color: #666; font-size: 14px; margin-bottom: 4px; }
+        .email-meta { font-size: 12px; color: #999; }
+        .folder-item { padding: 8px 12px; margin: 2px 0; border-radius: 6px; cursor: pointer; color: #455a64; }
+        .folder-item:hover { background: #bbdefb; }
+        .folder-item.active { background: #2196f3; color: white; }
+        .old-ui-warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+        .disconnect-notice { background: #ffeaa7; padding: 8px 12px; border-radius: 4px; font-size: 13px; text-align: center; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <!-- Symplify Header -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="../public/assets/img/logo-white.svg" alt="Symplify" height="32" class="me-3">
+                    <h4 class="mb-0">Symplify Healthcare Platform</h4>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="portal-badge">LEGACY PORTAL</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            Dr. Sarah Chen
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Switch Portal</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disconnect Notice -->
+    <div class="container-fluid mt-3">
+        <div class="disconnect-notice">
+            ⚠️ <strong>InboxPro Portal v2.1</strong> - Requires separate login. Not integrated with Calendar or Messaging systems.
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="inbox-container">
+        <div class="old-ui-warning">
+            <strong>Notice:</strong> This is the legacy InboxPro system. Patient messages from other portals will not appear here. 
+            <a href="#" class="text-primary">Click here to check MedConnect for additional messages</a>
+        </div>
+
+        <div class="card shadow">
+            <div class="inbox-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-1">InboxPro Portal</h3>
+                        <p class="mb-0 opacity-75">Healthcare Email Management System v2.1.4</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light btn-sm">
+                            <i class="ti ti-refresh"></i> Sync
+                        </button>
+                        <button class="btn btn-warning btn-sm">
+                            <i class="ti ti-external-link"></i> Switch to MedConnect
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <!-- Sidebar -->
+                <div class="col-md-3 inbox-sidebar">
+                    <button class="btn btn-primary w-100 mb-3">
+                        <i class="ti ti-plus"></i> Compose Email
+                    </button>
+                    
+                    <div class="folder-list">
+                        <div class="folder-item active">
+                            <i class="ti ti-inbox me-2"></i> Inbox (47)
+                        </div>
+                        <div class="folder-item">
+                            <i class="ti ti-send me-2"></i> Sent (23)
+                        </div>
+                        <div class="folder-item">
+                            <i class="ti ti-file-text me-2"></i> Drafts (3)
+                        </div>
+                        <div class="folder-item">
+                            <i class="ti ti-archive me-2"></i> Archived (156)
+                        </div>
+                        <div class="folder-item">
+                            <i class="ti ti-trash me-2"></i> Deleted (8)
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="alert alert-warning alert-sm">
+                        <small><strong>Note:</strong> Patient portal messages are in a separate system. Check PatientConnect dashboard.</small>
+                    </div>
+                </div>
+
+                <!-- Main Email List -->
+                <div class="col-md-9 inbox-main">
+                    <!-- Toolbar -->
+                    <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="checkbox" class="form-check-input">
+                            <button class="btn btn-outline-secondary btn-sm">
+                                <i class="ti ti-archive"></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm">
+                                <i class="ti ti-trash"></i>
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="ti ti-tag"></i>
+                            </button>
+                        </div>
+                        <div class="text-muted small">
+                            1-25 of 47 messages
+                        </div>
+                    </div>
+
+                    <!-- Email List -->
+                    <div class="email-list">
+                        <div class="email-item unread priority-high">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">URGENT: Lab Results - Patient #4421</div>
+                                    <div class="email-preview">Critical values detected in blood work for Sarah Johnson. Immediate review required...</div>
+                                    <div class="email-meta">
+                                        <span class="badge bg-danger me-2">URGENT</span>
+                                        <strong>Dr. Martinez</strong> • 8 minutes ago
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <i class="ti ti-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-item unread priority-medium">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">Prescription Refill Request - Multiple Patients</div>
+                                    <div class="email-preview">Pharmacy requesting approval for 6 prescription refills. Patient details attached...</div>
+                                    <div class="email-meta">
+                                        <span class="badge bg-warning me-2">PRIORITY</span>
+                                        <strong>Central Pharmacy</strong> • 23 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-item unread">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">Schedule Change - Dr. Kim Appointment</div>
+                                    <div class="email-preview">Patient requesting to reschedule Thursday 2PM appointment to Friday...</div>
+                                    <div class="email-meta">
+                                        <strong>Scheduling Dept</strong> • 45 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-item">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">Weekly Department Report</div>
+                                    <div class="email-preview">Patient satisfaction scores and performance metrics for Cardiology department...</div>
+                                    <div class="email-meta">
+                                        <strong>Admin Team</strong> • 2 hours ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-item">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">Insurance Authorization Update</div>
+                                    <div class="email-preview">Pre-authorization approved for MRI scan - Patient Robert Chen...</div>
+                                    <div class="email-meta">
+                                        <strong>Insurance Liaison</strong> • 3 hours ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="email-item">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <div class="email-subject">Equipment Maintenance Schedule</div>
+                                    <div class="email-preview">Upcoming maintenance for X-ray machines in Department B...</div>
+                                    <div class="email-meta">
+                                        <strong>Facilities Team</strong> • 4 hours ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Notice -->
+        <div class="alert alert-info mt-3">
+            <h6>System Integration Notice</h6>
+            <p class="mb-2">This InboxPro portal operates independently. For complete communication management:</p>
+            <ul class="mb-0">
+                <li>Check <strong>PatientConnect</strong> for patient portal messages</li>
+                <li>Use <strong>StaffChat</strong> for internal team communication</li>
+                <li>Access <strong>VendorLink</strong> for supplier correspondence</li>
+                <li>Review <strong>CalendarPro</strong> for appointment-related messages</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
