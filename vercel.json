@@ -1,22 +1,5 @@
 {
   "rewrites": [
-<<<<<<< HEAD
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
-=======
-    {
-      "source": "/react/template/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/react/template",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/",
-      "destination": "/index.html"
-    }
-  ]
-}
->>>>>>> parent of 2b06b8d (replace)

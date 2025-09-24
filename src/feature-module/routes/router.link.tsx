@@ -240,11 +240,7 @@ import UiRangeSlides from "../components/pages/ui-modules/ui-interface/ui-advanc
 import UiRating from "../components/pages/ui-modules/ui-interface/ui-advance/uiRating";
 import UiScrollbar from "../components/pages/ui-modules/ui-interface/ui-advance/uiScrollbar";
 import { all_routes } from "./all_routes";
-<<<<<<< HEAD
 import { Navigate, Route } from "react-router-dom";
-=======
-import { Navigate, Route } from "react-router";
->>>>>>> parent of 2b06b8d (replace)
 
 const routes = all_routes;
 
@@ -1500,8 +1496,7 @@ export const publicRoutes = [
     element: <UiScrollbar />,
     route: Route,
   },
-<<<<<<< HEAD
- ];
+];
 
 export const authRoutes = publicRoutes.filter((r: any) => {
   const authComponents = new Set([
@@ -1532,6 +1527,3 @@ export const authRoutes = publicRoutes.filter((r: any) => {
   ]);
   return authComponents.has(r.element?.type);
 });
-=======
-];
->>>>>>> parent of 2b06b8d (replace)
