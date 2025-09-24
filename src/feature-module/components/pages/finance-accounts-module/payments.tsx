@@ -1,5 +1,5 @@
-Symplifyimport { useState } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import FilterIndex from "../../../../core/common/filter/filterIndex";
 import SearchInput from "../../../../core/common/dataTable/dataTableSearch";
 import { PaymentsListData } from "../../../../core/json/paymetsListData";
