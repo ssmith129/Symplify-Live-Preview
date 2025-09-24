@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import CommonSelect from "../../../../../core/common/common-select/commonSelect";
 import { Category } from "../../../../../core/common/selectOption";
 import DefaultEditor from "react-simple-wysiwyg";
