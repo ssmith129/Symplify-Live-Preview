@@ -119,7 +119,7 @@ export default function InboxTriageCard() {
       </div>
 
       {/* Drag targets */}
-      <div className="px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
+      <div className="ai-drop-row px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
         {CATEGORIES.map(cat => (
           <span
             key={cat}
@@ -145,7 +145,7 @@ export default function InboxTriageCard() {
       </div>
 
       {/* Priority summary */}
-      <div className="px-3 py-2 bg-white border-top border-bottom">
+      <div className="ai-priority-summary px-3 py-2 bg-white border-top border-bottom">
         <div className="d-flex align-items-center gap-3">
           <div className="d-flex align-items-center"><span className="priority-dot priority-dot-critical me-1"/><span className="fs-11 fw-medium">{counts.critical}</span></div>
           <div className="d-flex align-items-center"><span className="priority-dot priority-dot-high me-1"/><span className="fs-11 fw-medium">{counts.high}</span></div>
@@ -169,7 +169,7 @@ export default function InboxTriageCard() {
           <div className="alert alert-danger m-2 py-2 fs-12" role="alert">{error}</div>
         )}
         {!loading && !error && (
-          <div className="ai-card p-0 ai-triage-compact-list">
+          <div className="ai-card p-0 ai-triage-compact-list ai-card-list">
             {visible.map((msg, idx) => {
               const isExpanded = !!expanded[msg.id];
               const proc = !!processing[msg.id];

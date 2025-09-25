@@ -626,7 +626,9 @@
 .priority-icon-medium { color:#0d6efd; }
 .priority-icon-low { color:#198754; }
 
-.ai-triage-compact-list { max-height: calc(var(--ai-triage-row-h, 72px) * 4); overflow-y: auto; overflow-x: hidden; }
+.ai-triage-compact-list { max-height: calc(var(--ai-triage-row-h, 72px) * 4); overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+.ai-card-list { overscroll-behavior: contain; }
+.ai-card { --ai-triage-row-h: 72px; }
 
 .ai-expand { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
 .ai-expand.show { max-height: 240px; }
@@ -695,6 +697,20 @@
   line-height: var(--ai-line-normal);
   color: var(--ai-text-secondary);
   font-family: $font-family-base;
+}
+
+.ai-drop-row { }
+.ai-priority-summary { }
+
+@include respond-below(md) {
+  .ai-card { --ai-triage-row-h: 68px; }
+}
+@include respond-below(sm) {
+  .ai-card { --ai-triage-row-h: 60px; }
+  .ai-list-item { padding: var(--ai-space-2); gap: var(--ai-space-2); }
+  .ai-drop-row { overflow-x: auto; flex-wrap: nowrap !important; gap: 6px; }
+  .ai-priority-summary { font-size: var(--ai-font-sm); }
+  .ai-expand.show { max-height: 160px; }
 }
 
 .ai-list-item:hover {
