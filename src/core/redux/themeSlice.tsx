@@ -6,7 +6,7 @@ const defaultThemeSettings = {
   "data-sidebar": "light",
   "data-color": "primary",
   "data-topbar": "white",
-  "data-layout": "default",
+  "data-layout": "full-width",
   "data-size": "default",
   "data-width": "fluid",
   "data-sidebarbg": "none",
@@ -53,8 +53,3 @@ export const { updateTheme, resetTheme } = themeSlice.actions;
 
 
 export default themeSlice.reducer;
-
-
-
-
-
