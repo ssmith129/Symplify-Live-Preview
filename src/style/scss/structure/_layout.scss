@@ -17,4 +17,11 @@
         width: 100%;
         margin: 0 auto;
     }
+
+    // Tablet landscape: cap dashboard width to 1366px
+    @media (min-width: 992px) and (max-width: 1366px) {
+        .content {
+            max-width: 1366px;
+        }
+    }
 }
