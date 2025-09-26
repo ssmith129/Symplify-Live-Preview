@@ -9,6 +9,10 @@ import SchedulingInsightPopover, { type SchedulingAnchor } from "../../../../../
 import { all_routes } from "../../../../../routes/all_routes";
 
 const Calendars = () => {
+  const [showInsights, setShowInsights] = useState(false);
+  const [anchor, setAnchor] = useState<SchedulingAnchor | null>(null);
+  const [slotTitle, setSlotTitle] = useState<string>("");
+
   const getModalContainer = () => {
     const modalElement = document.getElementById("modal-datepicker");
     return modalElement ? modalElement : document.body; // Fallback to document.body if modalElement is null
