@@ -287,14 +287,14 @@ const Email = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white flex-fill border-end border-bottom mail-notifications">
+            <div className="bg-white flex-fill border-end border-bottom mail-notifications ai-card">
               <div className="slimScrollDiv">
               <div className="active slimscroll">
                 <div className="slimscroll-active-sidebar">
                   <div className="p-3">
                     <div className="d-flex align-items-center justify-content-between flex-wrap row-gap-3">
                       <div>
-                        <h5 className="mb-1">Inbox</h5>
+                        <h5 className="mb-1 d-flex align-items-center gap-2">Inbox <span className="ai-badge ai-badge--sm"><i className="fa-solid fa-robot"></i>AI</span></h5>
                         <div className="d-flex align-items-center">
                           <span>2345 Emails</span>
                           <i className="ti ti-point-filled text-primary mx-1" />
@@ -340,8 +340,8 @@ const Email = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="list-group list-group-flush mails-list">
-                    <div className="list-group-item border-bottom p-3">
+                  <div className="list-group list-group-flush mails-list ai-inbox-list">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -503,7 +503,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -663,7 +663,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -827,7 +827,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -977,7 +977,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -1133,7 +1133,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
@@ -1291,7 +1291,7 @@ const Email = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-item border-bottom p-3">
+                    <div className="list-group-item border-bottom p-3 ai-email-row">
                       <div className="d-flex align-items-center mb-2">
                         <div className="form-check form-check-md d-flex align-items-center flex-shrink-0 me-2">
                           <input className="form-check-input" type="checkbox" />
