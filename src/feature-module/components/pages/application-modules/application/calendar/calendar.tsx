@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import Footer from "../../../../../../core/common/footer/footer";
 import EventCalendar from "../../../../../../core/common/event-calendar/eventCalendar";
+import AppointmentInsights from "../../../../../../core/ai/AppointmentInsights";
+import SchedulingInsightPopover, { type SchedulingAnchor } from "../../../../../../core/ai/SchedulingInsightPopover";
 import { all_routes } from "../../../../../routes/all_routes";
 
 const Calendars = () => {
