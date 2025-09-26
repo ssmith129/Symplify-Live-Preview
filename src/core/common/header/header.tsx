@@ -202,12 +202,12 @@ const Header = () => {
                   <span className="notification-badge" />
                 </button>
                 <div
-                  className="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg min-h-300"
+                  className="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg min-h-300 ai-notif-dropdown"
                 >
                   <div className="p-2 border-bottom">
                     <div className="row align-items-center">
                       <div className="col">
-                        <h6 className="m-0 fs-16 fw-semibold">Notifications</h6>
+                        <h6 className="m-0 fs-16 fw-semibold d-flex align-items-center gap-2">AI Notifications <span className="ai-badge ai-badge--sm"><i className="fa-solid fa-robot me-1"></i>AI</span></h6>
                         <div className="d-flex gap-2 mt-1">
                           <span className="badge bg-danger"><i className="ti ti-alert-triangle-filled me-1"/>Critical</span>
                           <span className="badge bg-warning"><i className="ti ti-exclamation-circle me-1"/>High</span>
@@ -219,12 +219,12 @@ const Header = () => {
                   </div>
                   {/* Notification Body */}
                   <div
-                    className="notification-body position-relative z-2 rounded-0"
+                    className="notification-body position-relative z-2 rounded-0 ai-notif-list"
                     data-simplebar=""
                   >
                     {/* Item*/}
                     <div
-                      className="dropdown-item notification-item py-3 text-wrap border-bottom"
+                      className="dropdown-item notification-item py-3 text-wrap border-bottom ai-notif-item"
                       id="notification-1"
                     >
                       <div className="d-flex">
@@ -269,7 +269,7 @@ const Header = () => {
                     </div>
                     {/* Item*/}
                     <div
-                      className="dropdown-item notification-item py-3 text-wrap border-bottom"
+                      className="dropdown-item notification-item py-3 text-wrap border-bottom ai-notif-item"
                       id="notification-2"
                     >
                       <div className="d-flex">
@@ -317,7 +317,7 @@ const Header = () => {
                     </div>
                     {/* Item*/}
                     <div
-                      className="dropdown-item notification-item py-3 text-wrap border-bottom"
+                      className="dropdown-item notification-item py-3 text-wrap border-bottom ai-notif-item"
                       id="notification-3"
                     >
                       <div className="d-flex">
@@ -368,7 +368,7 @@ const Header = () => {
                     </div>
                     {/* Item*/}
                     <div
-                      className="dropdown-item notification-item py-3 text-wrap"
+                      className="dropdown-item notification-item py-3 text-wrap ai-notif-item"
                       id="notification-4"
                     >
                       <div className="d-flex">
@@ -419,7 +419,7 @@ const Header = () => {
                   <div className="p-2 rounded-bottom border-top text-center">
                     <Link
                       to={all_routes.notifications}
-                      className="text-center text-decoration-underline fs-14 mb-0"
+                      className="text-center text-decoration-underline fs-14 mb-0 ai-link"
                     >
                       View All Notifications
                     </Link>
