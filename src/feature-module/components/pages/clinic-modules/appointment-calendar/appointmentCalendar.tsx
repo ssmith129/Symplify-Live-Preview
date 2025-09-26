@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import EventCalendar from "../../../../../core/common/event-calendar/eventCalendar";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useMemo, useRef, useState } from "react";
 const SmartDashboard = lazy(() => import('../../../../../core/ai/SmartDashboard'));
 const SmartSuggestionsModal = lazy(() => import('../../../../../core/ai/SmartSuggestionsModal'));
+import SlotScoringTooltip, { type SlotScore } from "../../../../../core/ai/SlotScoringTooltip";
+import useSmartScheduling from "../../../../../core/ai/hooks/useSmartScheduling";
 import PredefinedDatePicker from "../../../../../core/common/datePicker";
 import { all_routes } from "../../../../routes/all_routes";
 
@@ -13,14 +15,48 @@ const AppointmentCalendar = () => {
   const [selectedDate, _setSelectedDate] = useState<Date | null>(null);
   const [modalClickPosition, _setModalClickPosition] = useState({ x: 0, y: 0 });
 
-  // reserved for future calendar integration; modal opens via button triggers
-  // const handleCalendarSlotClick = (date: Date, event: React.MouseEvent) => {
-  //   if (isAiMode) {
-  //     _setSelectedDate(date);
-  //     _setModalClickPosition({ x: event.clientX, y: event.clientY });
-  //     setShowSuggestionsModal(true);
-  //   }
-  // };
+  // AI slot scoring state
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [tooltipData, setTooltipData] = useState<SlotScore | null>(null);
+  const { suggestions, loading, error, analyzeTimes } = useSmartScheduling({ debounceMs: 250 });
+
+  const topSlot: SlotScore | null = useMemo(() => {
+    if (!suggestions.length) return null;
+    const s = suggestions[0];
+    return {
+      score: s.score,
+      confidence: s.confidence,
+      factors: {
+        doctorAvailability: s.doctorMatch,
+        patientPreference: s.patientPreference,
+        departmentLoad: Math.max(0, 100 - s.departmentLoad),
+        historicalData: Math.round((s.score + s.confidence) / 2)
+      },
+      reasons: s.reasons,
+      warnings: s.warnings,
+      recommendations: ["Schedule check-in 5 min earlier", "Send SMS reminder"]
+    };
+  }, [suggestions]);
+
+  // Initialize analysis when AI mode is active
+  useMemo(() => {
+    if (isAiMode) analyzeTimes('patient-1', 'doctor-1', 'dept-1');
+  }, [isAiMode, analyzeTimes]);
+
+  const handleCalendarClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isAiMode) return;
+    setTooltipPos({ x: e.clientX, y: e.clientY });
+    setTooltipData(topSlot || {
+      score: 72,
+      confidence: 80,
+      factors: { doctorAvailability: 78, patientPreference: 70, departmentLoad: 60, historicalData: 68 },
+      reasons: ["Doctor available", "Good patient preference match"],
+      warnings: ["Department load moderate"],
+      recommendations: ["Consider adjacent 15-min buffer"]
+    });
+    setTooltipVisible(true);
+  };
 
   const handleAiModeChange = (enabled: boolean) => {
     setIsAiMode(enabled);
@@ -48,7 +84,16 @@ const AppointmentCalendar = () => {
             <div className="flex-grow-1">
               <h4 className="fw-semibold mb-0"> Appointment </h4>
             </div>
-            <div className="text-end d-flex">
+            <div className="text-end d-flex align-items-center">
+              <button
+                type="button"
+                className="btn btn-outline-primary me-2 fs-13 btn-md"
+                onClick={() => setShowSuggestionsModal(true)}
+                aria-haspopup="dialog"
+                aria-expanded={showSuggestionsModal}
+              >
+                <i className="ti ti-brain me-1"/> AI Suggestions
+              </button>
               {/* dropdown*/}
               <div className="dropdown me-1">
                 <Link
@@ -743,9 +788,21 @@ const AppointmentCalendar = () => {
           {/* start Card */}
           <div className="card mb-0">
             <div className="card-body">
-              <div id="calendar">
+              <div id="calendar" onClick={handleCalendarClick} role="region" aria-label="Calendar area">
                 <EventCalendar />
               </div>
+              {tooltipData && (
+                <Suspense fallback={null}>
+                  <SlotScoringTooltip
+                    isVisible={tooltipVisible}
+                    position={tooltipPos}
+                    slotData={tooltipData}
+                    onClose={() => setTooltipVisible(false)}
+                  />
+                </Suspense>
+              )}
+              {loading && <div className="mt-2 text-muted fs-12">Analyzing best slots…</div>}
+              {error && <div className="mt-2 text-danger fs-12" role="alert">{error}</div>}
             </div>
           </div>
           {/* end card */}
