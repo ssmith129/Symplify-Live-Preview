@@ -47,7 +47,7 @@ const Calendars = () => {
           </div>
           {/* End Page Header */}
           <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-            <div className="dropdown">
+            <div className="d-flex align-items-center gap-2"><button type="button" className="btn btn-outline-primary btn-sm" onClick={(e) => { const rect = (e.currentTarget as HTMLButtonElement).getBoundingClientRect(); setAnchor({ top: rect.top, left: rect.left, width: rect.width, height: rect.height }); setSlotTitle("Today · Recommended window"); setShowInsights(true); }} aria-haspopup="dialog" aria-expanded={showInsights}><i className="ti ti-brain me-1" /> AI Insights</button><div className="dropdown">
               <Link
                 to="#"
                 className="dropdown-toggle btn btn-outline-light btn-sm bg-white text-dark d-inline-flex align-items-center drop-arrow-none"
@@ -77,7 +77,7 @@ const Calendars = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div></div>
             <div>
               <Link
                 to="#"
