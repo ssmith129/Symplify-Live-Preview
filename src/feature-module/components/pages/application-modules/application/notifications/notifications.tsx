@@ -11,7 +11,7 @@ const Notifications = () => {
 		========================= */}
       <div className="page-wrapper">
         {/* Start Content */}
-        <div className="content">
+        <div className="content ai-notif-page">
           {/* Start Page Header */}
           <div className="mb-3 pb-3 border-bottom mb-4">
             <h4 className="fw-bold mb-0">Notification</h4>
@@ -44,9 +44,9 @@ const Notifications = () => {
                   </li>
                 </ul>
               </div>
-              <div className="notication-list">
+              <div className="notication-list ai-card ai-notif-list">
                 {/* Notification 1 */}
-                <div className="notication-item bg-white">
+                <div className="notication-item bg-white ai-notif-item">
                   <div className="row align-items-center">
                     <div className="col-lg-9">
                       <div className="notication-content">
@@ -85,7 +85,7 @@ const Notifications = () => {
                   </div>
                 </div>
                 {/* Notification 2 */}
-                <div className="notication-item bg-white">
+                <div className="notication-item bg-white ai-notif-item">
                   <div className="row align-items-center">
                     <div className="col-lg-9">
                       <div className="notication-content">
@@ -126,7 +126,7 @@ const Notifications = () => {
                   </div>
                 </div>
                 {/* Notification 3 */}
-                <div className="notication-item bg-white">
+                <div className="notication-item bg-white ai-notif-item">
                   <div className="row align-items-center">
                     <div className="col-lg-9">
                       <div className="notication-content">
@@ -165,7 +165,7 @@ const Notifications = () => {
                   </div>
                 </div>
                 {/* Notification 4 */}
-                <div className="notication-item bg-white">
+                <div className="notication-item bg-white ai-notif-item">
                   <div className="row align-items-center">
                     <div className="col-lg-9">
                       <div className="notication-content">
@@ -204,7 +204,7 @@ const Notifications = () => {
                   </div>
                 </div>
                 {/* Notification 5 */}
-                <div className="notication-item bg-white">
+                <div className="notication-item bg-white ai-notif-item">
                   <div className="row align-items-center">
                     <div className="col-lg-9">
                       <div className="notication-content">
