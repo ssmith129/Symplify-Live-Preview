@@ -105,6 +105,15 @@ const Calendars = () => {
         {/* Start Footer*/}
         <Footer />
         {/* End Footer*/}
+
+        {showInsights && anchor && (
+          <SchedulingInsightPopover
+            anchor={anchor}
+            dateISO={new Date().toISOString()}
+            title={slotTitle}
+            onClose={() => setShowInsights(false)}
+          />
+        )}
       </div>
       {/* ========================
         End Page Content
