@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AI Email Inbox Mockup</title>
+  <!-- This mockup uses app classes/tokens (ai-*, bootstrap utilities) to match the ecosystem -->
+</head>
+<body class="bg-light">
+  <div class="page-wrapper" style="margin-left:0">
+    <div class="content" style="max-width:1600px;margin:0 auto;padding:20px">
+      <div class="ai-card">
+        <div class="ai-card__header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0 d-flex align-items-center gap-2">
+            AI Inbox <span class="ai-badge ai-badge--sm"><i class="fa-solid fa-robot"></i>AI</span>
+          </h5>
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-white" data-bs-toggle="dropdown">All<i class="fa-solid fa-chevron-down ms-1 fs-12"></i></button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><button class="dropdown-item">All</button></li>
+                <li><button class="dropdown-item">Unread</button></li>
+                <li><button class="dropdown-item">Starred</button></li>
+                <li><button class="dropdown-item">Attachments</button></li>
+              </ul>
+            </div>
+            <div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="smartSort"/><label class="ms-1" for="smartSort">Smart sort</label></div>
+            <div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="confOnly"/><label class="ms-1" for="confOnly">Confidence only</label></div>
+            <div class="d-flex gap-2"><button class="btn btn-outline-white btn-sm">Mark all read</button><button class="btn btn-outline-white btn-sm">Archive</button><button class="btn btn-outline-white btn-sm text-danger">Delete</button></div>
+          </div>
+        </div>
+        <div class="ai-card__body">
+          <div class="row g-3">
+            <div class="col-xl-8 col-lg-7">
+              <div class="ai-card ai-notif-list p-0" role="list" aria-label="Inbox messages">
+                <!-- Row 1 -->
+                <div class="ai-list-item ai-email-row" role="listitem" tabindex="0">
+                  <div class="ai-list-item__priority ai-list-item__priority--high"></div>
+                  <div class="ai-list-item__content min-width-0 flex-grow-1">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2 min-width-0">
+                        <span class="badge bg-light text-dark border">Unread</span>
+                        <strong class="text-dark text-truncate">Dr. Sarah Johnson</strong>
+                        <span class="text-muted d-none d-sm-inline">&lt;sarah@hospital.org&gt;</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                        <span class="fs-12 text-muted">10:24 AM</span>
+                        <span class="ai-badge ai-badge--sm" title="AI confidence">92%</span>
+                      </div>
+                    </div>
+                    <p class="mb-0 fs-13 text-muted text-truncate">Pre-op checklist approved. Please confirm equipment availability for tomorrow 8:00 AM.</p>
+                    <div class="d-flex align-items-center justify-content-between mt-1">
+                      <div class="d-flex align-items-center gap-2 ai-meta-inline">
+                        <span class="fs-12 text-muted"><i class="fa-solid fa-paperclip me-1"></i>2</span>
+                        <span class="fs-12 text-muted d-none d-sm-inline">surgery, checklist</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-icon btn-light" aria-label="Mark as read"><i class="ti ti-check"></i></button>
+                        <button class="btn btn-icon btn-light" aria-label="Archive"><i class="ti ti-archive"></i></button>
+                        <button class="btn btn-icon btn-light text-danger" aria-label="Delete"><i class="ti ti-trash"></i></button>
+                      </div>
+                    </div>
+                    <div class="ai-expand">
+                      <div class="mt-2 fs-13 text-muted">Full preview content placeholder…</div>
+                      <div class="d-flex gap-2 mt-2 flex-wrap">
+                        <button class="ai-btn ai-btn--sm ai-btn--secondary"><i class="fa-regular fa-comment me-1"></i>Confirm availability</button>
+                        <button class="ai-btn ai-btn--sm ai-btn--secondary">Send prepping instructions</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="ai-list-item ai-email-row" role="listitem" tabindex="0">
+                  <div class="ai-list-item__priority ai-list-item__priority--medium"></div>
+                  <div class="ai-list-item__content min-width-0 flex-grow-1">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2 min-width-0">
+                        <strong class="text-dark text-truncate">Billing Team</strong>
+                        <span class="text-muted d-none d-sm-inline">&lt;billing@clinic.com&gt;</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                        <span class="fs-12 text-muted">9:02 AM</span>
+                        <span class="ai-badge ai-badge--sm">78%</span>
+                      </div>
+                    </div>
+                    <p class="mb-0 fs-13 text-muted text-truncate">Monthly revenue summary is ready. Notable increase in radiology services.</p>
+                    <div class="d-flex align-items-center justify-content-between mt-1">
+                      <div class="d-flex align-items-center gap-2 ai-meta-inline">
+                        <span class="fs-12 text-muted">finance, summary</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-icon btn-light" aria-label="Mark as read"><i class="ti ti-check"></i></button>
+                        <button class="btn btn-icon btn-light" aria-label="Archive"><i class="ti ti-archive"></i></button>
+                        <button class="btn btn-icon btn-light text-danger" aria-label="Delete"><i class="ti ti-trash"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+              <div class="ai-card p-3" aria-label="Thread details and AI suggestions">
+                <h6 class="fw-semibold mb-2">AI Suggestions</h6>
+                <ul class="mb-3">
+                  <li>Summarize thread</li>
+                  <li>Propose reply</li>
+                  <li>Extract tasks</li>
+                </ul>
+                <button class="btn btn-primary w-100">Compose</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-card__footer d-flex justify-content-between align-items-center">
+          <div class="text-muted fs-12">Showing 1–25 of 2,431</div>
+          <div class="d-flex gap-2"><button class="btn btn-outline-white btn-sm">Prev</button><button class="btn btn-outline-white btn-sm">Next</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
