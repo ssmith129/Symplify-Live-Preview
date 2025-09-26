@@ -187,9 +187,9 @@ export default function InboxTriageCard() {
                     <div className={`ai-list-item__priority ai-list-item__priority--${msg.ai.priority}`}></div>
                     <div className="ai-list-item__content">
                       <div className="min-width-0 flex-grow-1">
-                        <div className="d-flex align-items-center justify-content-between">
+                        <div className="d-flex align-items-center justify-content-between ai-message-header">
                           <h6 className="mb-0 fw-semibold text-dark fs-14 text-truncate" title={msg.subject}>{msg.from}</h6>
-                          <div className="d-flex align-items-center gap-1 flex-shrink-0">
+                          <div className="d-flex align-items-center gap-1 flex-shrink-0 ai-meta-right">
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
@@ -197,7 +197,7 @@ export default function InboxTriageCard() {
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
-                        <div className="d-flex align-items-center justify-content-between mt-1">
+                        <div className="d-flex align-items-center justify-content-between mt-1 ai-message-footer">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="fa-solid fa-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
@@ -208,7 +208,7 @@ export default function InboxTriageCard() {
                               <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="fa-solid fa-paperclip me-1"/>{msg.metadata.attachments}</span>
                             )}
                           </div>
-                          <div className="dropdown">
+                          <div className="dropdown ai-priority-control">
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-bs-toggle="dropdown" aria-label="Change priority">
                               {msg.ai.priority}
                             </button>

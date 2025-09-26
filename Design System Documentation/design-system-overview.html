@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Email Application - Design System Documentation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tabler-icons@1.119.0/icons-sprite.svg">
     <style>
         :root {
@@ -375,7 +376,7 @@
                 </div>
                 <div class="col-lg-4 text-end">
                     <div class="d-flex align-items-center justify-content-end gap-3">
-                        <i style="font-size: 48px; color: var(--ai-accent);">🤖</i>
+                        <i class="fa-solid fa-robot" style="font-size: 48px; color: var(--ai-accent);" aria-hidden="true"></i>
                         <div>
                             <div class="h5 mb-0">Version 1.0</div>
                             <small class="opacity-75">Updated Today</small>
@@ -428,7 +429,7 @@
                                 <div class="ai-card">
                                     <div class="ai-card__header">
                                         <div class="d-flex align-items-center">
-                                            <i style="color: var(--ai-accent); margin-right: 8px;">🧠</i>
+                                            <i class="fa-solid fa-brain" style="color: var(--ai-accent); margin-right: 8px;" aria-hidden="true"></i>
                                             <span>AI Feature Status</span>
                                         </div>
                                     </div>
@@ -557,10 +558,10 @@
                             
                             <h6>With Icons</h6>
                             <div class="d-flex gap-2 mb-3">
-                                <span class="ai-badge ai-badge--critical">⚠️ Critical</span>
-                                <span class="ai-badge ai-badge--high">🔥 High</span>
-                                <span class="ai-badge ai-badge--medium">💡 Medium</span>
-                                <span class="ai-badge ai-badge--low">✅ Low</span>
+                                <span class="ai-badge ai-badge--critical"><i class="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i>Critical</span>
+                                <span class="ai-badge ai-badge--high"><i class="fa-solid fa-fire me-1" aria-hidden="true"></i>High</span>
+                                <span class="ai-badge ai-badge--medium"><i class="fa-regular fa-lightbulb me-1" aria-hidden="true"></i>Medium</span>
+                                <span class="ai-badge ai-badge--low"><i class="fa-regular fa-circle-check me-1" aria-hidden="true"></i>Low</span>
                             </div>
                         </div>
 
@@ -580,16 +581,16 @@
                         <div class="component-showcase">
                             <h6>Button Variants</h6>
                             <div class="d-flex gap-2 mb-3">
-                                <button class="ai-btn ai-btn--primary">🧠 AI Analyze</button>
-                                <button class="ai-btn ai-btn--secondary">📊 View Details</button>
-                                <button class="ai-btn ai-btn--accent">✨ Apply Suggestion</button>
+                                <button class="ai-btn ai-btn--primary"><i class="fa-solid fa-brain me-2" aria-hidden="true"></i>AI Analyze</button>
+                                <button class="ai-btn ai-btn--secondary"><i class="fa-regular fa-chart-bar me-2" aria-hidden="true"></i>View Details</button>
+                                <button class="ai-btn ai-btn--accent"><i class="fa-solid fa-wand-magic-sparkles me-2" aria-hidden="true"></i>Apply Suggestion</button>
                             </div>
                             
                             <h6>Action Buttons</h6>
                             <div class="d-flex gap-2 mb-3">
-                                <button class="ai-btn ai-btn--secondary">🗂️ Archive</button>
-                                <button class="ai-btn ai-btn--secondary">🔄 Refresh</button>
-                                <button class="ai-btn ai-btn--secondary">⏰ Snooze</button>
+                                <button class="ai-btn ai-btn--secondary"><i class="fa-regular fa-folder-open me-2" aria-hidden="true"></i>Archive</button>
+                                <button class="ai-btn ai-btn--secondary"><i class="fa-solid fa-rotate me-2" aria-hidden="true"></i>Refresh</button>
+                                <button class="ai-btn ai-btn--secondary"><i class="fa-regular fa-clock me-2" aria-hidden="true"></i>Snooze</button>
                             </div>
                         </div>
 
@@ -610,7 +611,7 @@
                                 <div class="col-md-6">
                                     <div class="ai-card">
                                         <div class="ai-card__header">
-                                            🎯 AI Recommendation
+                                            <i class="fa-solid fa-bullseye me-2" aria-hidden="true"></i>AI Recommendation
                                         </div>
                                         <div class="ai-card__body">
                                             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -627,7 +628,7 @@
                                 <div class="col-md-6">
                                     <div class="ai-card">
                                         <div class="ai-card__header">
-                                            🔍 AI Analysis
+                                            <i class="fa-solid fa-magnifying-glass me-2" aria-hidden="true"></i>AI Analysis
                                         </div>
                                         <div class="ai-card__body">
                                             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -664,7 +665,7 @@
                         
                         <div class="component-showcase">
                             <div class="ai-card">
-                                <div class="ai-card__header">📋 AI Inbox Triage</div>
+                                <div class="ai-card__header"><i class="fa-regular fa-clipboard me-2" aria-hidden="true"></i>AI Inbox Triage</div>
                                 <div style="padding: 0;">
                                     <div class="ai-list-item">
                                         <div class="ai-list-item__priority ai-list-item__priority--critical"></div>
@@ -804,42 +805,42 @@
                             <h6>Primary AI Icons</h6>
                             <div class="icon-grid">
                                 <div class="icon-item">
-                                    <div>🧠</div>
+                                    <i class="fa-solid fa-brain fa-2x" aria-hidden="true"></i>
                                     <div><code>Brain</code></div>
                                     <small>AI Intelligence</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>🤖</div>
+                                    <i class="fa-solid fa-robot fa-2x" aria-hidden="true"></i>
                                     <div><code>Robot</code></div>
                                     <small>AI Status</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>💡</div>
+                                    <i class="fa-regular fa-lightbulb fa-2x" aria-hidden="true"></i>
                                     <div><code>Lightbulb</code></div>
                                     <small>AI Insights</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>🎯</div>
+                                    <i class="fa-solid fa-bullseye fa-2x" aria-hidden="true"></i>
                                     <div><code>Target</code></div>
                                     <small>AI Accuracy</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>⚠️</div>
+                                    <i class="fa-solid fa-triangle-exclamation fa-2x" aria-hidden="true"></i>
                                     <div><code>Warning</code></div>
                                     <small>Alert/Critical</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>✅</div>
+                                    <i class="fa-regular fa-circle-check fa-2x" aria-hidden="true"></i>
                                     <div><code>Check</code></div>
                                     <small>Success/Complete</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>📊</div>
+                                    <i class="fa-regular fa-chart-bar fa-2x" aria-hidden="true"></i>
                                     <div><code>Chart</code></div>
                                     <small>Analytics</small>
                                 </div>
                                 <div class="icon-item">
-                                    <div>⏰</div>
+                                    <i class="fa-regular fa-clock fa-2x" aria-hidden="true"></i>
                                     <div><code>Clock</code></div>
                                     <small>Time/Schedule</small>
                                 </div>
@@ -929,7 +930,7 @@
                         </div>
 
                         <div class="alert alert-info mt-4">
-                            <h6>🚀 Quick Start</h6>
+                            <h6><i class="fa-solid fa-rocket me-2" aria-hidden="true"></i>Quick Start</h6>
                             <p class="mb-0">Begin by implementing the CSS custom properties and color system. This will provide immediate visual consistency improvements across all AI components.</p>
                         </div>
                     </section>
