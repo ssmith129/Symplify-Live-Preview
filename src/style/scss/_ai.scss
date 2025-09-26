@@ -830,6 +830,12 @@
 .ai-notif-page .notication-item { border: 1px solid var(--ai-border-light); border-radius: 8px; margin-bottom: 10px; }
 .ai-notif-page .notication-item:hover { background: var(--ai-bg-secondary); }
 
+/* AI Email Inbox */
+.ai-inbox-list { max-height: calc(100vh - 280px); overflow: auto; scrollbar-gutter: stable; }
+.ai-email-row { transition: var(--ai-transition-normal); }
+.ai-email-row:hover { background: var(--ai-bg-secondary); }
+.ai-email-row:focus-within { outline: 2px solid var(--ai-accent); outline-offset: -2px; }
+
 .smart-suggestions-panel .suggestion-item:hover {
   background-color: #f8f9fa;
   border-color: var(--primary);
