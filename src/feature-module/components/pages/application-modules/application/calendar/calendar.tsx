@@ -94,9 +94,10 @@ const Calendars = () => {
           {/* Start Card */}
           <div className="card mb-0">
             <div className="card-body">
-              <div id="calendar">
+              <div id="calendar" role="region" aria-label="Calendar">
                 <EventCalendar />
               </div>
+              <AppointmentInsights />
             </div>
           </div>
           {/* End Card */}
