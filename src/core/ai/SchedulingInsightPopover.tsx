@@ -177,16 +177,12 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
           </div>
         </div>
 
-        <div className="ai-schedule-popover__footer d-flex align-items-center justify-content-between">
+        <div className="ai-schedule-popover__footer d-flex align-items-center justify-content-end">
           <div className="d-flex align-items-center gap-2">
-            <span className="ai-badge ai-badge--low ai-badge--sm d-inline-flex align-items-center gap-1"><i className="ti ti-sparkles" aria-hidden="true" />Suggested</span>
-            <span className="ai-confidence-badge d-inline-flex align-items-center gap-1"><i className="ti ti-robot" aria-hidden="true" />Confidence {Math.max(65, Math.min(95, score))}%</span>
-          </div>
-          <div className="d-flex align-items-center gap-2">
-            <a href="/appointments" className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action>
+            <a href="/appointments" className="btn btn-outline-primary btn-sm ai-btn ai-btn--sm ai-btn--secondary" data-ai-action>
               <i className="ti ti-calendar-stats me-1" />View
             </a>
-            <a href="/new-appointment" className="ai-btn ai-btn--sm ai-btn--primary" data-ai-action>
+            <a href="/new-appointment" className="btn btn-primary btn-sm ai-btn ai-btn--sm ai-btn--primary" data-ai-action>
               <i className="ti ti-calendar-check me-1" />Reschedule
             </a>
           </div>
