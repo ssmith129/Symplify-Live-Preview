@@ -223,7 +223,7 @@ export default function InboxTriageCard() {
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-archive me-1"/>}
                               Archive
                             </button>
-                            <button className="ai-btn ai-btn--sm ai-btn--secondary" style={{color: 'var(--ai-critical)'}} data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary ai-btn--destructive" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-trash me-1"/>}
                               Delete
                             </button>
