@@ -396,3 +396,17 @@
 .ai-font-medium { font-weight: var(--ai-font-weight-medium); }
 .ai-font-semibold { font-weight: var(--ai-font-weight-semibold); }
 .ai-font-bold { font-weight: var(--ai-font-weight-bold); }
+
+/* Force consistent AI styling across all contexts */
+[class*="ai-"] {
+  &, * {
+    /* Ensure text colors are not overridden by dark themes */
+    color: inherit !important;
+  }
+}
+
+/* Specific overrides for AI text utilities to prevent dark theme interference */
+.ai-text-primary { color: var(--ai-text-primary) !important; }
+.ai-text-secondary { color: var(--ai-text-secondary) !important; }
+.ai-text-muted { color: var(--ai-text-muted) !important; }
+.ai-icon-accent { color: var(--ai-accent) !important; }
