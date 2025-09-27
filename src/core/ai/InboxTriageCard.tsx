@@ -165,7 +165,7 @@ export default function InboxTriageCard() {
       {undoData && (
         <div className="alert alert-warning m-2 py-2 d-flex align-items-center justify-content-between" role="status">
           <span className="fs-12">{undoData.action === 'archive' ? 'Archived' : 'Deleted'} 1 item</span>
-          <button className="btn btn-sm btn-link" onClick={undo} aria-label="Undo last action">Undo</button>
+          <button className="ai-btn ai-btn--sm ai-btn--accent" onClick={undo} aria-label="Undo last action">↶ Undo</button>
         </div>
       )}
 
@@ -201,7 +201,7 @@ export default function InboxTriageCard() {
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="badge bg-light text-dark px-1 py-0 fs-13" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
+                            <span className="ai-confidence-badge" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
@@ -209,7 +209,7 @@ export default function InboxTriageCard() {
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="badge bg-danger-transparent text-danger px-1 py-0 fs-13">ACTION</span>
+                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠️ ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
@@ -217,12 +217,12 @@ export default function InboxTriageCard() {
                             )}
                           </div>
                           <div className="dropdown">
-                            <button className="btn btn-light btn-sm px-2" data-bs-toggle="dropdown" aria-label="Change priority">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-bs-toggle="dropdown" aria-label="Change priority">
                               {msg.ai.priority}
                             </button>
                             <ul className="dropdown-menu dropdown-menu-end">
                               {(['critical','high','medium','low'] as const).map(p => (
-                                <li key={p}><button className="dropdown-item" onClick={()=>handlePriorityChange(msg.id, p)}>{p}</button></li>
+                                <li key={p}><button className="dropdown-item" onClick={()=>handlePriorityChange(msg.id, p)}><span className={`ai-badge ai-badge--${p} me-2`}></span>{p}</button></li>
                               ))}
                             </ul>
                           </div>
@@ -230,21 +230,21 @@ export default function InboxTriageCard() {
                         <div className={`ai-expand ${isExpanded?'show':''}`}>
                           <div className="mt-2 fs-13 text-muted">{msg.preview}</div>
                           <div className="d-flex align-items-center gap-2 mt-2 flex-wrap">
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'archive')} aria-label="Archive" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-archive me-1"/>}
                               Archive
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn text-danger" data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" style={{color: 'var(--ai-critical)'}} data-ai-action onClick={()=>handleArchiveOrDelete(msg,'delete')} aria-label="Delete" disabled={proc}>
                               {proc ? <span className="spinner-border spinner-border-sm"/> : <i className="ti ti-trash me-1"/>}
                               Delete
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Reply">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Reply">
                               <i className="ti ti-reply me-1"/>Reply
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Forward">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Forward">
                               <i className="ti ti-arrow-right me-1"/>Forward
                             </button>
-                            <button className="btn btn-outline-white border btn-sm ai-action-btn" data-ai-action aria-label="Snooze">
+                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action aria-label="Snooze">
                               <i className="ti ti-alarm me-1"/>Snooze
                             </button>
                           </div>
