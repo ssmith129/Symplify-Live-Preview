@@ -113,16 +113,16 @@
   --ai-z-tooltip: 1070;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ai-bg-primary: #14163A;
-    --ai-bg-secondary: #1F2354;
-    --ai-bg-tertiary: #2C3480;
-    --ai-text-primary: #F1F3FF;
-    --ai-text-secondary: #D6DAFF;
-    --ai-text-muted: #AEB4E6;
-    --ai-border-light: #30377A;
-    --ai-border-medium: #4951A6;
-  }
+/* Force consistent light theme for AI components to match project UI */
+/* Remove dark mode auto-switching to prevent color inconsistencies */
+:root {
+  /* Override any potential dark mode inheritance */
+  --ai-bg-primary: #FFFFFF !important;
+  --ai-bg-secondary: #F8F9FF !important;
+  --ai-bg-tertiary: #E5E8FF !important;
+  --ai-text-primary: #202553 !important;
+  --ai-text-secondary: #3A4178 !important;
+  --ai-text-muted: #6B72A8 !important;
+  --ai-border-light: #E0E5FF !important;
+  --ai-border-medium: #C1C8FF !important;
 }
