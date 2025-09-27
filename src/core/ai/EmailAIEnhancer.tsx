@@ -22,13 +22,13 @@ function annotateItem(el: HTMLElement) {
   badgeRow.innerHTML = '';
   const pri = document.createElement('span');
   pri.className = `ai-badge ai-badge--${ai.priority}`;
-  const priorityIcons: Record<typeof ai.priority, string> = {
+  const priorityIcons: Record<'critical'|'high'|'medium'|'low', string> = {
     critical: 'ti ti-alert-triangle-filled',
     high: 'ti ti-flame',
     medium: 'ti ti-chart-bar',
     low: 'ti ti-circle-check'
   };
-  pri.innerHTML = `<i class="${priorityIcons[ai.priority]} me-1"></i>${ai.priority.toUpperCase()}`;
+  pri.innerHTML = `<i class="${priorityIcons[ai.priority as 'critical'|'high'|'medium'|'low']} me-1"></i>${ai.priority.toUpperCase()}`;
   const catEl = document.createElement('span');
   catEl.className = 'ai-badge ai-badge--medium ai-badge--sm';
   catEl.innerHTML = '<i class="ti ti-folder me-1"></i>' + cat;
