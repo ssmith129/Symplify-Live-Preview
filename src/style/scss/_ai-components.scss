@@ -108,6 +108,10 @@
   }
 }
 
+.ai-btn--secondary .ti {
+  color: inherit;
+}
+
 .ai-btn--accent {
   background: var(--ai-accent);
   color: var(--ai-text-inverse);
@@ -353,6 +357,12 @@
 .ai-gap-2 { gap: var(--ai-space-2); }
 .ai-gap-3 { gap: var(--ai-space-3); }
 .ai-gap-4 { gap: var(--ai-space-4); }
+
+/* Color Utilities */
+.ai-text-accent { color: var(--ai-accent); }
+.ai-text-primary { color: var(--ai-text-primary); }
+.ai-text-muted { color: var(--ai-text-muted); }
+.ai-icon-accent { color: var(--ai-accent); }
 
 /* AI Typography Utilities */
 .ai-text-xs { font-size: var(--ai-font-xs); }
