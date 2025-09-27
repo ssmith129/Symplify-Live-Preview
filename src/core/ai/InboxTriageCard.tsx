@@ -102,42 +102,6 @@ export default function InboxTriageCard() {
         </div>
       </div>
 
-      {/* Drag targets */}
-      <div className="px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
-        {CATEGORIES.map(cat => (
-          <span
-            key={cat}
-            className={`badge rounded-pill bg-light text-dark border drop-pill ${dropHover===cat ? 'active' : ''}`}
-            onDragOver={(e)=>{e.preventDefault(); setDropHover(cat);}}
-            onDragLeave={()=>setDropHover(null)}
-            onDrop={(e)=>onDropToCategory(cat,e)}
-            role="option"
-            aria-selected={dropHover===cat}
-          >
-            <i className="ti ti-inbox me-1"/>{cat}
-          </span>
-        ))}
-        <div className="ms-auto d-flex align-items-center gap-2">
-          <span className="fs-11 text-muted">{visible.length} total</span>
-          {confidenceOnly && (
-            <div className="d-flex align-items-center gap-1">
-              <i className="ti ti-robot fs-12 text-primary"/>
-              <span className="badge bg-light text-dark px-1 py-0 fs-10">≥ {Math.round(confidenceThreshold*100)}%</span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Priority summary */}
-      <div className="px-3 py-2 bg-white border-top border-bottom">
-        <div className="d-flex align-items-center gap-3">
-          <div className="d-flex align-items-center"><span className="priority-dot priority-dot-critical me-1"/><span className="fs-11 fw-medium">{counts.critical}</span></div>
-          <div className="d-flex align-items-center"><span className="priority-dot priority-dot-high me-1"/><span className="fs-11 fw-medium">{counts.high}</span></div>
-          <div className="d-flex align-items-center"><span className="priority-dot priority-dot-medium me-1"/><span className="fs-11 fw-medium">{counts.medium}</span></div>
-          <div className="d-flex align-items-center"><span className="priority-dot priority-dot-low me-1"/><span className="fs-11 fw-medium">{counts.low}</span></div>
-        </div>
-      </div>
-
       {undoData && (
         <div className="alert alert-warning m-2 py-2 d-flex align-items-center justify-content-between" role="status">
           <span className="fs-12">{undoData.action === 'archive' ? 'Archived' : 'Deleted'} 1 item</span>
