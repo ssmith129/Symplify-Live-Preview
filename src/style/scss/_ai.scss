@@ -463,6 +463,11 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.12);
   animation: ai-pop-enter .18s ease;
   color: var(--ai-text-primary) !important;
+  /* Ensure popover stays within viewport bounds */
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  /* Smooth repositioning when space constraints change */
+  transition: left 0.15s ease, top 0.15s ease;
 }
 .ai-schedule-popover__header {
   padding: 10px 12px;
