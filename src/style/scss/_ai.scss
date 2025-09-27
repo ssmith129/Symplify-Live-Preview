@@ -434,7 +434,7 @@
 
 .ai-triage-compact-list { max-height: 360px; }
 
-.ai-triage-meta { gap: 8px; flex-wrap: wrap; }
+.ai-triage-meta { gap: var(--ai-space-2); flex-wrap: wrap; }
 
 .ai-expand { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
 .ai-expand.show { max-height: 240px; }
