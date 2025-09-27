@@ -30,7 +30,7 @@ export default function AppointmentInsights() {
   return (
     <div className="ai-card mt-3">
       <div className="ai-card__header d-flex align-items-center">
-        <h6 className="mb-0 fw-semibold"><i className="ti ti-brain me-2 ai-icon-accent"/>🧠 AI Scheduling Insights</h6>
+        <h6 className="mb-0 fw-semibold"><i className="ti ti-brain me-2 ai-icon-accent"/>AI Scheduling Insights</h6>
       </div>
       <div className="ai-card__body">
         <div className="row g-3">
@@ -39,12 +39,12 @@ export default function AppointmentInsights() {
               <div className="border rounded p-2 h-100">
                 <div className="d-flex align-items-center justify-content-between mb-1">
                   <span className="fw-medium">{new Date(s.startISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})} - {new Date(s.endISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</span>
-                  <span className="ai-badge ai-badge--low">🎯 Score {s.score}</span>
+                  <span className="ai-badge ai-badge--low d-inline-flex align-items-center gap-1"><i className="ti ti-target-arrow" aria-hidden="true" />Score {s.score}</span>
                 </div>
                 <div className="d-flex flex-column gap-1">
-                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-activity me-1"/>📊 Utilization {s.utilizationPct}%</span>
-                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-user-exclamation me-1"/>⚠️ No-show risk {s.noShowRiskPct}%</span>
-                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-alert-square-rounded me-1"/>📈 Overbook risk {s.overbookRiskPct}%</span>
+                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-activity me-1"/>Utilization {s.utilizationPct}%</span>
+                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-user-exclamation me-1"/>No-show risk {s.noShowRiskPct}%</span>
+                  <span className="ai-text-sm ai-text-muted"><i className="ti ti-alert-square-rounded me-1"/>Overbook risk {s.overbookRiskPct}%</span>
                 </div>
               </div>
             </div>
