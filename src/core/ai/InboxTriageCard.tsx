@@ -13,8 +13,6 @@ const PRIORITY_ICONS: Record<string, string> = {
   low: 'ti ti-check-circle',
 };
 
-const CATEGORIES = ['emergency','medical','appointment','administrative','follow-up'] as const;
-
 export default function InboxTriageCard() {
   const dispatch = useDispatch<any>();
   const { items, loading, error, filter } = useSelector((s: RootState) => s.ai.inbox);
@@ -208,7 +206,7 @@ export default function InboxTriageCard() {
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠️ ACTION</span>
+                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠�� ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
