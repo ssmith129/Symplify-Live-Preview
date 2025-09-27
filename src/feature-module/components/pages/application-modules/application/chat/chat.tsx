@@ -698,7 +698,9 @@ const Chat = () => {
                               <div className="message-box receive-message p-3">
                                 <p className="mb-0 fs-16">
                                   Perfect! That layout will work great on the
-                                  landing page. 👍
+                                  landing page.
+                                  <i className="ti ti-thumb-up ms-1" aria-hidden="true" />
+                                  <span className="visually-hidden">Thumbs up</span>
                                 </p>
                               </div>
                               <div className="ms-2">
