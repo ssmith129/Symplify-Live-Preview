@@ -114,6 +114,8 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
     };
   }, [onClose]);
 
+  // Enhanced positioning logic: intelligently places popover to left/right of event icons
+  // with viewport boundary detection and automatic fallback positioning
   const placementVars = useMemo(() => {
     const popoverWidth = 360; // matches CSS width
     const gap = 8; // minimum gap from event icon
