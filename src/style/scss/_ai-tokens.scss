@@ -1,22 +1,22 @@
 /* AI Design System - CSS Custom Properties */
 :root {
   /* AI Brand Identity */
-  --ai-primary: #2D3748;
-  --ai-primary-light: #4A5568;
-  --ai-primary-dark: #1A202C;
+  --ai-primary: #2E37A4;
+  --ai-primary-light: #4C57D6;
+  --ai-primary-dark: #20297D;
   --ai-accent: #00D3C7;
   --ai-accent-light: #4FD1C7;
   --ai-accent-dark: #00B5AA;
   
   /* AI Background Colors */
   --ai-bg-primary: #FFFFFF;
-  --ai-bg-secondary: #F7F8FA;
-  --ai-bg-tertiary: #E2E8F0;
+  --ai-bg-secondary: #F8F9FF;
+  --ai-bg-tertiary: #E5E8FF;
   
   /* AI Border Colors */
-  --ai-border-light: #E2E8F0;
-  --ai-border-medium: #CBD5E0;
-  --ai-border-dark: #A0AEC0;
+  --ai-border-light: #E0E5FF;
+  --ai-border-medium: #C1C8FF;
+  --ai-border-dark: #949BDB;
   
   /* Priority Levels */
   --ai-critical: #DC3545;
@@ -46,10 +46,10 @@
   --ai-danger-bg: rgba(220, 53, 69, 0.1);
   
   /* Text Colors */
-  --ai-text-primary: #1A202C;
-  --ai-text-secondary: #4A5568;
-  --ai-text-muted: #718096;
-  --ai-text-light: #A0AEC0;
+  --ai-text-primary: #202553;
+  --ai-text-secondary: #3A4178;
+  --ai-text-muted: #6B72A8;
+  --ai-text-light: #9AA0CC;
   --ai-text-inverse: #FFFFFF;
   
   /* Spacing System */
