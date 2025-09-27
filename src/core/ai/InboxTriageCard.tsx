@@ -130,13 +130,14 @@ export default function InboxTriageCard() {
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
                         <div className="d-flex align-items-center mt-1 ai-triage-meta">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
-                            <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠️ ACTION</span>
+                              <span className="ai-badge ai-badge--critical ai-badge--sm">ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
-                              <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="ti ti-paperclip me-1"/>{msg.metadata.attachments}</span>
+                              <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}>
+                                <i className="ti ti-paperclip me-1"/>
+                              </span>
                             )}
                           </div>
                         </div>
