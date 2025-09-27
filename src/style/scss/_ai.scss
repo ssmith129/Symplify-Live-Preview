@@ -449,12 +449,40 @@
 /* Calendar event content helpers (no inline styles) */
 .calendar-event-avatar { width:20px; height:20px; border-radius:50%; display:inline-block; overflow:hidden; }
 
-/* AI Scheduling Insight Popover */
+/* AI Scheduling Insight Popover - Force light theme consistency */
 .ai-schedule-overlay { position: fixed; inset: 0; z-index: 1060; background: transparent; }
-.ai-schedule-popover { position: fixed; left: var(--ai-popover-left, 0); top: var(--ai-popover-top, 0); width: 360px; max-width: 92vw; background: var(--ai-bg-primary); border: 1px solid var(--ai-border-light); border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); animation: ai-pop-enter .18s ease; color: var(--ai-text-primary); }
-.ai-schedule-popover__header { padding: 10px 12px; border-bottom: 1px solid var(--ai-border-light); background: var(--ai-bg-secondary); }
-.ai-schedule-popover__body { padding: 10px 12px; max-height: 50vh; overflow: auto; background: var(--ai-bg-primary); }
-.ai-schedule-popover__footer { padding: 10px 12px; border-top: 1px solid var(--ai-border-light); background: var(--ai-bg-secondary); }
+.ai-schedule-popover {
+  position: fixed;
+  left: var(--ai-popover-left, 0);
+  top: var(--ai-popover-top, 0);
+  width: 360px;
+  max-width: 92vw;
+  background: var(--ai-bg-primary) !important;
+  border: 1px solid var(--ai-border-light) !important;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  animation: ai-pop-enter .18s ease;
+  color: var(--ai-text-primary) !important;
+}
+.ai-schedule-popover__header {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ai-border-light) !important;
+  background: var(--ai-bg-secondary) !important;
+  color: var(--ai-text-primary) !important;
+}
+.ai-schedule-popover__body {
+  padding: 10px 12px;
+  max-height: 50vh;
+  overflow: auto;
+  background: var(--ai-bg-primary) !important;
+  color: var(--ai-text-primary) !important;
+}
+.ai-schedule-popover__footer {
+  padding: 10px 12px;
+  border-top: 1px solid var(--ai-border-light) !important;
+  background: var(--ai-bg-secondary) !important;
+  color: var(--ai-text-primary) !important;
+}
 
 .ai-section { margin-bottom: 10px; }
 .ai-section__title { font-weight: 600; color: var(--pr-gray-700, #495057); margin-bottom: 6px; font-size: 13px; }
