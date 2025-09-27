@@ -1,4 +1,5 @@
 import EmailVerificationBasic from "../components/auth/email-verification/emailVerificationBasic";
+import EmailVerificationBasic from "../components/auth/email-verification/emailVerificationBasic";
 import EmailVerificationCover from "../components/auth/email-verification/emailVerificationCover";
 import EmailVerificationIllustration from "../components/auth/email-verification/emailVerificationIllustration";
 import Error404 from "../components/auth/error-modules/error404";
@@ -244,7 +245,7 @@ import { Navigate, Route } from "react-router";
 
 const routes = all_routes;
 
-export const publicRoutes = [
+const routeConfigurations = [
   {
     path: "/",
     name: "Root",
@@ -1497,3 +1498,40 @@ export const publicRoutes = [
     route: Route,
   },
 ];
+
+const authRoutePaths = new Set([
+  routes.login,
+  routes.loginBasic,
+  routes.loginCover,
+  routes.loginIllustration,
+  routes.registerBasic,
+  routes.registerCover,
+  routes.registerIllustration,
+  routes.forgotPasswordBasic,
+  routes.forgotPasswordCover,
+  routes.forgotPasswordIllustration,
+  routes.resetPasswordBasic,
+  routes.resetPasswordCover,
+  routes.resetPasswordIllustration,
+  routes.emailVerificationBasic,
+  routes.emailVerificationCover,
+  routes.emailVerificationIllustration,
+  routes.twoStepVerificationBasic,
+  routes.twoStepVerificationCover,
+  routes.twoStepVerificationIllustration,
+  routes.lockScreen,
+  routes.error404,
+  routes.error500,
+  routes.comingSoon,
+  routes.underMaintenance,
+  routes.pricing,
+  routes.privacyPolicy,
+]);
+
+export const authRoutes = routeConfigurations.filter(({ path }) =>
+  authRoutePaths.has(path)
+);
+
+export const publicRoutes = routeConfigurations.filter(({ path }) =>
+  !authRoutePaths.has(path)
+);
