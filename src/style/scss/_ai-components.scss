@@ -39,6 +39,12 @@
   border-color: var(--ai-low-border);
 }
 
+.ai-badge--accent {
+  background: rgba(0, 211, 199, 0.12);
+  color: var(--ai-accent);
+  border-color: rgba(0, 211, 199, 0.4);
+}
+
 .ai-badge--sm {
   padding: 1px var(--ai-space-1);
   font-size: 9px;
@@ -175,6 +181,21 @@
   padding: var(--ai-space-4);
   border-top: 1px solid var(--ai-border-light);
   background: var(--ai-bg-secondary);
+}
+
+.ai-slot-card {
+  background: var(--ai-bg-primary);
+  border: 1px solid var(--ai-border-light);
+  border-radius: var(--ai-radius);
+  padding: var(--ai-space-3);
+  box-shadow: var(--ai-shadow-sm);
+  transition: var(--ai-transition-normal);
+
+  &:hover {
+    border-color: var(--ai-border-medium);
+    box-shadow: var(--ai-shadow);
+    transform: translateY(-1px);
+  }
 }
 
 /* AI List Items */
