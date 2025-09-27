@@ -108,10 +108,62 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
     };
   }, [onClose]);
 
-  const placementVars = {
-    ['--ai-popover-left' as any]: `${Math.round(anchor.left + anchor.width / 2)}px`,
-    ['--ai-popover-top' as any]: `${Math.round(anchor.top + anchor.height + 8)}px`,
-  } as React.CSSProperties;
+  const placementVars = useMemo(() => {
+    const popoverWidth = 360; // matches CSS width
+    const gap = 8; // minimum gap from event icon
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
+    // Calculate available space on left and right sides
+    const spaceOnLeft = anchor.left - scrollX;
+    const spaceOnRight = viewportWidth - (anchor.left + anchor.width - scrollX);
+
+    // Determine optimal horizontal positioning
+    let left: number;
+    let preferRight = spaceOnRight >= popoverWidth + gap;
+    let preferLeft = spaceOnLeft >= popoverWidth + gap;
+
+    if (preferRight) {
+      // Position to the right of the event icon
+      left = anchor.left + anchor.width + gap;
+    } else if (preferLeft) {
+      // Position to the left of the event icon
+      left = anchor.left - popoverWidth - gap;
+    } else {
+      // Fallback: center horizontally with viewport constraints
+      left = Math.max(gap, Math.min(
+        viewportWidth - popoverWidth - gap + scrollX,
+        anchor.left + anchor.width / 2 - popoverWidth / 2
+      ));
+    }
+
+    // Vertical positioning - prefer below, fallback to above if no space
+    const spaceBelow = viewportHeight - (anchor.top + anchor.height - scrollY);
+    const spaceAbove = anchor.top - scrollY;
+    const estimatedPopoverHeight = 400; // estimated based on content
+
+    let top: number;
+    if (spaceBelow >= estimatedPopoverHeight + gap) {
+      // Position below the event
+      top = anchor.top + anchor.height + gap;
+    } else if (spaceAbove >= estimatedPopoverHeight + gap) {
+      // Position above the event
+      top = anchor.top - estimatedPopoverHeight - gap;
+    } else {
+      // Center vertically in viewport
+      top = Math.max(gap + scrollY, Math.min(
+        viewportHeight - estimatedPopoverHeight - gap + scrollY,
+        anchor.top + anchor.height / 2 - estimatedPopoverHeight / 2
+      ));
+    }
+
+    return {
+      ['--ai-popover-left' as any]: `${Math.round(left)}px`,
+      ['--ai-popover-top' as any]: `${Math.round(top)}px`,
+    } as React.CSSProperties;
+  }, [anchor]);
 
   return (
     <div className="ai-schedule-overlay" aria-hidden="false">
