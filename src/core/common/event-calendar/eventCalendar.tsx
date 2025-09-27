@@ -56,7 +56,24 @@ const EventCalendar = () => {
   const handleEventClick = (clickInfo: any) => {
     setSelectedEvent(clickInfo.event);
     const rect = (clickInfo.el as HTMLElement).getBoundingClientRect();
-    setAnchor({ top: rect.top + window.scrollY, left: rect.left + window.scrollX, width: rect.width, height: rect.height });
+
+    // Get calendar container bounds for better positioning context
+    const calendarEl = calendarRef.current?.getApi().el;
+    const calendarRect = calendarEl ? calendarEl.getBoundingClientRect() : null;
+
+    setAnchor({
+      top: rect.top + window.scrollY,
+      left: rect.left + window.scrollX,
+      width: rect.width,
+      height: rect.height,
+      // Optional: pass calendar container context for future enhancements
+      calendarBounds: calendarRect ? {
+        top: calendarRect.top + window.scrollY,
+        left: calendarRect.left + window.scrollX,
+        width: calendarRect.width,
+        height: calendarRect.height
+      } : undefined
+    });
   };
 
   const closePopover = () => {

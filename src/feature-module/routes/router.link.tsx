@@ -240,15 +240,11 @@ import UiRangeSlides from "../components/pages/ui-modules/ui-interface/ui-advanc
 import UiRating from "../components/pages/ui-modules/ui-interface/ui-advance/uiRating";
 import UiScrollbar from "../components/pages/ui-modules/ui-interface/ui-advance/uiScrollbar";
 import { all_routes } from "./all_routes";
-<<<<<<< HEAD
 import { Navigate, Route } from "react-router-dom";
-=======
-import { Navigate, Route } from "react-router";
->>>>>>> parent of 2b06b8d (replace)
 
 const routes = all_routes;
 
-export const publicRoutes = [
+const routeConfigurations = [
   {
     path: "/",
     name: "Root",
@@ -1500,9 +1496,9 @@ export const publicRoutes = [
     element: <UiScrollbar />,
     route: Route,
   },
-<<<<<<< HEAD
- ];
+];
 
+<<<<<<< HEAD
 export const authRoutes = publicRoutes.filter((r: any) => {
   const authComponents = new Set([
     Login,
@@ -1533,5 +1529,40 @@ export const authRoutes = publicRoutes.filter((r: any) => {
   return authComponents.has(r.element?.type);
 });
 =======
-];
->>>>>>> parent of 2b06b8d (replace)
+const authRoutePaths = new Set([
+  routes.login,
+  routes.loginBasic,
+  routes.loginCover,
+  routes.loginIllustration,
+  routes.registerBasic,
+  routes.registerCover,
+  routes.registerIllustration,
+  routes.forgotPasswordBasic,
+  routes.forgotPasswordCover,
+  routes.forgotPasswordIllustration,
+  routes.resetPasswordBasic,
+  routes.resetPasswordCover,
+  routes.resetPasswordIllustration,
+  routes.emailVerificationBasic,
+  routes.emailVerificationCover,
+  routes.emailVerificationIllustration,
+  routes.twoStepVerificationBasic,
+  routes.twoStepVerificationCover,
+  routes.twoStepVerificationIllustration,
+  routes.lockScreen,
+  routes.error404,
+  routes.error500,
+  routes.comingSoon,
+  routes.underMaintenance,
+  routes.pricing,
+  routes.privacyPolicy,
+]);
+
+export const authRoutes = routeConfigurations.filter(({ path }) =>
+  authRoutePaths.has(path)
+);
+
+export const publicRoutes = routeConfigurations.filter(({ path }) =>
+  !authRoutePaths.has(path)
+);
+>>>>>>> 9adf80b21aee4dde41c864dd389f6094c14b3438

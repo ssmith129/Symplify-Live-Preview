@@ -42,6 +42,14 @@
 
 .message-box {
   border: 1px solid var(--border-color);
+  overflow-x: auto;
+
+  p {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    display: inline-block;
+  }
 }
 
 .receive-message {
@@ -52,6 +60,17 @@
 .sent-message {
   border-radius: 5px 0 5px 5px;
   background: var(--light-800);
+}
+
+.message-single-line {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.message-single-line p {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .chat-list {

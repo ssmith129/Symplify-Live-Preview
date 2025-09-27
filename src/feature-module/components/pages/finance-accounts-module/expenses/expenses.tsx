@@ -1,5 +1,5 @@
-Symplifyimport { useState } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 import FilterIndex from "../../../../../core/common/filter/filterIndex";
 import SearchInput from "../../../../../core/common/dataTable/dataTableSearch";

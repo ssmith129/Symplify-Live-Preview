@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
 import { Outlet, useLocation } from "react-router-dom";
-=======
-import { Outlet, useLocation } from "react-router";
->>>>>>> parent of 2b06b8d (replace)
 import Header from "../../core/common/header/header";
 import Sidebar from "../../core/common/sidebar/sidebar";
 import SidebarTwo from "../../core/common/sidebar-two/sidebarTwo";

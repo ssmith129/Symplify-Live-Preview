@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import SettingsSidebar from "../../../../../../core/common/settings-sidebar/settingsSidebar";
 import Modals from "./modals/modals";
 

@@ -1,5 +1,5 @@
-Symplifyimport ImageWithBasePath from "../../../../core/imageWithBasePath";
-import { Link } from "react-router";
+import ImageWithBasePath from "../../../../core/imageWithBasePath";
+import { Link } from "react-router-dom";
 import { all_routes } from "../../../routes/all_routes";
 
 const PayrollTwo = () => {

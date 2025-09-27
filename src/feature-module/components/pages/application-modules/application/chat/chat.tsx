@@ -347,7 +347,7 @@ const Chat = () => {
                               </p>
                             </div>
                             <div className="d-flex align-items-center">
-                              <div className="message-box receive-message p-3">
+                              <div className="message-box receive-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Hey mark! Did you check out the new logo design?
                                 </p>
@@ -484,7 +484,7 @@ const Chat = () => {
                                   </li>
                                 </ul>
                               </div>
-                              <div className="message-box sent-message p-3">
+                              <div className="message-box sent-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Not yet. Can you send it here?
                                 </p>
@@ -510,7 +510,7 @@ const Chat = () => {
                               </p>
                             </div>
                             <div className="d-flex align-items-center">
-                              <div className="message-box receive-message p-3">
+                              <div className="message-box receive-message p-3 message-single-line">
                                 <p className="mb-2 fs-16">
                                   Sure! Please check the below logo Attached!!!
                                 </p>
@@ -668,7 +668,7 @@ const Chat = () => {
                                   </li>
                                 </ul>
                               </div>
-                              <div className="message-box sent-message p-3">
+                              <div className="message-box sent-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Looks clean! I like the font. Maybe try a
                                   slightly darker blue?
@@ -695,10 +695,12 @@ const Chat = () => {
                               </p>
                             </div>
                             <div className="d-flex align-items-center">
-                              <div className="message-box receive-message p-3">
+                              <div className="message-box receive-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Perfect! That layout will work great on the
-                                  landing page. 👍
+                                  landing page.
+                                  <i className="ti ti-thumb-up ms-1" aria-hidden="true" />
+                                  <span className="visually-hidden">Thumbs up</span>
                                 </p>
                               </div>
                               <div className="ms-2">
@@ -833,7 +835,7 @@ const Chat = () => {
                                   </li>
                                 </ul>
                               </div>
-                              <div className="message-box sent-message p-3">
+                              <div className="message-box sent-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Perfect It looks Great!!!
                                 </p>
@@ -859,7 +861,7 @@ const Chat = () => {
                               </p>
                             </div>
                             <div className="d-flex align-items-center">
-                              <div className="message-box receive-message p-3">
+                              <div className="message-box receive-message p-3 message-single-line">
                                 <p className="mb-0 fs-16">
                                   Hey mark! Did you check out the new logo design?
                                 </p>
@@ -1008,7 +1010,7 @@ const Chat = () => {
         <p className="text-dark mb-0">
           2025 ©{" "}
           <Link to="#" className="link-primary">
-            Preclinic
+            Symplify
           </Link>
           , All Rights Reserved
         </p>

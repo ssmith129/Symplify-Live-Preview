@@ -1,5 +1,5 @@
-Symplifyimport { useState } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import ImageWithBasePath from "../../../../core/imageWithBasePath";
 import SearchInput from "../../../../core/common/dataTable/dataTableSearch";
 import { PayrollListData } from "../../../../core/json/payrollListData";

@@ -119,7 +119,7 @@ export default function InboxTriageCard() {
       </div>
 
       {/* Drag targets */}
-      <div className="px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
+      <div className="ai-drop-row px-3 py-2 bg-light border-top d-flex align-items-center flex-wrap gap-2" role="listbox" aria-label="Drop into category">
         {CATEGORIES.map(cat => (
           <span
             key={cat}
@@ -145,7 +145,7 @@ export default function InboxTriageCard() {
       </div>
 
       {/* Priority summary */}
-      <div className="px-3 py-2 bg-white border-top border-bottom">
+      <div className="ai-priority-summary px-3 py-2 bg-white border-top border-bottom">
         <div className="d-flex align-items-center gap-3">
           <div className="d-flex align-items-center"><span className="priority-dot priority-dot-critical me-1"/><span className="fs-11 fw-medium">{counts.critical}</span></div>
           <div className="d-flex align-items-center"><span className="priority-dot priority-dot-high me-1"/><span className="fs-11 fw-medium">{counts.high}</span></div>
@@ -169,7 +169,7 @@ export default function InboxTriageCard() {
           <div className="alert alert-danger m-2 py-2 fs-12" role="alert">{error}</div>
         )}
         {!loading && !error && (
-          <div className="ai-card p-0">
+          <div className="ai-card p-0 ai-triage-compact-list ai-card-list">
             {visible.map((msg, idx) => {
               const isExpanded = !!expanded[msg.id];
               const proc = !!processing[msg.id];
@@ -187,9 +187,9 @@ export default function InboxTriageCard() {
                     <div className={`ai-list-item__priority ai-list-item__priority--${msg.ai.priority}`}></div>
                     <div className="ai-list-item__content">
                       <div className="min-width-0 flex-grow-1">
-                        <div className="d-flex align-items-center justify-content-between">
+                        <div className="d-flex align-items-center justify-content-between ai-message-header">
                           <h6 className="mb-0 fw-semibold text-dark fs-14 text-truncate" title={msg.subject}>{msg.from}</h6>
-                          <div className="d-flex align-items-center gap-1 flex-shrink-0">
+                          <div className="d-flex align-items-center gap-1 flex-shrink-0 ai-meta-right">
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
@@ -197,7 +197,7 @@ export default function InboxTriageCard() {
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
-                        <div className="d-flex align-items-center justify-content-between mt-1">
+                        <div className="d-flex align-items-center justify-content-between mt-1 ai-message-footer">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="fa-solid fa-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
@@ -208,7 +208,7 @@ export default function InboxTriageCard() {
                               <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="fa-solid fa-paperclip me-1"/>{msg.metadata.attachments}</span>
                             )}
                           </div>
-                          <div className="dropdown">
+                          <div className="dropdown ai-priority-control">
                             <button className="ai-btn ai-btn--sm ai-btn--secondary" data-bs-toggle="dropdown" aria-label="Change priority">
                               {msg.ai.priority}
                             </button>

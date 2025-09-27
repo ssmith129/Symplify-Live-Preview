@@ -513,12 +513,12 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Hey mark! Did you check out the new logo design?</p>
@@ -544,12 +544,12 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Not yet. Can you send it here?</p>
@@ -604,12 +604,12 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Sure! Please check the below logo Attached!!!</p>
@@ -652,12 +652,12 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Looks clean! I like the font. Maybe try a slightly darker blue?</p>
@@ -712,15 +712,18 @@ const Messages = () => {
                       </div>
                       <div className="d-flex align-items-start">
                         <div
-                          className="p-3 me-2"
+                          className="p-3 me-2 message-single-line"
                           style={{
                             borderRadius: '0 5px 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#FCFDFD',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
-                          <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect! That layout will work great on the landing page. 👍</p>
+                          <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect! That layout will work great on the landing page.
+                            <i className="ti ti-thumb-up ms-1" aria-hidden="true" />
+                            <span className="visually-hidden">Thumbs up</span>
+                          </p>
                         </div>
                         <button className="btn p-0 border-0" style={{marginTop: '19px'}}>
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
@@ -743,12 +746,12 @@ const Messages = () => {
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>
                         </button>
                         <div
-                          className="p-3"
+                          className="p-3 message-single-line"
                           style={{
                             borderRadius: '5px 0 5px 5px',
                             border: '1px solid #E7E8EB',
                             background: '#F7F8FA',
-                            maxWidth: '400px'
+                            maxWidth: 'calc(100% - 32px)'
                           }}
                         >
                           <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect It looks Great!!!</p>

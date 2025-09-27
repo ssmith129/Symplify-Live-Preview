@@ -1,5 +1,5 @@
-Symplifyimport { DatePicker, Select } from "antd";
-import { Link } from "react-router";
+import { DatePicker, Select } from "antd";
+import { Link } from "react-router-dom";
 import {
   Amount,
   Department,

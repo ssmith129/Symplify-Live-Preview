@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { all_routes } from "../../../../routes/all_routes";
 import {
   Appointment_Type,
@@ -11,9 +11,10 @@ import CommonSelect from "../../../../../core/common/common-select/commonSelect"
 import { DatePicker, TimePicker, type TimePickerProps } from "antd";
 import dayjs from "dayjs";
 import Modals from "./modals/modals";
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 const SmartSuggestionsPanel = lazy(() => import('../../../../../core/ai/SmartSuggestionsPanel'));
 import type { SmartSuggestion, ConflictWarning } from '../../../../../core/ai/SmartSuggestionsPanel';
+import useSmartScheduling from "../../../../../core/ai/hooks/useSmartScheduling";
 
 const NewAppointment = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +29,33 @@ const NewAppointment = () => {
   });
   const [conflicts, setConflicts] = useState<ConflictWarning[]>([]);
   const [showSmartMode, setShowSmartMode] = useState(true);
+
+  const { suggestions, analyzeTimes, checkConflicts, loading, error, lastUpdated } = useSmartScheduling({ debounceMs: 250 });
+
+  const styles = {
+    badge: { padding: '2px 8px', borderRadius: 6, fontSize: 12 },
+    metric: { display: 'inline-flex', alignItems: 'center', gap: 6, marginRight: 8 },
+    dot: (c: string) => ({ width: 8, height: 8, borderRadius: '50%', background: c, display: 'inline-block' })
+  } as const;
+
+  useEffect(() => {
+    if (formData.patientId && formData.doctorId) {
+      analyzeTimes(formData.patientId, formData.doctorId, formData.departmentId);
+    }
+  }, [formData.patientId, formData.doctorId, formData.departmentId, analyzeTimes]);
+
+  useEffect(() => {
+    if (formData.date && formData.time && formData.doctorId) {
+      checkConflicts(formData.date, formData.time, formData.doctorId);
+    }
+  }, [formData.date, formData.time, formData.doctorId, checkConflicts]);
+
+  const priorityScore = useMemo(() => suggestions.length ? Math.round(suggestions[0].score) : 50, [suggestions]);
+  const predictedDurationMin = useMemo(() => {
+    if (!suggestions.length) return 30;
+    const base = 20 + Math.round((100 - suggestions[0].confidence) / 5);
+    return Math.max(15, Math.min(60, base));
+  }, [suggestions]);
 
   const getModalContainer = () => {
     const modalElement = document.getElementById("modal-datepicker");
@@ -104,7 +132,24 @@ const NewAppointment = () => {
                       </div>
                     </div>
                   )}
-                  
+
+                  {/* AI summary */}
+                  <div className="d-flex align-items-center mb-2" aria-live="polite">
+                    <span style={styles.metric as React.CSSProperties}>
+                      <span style={styles.dot('#2e37a4') as React.CSSProperties}></span>
+                      <span className="fw-medium">Priority</span>
+                      <span className="badge bg-primary" style={styles.badge as React.CSSProperties}>{priorityScore}</span>
+                    </span>
+                    <span style={styles.metric as React.CSSProperties}>
+                      <span style={styles.dot('#198754') as React.CSSProperties}></span>
+                      <span className="fw-medium">Predicted Duration</span>
+                      <span className="badge bg-success" style={styles.badge as React.CSSProperties}>{predictedDurationMin} min</span>
+                    </span>
+                    {loading && <span className="text-muted fs-12 ms-2">Analyzing…</span>}
+                    {error && <span className="text-danger fs-12 ms-2" role="alert">{error}</span>}
+                    {lastUpdated && <span className="text-muted fs-12 ms-2">Updated {lastUpdated.toLocaleTimeString()}</span>}
+                  </div>
+
                   {/* card start */}
                   <div className="card">
                     <div className="card-body">
@@ -143,6 +188,7 @@ const NewAppointment = () => {
                                 className="select"
                                 defaultValue={Patient[0]}
                                 onChange={(value) => handleFieldChange('patientId', value)}
+                                aria-label="Select patient"
                               />
                             </div>
                           </div>
@@ -157,6 +203,7 @@ const NewAppointment = () => {
                                 className="select"
                                 defaultValue={Department[0]}
                                 onChange={(value) => handleFieldChange('departmentId', value)}
+                                aria-label="Select department"
                               />
                             </div>
                           </div>
@@ -172,6 +219,7 @@ const NewAppointment = () => {
                                 className="select"
                                 defaultValue={Doctor[0]}
                                 onChange={(value) => handleFieldChange('doctorId', value)}
+                                aria-label="Select doctor"
                               />
                             </div>
                           </div>
@@ -186,6 +234,7 @@ const NewAppointment = () => {
                                 className="select"
                                 defaultValue={Appointment_Type[0]}
                                 onChange={(value) => handleFieldChange('appointmentType', value)}
+                                aria-label="Select appointment type"
                               />
                             </div>
                           </div>
@@ -209,6 +258,7 @@ const NewAppointment = () => {
                                   suffixIcon={null}
                                   value={formData.date ? dayjs(formData.date, "YYYY-MM-DD") : null}
                                   onChange={(date) => handleFieldChange('date', date ? date.format("YYYY-MM-DD") : '')}
+                                  aria-label="Select appointment date"
                                 />
                                 <span className="input-icon-addon">
                                   <i className="ti ti-calendar" />
@@ -227,6 +277,7 @@ const NewAppointment = () => {
                                   onChange={onChangeTime}
                                   defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
                                   value={formData.time ? dayjs(formData.time, "HH:mm A") : null}
+                                  aria-label="Select appointment time"
                                 />
                                 <span className="input-icon-addon">
                                   <i className="ti ti-clock text-gray-7" />
@@ -308,7 +359,7 @@ const NewAppointment = () => {
           <p className="text-dark mb-0">
             2025 ©
             <Link to="#" className="link-primary">
-              Preclinic
+              Symplify
             </Link>
             , All Rights Reserved
           </p>

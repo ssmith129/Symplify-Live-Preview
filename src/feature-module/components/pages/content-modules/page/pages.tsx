@@ -1,4 +1,4 @@
-Symplifyimport { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { PagesData } from "../../../../../core/json/pagesData";
 import Datatable from "../../../../../core/common/dataTable";
 import Modals from "./modals/modals";
@@ -129,7 +129,7 @@ const Pages = () => {
           <p className="text-dark mb-0">
             2025 ©
             <Link to="#" className="link-primary">
-              Preclinic
+              Symplify
             </Link>
             , All Rights Reserved
           </p>
