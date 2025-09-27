@@ -182,7 +182,7 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
             <a href="/appointments" className="btn btn-outline-primary btn-sm ai-btn ai-btn--sm ai-btn--secondary" data-ai-action>
               <i className="ti ti-calendar-stats me-1" />View
             </a>
-            <a href="/new-appointment" className="btn btn-primary btn-sm ai-btn ai-btn--sm ai-btn--primary" data-ai-action>
+            <a href="/new-appointment" className="btn btn-outline-primary btn-sm ai-btn ai-btn--sm ai-btn--secondary" data-ai-action>
               <i className="ti ti-calendar-check me-1" />Reschedule
             </a>
           </div>
