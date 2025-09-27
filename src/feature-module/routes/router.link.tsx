@@ -1,5 +1,4 @@
 import EmailVerificationBasic from "../components/auth/email-verification/emailVerificationBasic";
-import EmailVerificationBasic from "../components/auth/email-verification/emailVerificationBasic";
 import EmailVerificationCover from "../components/auth/email-verification/emailVerificationCover";
 import EmailVerificationIllustration from "../components/auth/email-verification/emailVerificationIllustration";
 import Error404 from "../components/auth/error-modules/error404";
