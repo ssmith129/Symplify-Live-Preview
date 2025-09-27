@@ -90,12 +90,21 @@
   background: transparent;
   color: var(--ai-primary);
   border-color: var(--ai-border-medium);
-  
+
   &:hover {
     background: var(--ai-bg-secondary);
     border-color: var(--ai-primary);
     transform: translateY(-1px);
     color: var(--ai-primary);
+  }
+}
+
+.ai-btn--destructive {
+  color: var(--ai-critical);
+
+  &:hover,
+  &:focus {
+    color: var(--ai-critical);
   }
 }
 
