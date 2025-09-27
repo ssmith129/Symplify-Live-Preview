@@ -28,13 +28,22 @@ function annotateItem(el: HTMLElement) {
     medium: 'ti ti-chart-bar',
     low: 'ti ti-circle-check'
   };
-  pri.innerHTML = `<i class="${priorityIcons[ai.priority as 'critical'|'high'|'medium'|'low']} me-1"></i>${ai.priority.toUpperCase()}`;
+  const priIcon = document.createElement('i');
+  priIcon.className = `${priorityIcons[ai.priority as 'critical'|'high'|'medium'|'low']} me-1`;
+  pri.appendChild(priIcon);
+  pri.appendChild(document.createTextNode(ai.priority.toUpperCase()));
   const catEl = document.createElement('span');
   catEl.className = 'ai-badge ai-badge--medium ai-badge--sm';
-  catEl.innerHTML = '<i class="ti ti-folder me-1"></i>' + cat;
+  const catIcon = document.createElement('i');
+  catIcon.className = 'ti ti-folder me-1';
+  catEl.appendChild(catIcon);
+  catEl.appendChild(document.createTextNode(cat));
   const conf = document.createElement('span');
   conf.className = 'ai-confidence-badge';
-  conf.innerHTML = `<i class="ti ti-robot me-1"></i>${Math.round(ai.confidence*100)}%`;
+  const confIcon = document.createElement('i');
+  confIcon.className = 'ti ti-robot me-1';
+  conf.appendChild(confIcon);
+  conf.appendChild(document.createTextNode(`${Math.round(ai.confidence*100)}%`));
   badgeRow.appendChild(pri);
   badgeRow.appendChild(catEl);
   badgeRow.appendChild(conf);
