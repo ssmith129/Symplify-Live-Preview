@@ -21,14 +21,15 @@ function annotateItem(el: HTMLElement) {
   }
   badgeRow.innerHTML = '';
   const pri = document.createElement('span');
-  pri.className = `badge ${ai.priority === 'critical' ? 'bg-danger' : ai.priority === 'high' ? 'bg-warning' : ai.priority === 'medium' ? 'bg-info' : 'bg-success'}`;
-  pri.textContent = ai.priority.toUpperCase();
+  pri.className = `ai-badge ai-badge--${ai.priority}`;
+  const priorityEmojis = { critical: '⚠️', high: '🔥', medium: '📊', low: '✅' };
+  pri.textContent = `${priorityEmojis[ai.priority as keyof typeof priorityEmojis]} ${ai.priority.toUpperCase()}`;
   const catEl = document.createElement('span');
-  catEl.className = 'badge bg-light text-dark text-capitalize';
-  catEl.textContent = cat;
+  catEl.className = 'ai-badge ai-badge--medium ai-badge--sm';
+  catEl.textContent = `📁 ${cat}`;
   const conf = document.createElement('span');
-  conf.className = 'badge bg-light text-dark';
-  conf.textContent = `${Math.round(ai.confidence*100)}%`;
+  conf.className = 'ai-confidence-badge';
+  conf.textContent = `🤖 ${Math.round(ai.confidence*100)}%`;
   badgeRow.appendChild(pri);
   badgeRow.appendChild(catEl);
   badgeRow.appendChild(conf);
@@ -70,9 +71,9 @@ export default function EmailAIEnhancer() {
 
   return (
     <div className="d-flex align-items-center gap-2 flex-wrap">
-      <span className="badge bg-success d-flex align-items-center"><i className="ti ti-robot me-1"/>AI Active</span>
+      <span className="ai-badge ai-badge--low"><i className="ti ti-robot me-1"/>🤖 AI Active</span>
       {filters.map(f => (
-        <button key={f} className={`btn btn-sm ${filter===f? 'btn-primary' : 'btn-outline-primary'}`} onClick={() => setFilter(f as any)}>
+        <button key={f} className={`ai-btn ai-btn--sm ${filter===f? 'ai-btn--primary' : 'ai-btn--secondary'}`} onClick={() => setFilter(f as any)}>
           {f === 'all' ? 'All' : f.charAt(0).toUpperCase()+f.slice(1)}
         </button>
       ))}
