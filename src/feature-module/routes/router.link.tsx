@@ -244,7 +244,7 @@ import { Navigate, Route } from "react-router-dom";
 
 const routes = all_routes;
 
-export const publicRoutes = [
+const routeConfigurations = [
   {
     path: "/",
     name: "Root",
@@ -1498,6 +1498,7 @@ export const publicRoutes = [
   },
 ];
 
+<<<<<<< HEAD
 export const authRoutes = publicRoutes.filter((r: any) => {
   const authComponents = new Set([
     Login,
@@ -1527,3 +1528,41 @@ export const authRoutes = publicRoutes.filter((r: any) => {
   ]);
   return authComponents.has(r.element?.type);
 });
+=======
+const authRoutePaths = new Set([
+  routes.login,
+  routes.loginBasic,
+  routes.loginCover,
+  routes.loginIllustration,
+  routes.registerBasic,
+  routes.registerCover,
+  routes.registerIllustration,
+  routes.forgotPasswordBasic,
+  routes.forgotPasswordCover,
+  routes.forgotPasswordIllustration,
+  routes.resetPasswordBasic,
+  routes.resetPasswordCover,
+  routes.resetPasswordIllustration,
+  routes.emailVerificationBasic,
+  routes.emailVerificationCover,
+  routes.emailVerificationIllustration,
+  routes.twoStepVerificationBasic,
+  routes.twoStepVerificationCover,
+  routes.twoStepVerificationIllustration,
+  routes.lockScreen,
+  routes.error404,
+  routes.error500,
+  routes.comingSoon,
+  routes.underMaintenance,
+  routes.pricing,
+  routes.privacyPolicy,
+]);
+
+export const authRoutes = routeConfigurations.filter(({ path }) =>
+  authRoutePaths.has(path)
+);
+
+export const publicRoutes = routeConfigurations.filter(({ path }) =>
+  !authRoutePaths.has(path)
+);
+>>>>>>> 9adf80b21aee4dde41c864dd389f6094c14b3438
