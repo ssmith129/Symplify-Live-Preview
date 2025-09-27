@@ -56,17 +56,8 @@ export default function InboxTriageCard() {
   };
 
   const onDragStart = (e: React.DragEvent, id: string) => {
-    setDraggingId(id);
     e.dataTransfer.setData('text/plain', id);
     e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const onDropToCategory = (cat: string, e?: React.DragEvent) => {
-    if (e) e.preventDefault();
-    const id = draggingId || e?.dataTransfer.getData('text/plain');
-    if (id) dispatch(updateMessageCategory({ id, category: cat as any }));
-    setDraggingId(null);
-    setDropHover(null);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
