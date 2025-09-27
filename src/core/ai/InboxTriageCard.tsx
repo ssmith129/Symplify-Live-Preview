@@ -18,10 +18,6 @@ export default function InboxTriageCard() {
   const { items, loading, error, filter } = useSelector((s: RootState) => s.ai.inbox);
 
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-  const [confidenceOnly, setConfidenceOnly] = useState(false);
-  const [confidenceThreshold] = useState(0.7);
-  const [draggingId, setDraggingId] = useState<string | null>(null);
-  const [dropHover, setDropHover] = useState<string | null>(null);
   const [processing, setProcessing] = useState<Record<string, boolean>>({});
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [undoData, setUndoData] = useState<{ id: string; msg: AIMessage; action: 'archive'|'delete' } | null>(null);
@@ -206,7 +202,7 @@ export default function InboxTriageCard() {
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
-                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠�� ACTION</span>
+                              <span className="ai-badge ai-badge--critical ai-badge--sm">⚠️ ACTION</span>
                             )}
                             <span className="fs-13 text-muted d-none d-sm-inline">{msg.metadata.tags.join(', ')}</span>
                             {msg.metadata.attachments>0 && (
