@@ -720,7 +720,10 @@ const Messages = () => {
                             maxWidth: 'calc(100% - 32px)'
                           }}
                         >
-                          <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect! That layout will work great on the landing page. 👍</p>
+                          <p className="mb-0 fs-16" style={{color: '#6C7688'}}>Perfect! That layout will work great on the landing page.
+                            <i className="ti ti-thumb-up ms-1" aria-hidden="true" />
+                            <span className="visually-hidden">Thumbs up</span>
+                          </p>
                         </div>
                         <button className="btn p-0 border-0" style={{marginTop: '19px'}}>
                           <i className="ti ti-dots-vertical text-dark" style={{fontSize: '14px'}}/>

@@ -1,0 +1,412 @@
+/* AI Component System - Unified Design Implementation */
+
+/* AI Badge System */
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ai-space-1);
+  padding: var(--ai-space-1) var(--ai-space-2);
+  border-radius: var(--ai-radius);
+  font-size: var(--ai-font-xs);
+  font-weight: var(--ai-font-weight-semibold);
+  line-height: var(--ai-line-height-tight);
+  border: 1px solid transparent;
+  transition: var(--ai-transition-normal);
+  white-space: nowrap;
+}
+
+.ai-badge--critical {
+  background: var(--ai-critical-bg);
+  color: var(--ai-critical);
+  border-color: var(--ai-critical-border);
+}
+
+.ai-badge--high {
+  background: var(--ai-high-bg);
+  color: var(--ai-high);
+  border-color: var(--ai-high-border);
+}
+
+.ai-badge--medium {
+  background: var(--ai-medium-bg);
+  color: var(--ai-medium);
+  border-color: var(--ai-medium-border);
+}
+
+.ai-badge--low {
+  background: var(--ai-low-bg);
+  color: var(--ai-low);
+  border-color: var(--ai-low-border);
+}
+
+.ai-badge--accent {
+  background: rgba(0, 211, 199, 0.12);
+  color: var(--ai-accent);
+  border-color: rgba(0, 211, 199, 0.4);
+}
+
+.ai-badge--sm {
+  padding: 1px var(--ai-space-1);
+  font-size: 9px;
+}
+
+.ai-badge--lg {
+  padding: var(--ai-space-2) var(--ai-space-3);
+  font-size: var(--ai-font-sm);
+}
+
+/* AI Button System */
+.ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ai-space-2);
+  padding: var(--ai-space-2) var(--ai-space-4);
+  border-radius: var(--ai-radius);
+  font-size: var(--ai-font-sm);
+  font-weight: var(--ai-font-weight-medium);
+  line-height: var(--ai-line-height-tight);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--ai-transition-normal);
+  min-height: 36px;
+  text-decoration: none;
+  
+  &:focus {
+    outline: 2px solid var(--ai-accent);
+    outline-offset: 2px;
+  }
+}
+
+.ai-btn--primary {
+  background: var(--ai-primary);
+  color: var(--ai-text-inverse);
+  border-color: var(--ai-primary);
+  
+  &:hover {
+    background: var(--ai-primary-dark);
+    border-color: var(--ai-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--ai-shadow-lg);
+    color: var(--ai-text-inverse);
+  }
+}
+
+.ai-btn--secondary {
+  background: var(--ai-bg-primary) !important;
+  color: var(--ai-primary) !important;
+  border-color: var(--ai-border-medium) !important;
+
+  &:hover {
+    background: var(--ai-bg-secondary) !important;
+    border-color: var(--ai-primary) !important;
+    transform: translateY(-1px);
+    color: var(--ai-primary) !important;
+  }
+}
+
+.ai-btn--destructive {
+  color: var(--ai-critical);
+
+  &:hover,
+  &:focus {
+    color: var(--ai-critical);
+  }
+}
+
+.ai-btn--secondary .ti {
+  color: inherit;
+}
+
+.ai-btn--accent {
+  background: var(--ai-accent);
+  color: var(--ai-text-inverse);
+  border-color: var(--ai-accent);
+  
+  &:hover {
+    background: var(--ai-accent-dark);
+    border-color: var(--ai-accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 211, 199, 0.25);
+    color: var(--ai-text-inverse);
+  }
+}
+
+.ai-btn--sm {
+  min-height: 32px;
+  padding: var(--ai-space-1) var(--ai-space-3);
+  font-size: var(--ai-font-xs);
+}
+
+.ai-btn--lg {
+  min-height: 44px;
+  padding: var(--ai-space-3) var(--ai-space-6);
+  font-size: var(--ai-font-base);
+}
+
+.ai-btn--icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* AI Card System */
+.ai-card {
+  background: var(--ai-bg-primary);
+  border: 1px solid var(--ai-border-light);
+  border-radius: var(--ai-radius-lg);
+  transition: var(--ai-transition-normal);
+  overflow: hidden;
+  
+  &:hover {
+    border-color: var(--ai-border-medium);
+    box-shadow: var(--ai-shadow-lg);
+    transform: translateY(-2px);
+  }
+}
+
+.ai-card__header {
+  padding: var(--ai-space-4);
+  border-bottom: 1px solid var(--ai-border-light);
+  background: var(--ai-bg-secondary);
+  font-weight: var(--ai-font-weight-semibold);
+}
+
+.ai-card__body {
+  padding: var(--ai-space-4);
+}
+
+.ai-card__footer {
+  padding: var(--ai-space-4);
+  border-top: 1px solid var(--ai-border-light);
+  background: var(--ai-bg-secondary);
+}
+
+.ai-slot-card {
+  background: var(--ai-bg-primary);
+  border: 1px solid var(--ai-border-light);
+  border-radius: var(--ai-radius);
+  padding: var(--ai-space-3);
+  box-shadow: var(--ai-shadow-sm);
+  transition: var(--ai-transition-normal);
+
+  &:hover {
+    border-color: var(--ai-border-medium);
+    box-shadow: var(--ai-shadow);
+    transform: translateY(-1px);
+  }
+}
+
+/* AI List Items */
+.ai-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ai-space-3);
+  padding: var(--ai-space-3);
+  border-bottom: 1px solid var(--ai-border-light);
+  transition: var(--ai-transition-normal);
+  cursor: pointer;
+  
+  &:hover {
+    background: var(--ai-bg-secondary);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--ai-accent);
+    outline-offset: -2px;
+  }
+}
+
+.ai-list-item__priority {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: var(--ai-space-2);
+}
+
+.ai-list-item__priority--critical { background: var(--ai-critical); }
+.ai-list-item__priority--high { background: var(--ai-high); }
+.ai-list-item__priority--medium { background: var(--ai-medium); }
+.ai-list-item__priority--low { background: var(--ai-low); }
+
+.ai-list-item__content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* AI Progress Indicators */
+.ai-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--ai-bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: var(--ai-space-2) 0;
+}
+
+.ai-progress__bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.ai-progress__bar--success { background: var(--ai-low); }
+.ai-progress__bar--warning { background: var(--ai-high); }
+.ai-progress__bar--danger { background: var(--ai-critical); }
+.ai-progress__bar--info { background: var(--ai-info); }
+.ai-progress__bar--primary { background: var(--ai-primary); }
+
+/* AI Input Components */
+.ai-input {
+  width: 100%;
+  padding: var(--ai-space-2) var(--ai-space-3);
+  border: 1px solid var(--ai-border-medium);
+  border-radius: var(--ai-radius);
+  font-size: var(--ai-font-sm);
+  background: var(--ai-bg-primary);
+  color: var(--ai-text-primary);
+  transition: var(--ai-transition-normal);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--ai-accent);
+    box-shadow: 0 0 0 3px rgba(0, 211, 199, 0.1);
+  }
+}
+
+/* AI Alerts */
+.ai-alert {
+  padding: var(--ai-space-3) var(--ai-space-4);
+  border-radius: var(--ai-radius);
+  border: 1px solid;
+  margin: var(--ai-space-3) 0;
+}
+
+.ai-alert--info {
+  background: var(--ai-medium-bg);
+  border-color: var(--ai-medium-border);
+  color: var(--ai-medium);
+}
+
+.ai-alert--warning {
+  background: var(--ai-high-bg);
+  border-color: var(--ai-high-border);
+  color: var(--ai-high);
+}
+
+.ai-alert--danger {
+  background: var(--ai-critical-bg);
+  border-color: var(--ai-critical-border);
+  color: var(--ai-critical);
+}
+
+.ai-alert--success {
+  background: var(--ai-low-bg);
+  border-color: var(--ai-low-border);
+  color: var(--ai-low);
+}
+
+/* Confidence Badge */
+.ai-confidence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px var(--ai-space-2);
+  background: var(--ai-bg-secondary);
+  color: var(--ai-text-secondary);
+  border-radius: var(--ai-radius-sm);
+  font-size: var(--ai-font-xs);
+  font-weight: var(--ai-font-weight-medium);
+  border: 1px solid var(--ai-border-light);
+}
+
+/* Legacy class mappings for backward compatibility */
+.figma-critical-badge { @extend .ai-badge, .ai-badge--critical; }
+.figma-high-badge { @extend .ai-badge, .ai-badge--high; }
+.figma-medium-badge { @extend .ai-badge, .ai-badge--medium; }
+.figma-low-badge { @extend .ai-badge, .ai-badge--low; }
+
+/* Responsive Breakpoints */
+@media (max-width: 575px) {
+  .ai-btn {
+    min-height: 44px; /* Touch-friendly */
+  }
+  
+  .ai-card {
+    margin: var(--ai-space-2);
+  }
+  
+  .ai-list-item {
+    padding: var(--ai-space-4);
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-contrast: high) {
+  .ai-badge,
+  .ai-btn,
+  .ai-card,
+  .ai-alert {
+    border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-btn,
+  .ai-card,
+  .ai-list-item {
+    transition: none !important;
+  }
+  
+  .ai-btn:hover,
+  .ai-card:hover {
+    transform: none !important;
+  }
+}
+
+/* AI Spacing Utilities */
+.ai-p-1 { padding: var(--ai-space-1); }
+.ai-p-2 { padding: var(--ai-space-2); }
+.ai-p-3 { padding: var(--ai-space-3); }
+.ai-p-4 { padding: var(--ai-space-4); }
+.ai-m-1 { margin: var(--ai-space-1); }
+.ai-m-2 { margin: var(--ai-space-2); }
+.ai-m-3 { margin: var(--ai-space-3); }
+.ai-m-4 { margin: var(--ai-space-4); }
+.ai-gap-1 { gap: var(--ai-space-1); }
+.ai-gap-2 { gap: var(--ai-space-2); }
+.ai-gap-3 { gap: var(--ai-space-3); }
+.ai-gap-4 { gap: var(--ai-space-4); }
+
+/* Color Utilities */
+.ai-text-accent { color: var(--ai-accent); }
+.ai-text-primary { color: var(--ai-text-primary); }
+.ai-text-muted { color: var(--ai-text-muted); }
+.ai-icon-accent { color: var(--ai-accent); }
+
+/* AI Typography Utilities */
+.ai-text-xs { font-size: var(--ai-font-xs); }
+.ai-text-sm { font-size: var(--ai-font-sm); }
+.ai-text-base { font-size: var(--ai-font-base); }
+.ai-text-lg { font-size: var(--ai-font-lg); }
+.ai-text-xl { font-size: var(--ai-font-xl); }
+.ai-font-light { font-weight: var(--ai-font-weight-light); }
+.ai-font-normal { font-weight: var(--ai-font-weight-normal); }
+.ai-font-medium { font-weight: var(--ai-font-weight-medium); }
+.ai-font-semibold { font-weight: var(--ai-font-weight-semibold); }
+.ai-font-bold { font-weight: var(--ai-font-weight-bold); }
+
+/* Force consistent AI styling across all contexts */
+[class*="ai-"] {
+  &, * {
+    /* Ensure text colors are not overridden by dark themes */
+    color: inherit !important;
+  }
+}
+
+/* Specific overrides for AI text utilities to prevent dark theme interference */
+.ai-text-primary { color: var(--ai-text-primary) !important; }
+.ai-text-secondary { color: var(--ai-text-secondary) !important; }
+.ai-text-muted { color: var(--ai-text-muted) !important; }
+.ai-icon-accent { color: var(--ai-accent) !important; }

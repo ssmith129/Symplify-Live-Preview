@@ -28,23 +28,23 @@ function genSlots(): AIInsightSlot[] {
 export default function AppointmentInsights() {
   const slots = useMemo(genSlots, []);
   return (
-    <div className="card mt-3">
-      <div className="card-header d-flex align-items-center">
-        <h6 className="mb-0 fw-semibold"><i className="ti ti-brain me-2 text-primary"/>AI Scheduling Insights</h6>
+    <div className="ai-card mt-3">
+      <div className="ai-card__header d-flex align-items-center">
+        <h6 className="mb-0 fw-semibold"><i className="ti ti-brain me-2 ai-icon-accent"/>AI Scheduling Insights</h6>
       </div>
-      <div className="card-body">
+      <div className="ai-card__body">
         <div className="row g-3">
           {slots.map(s => (
             <div className="col-md-4" key={s.id}>
-              <div className="border rounded p-2 h-100">
-                <div className="d-flex align-items-center justify-content-between mb-1">
-                  <span className="fw-medium">{new Date(s.startISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})} - {new Date(s.endISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</span>
-                  <span className="badge bg-primary">Score {s.score}</span>
+              <div className="ai-slot-card h-100">
+                <div className="d-flex align-items-center justify-content-between mb-2">
+                  <span className="fw-semibold ai-text-primary">{new Date(s.startISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})} - {new Date(s.endISO).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</span>
+                  <span className="ai-badge ai-badge--accent d-inline-flex align-items-center gap-1"><i className="ti ti-target-arrow" aria-hidden="true" />Score {s.score}</span>
                 </div>
-                <div className="d-flex flex-column gap-1">
-                  <span className="fs-12 text-muted"><i className="ti ti-activity me-1"/>Utilization {s.utilizationPct}%</span>
-                  <span className="fs-12 text-muted"><i className="ti ti-user-exclamation me-1"/>No-show risk {s.noShowRiskPct}%</span>
-                  <span className="fs-12 text-muted"><i className="ti ti-alert-square-rounded me-1"/>Overbook risk {s.overbookRiskPct}%</span>
+                <div className="d-flex flex-column gap-2">
+                  <span className="ai-text-sm ai-text-muted d-flex align-items-center"><i className="ti ti-activity ai-icon-accent me-2" aria-hidden="true" />Utilization {s.utilizationPct}%</span>
+                  <span className="ai-text-sm ai-text-muted d-flex align-items-center"><i className="ti ti-user-exclamation ai-icon-accent me-2" aria-hidden="true" />No-show risk {s.noShowRiskPct}%</span>
+                  <span className="ai-text-sm ai-text-muted d-flex align-items-center"><i className="ti ti-alert-square-rounded ai-icon-accent me-2" aria-hidden="true" />Overbook risk {s.overbookRiskPct}%</span>
                 </div>
               </div>
             </div>

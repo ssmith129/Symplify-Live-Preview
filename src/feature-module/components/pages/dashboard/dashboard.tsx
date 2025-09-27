@@ -74,7 +74,7 @@ const Dashboard = () => {
           {/* Page Header */}
           <div className="d-flex align-items-sm-center justify-content-between flex-wrap gap-2 mb-4">
             <div>
-              <h4 className="fw-bold mb-0">Admin Dashboard </h4>
+              <h4 className="fw-bold mb-0">Dashboard</h4>
             </div>
             <div className="d-flex align-items-center flex-wrap gap-2">
               <Link
