@@ -201,11 +201,10 @@ export default function InboxTriageCard() {
                             <span className="fs-13 text-muted">
                               {new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
                             </span>
-                            <span className="ai-confidence-badge" title="AI Confidence">{Math.round(msg.ai.confidence*100)}%</span>
                           </div>
                         </div>
                         <p className="mb-0 fs-11 text-muted text-truncate">{msg.subject}</p>
-                        <div className="d-flex align-items-center justify-content-between mt-1">
+                        <div className="d-flex align-items-center mt-1 ai-triage-meta">
                           <div className="d-flex align-items-center gap-2 ai-meta-inline">
                             <span className="fs-13 text-muted"><i className="ti ti-bolt me-1 fs-9"/>U{msg.ai.urgency}</span>
                             {msg.ai.actionRequired && (
@@ -215,16 +214,6 @@ export default function InboxTriageCard() {
                             {msg.metadata.attachments>0 && (
                               <span className="fs-13 text-muted" aria-label={`${msg.metadata.attachments} attachments`}><i className="ti ti-paperclip me-1"/>{msg.metadata.attachments}</span>
                             )}
-                          </div>
-                          <div className="dropdown">
-                            <button className="ai-btn ai-btn--sm ai-btn--secondary" data-bs-toggle="dropdown" aria-label="Change priority">
-                              {msg.ai.priority}
-                            </button>
-                            <ul className="dropdown-menu dropdown-menu-end">
-                              {(['critical','high','medium','low'] as const).map(p => (
-                                <li key={p}><button className="dropdown-item" onClick={()=>handlePriorityChange(msg.id, p)}><span className={`ai-badge ai-badge--${p} me-2`}></span>{p}</button></li>
-                              ))}
-                            </ul>
                           </div>
                         </div>
                         <div className={`ai-expand ${isExpanded?'show':''}`}>
