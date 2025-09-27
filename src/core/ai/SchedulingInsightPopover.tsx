@@ -5,6 +5,12 @@ export interface SchedulingAnchor {
   left: number;
   width: number;
   height: number;
+  calendarBounds?: {
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  };
 }
 
 export interface SchedulingInsightProps {
