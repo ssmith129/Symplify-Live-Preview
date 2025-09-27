@@ -93,15 +93,15 @@
 }
 
 .ai-btn--secondary {
-  background: var(--ai-bg-primary);
-  color: var(--ai-primary);
-  border-color: var(--ai-border-medium);
+  background: var(--ai-bg-primary) !important;
+  color: var(--ai-primary) !important;
+  border-color: var(--ai-border-medium) !important;
 
   &:hover {
-    background: var(--ai-bg-secondary);
-    border-color: var(--ai-primary);
+    background: var(--ai-bg-secondary) !important;
+    border-color: var(--ai-primary) !important;
     transform: translateY(-1px);
-    color: var(--ai-primary);
+    color: var(--ai-primary) !important;
   }
 }
 
