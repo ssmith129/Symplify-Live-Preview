@@ -118,15 +118,15 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
       <div ref={popRef} className="ai-schedule-popover shadow" role="dialog" aria-modal="true" aria-label="AI Scheduling Insights" style={placementVars}>
         <div className="ai-schedule-popover__header d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-2 min-width-0">
-            <i className="ti ti-brain text-primary" aria-hidden="true" />
+            <i className="ti ti-brain" style={{color: 'var(--ai-accent)'}} aria-hidden="true" />
             <div className="min-width-0">
-              <div className="fw-semibold text-truncate">AI Scheduling Insights</div>
-              <div className="text-muted fs-12 text-truncate" title={title}>{title}</div>
+              <div className="fw-semibold text-truncate">🧠 AI Scheduling Insights</div>
+              <div className="text-muted ai-text-xs text-truncate" title={title}>{title}</div>
             </div>
           </div>
           <div className="d-flex align-items-center gap-2 flex-shrink-0">
-            <span className="badge bg-primary">Score {score}</span>
-            <button type="button" className="btn btn-sm btn-outline-light" onClick={onClose} aria-label="Close insights">
+            <span className="ai-badge ai-badge--low">🎯 Score {score}</span>
+            <button type="button" className="ai-btn ai-btn--sm ai-btn--secondary" onClick={onClose} aria-label="Close insights">
               <i className="ti ti-x" />
             </button>
           </div>
@@ -134,9 +134,9 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
 
         <div className="ai-schedule-popover__body">
           <div className="ai-section">
-            <div className="ai-section__title"><i className="ti ti-alert-triangle me-1" />Conflicts</div>
+            <div className="ai-section__title"><i className="ti ti-alert-triangle me-1" />⚠️ Conflicts</div>
             {conflicts.length === 0 ? (
-              <div className="text-muted fs-12">No direct conflicts detected for this slot.</div>
+              <div className="text-muted ai-text-xs">✅ No direct conflicts detected for this slot.</div>
             ) : (
               <ul className="list-unstyled mb-0 ai-list">
                 {conflicts.map(c => (
@@ -151,26 +151,26 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
           </div>
 
           <div className="ai-section">
-            <div className="ai-section__title"><i className="ti ti-bulb me-1" />Optimization</div>
+            <div className="ai-section__title"><i className="ti ti-bulb me-1" />💡 Optimization</div>
             <ul className="list-unstyled mb-0 ai-list">
               {tips.map(t => (
                 <li key={t.id} className={`ai-list__item ai-list__item--${t.impact}`}>
                   <i className={`${t.icon} text-primary me-2`} aria-hidden="true" />
                   <span className="ai-list__label">{t.text}</span>
-                  <span className="badge bg-light text-dark ms-auto">{t.impact.toUpperCase()}</span>
+                  <span className="ai-badge ai-badge--sm ai-badge--medium ms-auto">{t.impact.toUpperCase()}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="ai-section">
-            <div className="ai-section__title"><i className="ti ti-building-hospital me-1" />Resources</div>
+            <div className="ai-section__title"><i className="ti ti-building-hospital me-1" />🏥 Resources</div>
             <ul className="list-unstyled mb-0 ai-list">
               {resources.map((r, idx) => (
                 <li key={`${r.label}-${idx}`} className="ai-list__item">
                   <i className={`ti ${r.available ? 'ti-circle-check text-success' : 'ti-circle-x text-danger'} me-2`} aria-hidden="true" />
                   <span className="ai-list__label">{r.label}</span>
-                  {r.note && <span className="text-muted ms-2 fs-12">{r.note}</span>}
+                  {r.note && <span className="text-muted ms-2 ai-text-xs">{r.note}</span>}
                 </li>
               ))}
             </ul>
@@ -179,15 +179,15 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
 
         <div className="ai-schedule-popover__footer d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-2">
-            <span className="ai-flag ai-flag-recommended">Suggested</span>
-            <span className="ai-confidence">Confidence {Math.max(65, Math.min(95, score))}%</span>
+            <span className="ai-badge ai-badge--low ai-badge--sm">✨ Suggested</span>
+            <span className="ai-confidence-badge">🤖 Confidence {Math.max(65, Math.min(95, score))}%</span>
           </div>
           <div className="d-flex align-items-center gap-2">
-            <a href="/appointments" className="btn btn-sm btn-light" data-ai-action>
-              <i className="ti ti-calendar-stats me-1" />View
+            <a href="/appointments" className="ai-btn ai-btn--sm ai-btn--secondary" data-ai-action>
+              <i className="ti ti-calendar-stats me-1" />📊 View
             </a>
-            <a href="/new-appointment" className="btn btn-sm btn-primary" data-ai-action>
-              <i className="ti ti-calendar-check me-1" />Reschedule
+            <a href="/new-appointment" className="ai-btn ai-btn--sm ai-btn--primary" data-ai-action>
+              <i className="ti ti-calendar-check me-1" />📅 Reschedule
             </a>
           </div>
         </div>
