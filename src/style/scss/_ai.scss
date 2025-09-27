@@ -500,6 +500,31 @@
 
 @keyframes ai-pop-enter { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Override any dark popover inheritance for AI components */
+.ai-schedule-popover.popover-dark,
+.ai-schedule-popover .popover-dark,
+.popover-dark .ai-schedule-popover {
+  background: var(--ai-bg-primary) !important;
+  border-color: var(--ai-border-light) !important;
+  color: var(--ai-text-primary) !important;
+}
+
+.ai-schedule-popover.popover-dark .ai-schedule-popover__header,
+.ai-schedule-popover .popover-dark .ai-schedule-popover__header,
+.popover-dark .ai-schedule-popover .ai-schedule-popover__header {
+  background: var(--ai-bg-secondary) !important;
+  border-color: var(--ai-border-light) !important;
+  color: var(--ai-text-primary) !important;
+}
+
+/* Ensure AI cards also maintain consistent styling */
+.ai-card,
+.ai-slot-card {
+  background: var(--ai-bg-primary) !important;
+  border-color: var(--ai-border-light) !important;
+  color: var(--ai-text-primary) !important;
+}
+
 @media (max-width: 576px) {
   .ai-schedule-popover { left: 50% !important; right: auto; top: auto !important; bottom: 12px; transform: translateX(-50%); width: calc(100% - 24px); max-height: 70vh; }
 }
