@@ -1,3 +1,8 @@
+/* Import AI Design System Foundation */
+@import 'ai-tokens';
+@import 'ai-components';
+
+/* Legacy styles and specific overrides */
 .ai-dim { opacity: .5; }
 .badge.bg-danger-transparent { background-color: rgba(220,53,69,.1); color: #dc3545; }
 
