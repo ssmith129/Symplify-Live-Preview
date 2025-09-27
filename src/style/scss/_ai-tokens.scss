@@ -1,0 +1,128 @@
+/* AI Design System - CSS Custom Properties */
+:root {
+  /* AI Brand Identity */
+  --ai-primary: #2D3748;
+  --ai-primary-light: #4A5568;
+  --ai-primary-dark: #1A202C;
+  --ai-accent: #00D3C7;
+  --ai-accent-light: #4FD1C7;
+  --ai-accent-dark: #00B5AA;
+  
+  /* AI Background Colors */
+  --ai-bg-primary: #FFFFFF;
+  --ai-bg-secondary: #F7F8FA;
+  --ai-bg-tertiary: #E2E8F0;
+  
+  /* AI Border Colors */
+  --ai-border-light: #E2E8F0;
+  --ai-border-medium: #CBD5E0;
+  --ai-border-dark: #A0AEC0;
+  
+  /* Priority Levels */
+  --ai-critical: #DC3545;
+  --ai-critical-bg: rgba(220, 53, 69, 0.1);
+  --ai-critical-border: rgba(220, 53, 69, 0.2);
+  
+  --ai-high: #E2B93B;
+  --ai-high-bg: rgba(226, 185, 59, 0.1);
+  --ai-high-border: rgba(226, 185, 59, 0.2);
+  
+  --ai-medium: #0D6EFD;
+  --ai-medium-bg: rgba(13, 110, 253, 0.1);
+  --ai-medium-border: rgba(13, 110, 253, 0.2);
+  
+  --ai-low: #198754;
+  --ai-low-bg: rgba(25, 135, 84, 0.1);
+  --ai-low-border: rgba(25, 135, 84, 0.2);
+  
+  /* Semantic Colors */
+  --ai-success: #198754;
+  --ai-success-bg: rgba(25, 135, 84, 0.1);
+  --ai-warning: #FFC107;
+  --ai-warning-bg: rgba(255, 193, 7, 0.1);
+  --ai-info: #0DCAF0;
+  --ai-info-bg: rgba(13, 202, 240, 0.1);
+  --ai-danger: #DC3545;
+  --ai-danger-bg: rgba(220, 53, 69, 0.1);
+  
+  /* Text Colors */
+  --ai-text-primary: #1A202C;
+  --ai-text-secondary: #4A5568;
+  --ai-text-muted: #718096;
+  --ai-text-light: #A0AEC0;
+  --ai-text-inverse: #FFFFFF;
+  
+  /* Spacing System */
+  --ai-space-1: 4px;
+  --ai-space-2: 8px;
+  --ai-space-3: 12px;
+  --ai-space-4: 16px;
+  --ai-space-5: 20px;
+  --ai-space-6: 24px;
+  --ai-space-8: 32px;
+  --ai-space-10: 40px;
+  --ai-space-12: 48px;
+  --ai-space-16: 64px;
+  
+  /* Typography */
+  --ai-font-xs: 10px;
+  --ai-font-sm: 12px;
+  --ai-font-base: 14px;
+  --ai-font-lg: 16px;
+  --ai-font-xl: 18px;
+  --ai-font-2xl: 20px;
+  --ai-font-3xl: 24px;
+  
+  /* Font Weights */
+  --ai-font-weight-light: 300;
+  --ai-font-weight-normal: 400;
+  --ai-font-weight-medium: 500;
+  --ai-font-weight-semibold: 600;
+  --ai-font-weight-bold: 700;
+  
+  /* Line Heights */
+  --ai-line-height-tight: 1.2;
+  --ai-line-height-normal: 1.4;
+  --ai-line-height-relaxed: 1.6;
+  
+  /* Border Radius */
+  --ai-radius-sm: 4px;
+  --ai-radius: 6px;
+  --ai-radius-lg: 8px;
+  --ai-radius-xl: 12px;
+  
+  /* Shadows */
+  --ai-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ai-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --ai-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --ai-shadow-xl: 0 8px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --ai-transition-fast: 0.1s ease;
+  --ai-transition-normal: 0.15s ease;
+  --ai-transition-slow: 0.2s ease;
+  --ai-transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Z-Index Scale */
+  --ai-z-dropdown: 1000;
+  --ai-z-sticky: 1020;
+  --ai-z-fixed: 1030;
+  --ai-z-modal-backdrop: 1040;
+  --ai-z-modal: 1050;
+  --ai-z-popover: 1060;
+  --ai-z-tooltip: 1070;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-bg-primary: #1a202c;
+    --ai-bg-secondary: #2d3748;
+    --ai-bg-tertiary: #4a5568;
+    --ai-text-primary: #f7fafc;
+    --ai-text-secondary: #e2e8f0;
+    --ai-text-muted: #a0aec0;
+    --ai-border-light: #4a5568;
+    --ai-border-medium: #718096;
+  }
+}
