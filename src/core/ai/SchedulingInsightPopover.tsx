@@ -118,10 +118,10 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
       <div ref={popRef} className="ai-schedule-popover shadow" role="dialog" aria-modal="true" aria-label="AI Scheduling Insights" style={placementVars}>
         <div className="ai-schedule-popover__header d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center gap-2 min-width-0">
-            <i className="ti ti-brain" style={{color: 'var(--ai-accent)'}} aria-hidden="true" />
+            <i className="ti ti-brain ai-icon-accent" aria-hidden="true" />
             <div className="min-width-0">
               <div className="fw-semibold text-truncate">🧠 AI Scheduling Insights</div>
-              <div className="text-muted ai-text-xs text-truncate" title={title}>{title}</div>
+              <div className="ai-text-muted ai-text-xs text-truncate" title={title}>{title}</div>
             </div>
           </div>
           <div className="d-flex align-items-center gap-2 flex-shrink-0">
@@ -136,14 +136,14 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
           <div className="ai-section">
             <div className="ai-section__title"><i className="ti ti-alert-triangle me-1" />⚠️ Conflicts</div>
             {conflicts.length === 0 ? (
-              <div className="text-muted ai-text-xs">✅ No direct conflicts detected for this slot.</div>
+              <div className="ai-text-muted ai-text-xs">✅ No direct conflicts detected for this slot.</div>
             ) : (
               <ul className="list-unstyled mb-0 ai-list">
                 {conflicts.map(c => (
                   <li key={c.id} className={`ai-list__item ai-list__item--${c.severity}`}>
                     <span className="ai-dot" aria-hidden="true" />
                     <span className="ai-list__label">{c.label}</span>
-                    <span className="ai-list__time ms-auto text-muted">{c.time}</span>
+                    <span className="ai-list__time ms-auto">{c.time}</span>
                   </li>
                 ))}
               </ul>
@@ -155,7 +155,7 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
             <ul className="list-unstyled mb-0 ai-list">
               {tips.map(t => (
                 <li key={t.id} className={`ai-list__item ai-list__item--${t.impact}`}>
-                  <i className={`${t.icon} text-primary me-2`} aria-hidden="true" />
+                  <i className={`${t.icon} ai-icon-accent me-2`} aria-hidden="true" />
                   <span className="ai-list__label">{t.text}</span>
                   <span className="ai-badge ai-badge--sm ai-badge--medium ms-auto">{t.impact.toUpperCase()}</span>
                 </li>
@@ -170,7 +170,7 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
                 <li key={`${r.label}-${idx}`} className="ai-list__item">
                   <i className={`ti ${r.available ? 'ti-circle-check text-success' : 'ti-circle-x text-danger'} me-2`} aria-hidden="true" />
                   <span className="ai-list__label">{r.label}</span>
-                  {r.note && <span className="text-muted ms-2 ai-text-xs">{r.note}</span>}
+                  {r.note && <span className="ai-text-muted ms-2 ai-text-xs">{r.note}</span>}
                 </li>
               ))}
             </ul>
