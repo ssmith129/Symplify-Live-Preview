@@ -30,17 +30,8 @@ export default function InboxTriageCard() {
   useEffect(() => () => { if (undoTimer.current) clearTimeout(undoTimer.current); }, []);
 
   const visible = useMemo(() => {
-    let arr = items.filter((m) => filter === 'all' || m.metadata.category === filter);
-    if (confidenceOnly) arr = arr.filter(m => m.ai.confidence >= confidenceThreshold);
-    return arr;
-  }, [items, filter, confidenceOnly, confidenceThreshold]);
-
-  const counts = useMemo(() => ({
-    critical: visible.filter((m) => m.ai.priority === 'critical').length,
-    high: visible.filter((m) => m.ai.priority === 'high').length,
-    medium: visible.filter((m) => m.ai.priority === 'medium').length,
-    low: visible.filter((m) => m.ai.priority === 'low').length,
-  } as const), [visible]);
+    return items.filter((m) => filter === 'all' || m.metadata.category === filter);
+  }, [items, filter]);
 
   const handlePriorityChange = (id: string, p: 'critical'|'high'|'medium'|'low') => {
     dispatch(updateMessagePriority({ id, priority: p }));
