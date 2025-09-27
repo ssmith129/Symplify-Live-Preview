@@ -82,24 +82,8 @@ export default function InboxTriageCard() {
       <div className="card-header d-flex align-items-center justify-content-between">
         <h5 className="fw-bold mb-0 d-flex align-items-center">
           <i className="ti ti-brain me-2 text-primary" />
-          <Link to={all_routes.email} className="text-reset text-decoration-none">AI Inbox Triage</Link>
+          <Link to={all_routes.email} className="text-reset text-decoration-none">Smart Inbox</Link>
         </h5>
-        <div className="d-flex align-items-center gap-2">
-          <div className="form-check form-switch m-0" title="High confidence only">
-            <input id="ai-conf-only" className="form-check-input" type="checkbox" role="switch" aria-label="High confidence only" checked={confidenceOnly} onChange={(e)=>setConfidenceOnly(e.target.checked)} />
-          </div>
-          <div className="dropdown">
-            <button className="btn btn-sm px-2 border shadow-sm btn-outline-white d-inline-flex align-items-center" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {filter === 'all' ? 'All' : filter}
-              <i className="ti ti-chevron-down ms-1 fs-12"/>
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              {(['all',...CATEGORIES] as const).map(opt => (
-                <li key={opt}><button className="dropdown-item" onClick={() => dispatch(setFilter(opt as any))}>{opt}</button></li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </div>
 
       {undoData && (
