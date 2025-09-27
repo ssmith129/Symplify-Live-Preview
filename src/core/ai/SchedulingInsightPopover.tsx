@@ -124,14 +124,27 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
 
-    // Calculate available space on left and right sides
+    // Determine container bounds (calendar container) if provided, else fallback to viewport
+    const bounds = anchor.calendarBounds ?? {
+      left: scrollX,
+      top: scrollY,
+      width: viewportWidth,
+      height: viewportHeight,
+    };
+
+    const containerLeft = bounds.left;
+    const containerRight = bounds.left + bounds.width;
+    const containerTop = bounds.top;
+    const containerBottom = bounds.top + bounds.height;
+
+    // Calculate available space on left and right sides relative to viewport
     const spaceOnLeft = anchor.left - scrollX;
     const spaceOnRight = viewportWidth - (anchor.left + anchor.width - scrollX);
 
     // Determine optimal horizontal positioning
     let left: number;
-    let preferRight = spaceOnRight >= popoverWidth + gap;
-    let preferLeft = spaceOnLeft >= popoverWidth + gap;
+    const preferRight = spaceOnRight >= popoverWidth + gap;
+    const preferLeft = spaceOnLeft >= popoverWidth + gap;
 
     if (preferRight) {
       // Position to the right of the event icon
@@ -140,12 +153,12 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
       // Position to the left of the event icon
       left = anchor.left - popoverWidth - gap;
     } else {
-      // Fallback: center horizontally with viewport constraints
-      left = Math.max(gap, Math.min(
-        viewportWidth - popoverWidth - gap + scrollX,
-        anchor.left + anchor.width / 2 - popoverWidth / 2
-      ));
+      // Fallback: center horizontally
+      left = anchor.left + anchor.width / 2 - popoverWidth / 2;
     }
+
+    // Clamp horizontally within calendar container bounds
+    left = Math.max(containerLeft + gap, Math.min(left, containerRight - popoverWidth - gap));
 
     // Vertical positioning - prefer below, fallback to above if no space
     const spaceBelow = viewportHeight - (anchor.top + anchor.height - scrollY);
@@ -160,12 +173,12 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
       // Position above the event
       top = anchor.top - estimatedPopoverHeight - gap;
     } else {
-      // Center vertically in viewport
-      top = Math.max(gap + scrollY, Math.min(
-        viewportHeight - estimatedPopoverHeight - gap + scrollY,
-        anchor.top + anchor.height / 2 - estimatedPopoverHeight / 2
-      ));
+      // Center vertically
+      top = anchor.top + anchor.height / 2 - estimatedPopoverHeight / 2;
     }
+
+    // Clamp vertically within calendar container bounds
+    top = Math.max(containerTop + gap, Math.min(top, containerBottom - estimatedPopoverHeight - gap));
 
     return {
       ['--ai-popover-left' as any]: `${Math.round(left)}px`,
