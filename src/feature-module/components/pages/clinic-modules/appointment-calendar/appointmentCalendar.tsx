@@ -715,12 +715,12 @@ const AppointmentCalendar = () => {
           {/* start Card */}
           <div className="card mb-0">
             <div className="card-body">
-              <div id="calendar">
+              <Suspense fallback={null}>
+                <AppointmentInsights />
+              </Suspense>
+              <div id="calendar" className="mt-3">
                 <EventCalendar />
               </div>
-              <Suspense fallback={null}>
-              <AppointmentInsights />
-            </Suspense>
             </div>
           </div>
           {/* end card */}
