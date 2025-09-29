@@ -183,10 +183,14 @@ export const all_routes = {
   permissions: "/permissions",
   deleteaccountrequest: "/delete-account-request",
   incomeReport: "/income-report",
+  incomereport: "/income-report",
   expenseReport: "/expense-report",
+  expensereport: "/expense-report",
   profitloss: "/profit-and-loss",
   appointmentReport: "/appointment-report",
+  appointmentreport: "/appointment-report",
   patientReport: "/patient-report",
+  patientreport: "/patient-report",
 
   //Content Page routes
   pages: "/pages",
