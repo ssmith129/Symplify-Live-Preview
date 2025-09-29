@@ -60,7 +60,7 @@ const EventCalendar = () => {
 
     // Get calendar container bounds for better positioning context
     const calendarApi: CalendarApi | undefined = calendarRef.current?.getApi();
-    const calendarEl = calendarApi?.el ?? null;
+    const calendarEl = calendarApi ? (calendarApi as unknown as { el: HTMLElement }).el : null;
     const calendarRect = calendarEl ? calendarEl.getBoundingClientRect() : null;
 
     setAnchor({
