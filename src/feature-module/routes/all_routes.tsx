@@ -284,6 +284,7 @@ export const all_routes = {
   emailsettings: "/email-settings",
   emailtemplatessettings: "/email-templates-settings",
   smsgatewayssettings: "/sms-gateways-settings",
+  smsgatewaysettings: "/sms-gateways-settings",
   smstemplatessettings: "/sms-templates-settings",
   gdprcookiessettings: "/gdpr-cookies-settings",
   paymentmethodssettings: "/payment-methods-settings",
