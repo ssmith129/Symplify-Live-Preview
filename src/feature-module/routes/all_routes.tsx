@@ -161,14 +161,23 @@ export const all_routes = {
 
   //HRM Pages
   staffs: "/staffs",
+  staffslist: "/staffs",
   hrmDepartments: "/hrm-departments",
+  hrmdepartments: "/hrm-departments",
   designation: "/designation",
+  designationlist: "/designation",
   attendance: "/attendance",
+  attendancelist: "/attendance",
   leaves: "/leaves",
+  leaveslist: "/leaves",
   leaveType: "/leave-type",
+  leavetype: "/leave-type",
   holidays: "/holidays",
+  holidayslist: "/holidays",
   payroll: "/payroll",
+  payrolllist: "/payroll",
   payroll2: "/payroll-2",
+  payrolltwo: "/payroll-2",
 
   //Finance & Accounts
   expenses: "/expenses",
