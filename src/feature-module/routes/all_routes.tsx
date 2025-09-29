@@ -188,6 +188,7 @@ export const all_routes = {
   expenseReport: "/expense-report",
   expensereport: "/expense-report",
   profitloss: "/profit-and-loss",
+  profitandloss: "/profit-and-loss",
   appointmentReport: "/appointment-report",
   appointmentreport: "/appointment-report",
   patientReport: "/patient-report",
