@@ -239,6 +239,7 @@ export const all_routes = {
 
   //Support
   contactMessages: "/contact-messages",
+  contactmessages: "/contact-messages",
   tickets: "/tickets",
   ticketDetails: "/ticket-details",
   announcements: "/announcements",
