@@ -37,6 +37,7 @@ export const all_routes = {
   patientappointmentdetails: "/patient/patient-appointment-details",
   patientdoctors: "/patient/patient-doctors",
   patientPrescriptions: "/patient/patient-prescriptions",
+  patientprescriptions: "/patient/patient-prescriptions",
   patientinvoices: "/patient/patient-invoices",
   patientprofilesettings: "/patient/patient-profile-settings",
   patientpasswordsettings: "/patient/patient-password-settings",
