@@ -137,6 +137,7 @@ export const all_routes = {
   doctors: "/doctors",
   doctorsList: "/doctors-list",
   doctorsDetails: "/doctor-details",
+  doctorDetails: "/doctor-details",
   addDoctors: "/add-doctor",
   editDoctors: "/edit-doctors",
   doctorScheduleClini: "/doctor-schedule",
