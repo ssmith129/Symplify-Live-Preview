@@ -267,6 +267,7 @@ export const all_routes = {
   localizationsettings: "/localization-settings",
   prefixessettings: "/prefixes-settings",
   seosetupsettings: "/seo-setup-settings",
+  seoSetupsettings: "/seo-setup-settings",
   languagesettings: "/language-settings",
   languagesettings2: "/language-settings2",
   languagesettings3: "/language-settings3",
