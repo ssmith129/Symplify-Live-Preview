@@ -180,6 +180,7 @@ export const all_routes = {
 
   //Administration
   rolesPermissions: "/roles-and-permissions",
+  rolesandpermissions: "/roles-and-permissions",
   permissions: "/permissions",
   deleteaccountrequest: "/delete-account-request",
   incomeReport: "/income-report",
