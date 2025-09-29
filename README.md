@@ -1,11 +1,39 @@
-# React + TypeScript + Vite
+# Symplify - Medical & Hospital Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive medical and hospital management system built with React, TypeScript, and Vite. Features include appointment scheduling, patient management, AI-powered insights, and more.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Development
+```bash
+npm install
+npm run dev
+```
+
+### Production Build
+```bash
+npm run build
+npm run preview
+```
+
+## 📦 Deploy
+
+### Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/your-username/symplify-medical)
+
+### Netlify
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/your-username/symplify-medical)
+
+📖 **[Complete Deployment Guide](./DEPLOYMENT.md)** - Detailed instructions for both platforms
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 19, TypeScript, Vite
+- **UI Components**: Bootstrap, Ant Design, React Bootstrap
+- **Charts**: ApexCharts, Chart.js
+- **Calendar**: FullCalendar
+- **State Management**: Redux Toolkit
+- **Routing**: React Router v7
 
 ## Expanding the ESLint configuration
 
