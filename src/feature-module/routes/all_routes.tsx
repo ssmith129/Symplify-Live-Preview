@@ -376,12 +376,17 @@ export const all_routes = {
   uiscrollbar: "/ui-scrollbar",
 
   chartApex: "/chart-apex",
+  chartapex: "/chart-apex",
   chartJs: "/chart-js",
+  chartjs: "/chart-js",
 
   mapsLeaflet: "/maps-leaflet",
+  mapsleaflet: "/maps-leaflet",
 
   tablesBasic: "/tables-basic",
+  tablesbasic: "/tables-basic",
   dataTables: "/data-tables",
+  datatables: "/data-tables",
 
   iconFontawesome: "/icon-fontawesome",
   iconTabler: "/icon-tabler",
