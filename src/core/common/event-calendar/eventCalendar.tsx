@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import type { EventApi } from "@fullcalendar/core";
+import type { CalendarApi } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -9,7 +10,7 @@ import SchedulingInsightPopover from "../../../core/ai/SchedulingInsightPopover"
 import type { SchedulingAnchor } from "../../../core/ai/SchedulingInsightPopover";
 
 const EventCalendar = () => {
-  const calendarRef = useRef(null);
+  const calendarRef = useRef<FullCalendar | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<EventApi | null>(null);
   const [anchor, setAnchor] = useState<SchedulingAnchor | null>(null);
 
@@ -58,7 +59,8 @@ const EventCalendar = () => {
     const rect = (clickInfo.el as HTMLElement).getBoundingClientRect();
 
     // Get calendar container bounds for better positioning context
-    const calendarEl = calendarRef.current?.getApi().el;
+    const calendarApi: CalendarApi | undefined = calendarRef.current?.getApi();
+    const calendarEl = calendarApi?.el ?? null;
     const calendarRect = calendarEl ? calendarEl.getBoundingClientRect() : null;
 
     setAnchor({
@@ -67,12 +69,14 @@ const EventCalendar = () => {
       width: rect.width,
       height: rect.height,
       // Optional: pass calendar container context for future enhancements
-      calendarBounds: calendarRect ? {
-        top: calendarRect.top + window.scrollY,
-        left: calendarRect.left + window.scrollX,
-        width: calendarRect.width,
-        height: calendarRect.height
-      } : undefined
+      calendarBounds: calendarRect
+        ? {
+            top: calendarRect.top + window.scrollY,
+            left: calendarRect.left + window.scrollX,
+            width: calendarRect.width,
+            height: calendarRect.height,
+          }
+        : undefined,
     });
   };
 
