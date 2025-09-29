@@ -39,10 +39,10 @@ export default defineConfig({
   // Path resolution
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-      '@/components': resolve(__dirname, 'src/components'),
-      '@/core': resolve(__dirname, 'src/core'),
-      '@/assets': resolve(__dirname, 'public/assets')
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@/components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      '@/core': fileURLToPath(new URL('./src/core', import.meta.url)),
+      '@/assets': fileURLToPath(new URL('./public/assets', import.meta.url))
     }
   },
 
