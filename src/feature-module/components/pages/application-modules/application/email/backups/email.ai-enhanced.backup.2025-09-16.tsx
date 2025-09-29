@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import { useState, Suspense, lazy } from "react";
-import ImageWithBasePath from "../../../../../../core/imageWithBasePath";
-import { all_routes } from "../../../../../routes/all_routes";
+import ImageWithBasePath from "@/core/imageWithBasePath";
+import { all_routes } from "@/feature-module/routes/all_routes";
 
 
-const EmailAIEnhancer = lazy(() => import('../../../../../../core/ai/EmailAIEnhancer'));
+const EmailAIEnhancer = lazy(() => import('@/core/ai/EmailAIEnhancer'));
 
 const Email = () => {
   const [showMore, setShowMore] = useState(false);
