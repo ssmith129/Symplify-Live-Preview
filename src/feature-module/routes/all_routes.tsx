@@ -181,14 +181,22 @@ export const all_routes = {
 
   //Finance & Accounts
   expenses: "/expenses",
+  expenseslist: "/expenses",
   expenseCategory: "/expense-category",
+  expensescategory: "/expense-category",
   income: "/income",
   invoices: "/invoices",
+  invoiceslist: "/invoices",
   invoicesDetails: "/invoices-details",
+  invoicesdetails: "/invoices-details",
   addInvoices: "/add-invoices",
+  addinvoices: "/add-invoices",
   editInvoices: "/edit-invoices",
+  editinvoices: "/edit-invoices",
   payments: "/payments",
+  paymentslist: "/payments",
   transactions: "/transactions",
+  transactionslist: "/transactions",
 
   //Administration
   rolesPermissions: "/roles-and-permissions",
