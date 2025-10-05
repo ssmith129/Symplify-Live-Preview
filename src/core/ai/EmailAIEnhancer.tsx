@@ -1,6 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { classify, category as detectCategory } from '../services/ai/classifier';
 
+/**
+ * EmailAIEnhancer - Design System Compliant
+ * 
+ * Changes Applied:
+ * - Enhanced with proper ARIA labels and accessibility attributes
+ * - Applied consistent design system badge usage
+ * - Used design system button styles throughout
+ * - Applied design system spacing utilities (.ai-gap-*)
+ * - Enhanced semantic HTML structure
+ * - Maintained all existing functionality
+ */
+
 function annotateItem(el: HTMLElement) {
   const subjectEl = el.querySelector('h6, .fw-semibold') as HTMLElement | null;
   const previewEl = el.querySelector('p') as HTMLElement | null;
@@ -16,34 +28,53 @@ function annotateItem(el: HTMLElement) {
   let badgeRow = el.querySelector('.ai-email-badges') as HTMLElement | null;
   if (!badgeRow) {
     badgeRow = document.createElement('div');
-    badgeRow.className = 'ai-email-badges d-flex align-items-center gap-2 mt-1';
+    badgeRow.className = 'ai-email-badges d-flex align-items-center ai-gap-2 mt-1';
+    badgeRow.setAttribute('role', 'status');
+    badgeRow.setAttribute('aria-live', 'polite');
     container.appendChild(badgeRow);
   }
   badgeRow.innerHTML = '';
+
+  // Priority badge - Design System compliant
   const pri = document.createElement('span');
   pri.className = `ai-badge ai-badge--${ai.priority}`;
+  pri.setAttribute('aria-label', `${ai.priority} priority`);
+  
   const priorityIcons: Record<'critical'|'high'|'medium'|'low', string> = {
     critical: 'ti ti-alert-triangle-filled',
     high: 'ti ti-flame',
     medium: 'ti ti-chart-bar',
     low: 'ti ti-circle-check'
   };
+  
   const priIcon = document.createElement('i');
   priIcon.className = `${priorityIcons[ai.priority as 'critical'|'high'|'medium'|'low']} me-1`;
+  priIcon.setAttribute('aria-hidden', 'true');
   pri.appendChild(priIcon);
   pri.appendChild(document.createTextNode(ai.priority.toUpperCase()));
+  
+  // Category badge - Design System compliant
   const catEl = document.createElement('span');
   catEl.className = 'ai-badge ai-badge--medium ai-badge--sm';
+  catEl.setAttribute('aria-label', `Category: ${cat}`);
+  
   const catIcon = document.createElement('i');
   catIcon.className = 'ti ti-folder me-1';
+  catIcon.setAttribute('aria-hidden', 'true');
   catEl.appendChild(catIcon);
   catEl.appendChild(document.createTextNode(cat));
+  
+  // Confidence indicator - Design System compliant
   const conf = document.createElement('span');
   conf.className = 'ai-confidence-badge';
+  conf.setAttribute('aria-label', `AI confidence: ${Math.round(ai.confidence*100)}%`);
+  
   const confIcon = document.createElement('i');
   confIcon.className = 'ti ti-robot me-1';
+  confIcon.setAttribute('aria-hidden', 'true');
   conf.appendChild(confIcon);
   conf.appendChild(document.createTextNode(`${Math.round(ai.confidence*100)}%`));
+  
   badgeRow.appendChild(pri);
   badgeRow.appendChild(catEl);
   badgeRow.appendChild(conf);
@@ -59,12 +90,15 @@ export default function EmailAIEnhancer() {
   useEffect(() => {
     const list = document.querySelector('.mails-list');
     if (!list) return;
+    
     const items = Array.from(list.querySelectorAll('.list-group-item')) as HTMLElement[];
     items.forEach(annotateItem);
+    
     const mo = new MutationObserver(() => {
       const els = Array.from(list.querySelectorAll('.list-group-item')) as HTMLElement[];
       els.forEach(annotateItem);
     });
+    
     mo.observe(list, { childList: true, subtree: true });
     return () => mo.disconnect();
   }, []);
@@ -72,22 +106,38 @@ export default function EmailAIEnhancer() {
   useEffect(() => {
     const list = document.querySelector('.mails-list');
     if (!list) return;
+    
     const items = Array.from(list.querySelectorAll('.list-group-item')) as HTMLElement[];
     items.forEach(el => {
       const pri = el.getAttribute('data-ai-priority') as typeof filter | null;
       if (filter === 'all' || pri === filter) {
         el.classList.remove('ai-dim');
+        el.removeAttribute('aria-hidden');
       } else {
         el.classList.add('ai-dim');
+        el.setAttribute('aria-hidden', 'true');
       }
     });
   }, [filter]);
 
   return (
-    <div className="d-flex align-items-center gap-2 flex-wrap">
-      <span className="ai-badge ai-badge--low"><i className="ti ti-robot me-1"/>AI Active</span>
+    <div 
+      className="d-flex align-items-center ai-gap-2 flex-wrap" 
+      role="toolbar" 
+      aria-label="AI email filter controls"
+    >
+      <span className="ai-badge ai-badge--low">
+        <i className="ti ti-robot me-1" aria-hidden="true" />
+        AI Active
+      </span>
       {filters.map(f => (
-        <button key={f} className={`ai-btn ai-btn--sm ${filter===f? 'ai-btn--primary' : 'ai-btn--secondary'}`} onClick={() => setFilter(f as any)}>
+        <button 
+          key={f} 
+          className={`ai-btn ai-btn--sm ${filter===f? 'ai-btn--primary' : 'ai-btn--secondary'}`} 
+          onClick={() => setFilter(f as any)}
+          aria-label={`Filter by ${f === 'all' ? 'all priorities' : f + ' priority'}`}
+          aria-pressed={filter === f}
+        >
           {f === 'all' ? 'All' : f.charAt(0).toUpperCase()+f.slice(1)}
         </button>
       ))}
