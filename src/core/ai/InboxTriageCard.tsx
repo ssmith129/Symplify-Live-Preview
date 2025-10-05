@@ -8,7 +8,7 @@ import type { AIMessage } from '../services/ai/types';
 
 /**
  * Smart Inbox Card Component - Design System Compliant
- * 
+ *
  * Design System Changes Applied:
  * - Replaced Bootstrap card classes with AI design system (.ai-card, .ai-card__header, .ai-card__body)
  * - Updated list items to use .ai-list-item structure with .ai-list-item__priority indicator
@@ -19,13 +19,6 @@ import type { AIMessage } from '../services/ai/types';
  * - Enhanced accessibility with proper ARIA labels and semantic HTML
  * - Applied design system color tokens for text and icons
  */
-
-const PRIORITY_ICONS: Record<string, string> = {
-  critical: 'ti ti-alert-triangle-filled',
-  high: 'ti ti-exclamation-circle',
-  medium: 'ti ti-info-circle',
-  low: 'ti ti-check-circle',
-};
 
 export default function InboxTriageCard() {
   const dispatch = useDispatch<any>();

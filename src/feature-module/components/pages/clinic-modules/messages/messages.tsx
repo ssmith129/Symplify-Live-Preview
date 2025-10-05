@@ -3,19 +3,9 @@ import { useState } from "react";
 import ImageWithBasePath from "../../../../../core/imageWithBasePath";
 
 const Messages = () => {
-  const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedUser, setSelectedUser] = useState<string>('mark-smith');
   const [aiProcessing, setAiProcessing] = useState(false);
   const [aiAction, setAiAction] = useState<string>('');
-
-  // Filter counts
-  const filterCounts = {
-    all: 8,
-    critical: 1,
-    high: 3,
-    medium: 2,
-    low: 3
-  };
 
   // AI Action handler with proper feedback
   const handleAiAction = (action: string) => {
