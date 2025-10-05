@@ -108,7 +108,6 @@ const Messages = () => {
                     tabIndex={0}
                     aria-label="Conversation with Mark Smith, Critical priority, last message at 10:10 AM"
                   >
-                    <div className="ai-list-item__priority ai-list-item__priority--critical" aria-label="Critical priority"></div>
                     <span className="avatar flex-shrink-0 position-relative">
                       <ImageWithBasePath
                         src="assets/img/users/user-02.jpg"
@@ -123,7 +122,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Mark Smith</h6>
-                        <span className="ai-badge ai-badge--critical">
+                        <span className="ai-badge ai-badge--critical" style={{backgroundColor: 'rgba(220, 53, 69, 0.5)'}}>
                           <i className="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i>
                           Critical
                         </span>
@@ -146,7 +145,6 @@ const Messages = () => {
                     tabIndex={0}
                     aria-label="Conversation with Eugene Sikora, High priority, 5 unread messages"
                   >
-                    <div className="ai-list-item__priority ai-list-item__priority--high" aria-label="High priority"></div>
                     <span className="avatar flex-shrink-0">
                       <ImageWithBasePath
                         src="assets/img/users/user-03.jpg"
@@ -158,7 +156,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Eugene Sikora</h6>
-                        <span className="ai-badge ai-badge--high" style={{backgroundColor: '#e2b93c'}}>
+                        <span className="ai-badge ai-badge--high" style={{backgroundColor: 'rgba(226, 185, 60, 0.5)'}}>
                           <i className="fa-solid fa-fire me-1" aria-hidden="true"></i>
                           High
                         </span>
@@ -181,7 +179,6 @@ const Messages = () => {
                     tabIndex={0}
                     aria-label="Conversation with Robert Fassett, High priority"
                   >
-                    <div className="ai-list-item__priority ai-list-item__priority--high" aria-label="High priority"></div>
                     <span className="avatar flex-shrink-0">
                       <ImageWithBasePath
                         src="assets/img/users/user-04.jpg"
@@ -193,7 +190,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Robert Fassett</h6>
-                        <span className="ai-badge ai-badge--high">
+                        <span className="ai-badge ai-badge--high" style={{backgroundColor: 'rgba(226, 185, 59, 0.5)'}}>
                           <i className="fa-solid fa-fire me-1" aria-hidden="true"></i>
                           High
                         </span>
@@ -216,7 +213,6 @@ const Messages = () => {
                     tabIndex={0}
                     aria-label="Conversation with Andrew Fletcher, Low priority"
                   >
-                    <div className="ai-list-item__priority ai-list-item__priority--low" aria-label="Low priority"></div>
                     <span className="avatar flex-shrink-0">
                       <ImageWithBasePath
                         src="assets/img/users/user-05.jpg"
@@ -228,7 +224,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Andrew Fletcher</h6>
-                        <span className="ai-badge ai-badge--low">
+                        <span className="ai-badge ai-badge--low" style={{backgroundColor: 'rgba(25, 135, 84, 0.5)'}}>
                           <i className="fa-regular fa-circle-check me-1" aria-hidden="true"></i>
                           Low
                         </span>
@@ -250,7 +246,6 @@ const Messages = () => {
                     tabIndex={0}
                     aria-label="Conversation with Tyron Derby, Low priority"
                   >
-                    <div className="ai-list-item__priority ai-list-item__priority--low" aria-label="Low priority"></div>
                     <div
                       className="avatar flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-purple"
                       style={{
@@ -267,7 +262,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Tyron Derby</h6>
-                        <span className="ai-badge ai-badge--low">
+                        <span className="ai-badge ai-badge--low" style={{backgroundColor: 'rgba(25, 135, 84, 0.5)'}}>
                           <i className="fa-regular fa-circle-check me-1" aria-hidden="true"></i>
                           Low
                         </span>
