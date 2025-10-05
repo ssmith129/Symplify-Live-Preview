@@ -214,17 +214,17 @@ const Messages = () => {
                     </span>
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
-                        <h6 className="fs-14 mb-0 fw-medium">Andrew Fletcher</h6>
+                        <h6 className="mb-0 ai-text-sm ai-font-medium">Andrew Fletcher</h6>
                         <span className="ai-badge ai-badge--low" style={{backgroundColor: 'rgba(25, 135, 84, 0.5)'}}>
                           <i className="fa-regular fa-circle-check me-1" aria-hidden="true"></i>
                           Low
                         </span>
                       </div>
-                      <p className="mb-0 text-muted text-truncate" style={{fontSize: 'var(--ai-font-sm)'}}>
+                      <p className="mb-0 text-truncate ai-text-sm ai-text-muted">
                         Use tools like Trello...
                       </p>
                       <div className="d-flex justify-content-between align-items-center mt-1">
-                        <small className="text-muted">yesterday</small>
+                        <small className="ai-text-xs ai-text-muted">yesterday</small>
                       </div>
                     </div>
                   </div>
