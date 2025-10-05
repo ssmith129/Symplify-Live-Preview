@@ -128,62 +128,73 @@ export default function SchedulingInsightPopover({ anchor, dateISO, title, onClo
     };
   }, [onClose]);
 
-  // Enhanced positioning logic with viewport boundary detection
+  // Enhanced positioning logic with left/right alignment based on available space
   const placementVars = useMemo(() => {
     const popoverWidth = 360;
+    const minSpaceRequired = 300;
     const gap = 8;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
 
-    const bounds = anchor.calendarBounds ?? {
-      left: scrollX,
-      top: scrollY,
-      width: viewportWidth,
-      height: viewportHeight,
-    };
+    // Calculate absolute positions accounting for scroll
+    const anchorAbsLeft = anchor.left;
+    const anchorAbsRight = anchor.left + anchor.width;
+    const anchorAbsTop = anchor.top;
 
-    const containerLeft = bounds.left;
-    const containerRight = bounds.left + bounds.width;
-    const containerTop = bounds.top;
-    const containerBottom = bounds.top + bounds.height;
+    // Calculate available space on each side relative to viewport
+    const spaceOnRight = viewportWidth - (anchorAbsRight - scrollX);
+    const spaceOnLeft = (anchorAbsLeft - scrollX);
 
-    const spaceOnLeft = anchor.left - scrollX;
-    const spaceOnRight = viewportWidth - (anchor.left + anchor.width - scrollX);
-
+    // Determine horizontal alignment (prefer right, fall back to left)
     let left: number;
-    const preferRight = spaceOnRight >= popoverWidth + gap;
-    const preferLeft = spaceOnLeft >= popoverWidth + gap;
+    let alignedRight = false;
 
-    if (preferRight) {
-      left = anchor.left + anchor.width + gap;
-    } else if (preferLeft) {
-      left = anchor.left - popoverWidth - gap;
+    if (spaceOnRight >= minSpaceRequired) {
+      // Align to right side of calendar entry
+      left = anchorAbsRight + gap;
+      alignedRight = true;
+    } else if (spaceOnLeft >= minSpaceRequired) {
+      // Align to left side of calendar entry
+      left = anchorAbsLeft - popoverWidth - gap;
     } else {
-      left = anchor.left + anchor.width / 2 - popoverWidth / 2;
+      // Insufficient space on either side - center on entry and allow viewport to constrain
+      left = anchorAbsLeft + (anchor.width / 2) - (popoverWidth / 2);
     }
 
-    left = Math.max(containerLeft + gap, Math.min(left, containerRight - popoverWidth - gap));
+    // Apply viewport boundary constraints to prevent overflow
+    const minLeft = scrollX + gap;
+    const maxLeft = scrollX + viewportWidth - popoverWidth - gap;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
 
-    const spaceBelow = viewportHeight - (anchor.top + anchor.height - scrollY);
-    const spaceAbove = anchor.top - scrollY;
-    const estimatedPopoverHeight = 400;
+    // Vertical positioning - align with calendar entry top, adjust if needed
+    const estimatedPopoverHeight = 450;
+    const spaceBelow = viewportHeight - (anchorAbsTop - scrollY + anchor.height);
+    const spaceAbove = anchorAbsTop - scrollY;
 
     let top: number;
+
     if (spaceBelow >= estimatedPopoverHeight + gap) {
-      top = anchor.top + anchor.height + gap;
+      // Position below entry
+      top = anchorAbsTop;
     } else if (spaceAbove >= estimatedPopoverHeight + gap) {
-      top = anchor.top - estimatedPopoverHeight - gap;
+      // Position above entry if insufficient space below
+      top = anchorAbsTop + anchor.height - estimatedPopoverHeight;
     } else {
-      top = anchor.top + anchor.height / 2 - estimatedPopoverHeight / 2;
+      // Center vertically in viewport if insufficient space above/below
+      top = scrollY + (viewportHeight / 2) - (estimatedPopoverHeight / 2);
     }
 
-    top = Math.max(containerTop + gap, Math.min(top, containerBottom - estimatedPopoverHeight - gap));
+    // Apply vertical viewport boundary constraints
+    const minTop = scrollY + gap;
+    const maxTop = scrollY + viewportHeight - estimatedPopoverHeight - gap;
+    top = Math.max(minTop, Math.min(top, maxTop));
 
     return {
       ['--ai-popover-left' as any]: `${Math.round(left)}px`,
       ['--ai-popover-top' as any]: `${Math.round(top)}px`,
+      ['--ai-popover-align' as any]: alignedRight ? 'right' : 'left',
     } as React.CSSProperties;
   }, [anchor]);
 
