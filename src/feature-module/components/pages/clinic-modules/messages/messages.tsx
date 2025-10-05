@@ -112,17 +112,17 @@ const Messages = () => {
                     </span>
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
-                        <h6 className="fs-14 mb-0 fw-medium">Mark Smith</h6>
+                        <h6 className="mb-0 ai-text-sm ai-font-medium">Mark Smith</h6>
                         <span className="ai-badge ai-badge--critical" style={{backgroundColor: 'rgba(220, 53, 69, 0.5)'}}>
                           <i className="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i>
                           Critical
                         </span>
                       </div>
-                      <p className="mb-0 text-muted text-truncate" style={{fontSize: 'var(--ai-font-sm)'}}>
+                      <p className="mb-0 text-truncate ai-text-sm ai-text-muted">
                         Hey Sam! Did you Ch...
                       </p>
                       <div className="d-flex justify-content-between align-items-center mt-1">
-                        <small className="text-muted">10:10 AM</small>
+                        <small className="ai-text-xs ai-text-muted">10:10 AM</small>
                         <i className="ti ti-checks text-success" aria-label="Message read"></i>
                       </div>
                     </div>
