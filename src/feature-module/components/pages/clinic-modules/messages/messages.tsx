@@ -97,73 +97,6 @@ const Messages = () => {
                   </div>
                 </div>
 
-                {/* AI Filter Pills - Design System Compliant */}
-                <div className="px-3 pb-2">
-                  <div 
-                    className="d-flex align-items-center gap-2 flex-wrap mb-3" 
-                    role="toolbar" 
-                    aria-label="Message priority filters"
-                  >
-                    <button
-                      type="button"
-                      className={`ai-btn ai-btn--sm ${activeFilter === 'all' ? 'ai-btn--primary' : 'ai-btn--secondary'}`}
-                      onClick={() => setActiveFilter('all')}
-                      aria-label={`Show all messages (${filterCounts.all})`}
-                      aria-pressed={activeFilter === 'all'}
-                    >
-                      All
-                      <span className="ai-badge ai-badge--sm ai-badge--low ms-2">{filterCounts.all}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className={`ai-btn ai-btn--sm ${activeFilter === 'critical' ? 'ai-btn--primary' : 'ai-btn--secondary'}`}
-                      onClick={() => setActiveFilter('critical')}
-                      aria-label={`Show critical priority messages (${filterCounts.critical})`}
-                      aria-pressed={activeFilter === 'critical'}
-                    >
-                      <i className="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i>
-                      Critical
-                      <span className="ai-badge ai-badge--sm ai-badge--critical ms-2">{filterCounts.critical}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className={`ai-btn ai-btn--sm ${activeFilter === 'high' ? 'ai-btn--primary' : 'ai-btn--secondary'}`}
-                      onClick={() => setActiveFilter('high')}
-                      aria-label={`Show high priority messages (${filterCounts.high})`}
-                      aria-pressed={activeFilter === 'high'}
-                    >
-                      <i className="fa-solid fa-fire me-1" aria-hidden="true"></i>
-                      High
-                      <span className="ai-badge ai-badge--sm ai-badge--high ms-2">{filterCounts.high}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className={`ai-btn ai-btn--sm ${activeFilter === 'medium' ? 'ai-btn--primary' : 'ai-btn--secondary'}`}
-                      onClick={() => setActiveFilter('medium')}
-                      aria-label={`Show medium priority messages (${filterCounts.medium})`}
-                      aria-pressed={activeFilter === 'medium'}
-                    >
-                      <i className="fa-regular fa-lightbulb me-1" aria-hidden="true"></i>
-                      Medium
-                      <span className="ai-badge ai-badge--sm ai-badge--medium ms-2">{filterCounts.medium}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className={`ai-btn ai-btn--sm ${activeFilter === 'low' ? 'ai-btn--primary' : 'ai-btn--secondary'}`}
-                      onClick={() => setActiveFilter('low')}
-                      aria-label={`Show low priority messages (${filterCounts.low})`}
-                      aria-pressed={activeFilter === 'low'}
-                    >
-                      <i className="fa-regular fa-circle-check me-1" aria-hidden="true"></i>
-                      Low
-                      <span className="ai-badge ai-badge--sm ai-badge--low ms-2">{filterCounts.low}</span>
-                    </button>
-                  </div>
-                </div>
 
                 {/* User List */}
                 <div className="chat-users" data-simplebar style={{height: 'calc(100vh - 300px)', overflowY: 'auto'}}>
@@ -225,7 +158,7 @@ const Messages = () => {
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
                         <h6 className="fs-14 mb-0 fw-medium">Eugene Sikora</h6>
-                        <span className="ai-badge ai-badge--high">
+                        <span className="ai-badge ai-badge--high" style={{backgroundColor: '#e2b93c'}}>
                           <i className="fa-solid fa-fire me-1" aria-hidden="true"></i>
                           High
                         </span>
