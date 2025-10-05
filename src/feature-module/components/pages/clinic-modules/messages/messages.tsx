@@ -146,17 +146,17 @@ const Messages = () => {
                     </span>
                     <div className="ai-list-item__content">
                       <div className="d-flex justify-content-between align-items-start mb-1">
-                        <h6 className="fs-14 mb-0 fw-medium">Eugene Sikora</h6>
+                        <h6 className="mb-0 ai-text-sm ai-font-medium">Eugene Sikora</h6>
                         <span className="ai-badge ai-badge--high" style={{backgroundColor: 'rgba(226, 185, 60, 0.5)'}}>
                           <i className="fa-solid fa-fire me-1" aria-hidden="true"></i>
                           High
                         </span>
                       </div>
-                      <p className="mb-0 text-muted text-truncate" style={{fontSize: 'var(--ai-font-sm)'}}>
+                      <p className="mb-0 text-truncate ai-text-sm ai-text-muted">
                         How are your Today
                       </p>
                       <div className="d-flex justify-content-between align-items-center mt-1">
-                        <small className="text-muted">08:26 AM</small>
+                        <small className="ai-text-xs ai-text-muted">08:26 AM</small>
                         <span className="ai-badge ai-badge--critical" aria-label="5 unread messages">5</span>
                       </div>
                     </div>
