@@ -90,9 +90,10 @@ const Messages = () => {
                     </span>
                     <input
                       type="text"
-                      className="ai-input border-start-0"
+                      className="form-control border-start-0 ps-0"
                       placeholder="Search conversations..."
                       aria-label="Search conversations"
+                      style={{boxShadow: 'none'}}
                     />
                   </div>
                 </div>
