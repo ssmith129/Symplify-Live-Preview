@@ -360,8 +360,9 @@
   .ai-card,
   .ai-list-item {
     transition: none !important;
+    transform: none !important;
   }
-  
+
   .ai-btn:hover,
   .ai-card:hover {
     transform: none !important;
