@@ -63,8 +63,8 @@ const Messages = () => {
                       <ImageWithBasePath src="assets/img/users/user-01.jpg" alt="James Hong" className="rounded" style={{width: '40px', height: '40px'}}/>
                     </span>
                     <div>
-                      <h6 className="fs-14 mb-1 fw-medium">James Hong</h6>
-                      <p className="mb-0 text-muted fs-14">Admin</p>
+                      <h6 className="mb-1 ai-text-sm ai-font-medium">James Hong</h6>
+                      <p className="mb-0 ai-text-sm ai-text-muted">Admin</p>
                     </div>
                   </div>
                   <button className="ai-btn ai-btn--primary ai-btn--icon" aria-label="New Chat">
