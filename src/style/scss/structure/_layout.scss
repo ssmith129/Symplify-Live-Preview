@@ -16,5 +16,17 @@
         max-width: 1400px;
         margin-left: auto;
         margin-right: auto;
+
+        // Override for full-width layouts (email, calendar, etc.)
+        &.container-fluid {
+            max-width: none;
+        }
+    }
+}
+
+// Full-width layout override
+[data-layout="full-width"] {
+    .page-wrapper .content {
+        max-width: none;
     }
 }
