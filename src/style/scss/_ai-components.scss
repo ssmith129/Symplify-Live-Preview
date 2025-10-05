@@ -158,11 +158,14 @@
   border-radius: var(--ai-radius-lg);
   transition: var(--ai-transition-normal);
   overflow: hidden;
-  
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+
   &:hover {
     border-color: var(--ai-border-medium);
     box-shadow: var(--ai-shadow-lg);
     transform: translateY(-2px);
+    -webkit-transform: translateY(-2px);
   }
 }
 
