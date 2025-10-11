@@ -96,14 +96,14 @@ const Dashboard = () => {
           {/* End Page Header */}
           {/* AI Inbox Triage */}
           <div className="row mb-4">
-            <div className="col-12 col-xl-6">
+            <div className="col-12 col-xl-6" style={{ padding: '12px' }}>
               <Suspense fallback={null}>
                 <InboxTriageCard />
               </Suspense>
             </div>
             <div className="col-12 col-xl-6">
               <div className="card shadow-sm flex-fill w-100 h-100">
-                <div className="card-header d-flex align-items-center justify-content-between">
+                <div className="card-header d-flex align-items-center justify-content-between" style={{ backgroundColor: '#f7f9ff' }}>
                   <h5 className="fw-bold mb-0"><Link to={all_routes.dashboard} className="text-reset text-decoration-none">Quick Overview</Link></h5>
                   <span className="badge bg-light text-dark">Today</span>
                 </div>
@@ -164,7 +164,7 @@ const Dashboard = () => {
             <div className="col-xl-8">
               {/* card start */}
               <div className="card shadow-sm flex-fill w-100">
-                <div className="card-header d-flex align-items-center justify-content-between">
+                <div className="card-header d-flex align-items-center justify-content-between" style={{ backgroundColor: '#f7f9ff' }}>
                   <h5 className="fw-bold mb-0"><Link to={all_routes.appointments} className="text-reset text-decoration-none">Appointment Statistics</Link></h5>
                   <div className="dropdown">
                     <Link
