@@ -211,9 +211,7 @@ const LoginCover = () => {
                       {/* end card */}
                     </div>
                   </form>
-                  <p className="fs-14 text-dark text-center mt-4">
-                    Copyright © 2025 - Preclinic.
-                  </p>
+                  <p className="fs-14 text-dark text-center mt-4">Copyright © 2025 - Symplify.</p>
                 </div>
                 {/* end row*/}
               </div>
