@@ -104,7 +104,7 @@ const Sidebar = () => {
     Object.entries(themeSettings).forEach(([key, value]) => {
       rootElement.setAttribute(key, value);
     });
-    if (themeSettings["data-layout"] === "mini") {
+    if (themeSettings["data-layout"] === "mini" || themeSettings["data-layout"] === "hoverview") {
       rootElement.classList.add("mini-sidebar");
     } else {
       rootElement.classList.remove("mini-sidebar");
