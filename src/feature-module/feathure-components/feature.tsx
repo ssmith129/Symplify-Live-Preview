@@ -24,12 +24,12 @@ const Feature = () => {
       <div
         className={`
         ${
-          miniSidebar || dataLayout === "mini" || dataSize === "compact"
+          miniSidebar || dataLayout === "mini" || dataLayout === "hoverview" || dataSize === "compact"
             ? "mini-sidebar"
             : ""
         }
         ${
-          (expandMenu && miniSidebar) || (expandMenu && dataLayout === "mini")
+          (expandMenu && miniSidebar) || (expandMenu && dataLayout === "mini") || (expandMenu && dataLayout === "hoverview")
             ? "expand-menu"
             : ""
         }
